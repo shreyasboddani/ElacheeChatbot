@@ -28,7 +28,6 @@ Jim CherrySales Executive, retired
 Brian HaasLocal Church Dawson, Lead Pastor
 Anna LyleForsyth County Public Library, Retired
 Danny MigliorisiSales Executive, retired
-Mike PoynterSales Executive, retired
 Alex WarnerForsyth County Chamber of Commerce, President & CEO
 Board Members Emeritus
 Wendy Goodrow

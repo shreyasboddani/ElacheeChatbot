@@ -3,7 +3,7 @@
 Source ID: web-calendar-mobile-pantry-brandywine-december-7430eeb8
 Source type: official_website
 Canonical URL: https://www.theplacega.org/calendar/mobile-pantry-brandywine-december
-Fetched at: 2026-07-23T18:36:34.465Z
+Fetched at: 2026-08-23T16:25:23.537Z
 
 ## Page content
 
@@ -19,7 +19,7 @@ United States
 Google Calendar
 ICS
 Everyone is welcome! Come get fresh produce, frozen meats, non-perishable items, and eggs (when available).
-Mobile Pantry at Chestatee Elementary
+Free GED Classes
 Mobile Pantry at New Hope Elementary
 
 ## Relevant links
@@ -28,8 +28,8 @@ Mobile Pantry at New Hope Elementary
 - ICS: https://www.theplacega.org/calendar/mobile-pantry-brandywine-december
 - Previous
 Previous
-December 19
-Mobile Pantry at Chestatee Elementary: https://www.theplacega.org/calendar/mobile-pantry-chestatee-december
+December 23
+Free GED Classes: https://www.theplacega.org/calendar/free-ged-classes-6t997-zlysg-d4yp4-syh62-xat6g-nf3y3-ergt8-rbe43-ra5lx-8c5f8-dr2x7-45wxx-8nfpk-c78rj-9hyry-bxysb-yr659
 - Next
 Next
 December 26

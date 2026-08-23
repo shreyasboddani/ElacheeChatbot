@@ -3,7 +3,7 @@
 Source ID: web-board-of-directors-8d8056e2
 Source type: official_website
 Canonical URL: https://www.theplacega.org/board-of-directors
-Fetched at: 2026-07-23T18:37:00.343Z
+Fetched at: 2026-08-23T16:26:00.888Z
 
 ## Page content
 
@@ -22,7 +22,6 @@ Jim CherrySales Executive, retired
 Brian HaasLocal Church Dawson, Lead Pastor
 Anna LyleForsyth County Public Library, Retired
 Danny MigliorisiSales Executive, retired
-Mike PoynterSales Executive, retired
 Alex WarnerForsyth County Chamber of Commerce, President & CEO
 Board Members Emeritus
 Wendy Goodrow

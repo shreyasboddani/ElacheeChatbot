@@ -7,7 +7,7 @@ Canonical URL: https://www.theplacega.org/calendar/mobile-pantry-forsyth-novembe
 ## Important headings
 
 - Mobile Pantry at Cumming Elementary
-- Mobile Food Pantry
+- Free GED Classes
 - Mobile Pantry at Chattahoochee Elementary
 
 ## Approved page content
@@ -24,7 +24,7 @@ United States
 Google Calendar
 ICS
 Everyone is welcome! Come get fresh produce, frozen meats, non-perishable items, and eggs (when available).
-Mobile Food Pantry
+Free GED Classes
 Mobile Pantry at Chattahoochee Elementary
 
 ## Relevant official links
@@ -33,8 +33,8 @@ Mobile Pantry at Chattahoochee Elementary
 - ICS: https://www.theplacega.org/calendar/mobile-pantry-forsyth-november-7k66l
 - Previous
 Previous
-December 2
-Mobile Food Pantry: https://www.theplacega.org/calendar/mobile-food-pantry-december
+December 9
+Free GED Classes: https://www.theplacega.org/calendar/free-ged-classes-6t997-zlysg-d4yp4-syh62-xat6g-nf3y3-ergt8-rbe43-ra5lx-8c5f8-dr2x7-45wxx-8nfpk-c78rj-9hyry-bxysb
 - Next
 Next
 December 12

@@ -8,7 +8,7 @@ Canonical URL: https://www.theplacega.org/calendar/mobile-pantry-newhope-septemb
 
 - Mobile Pantry at New Hope Elementary
 - Mobile Pantry at Brandywine Elementary
-- Mobile Food Pantry
+- Free GED Classes
 
 ## Approved page content
 
@@ -25,7 +25,7 @@ Google Calendar
 ICS
 Everyone is welcome! Come get fresh produce, frozen meats, non-perishable items, and eggs (when available).
 Mobile Pantry at Brandywine Elementary
-Mobile Food Pantry
+Free GED Classes
 
 ## Relevant official links
 
@@ -37,5 +37,5 @@ September 26
 Mobile Pantry at Brandywine Elementary: https://www.theplacega.org/calendar/mobile-pantry-brandywine-september
 - Next
 Next
-October 7
-Mobile Food Pantry: https://www.theplacega.org/calendar/mobile-food-pantry-october
+September 28
+Free GED Classes: https://www.theplacega.org/calendar/free-ged-classes-dh7mh-hc34f-5s5zj-mrzzh-fty3x

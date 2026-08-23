@@ -3,7 +3,7 @@
 Source ID: web-careers-9638b545
 Source type: official_website
 Canonical URL: https://www.theplacega.org/careers
-Fetched at: 2026-08-05T21:08:53.027Z
+Fetched at: 2026-08-23T16:26:00.518Z
 
 ## Page content
 
@@ -23,19 +23,31 @@ Performance and Development: Reward individual and team accomplishments through 
 Performance and Development: Reward individual and team accomplishments through performance-based adjustments. Support employee growth through professional development programs and training opportunities.
 Benefits Package: Offer benefits that reflect our Compassion and hope for employees, including medical/dental/vision, paid holidays, and paid time off.
 Benefits Package: Offer benefits that reflect our Compassion and hope for employees, including medical/dental/vision, paid holidays, and paid time off.
-We are currently seeking:
-Mobile Pantry Coordinator (Part-time) — click here for more information
-Mobile Pantry Coordinator (Part-time) — click here for more information
-Thrift Store Retail Specialist / Cashier (Part-time) — click here for more information
-Thrift Store Retail Specialist / Cashier (Part-time) — click here for more information
-Thrift Store/Retail Training Position (6 months/full-time) — click here for more information
-Thrift Store/Retail Training Position (6 months/full-time) — click here for more information
-Retail Volunteer Coordinator (Part-time) — click here for more information
-Retail Volunteer Coordinator (Part-time) — click here for more information
+We are currently seeking amazing individuals for these roles:
+Director of Food and Senior Services(Full-time)
+Click here for more information
+Click here for more information
+Click here to contact the hiring manager
+Click here to contact the hiring manager
+Thrift Store/Retail Training Position(6 months/full-time)
+Click here for more information
+Click here for more information
+Click here to contact the hiring manager
+Click here to contact the hiring manager
+Thrift Store Retail Specialist / Cashier(Part-time)
+Click here for more information
+Click here for more information
+Click here to contact the hiring manager
+Click here to contact the hiring manager
+Retail Volunteer Coordinator(Part-time)
+Click here for more information
+Click here for more information
+Click here to contact the hiring manager
+Click here to contact the hiring manager
 
 ## Relevant links
 
-- click here for more information: https://www.theplacega.org/s/Mobile-Pantry-Coordinator.pdf
-- click here for more information: https://www.theplacega.org/s/Retail-Cashier-and-Specialist-Saturday.pdf
-- click here for more information: https://www.theplacega.org/s/ATP-Thrift-store-training-position.pdf
-- click here for more information: https://www.theplacega.org/s/Retail-Volunteer-Coordinator-826.pdf
+- Click here for more information: https://www.theplacega.org/s/Director-of-Food-and-Senior-Services-82026.pdf
+- Click here for more information: https://www.theplacega.org/s/ATP-Thrift-store-training-position.pdf
+- Click here for more information: https://www.theplacega.org/s/Retail-Cashier-and-Specialist-Saturday.pdf
+- Click here for more information: https://www.theplacega.org/s/Retail-Volunteer-Coordinator-826.pdf

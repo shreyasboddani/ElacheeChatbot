@@ -10,6 +10,7 @@ import {
   parseApprovedRemovalUrls,
   preserveUnchangedFetchedAt,
   requireThePlaceFetchUrl,
+  sourceIdForUrl,
   websiteContentFingerprint,
 } from "../scripts/crawl-website";
 import {
@@ -48,6 +49,22 @@ function websiteSource(overrides: Partial<WebsiteSource> = {}): WebsiteSource {
 }
 
 describe("automated website refresh", () => {
+  it("keeps source IDs safe and distinct for very long recurring-event URLs", () => {
+    const firstUrl =
+      "https://www.theplacega.org/calendar/free-ged-classes/" +
+      "6t997-zlysg-d4yp4-syh62-xat6g-nf3y3-ergt8-rbe43-ra5lx-8c5f8-dr2x7-45wxx-8nfpk-c78rj-9hyry";
+    const secondUrl = `${firstUrl}-another-occurrence`;
+    const firstId = sourceIdForUrl(firstUrl);
+    const secondId = sourceIdForUrl(secondUrl);
+
+    expect(firstId).toMatch(/^[a-z0-9][a-z0-9-]{1,120}$/);
+    expect(secondId).toMatch(/^[a-z0-9][a-z0-9-]{1,120}$/);
+    expect(firstId.length).toBeLessThanOrEqual(121);
+    expect(secondId.length).toBeLessThanOrEqual(121);
+    expect(firstId).not.toBe(secondId);
+    expect(sourceIdForUrl(firstUrl)).toBe(firstId);
+  });
+
   it("preserves timestamps for semantically unchanged pages", () => {
     const previous = websiteSource();
     const recrawled = websiteSource({ fetchedAt: "2026-07-24T00:00:00.000Z" });

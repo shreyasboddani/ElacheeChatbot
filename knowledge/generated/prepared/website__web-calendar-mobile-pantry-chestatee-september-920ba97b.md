@@ -7,8 +7,8 @@ Canonical URL: https://www.theplacega.org/calendar/mobile-pantry-chestatee-septe
 ## Important headings
 
 - Mobile Pantry at Chestatee Elementary
-- Mobile Pantry at Chattahoochee Elementary
-- Mobile Pantry at Brandywine Elementary
+- Free GED Classes
+- Free GED Classes
 
 ## Approved page content
 
@@ -24,8 +24,8 @@ United States
 Google Calendar
 ICS
 Everyone is welcome! Come get fresh produce, frozen meats, non-perishable items, and eggs (when available).
-Mobile Pantry at Chattahoochee Elementary
-Mobile Pantry at Brandywine Elementary
+Free GED Classes
+Free GED Classes
 
 ## Relevant official links
 
@@ -33,9 +33,9 @@ Mobile Pantry at Brandywine Elementary
 - ICS: https://www.theplacega.org/calendar/mobile-pantry-chestatee-september
 - Previous
 Previous
-September 12
-Mobile Pantry at Chattahoochee Elementary: https://www.theplacega.org/calendar/mobile-pantry-forsyth-chattahoochee-september
+September 16
+Free GED Classes: https://www.theplacega.org/calendar/free-ged-classes-6t997-zlysg-d4yp4-syh62
 - Next
 Next
-September 26
-Mobile Pantry at Brandywine Elementary: https://www.theplacega.org/calendar/mobile-pantry-brandywine-september
+September 21
+Free GED Classes: https://www.theplacega.org/calendar/free-ged-classes-dh7mh-hc34f-5s5zj-mrzzh

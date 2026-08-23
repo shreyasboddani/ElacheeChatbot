@@ -3,7 +3,7 @@
 Source ID: web-calendar-mobile-pantry-forsyth-chattahoochee-november-99ec58f2
 Source type: official_website
 Canonical URL: https://www.theplacega.org/calendar/mobile-pantry-forsyth-chattahoochee-november
-Fetched at: 2026-07-23T18:36:41.262Z
+Fetched at: 2026-08-23T16:25:34.817Z
 
 ## Page content
 
@@ -20,7 +20,7 @@ Google Calendar
 ICS
 Everyone is welcome! Come get fresh produce, frozen meats, non-perishable items, and eggs (when available).
 Mobile Pantry at Cumming Elementary
-Mobile Pantry at Chestatee Elementary
+Free GED Classes
 
 ## Relevant links
 
@@ -32,5 +32,5 @@ November 14
 Mobile Pantry at Cumming Elementary: https://www.theplacega.org/calendar/mobile-pantry-forsyth-november
 - Next
 Next
-November 21
-Mobile Pantry at Chestatee Elementary: https://www.theplacega.org/calendar/mobile-pantry-chestatee-november
+November 16
+Free GED Classes: https://www.theplacega.org/calendar/free-ged-classes-dh7mh-hc34f-5s5zj-mrzzh-fty3x-ntp9b-rx7h3-f6sf4-rcc8j-l3rz5-a5259-sxbj7

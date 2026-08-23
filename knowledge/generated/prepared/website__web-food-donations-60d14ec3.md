@@ -20,9 +20,12 @@ Food Needs
 (Click to enlarge)
 Household Needs
 (Click to enlarge)
+School Pantry Needs
+(Click to enlarge)
 
 ## Relevant official links
 
 - Host A Food Drive: https://www.theplacega.org/host-a-drive
 - https://www.theplacega.org/s/June-26-Pantry-Needs-csjx.pdf: https://www.theplacega.org/s/June-26-Pantry-Needs-csjx.pdf
 - https://www.theplacega.org/s/Household-Needs-Jan-2026-mw9c.pdf: https://www.theplacega.org/s/Household-Needs-Jan-2026-mw9c.pdf
+- https://www.theplacega.org/s/Local-Schools-Pantry-Needs.pdf: https://www.theplacega.org/s/Local-Schools-Pantry-Needs.pdf

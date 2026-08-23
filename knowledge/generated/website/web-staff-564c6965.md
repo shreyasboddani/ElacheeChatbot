@@ -3,7 +3,7 @@
 Source ID: web-staff-564c6965
 Source type: official_website
 Canonical URL: https://www.theplacega.org/staff
-Fetched at: 2026-07-23T18:36:59.533Z
+Fetched at: 2026-08-23T16:26:00.112Z
 
 ## Page content
 
@@ -23,7 +23,7 @@ MEGHAN LIVINGSTONCase Management Managermeghan@theplacega.orgext. 229
 JESSICA MCGUIREOffice Coordinatorfrontdesk@theplacega.org​ext. 295
 HOLLIS MEYER​Financial Assistance Coordinatorhollis@theplacega.orgext. 296
 OPERATIONS
-OPENFacilities and Logistics CoordinatorClick here for the open role description
+BRAD EVERSONFacilities and Logistics Coordinatorbrad@theplacega.orgext. 228
 FOOD SERVICES
 ​ERIC THURMANFood Warehouse Coordinatoreric@theplacega.org
 LEANDREA VOSKANIANFood Distribution Coordinator (Forsyth)leandrea@theplacega.orgext. 232
@@ -37,14 +37,10 @@ CATHY LAURetail Assistant Manager (Forsyth)cathy@theplacega.org
 SOMER PRICE​​Retail Supervisorsomer@theplacega.org
 BRENDA TORRES​​Retail Supervisorbrenda@theplacega.org
 VICKIE HAWKINSRetail Manager (Dawson)​vickie@theplacega.orgext. 752
+PAUL BEDWELLRetail Warehouse Managerpbedwell@theplacega.orgext. 240
 WILLIAM BICERetail Warehouse Managerwilliam@theplacega.org
 WORKFORCE DEVELOPMENT & EDUCATION
 AMANDA O’DONNELLWorkforce Development & Education Manageramanda@theplacega.orgext. 224
 PAIGE ASHKEBOUSSIAdult Education Coordinatorpashekeboussi@theplacega.orgext. 223
 YOUTH SERVICES
-NATHAN RODRIGUEZYoung Adult Coordinatornathan@theplacega.orgext. 120
 SAM HENRYYouth Events Program Coordinator​sam@theplacega.org​​ext. 244
-
-## Relevant links
-
-- Click here for the open role description: https://www.theplacega.org/careers

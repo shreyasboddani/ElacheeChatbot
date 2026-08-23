@@ -3,7 +3,7 @@
 Source ID: web-calendar-mobile-food-pantry-october-cd9ce1d5
 Source type: official_website
 Canonical URL: https://www.theplacega.org/calendar/mobile-food-pantry-october
-Fetched at: 2026-07-23T18:36:22.193Z
+Fetched at: 2026-08-23T16:25:05.346Z
 
 ## Page content
 
@@ -13,8 +13,8 @@ Wednesday, October 7, 2026
 1:30 PM
 Google Calendar
 ICS
-Mobile Pantry at New Hope Elementary
-Mobile Pantry at Cumming Elementary
+Free GED Classes
+Free GED Classes
 
 ## Relevant links
 
@@ -22,9 +22,9 @@ Mobile Pantry at Cumming Elementary
 - ICS: https://www.theplacega.org/calendar/mobile-food-pantry-october
 - Previous
 Previous
-September 26
-Mobile Pantry at New Hope Elementary: https://www.theplacega.org/calendar/mobile-pantry-newhope-september
+October 5
+Free GED Classes: https://www.theplacega.org/calendar/free-ged-classes-dh7mh-hc34f-5s5zj-mrzzh-fty3x-ntp9b
 - Next
 Next
-October 10
-Mobile Pantry at Cumming Elementary: https://www.theplacega.org/calendar/mobile-pantry-forsyth-october
+October 7
+Free GED Classes: https://www.theplacega.org/calendar/free-ged-classes-6t997-zlysg-d4yp4-syh62-xat6g-nf3y3-ergt8
