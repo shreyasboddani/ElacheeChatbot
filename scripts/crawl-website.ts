@@ -257,6 +257,91 @@ export function isCrawlableUrl(value: string): boolean {
   return !BLOCKED_PATH.test(url.pathname) && !BLOCKED_EXTENSION.test(url.pathname);
 }
 
+const CALENDAR_EVENT_PATH = /^\/calendar\//;
+const CALENDAR_PAGINATION_LABEL = /^(?:previous|next)\b/i;
+
+// The calendar widget links each recurring-event occurrence to the next and
+// previous occurrence with a freshly generated slug, so following those
+// specific links walks an effectively unbounded chain of near-duplicate
+// per-date pages and starves the crawl budget for real site content.
+// Discovering calendar pages from the listing page (or elsewhere) is fine;
+// only this same-event Previous/Next chain is excluded.
+export function isCalendarPaginationLink(url: string, label: string): boolean {
+  let pathname: string;
+  try {
+    pathname = new URL(url).pathname;
+  } catch {
+    return false;
+  }
+  return CALENDAR_EVENT_PATH.test(pathname) && CALENDAR_PAGINATION_LABEL.test(label.trim());
+}
+
+const CALENDAR_EVENT_DATE_PATTERN = /\b[A-Z][a-z]+day, ([A-Z][a-z]+ \d{1,2}, \d{4})\b/;
+
+export function parseCalendarEventDate(text: string): Date | undefined {
+  const match = text.match(CALENDAR_EVENT_DATE_PATTERN);
+  if (!match) return undefined;
+  const parsed = new Date(`${match[1]} UTC`);
+  return Number.isNaN(parsed.getTime()) ? undefined : parsed;
+}
+
+// The calendar's own listing page links directly to every individual
+// occurrence of a recurring event (e.g. dozens of separately-slugged "Free
+// GED Classes" dates), not only through Previous/Next pagination. Indexing
+// every date of a routine recurring activity adds no retrieval value and
+// crowds out the crawl budget for real site content, so only the occurrence
+// closest to the crawl date (preferring the nearest upcoming one) is kept
+// per distinct recurring-event title.
+export function collapseRecurringCalendarOccurrences(
+  sources: WebsiteSource[],
+  now = new Date(),
+): WebsiteSource[] {
+  const groups = new Map<string, WebsiteSource[]>();
+  const other: WebsiteSource[] = [];
+  for (const source of sources) {
+    let pathname: string;
+    try {
+      pathname = new URL(source.canonicalUrl).pathname;
+    } catch {
+      other.push(source);
+      continue;
+    }
+    if (!CALENDAR_EVENT_PATH.test(pathname)) {
+      other.push(source);
+      continue;
+    }
+    const group = groups.get(source.title);
+    if (group) group.push(source);
+    else groups.set(source.title, [source]);
+  }
+
+  const collapsed: WebsiteSource[] = [];
+  for (const group of groups.values()) {
+    if (group.length === 1) {
+      collapsed.push(group[0]);
+      continue;
+    }
+    const dated = group
+      .map((source) => ({ source, date: parseCalendarEventDate(source.text) }))
+      .filter(
+        (item): item is { source: WebsiteSource; date: Date } => item.date !== undefined,
+      );
+    if (dated.length === 0) {
+      collapsed.push(group[0]);
+      continue;
+    }
+    const future = dated
+      .filter((item) => item.date.getTime() >= now.getTime())
+      .sort((a, b) => a.date.getTime() - b.date.getTime());
+    const past = dated
+      .filter((item) => item.date.getTime() < now.getTime())
+      .sort((a, b) => b.date.getTime() - a.date.getTime());
+    collapsed.push((future[0] ?? past[0]).source);
+  }
+
+  return [...other, ...collapsed];
+}
+
 export function parseRobotsTxt(value: string): RobotsRules {
   const rules: RobotsRules = { allows: [], disallows: [], sitemaps: [] };
   let applies = false;
@@ -612,7 +697,8 @@ export async function crawlWebsite(
           !queued.has(link.url) &&
           !visited.has(link.url) &&
           !approvedRemovalUrls.has(link.url) &&
-          isCrawlableUrl(link.url)
+          isCrawlableUrl(link.url) &&
+          !isCalendarPaginationLink(link.url, link.label)
         ) {
           queued.add(link.url);
           queue.push(link.url);
@@ -635,17 +721,22 @@ export async function crawlWebsite(
     approvedRemovalUrls,
     maxPages,
   });
+  // Collapse after merging retained pages too, so recurring-event bloat that
+  // was already carried over from a previous run (before this rule existed,
+  // or simply not re-fetched this run) is trimmed down just as much as
+  // freshly discovered occurrences.
+  const collapsedSources = collapseRecurringCalendarOccurrences(merged.sources);
   const approvedRemovedPages = previousSources
     .map((source) => source.canonicalUrl)
     .filter((url) => approvedRemovalUrls.has(url));
 
   return {
-    sources: merged.sources,
+    sources: collapsedSources,
     report: {
       startedFrom: THE_PLACE.canonicalOrigin,
       crawledAt: new Date().toISOString(),
       maxPages,
-      indexedPages: merged.sources.map((source) => ({
+      indexedPages: collapsedSources.map((source) => ({
         id: source.id,
         title: source.title,
         url: source.canonicalUrl,
@@ -656,7 +747,7 @@ export async function crawlWebsite(
       blockedPages,
       retainedPages: merged.retainedPages,
       approvedRemovedPages,
-      totalIndexed: merged.sources.length,
+      totalIndexed: collapsedSources.length,
     },
   };
 }

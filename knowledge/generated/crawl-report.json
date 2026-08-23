@@ -1,6 +1,6 @@
 {
   "startedFrom": "https://www.theplacega.org",
-  "crawledAt": "2026-08-23T16:31:29.611Z",
+  "crawledAt": "2026-08-23T17:09:32.520Z",
   "maxPages": 150,
   "indexedPages": [
     {
@@ -68,504 +68,6 @@
       "title": "Calendar — The Place",
       "url": "https://www.theplacega.org/calendar",
       "fetchedAt": "2026-08-23T16:24:59.303Z"
-    },
-    {
-      "id": "web-calendar-forsyth-county-drive-through-pet-food-supply-pantry-205ae801",
-      "title": "Forsyth County Drive-Through Pet Food & Supply Pantry — The Place",
-      "url": "https://www.theplacega.org/calendar/forsyth-county-drive-through-pet-food-supply-pantry",
-      "fetchedAt": "2026-07-23T18:36:18.737Z"
-    },
-    {
-      "id": "web-calendar-farmington-creek-mobile-food-pantry-9cd9d207",
-      "title": "Farmington Creek Mobile Food Pantry — The Place",
-      "url": "https://www.theplacega.org/calendar/farmington-creek-mobile-food-pantry",
-      "fetchedAt": "2026-07-23T18:36:19.123Z"
-    },
-    {
-      "id": "web-calendar-dine-to-donate-f71a6389",
-      "title": "Dine to Donate — The Place",
-      "url": "https://www.theplacega.org/calendar/dine-to-donate",
-      "fetchedAt": "2026-07-23T18:36:19.510Z"
-    },
-    {
-      "id": "web-calendar-bingo-night-d44da376",
-      "title": "Bingo Night — The Place",
-      "url": "https://www.theplacega.org/calendar/bingo-night",
-      "fetchedAt": "2026-07-23T18:36:19.888Z"
-    },
-    {
-      "id": "web-calendar-mobile-pantry-dawsonville-july-23-2e5a7c65",
-      "title": "Mobile Pantry at Dawson County High School — The Place",
-      "url": "https://www.theplacega.org/calendar/mobile-pantry-dawsonville-july-23",
-      "fetchedAt": "2026-07-23T18:36:20.270Z"
-    },
-    {
-      "id": "web-calendar-mobile-pantry-dawsonville-july-16-93433713",
-      "title": "Mobile Pantry at Dawson County High School — The Place",
-      "url": "https://www.theplacega.org/calendar/mobile-pantry-dawsonville-july-16",
-      "fetchedAt": "2026-07-23T18:36:20.654Z"
-    },
-    {
-      "id": "web-calendar-mobile-pantry-dawsonville-july-9-de1e890c",
-      "title": "Mobile Pantry at Dawson County High School — The Place",
-      "url": "https://www.theplacega.org/calendar/mobile-pantry-dawsonville-july-9",
-      "fetchedAt": "2026-07-23T18:36:21.038Z"
-    },
-    {
-      "id": "web-calendar-mobile-food-pantry-december-d98dfed8",
-      "title": "Mobile Food Pantry — The Place",
-      "url": "https://www.theplacega.org/calendar/mobile-food-pantry-december",
-      "fetchedAt": "2026-08-23T16:25:03.926Z"
-    },
-    {
-      "id": "web-calendar-mobile-food-pantry-november-e06ed654",
-      "title": "Mobile Food Pantry — The Place",
-      "url": "https://www.theplacega.org/calendar/mobile-food-pantry-november",
-      "fetchedAt": "2026-08-23T16:25:04.652Z"
-    },
-    {
-      "id": "web-calendar-mobile-food-pantry-october-cd9ce1d5",
-      "title": "Mobile Food Pantry — The Place",
-      "url": "https://www.theplacega.org/calendar/mobile-food-pantry-october",
-      "fetchedAt": "2026-08-23T16:25:05.346Z"
-    },
-    {
-      "id": "web-calendar-mobile-food-pantry-september-45f5f6db",
-      "title": "Mobile Food Pantry — The Place",
-      "url": "https://www.theplacega.org/calendar/mobile-food-pantry-september",
-      "fetchedAt": "2026-08-23T16:25:05.856Z"
-    },
-    {
-      "id": "web-calendar-mobile-food-pantry-august-38e2502d",
-      "title": "Mobile Food Pantry — The Place",
-      "url": "https://www.theplacega.org/calendar/mobile-food-pantry-august",
-      "fetchedAt": "2026-07-23T18:36:22.930Z"
-    },
-    {
-      "id": "web-calendar-mobile-food-pantry-d68aed49",
-      "title": "Mobile Food Pantry — The Place",
-      "url": "https://www.theplacega.org/calendar/mobile-food-pantry",
-      "fetchedAt": "2026-07-23T18:36:23.310Z"
-    },
-    {
-      "id": "web-calendar-financial-literacy-5-685ee50a",
-      "title": "Financial Literacy Summer Series — The Place",
-      "url": "https://www.theplacega.org/calendar/financial-literacy-5",
-      "fetchedAt": "2026-07-23T18:36:23.694Z"
-    },
-    {
-      "id": "web-calendar-financial-literacy-4-c68a6c7b",
-      "title": "Financial Literacy Summer Series — The Place",
-      "url": "https://www.theplacega.org/calendar/financial-literacy-4",
-      "fetchedAt": "2026-07-23T18:36:24.077Z"
-    },
-    {
-      "id": "web-calendar-financial-literacy-3-4ej5c-ec692b3b",
-      "title": "Financial Literacy Summer Series — The Place",
-      "url": "https://www.theplacega.org/calendar/financial-literacy-3-4ej5c",
-      "fetchedAt": "2026-07-23T18:36:24.459Z"
-    },
-    {
-      "id": "web-calendar-financial-literacy-3-f04e7f47",
-      "title": "Financial Literacy Summer Series — The Place",
-      "url": "https://www.theplacega.org/calendar/financial-literacy-3",
-      "fetchedAt": "2026-07-23T18:36:24.832Z"
-    },
-    {
-      "id": "web-calendar-financial-literacy-2-7a8bf8c0",
-      "title": "Financial Literacy Summer Series — The Place",
-      "url": "https://www.theplacega.org/calendar/financial-literacy-2",
-      "fetchedAt": "2026-07-23T18:36:25.215Z"
-    },
-    {
-      "id": "web-calendar-financial-literacy-8bbac2e8",
-      "title": "Financial Literacy Summer Series — The Place",
-      "url": "https://www.theplacega.org/calendar/financial-literacy",
-      "fetchedAt": "2026-07-23T18:36:25.599Z"
-    },
-    {
-      "id": "web-calendar-free-ged-summer-study-hall-4ymr6-ffnty-2rerz-3ykba-34sxc-599m3-37c90276",
-      "title": "Free GED Summer Study Hall — The Place",
-      "url": "https://www.theplacega.org/calendar/free-ged-summer-study-hall-4ymr6-ffnty-2rerz-3ykba-34sxc-599m3",
-      "fetchedAt": "2026-07-23T18:36:25.985Z"
-    },
-    {
-      "id": "web-calendar-free-ged-summer-study-hall-4ymr6-ffnty-2rerz-3ykba-34sxc-b9d90f6f",
-      "title": "Free GED Summer Study Hall — The Place",
-      "url": "https://www.theplacega.org/calendar/free-ged-summer-study-hall-4ymr6-ffnty-2rerz-3ykba-34sxc",
-      "fetchedAt": "2026-07-23T18:36:26.361Z"
-    },
-    {
-      "id": "web-calendar-free-ged-summer-study-hall-4ymr6-ffnty-2rerz-3ykba-a1b95bb3",
-      "title": "Free GED Summer Study Hall — The Place",
-      "url": "https://www.theplacega.org/calendar/free-ged-summer-study-hall-4ymr6-ffnty-2rerz-3ykba",
-      "fetchedAt": "2026-07-23T18:36:26.745Z"
-    },
-    {
-      "id": "web-calendar-free-ged-summer-study-hall-4ymr6-ffnty-2rerz-f0b85f6b",
-      "title": "Free GED Summer Study Hall — The Place",
-      "url": "https://www.theplacega.org/calendar/free-ged-summer-study-hall-4ymr6-ffnty-2rerz",
-      "fetchedAt": "2026-07-23T18:36:27.142Z"
-    },
-    {
-      "id": "web-calendar-free-ged-summer-study-hall-4ymr6-ffnty-13db8497",
-      "title": "Free GED Summer Study Hall — The Place",
-      "url": "https://www.theplacega.org/calendar/free-ged-summer-study-hall-4ymr6-ffnty",
-      "fetchedAt": "2026-07-23T18:36:27.541Z"
-    },
-    {
-      "id": "web-calendar-free-ged-summer-study-hall-4ymr6-3ec1933b",
-      "title": "Free GED Summer Study Hall — The Place",
-      "url": "https://www.theplacega.org/calendar/free-ged-summer-study-hall-4ymr6",
-      "fetchedAt": "2026-07-23T18:36:27.955Z"
-    },
-    {
-      "id": "web-calendar-free-ged-summer-study-hall-5050bf1d",
-      "title": "Free GED Summer Study Hall — The Place",
-      "url": "https://www.theplacega.org/calendar/free-ged-summer-study-hall",
-      "fetchedAt": "2026-07-23T18:36:28.363Z"
-    },
-    {
-      "id": "web-calendar-down-derby-446fae97",
-      "title": "Down & Derby — The Place",
-      "url": "https://www.theplacega.org/calendar/down-derby",
-      "fetchedAt": "2026-07-23T18:36:28.745Z"
-    },
-    {
-      "id": "web-calendar-aging-well-expo-a6dca280",
-      "title": "Aging Well Expo — The Place",
-      "url": "https://www.theplacega.org/calendar/aging-well-expo",
-      "fetchedAt": "2026-07-23T18:36:29.140Z"
-    },
-    {
-      "id": "web-calendar-mobile-pantry-newhope-april-3796b2fa",
-      "title": "Mobile Pantry at New Hope Elementary — The Place",
-      "url": "https://www.theplacega.org/calendar/mobile-pantry-newhope-april",
-      "fetchedAt": "2026-07-23T18:36:29.526Z"
-    },
-    {
-      "id": "web-calendar-mobile-pantry-newhope-may-38b59d84",
-      "title": "Mobile Pantry at New Hope Elementary — The Place",
-      "url": "https://www.theplacega.org/calendar/mobile-pantry-newhope-may",
-      "fetchedAt": "2026-07-23T18:36:29.914Z"
-    },
-    {
-      "id": "web-calendar-mobile-pantry-newhope-august-d52e5c4a",
-      "title": "Mobile Pantry at New Hope Elementary — The Place",
-      "url": "https://www.theplacega.org/calendar/mobile-pantry-newhope-august",
-      "fetchedAt": "2026-08-23T16:25:17.335Z"
-    },
-    {
-      "id": "web-calendar-mobile-pantry-newhope-september-90b6242c",
-      "title": "Mobile Pantry at New Hope Elementary — The Place",
-      "url": "https://www.theplacega.org/calendar/mobile-pantry-newhope-september",
-      "fetchedAt": "2026-08-23T16:25:18.109Z"
-    },
-    {
-      "id": "web-calendar-mobile-pantry-newhope-october-f2047113",
-      "title": "Mobile Pantry at New Hope Elementary — The Place",
-      "url": "https://www.theplacega.org/calendar/mobile-pantry-newhope-october",
-      "fetchedAt": "2026-08-23T16:25:18.607Z"
-    },
-    {
-      "id": "web-calendar-mobile-pantry-newhope-november-ce172606",
-      "title": "Mobile Pantry at New Hope Elementary — The Place",
-      "url": "https://www.theplacega.org/calendar/mobile-pantry-newhope-november",
-      "fetchedAt": "2026-08-23T16:25:18.981Z"
-    },
-    {
-      "id": "web-calendar-mobile-pantry-newhope-december-82636496",
-      "title": "Mobile Pantry at New Hope Elementary — The Place",
-      "url": "https://www.theplacega.org/calendar/mobile-pantry-newhope-december",
-      "fetchedAt": "2026-08-23T16:25:19.464Z"
-    },
-    {
-      "id": "web-calendar-mobile-pantry-brandywine-april-37c5a969",
-      "title": "Mobile Pantry at Brandywine Elementary — The Place",
-      "url": "https://www.theplacega.org/calendar/mobile-pantry-brandywine-april",
-      "fetchedAt": "2026-07-23T18:36:32.180Z"
-    },
-    {
-      "id": "web-calendar-mobile-pantry-brandywine-may-0f65bd4b",
-      "title": "Mobile Pantry at Brandywine Elementary — The Place",
-      "url": "https://www.theplacega.org/calendar/mobile-pantry-brandywine-may",
-      "fetchedAt": "2026-07-23T18:36:32.564Z"
-    },
-    {
-      "id": "web-calendar-mobile-pantry-brandywine-august-5a61d38a",
-      "title": "Mobile Pantry at Brandywine Elementary — The Place",
-      "url": "https://www.theplacega.org/calendar/mobile-pantry-brandywine-august",
-      "fetchedAt": "2026-07-31T11:36:43.804Z"
-    },
-    {
-      "id": "web-calendar-mobile-pantry-brandywine-september-832d367f",
-      "title": "Mobile Pantry at Brandywine Elementary — The Place",
-      "url": "https://www.theplacega.org/calendar/mobile-pantry-brandywine-september",
-      "fetchedAt": "2026-08-23T16:25:21.829Z"
-    },
-    {
-      "id": "web-calendar-mobile-pantry-brandywine-october-768208c8",
-      "title": "Mobile Pantry at Brandywine Elementary — The Place",
-      "url": "https://www.theplacega.org/calendar/mobile-pantry-brandywine-october",
-      "fetchedAt": "2026-08-23T16:25:22.329Z"
-    },
-    {
-      "id": "web-calendar-mobile-pantry-brandywine-november-b14c8dd6",
-      "title": "Mobile Pantry at Brandywine Elementary — The Place",
-      "url": "https://www.theplacega.org/calendar/mobile-pantry-brandywine-november",
-      "fetchedAt": "2026-08-23T16:25:22.813Z"
-    },
-    {
-      "id": "web-calendar-mobile-pantry-brandywine-december-7430eeb8",
-      "title": "Mobile Pantry at Brandywine Elementary — The Place",
-      "url": "https://www.theplacega.org/calendar/mobile-pantry-brandywine-december",
-      "fetchedAt": "2026-08-23T16:25:23.537Z"
-    },
-    {
-      "id": "web-calendar-mobile-pantry-chestatee-april-8e14a89a",
-      "title": "Mobile Pantry at Chestatee Elementary — The Place",
-      "url": "https://www.theplacega.org/calendar/mobile-pantry-chestatee-april",
-      "fetchedAt": "2026-07-23T18:36:34.833Z"
-    },
-    {
-      "id": "web-calendar-mobile-pantry-chestatee-may-99587bc1",
-      "title": "Mobile Pantry at Chestatee Elementary — The Place",
-      "url": "https://www.theplacega.org/calendar/mobile-pantry-chestatee-may",
-      "fetchedAt": "2026-07-23T18:36:35.216Z"
-    },
-    {
-      "id": "web-calendar-mobile-pantry-chestatee-june-c1dbb86a",
-      "title": "Mobile Pantry at Chestatee Elementary — The Place",
-      "url": "https://www.theplacega.org/calendar/mobile-pantry-chestatee-june",
-      "fetchedAt": "2026-07-23T18:36:35.588Z"
-    },
-    {
-      "id": "web-calendar-mobile-pantry-chestatee-july-5416bbfd",
-      "title": "Mobile Pantry at Chestatee Elementary — The Place",
-      "url": "https://www.theplacega.org/calendar/mobile-pantry-chestatee-july",
-      "fetchedAt": "2026-07-23T18:36:35.970Z"
-    },
-    {
-      "id": "web-calendar-mobile-pantry-chestatee-august-440764ff",
-      "title": "Mobile Pantry at Chestatee Elementary — The Place",
-      "url": "https://www.theplacega.org/calendar/mobile-pantry-chestatee-august",
-      "fetchedAt": "2026-07-23T18:36:36.351Z"
-    },
-    {
-      "id": "web-calendar-mobile-pantry-chestatee-september-920ba97b",
-      "title": "Mobile Pantry at Chestatee Elementary — The Place",
-      "url": "https://www.theplacega.org/calendar/mobile-pantry-chestatee-september",
-      "fetchedAt": "2026-08-23T16:25:27.683Z"
-    },
-    {
-      "id": "web-calendar-mobile-pantry-chestatee-october-7b3934f0",
-      "title": "Mobile Pantry at Chestatee Elementary — The Place",
-      "url": "https://www.theplacega.org/calendar/mobile-pantry-chestatee-october",
-      "fetchedAt": "2026-08-23T16:25:28.362Z"
-    },
-    {
-      "id": "web-calendar-mobile-pantry-chestatee-november-66d2fa91",
-      "title": "Mobile Pantry at Chestatee Elementary — The Place",
-      "url": "https://www.theplacega.org/calendar/mobile-pantry-chestatee-november",
-      "fetchedAt": "2026-08-23T16:25:28.843Z"
-    },
-    {
-      "id": "web-calendar-mobile-pantry-chestatee-december-fe31fb5d",
-      "title": "Mobile Pantry at Chestatee Elementary — The Place",
-      "url": "https://www.theplacega.org/calendar/mobile-pantry-chestatee-december",
-      "fetchedAt": "2026-08-23T16:25:29.564Z"
-    },
-    {
-      "id": "web-calendar-mobile-pantry-forsyth-chattahoochee-april-0ac8af0b",
-      "title": "Mobile Pantry at Chattahoochee Elementary — The Place",
-      "url": "https://www.theplacega.org/calendar/mobile-pantry-forsyth-chattahoochee-april",
-      "fetchedAt": "2026-07-23T18:36:38.269Z"
-    },
-    {
-      "id": "web-calendar-mobile-pantry-forsyth-chattahoochee-may-510a5cbf",
-      "title": "Mobile Pantry at Chattahoochee Elementary — The Place",
-      "url": "https://www.theplacega.org/calendar/mobile-pantry-forsyth-chattahoochee-may",
-      "fetchedAt": "2026-07-23T18:36:38.651Z"
-    },
-    {
-      "id": "web-calendar-mobile-pantry-forsyth-chattahoochee-june-97d27028",
-      "title": "Mobile Pantry at Chattahoochee Elementary — The Place",
-      "url": "https://www.theplacega.org/calendar/mobile-pantry-forsyth-chattahoochee-june",
-      "fetchedAt": "2026-07-23T18:36:39.367Z"
-    },
-    {
-      "id": "web-calendar-mobile-pantry-forsyth-chattahoochee-july-173369a5",
-      "title": "Mobile Pantry at Chattahoochee Elementary — The Place",
-      "url": "https://www.theplacega.org/calendar/mobile-pantry-forsyth-chattahoochee-july",
-      "fetchedAt": "2026-07-23T18:36:39.753Z"
-    },
-    {
-      "id": "web-calendar-mobile-pantry-forsyth-chattahoochee-august-72704973",
-      "title": "Mobile Pantry at Chattahoochee Elementary — The Place",
-      "url": "https://www.theplacega.org/calendar/mobile-pantry-forsyth-chattahoochee-august",
-      "fetchedAt": "2026-07-23T18:36:40.137Z"
-    },
-    {
-      "id": "web-calendar-mobile-pantry-forsyth-chattahoochee-september-33c5ece2",
-      "title": "Mobile Pantry at Chattahoochee Elementary — The Place",
-      "url": "https://www.theplacega.org/calendar/mobile-pantry-forsyth-chattahoochee-september",
-      "fetchedAt": "2026-08-23T16:25:33.323Z"
-    },
-    {
-      "id": "web-calendar-mobile-pantry-forsyth-chattahoochee-october-f5e42c28",
-      "title": "Mobile Pantry at Chattahoochee Elementary — The Place",
-      "url": "https://www.theplacega.org/calendar/mobile-pantry-forsyth-chattahoochee-october",
-      "fetchedAt": "2026-08-23T16:25:34.070Z"
-    },
-    {
-      "id": "web-calendar-mobile-pantry-forsyth-chattahoochee-november-99ec58f2",
-      "title": "Mobile Pantry at Chattahoochee Elementary — The Place",
-      "url": "https://www.theplacega.org/calendar/mobile-pantry-forsyth-chattahoochee-november",
-      "fetchedAt": "2026-08-23T16:25:34.817Z"
-    },
-    {
-      "id": "web-calendar-mobile-pantry-forsyth-chattahoochee-december-51efc857",
-      "title": "Mobile Pantry at Chattahoochee Elementary — The Place",
-      "url": "https://www.theplacega.org/calendar/mobile-pantry-forsyth-chattahoochee-december",
-      "fetchedAt": "2026-08-23T16:25:35.473Z"
-    },
-    {
-      "id": "web-calendar-mobile-pantry-forsyth-november-7k66l-a28b322b",
-      "title": "Mobile Pantry at Cumming Elementary — The Place",
-      "url": "https://www.theplacega.org/calendar/mobile-pantry-forsyth-november-7k66l",
-      "fetchedAt": "2026-08-23T16:25:35.940Z"
-    },
-    {
-      "id": "web-calendar-mobile-pantry-forsyth-november-6f626bb6",
-      "title": "Mobile Pantry at Cumming Elementary — The Place",
-      "url": "https://www.theplacega.org/calendar/mobile-pantry-forsyth-november",
-      "fetchedAt": "2026-08-23T16:25:36.623Z"
-    },
-    {
-      "id": "web-calendar-mobile-pantry-forsyth-october-e1e74464",
-      "title": "Mobile Pantry at Cumming Elementary — The Place",
-      "url": "https://www.theplacega.org/calendar/mobile-pantry-forsyth-october",
-      "fetchedAt": "2026-08-23T16:25:37.486Z"
-    },
-    {
-      "id": "web-calendar-mobile-pantry-forsyth-september-e3b48b10",
-      "title": "Mobile Pantry at Cumming Elementary — The Place",
-      "url": "https://www.theplacega.org/calendar/mobile-pantry-forsyth-september",
-      "fetchedAt": "2026-08-23T16:25:37.970Z"
-    },
-    {
-      "id": "web-calendar-mobile-pantry-forsyth-august-9b1afcca",
-      "title": "Mobile Pantry at Cumming Elementary — The Place",
-      "url": "https://www.theplacega.org/calendar/mobile-pantry-forsyth-august",
-      "fetchedAt": "2026-07-23T18:36:43.550Z"
-    },
-    {
-      "id": "web-calendar-mobile-pantry-forsyth-july-f8986bb7",
-      "title": "Mobile Pantry at Cumming Elementary — The Place",
-      "url": "https://www.theplacega.org/calendar/mobile-pantry-forsyth-july",
-      "fetchedAt": "2026-07-23T18:36:43.929Z"
-    },
-    {
-      "id": "web-calendar-mobile-pantry-forsyth-june-beb0e749",
-      "title": "Mobile Pantry at Cumming Elementary — The Place",
-      "url": "https://www.theplacega.org/calendar/mobile-pantry-forsyth-june",
-      "fetchedAt": "2026-07-23T18:36:44.308Z"
-    },
-    {
-      "id": "web-calendar-mobile-pantry-forsyth-may-a6bef5d2",
-      "title": "Mobile Pantry at Cumming Elementary — The Place",
-      "url": "https://www.theplacega.org/calendar/mobile-pantry-forsyth-may",
-      "fetchedAt": "2026-07-23T18:36:44.702Z"
-    },
-    {
-      "id": "web-calendar-mobile-pantry-forsyth-2c49c3b5",
-      "title": "Mobile Pantry at Cumming Elementary — The Place",
-      "url": "https://www.theplacega.org/calendar/mobile-pantry-forsyth",
-      "fetchedAt": "2026-07-23T18:36:45.089Z"
-    },
-    {
-      "id": "web-calendar-mobile-pantry-farmington-creek-gw5zd-ebedb88e",
-      "title": "Mobile Pantry at Farmington Creek — The Place",
-      "url": "https://www.theplacega.org/calendar/mobile-pantry-farmington-creek-gw5zd",
-      "fetchedAt": "2026-07-23T18:36:45.475Z"
-    },
-    {
-      "id": "web-calendar-mobile-pantry-farmington-creek-f955ab49",
-      "title": "Mobile Pantry at Farmington Creek — The Place",
-      "url": "https://www.theplacega.org/calendar/mobile-pantry-farmington-creek",
-      "fetchedAt": "2026-07-23T18:36:45.863Z"
-    },
-    {
-      "id": "web-calendar-mobile-pantry-dawson-head-start-4-a26abec9",
-      "title": "Mobile Pantry at Dawson Head Start — The Place",
-      "url": "https://www.theplacega.org/calendar/mobile-pantry-dawson-head-start-4",
-      "fetchedAt": "2026-07-23T18:36:46.239Z"
-    },
-    {
-      "id": "web-calendar-mobile-pantry-dawson-head-start-3-e56dc758",
-      "title": "Mobile Pantry at Dawson Head Start — The Place",
-      "url": "https://www.theplacega.org/calendar/mobile-pantry-dawson-head-start-3",
-      "fetchedAt": "2026-07-23T18:36:46.616Z"
-    },
-    {
-      "id": "web-calendar-mobile-pantry-dawson-head-start-2-742c68fa",
-      "title": "Mobile Pantry at Dawson Head Start — The Place",
-      "url": "https://www.theplacega.org/calendar/mobile-pantry-dawson-head-start-2",
-      "fetchedAt": "2026-07-23T18:36:47.289Z"
-    },
-    {
-      "id": "web-calendar-mobile-pantry-dawson-head-start-1-13e8791c",
-      "title": "Mobile Pantry at Dawson Head Start — The Place",
-      "url": "https://www.theplacega.org/calendar/mobile-pantry-dawson-head-start-1",
-      "fetchedAt": "2026-07-23T18:36:47.659Z"
-    },
-    {
-      "id": "web-calendar-mobile-pantry-professional-development-center-f2eb961f",
-      "title": "Mobile Pantry at Professional Development Center — The Place",
-      "url": "https://www.theplacega.org/calendar/mobile-pantry-professional-development-center",
-      "fetchedAt": "2026-07-23T18:36:48.054Z"
-    },
-    {
-      "id": "web-calendar-nofo-golf-invitational-543f1136",
-      "title": "NoFo Golf Invitational — The Place",
-      "url": "https://www.theplacega.org/calendar/nofo-golf-invitational",
-      "fetchedAt": "2026-07-23T18:36:48.437Z"
-    },
-    {
-      "id": "web-calendar-nonprofit-of-the-night-at-gwinnett-stripers-50eacd44",
-      "title": "Nonprofit of the Night at Gwinnett Stripers — The Place",
-      "url": "https://www.theplacega.org/calendar/nonprofit-of-the-night-at-gwinnett-stripers",
-      "fetchedAt": "2026-07-23T18:36:49.103Z"
-    },
-    {
-      "id": "web-calendar-brusters-dine-to-donate-eb2a4c6a",
-      "title": "Bruster's Dine to Donate — The Place",
-      "url": "https://www.theplacega.org/calendar/brusters-dine-to-donate",
-      "fetchedAt": "2026-07-23T18:36:49.482Z"
-    },
-    {
-      "id": "web-calendar-raising-canes-dine-to-donate-5fafcc96",
-      "title": "Raising Cane's Dine to Donate — The Place",
-      "url": "https://www.theplacega.org/calendar/raising-canes-dine-to-donate",
-      "fetchedAt": "2026-07-23T18:36:49.870Z"
-    },
-    {
-      "id": "web-calendar-chick-fil-a-dine-to-donate-1d258ee2",
-      "title": "Chick Fil A Dine to Donate — The Place",
-      "url": "https://www.theplacega.org/calendar/chick-fil-a-dine-to-donate",
-      "fetchedAt": "2026-07-23T18:36:50.251Z"
-    },
-    {
-      "id": "web-calendar-poker-night-at-stars-and-strikes-aa0781cd",
-      "title": "Poker Night at Stars and Strikes — The Place",
-      "url": "https://www.theplacega.org/calendar/poker-night-at-stars-and-strikes",
-      "fetchedAt": "2026-07-23T18:36:50.630Z"
-    },
-    {
-      "id": "web-calendar-stars-and-strikes-giveback-day-d39c0767",
-      "title": "Stars and Strikes Giveback Day — The Place",
-      "url": "https://www.theplacega.org/calendar/stars-and-strikes-giveback-day",
-      "fetchedAt": "2026-07-23T18:36:51.007Z"
     },
     {
       "id": "web-newsletter-89967774",
@@ -706,12 +208,6 @@
       "fetchedAt": "2026-08-23T16:26:00.888Z"
     },
     {
-      "id": "web-calendar-electronic-recycling-event-4ea9fb84",
-      "title": "Electronic Recycling Event — The Place",
-      "url": "https://www.theplacega.org/calendar/electronic-recycling-event",
-      "fetchedAt": "2026-07-31T11:37:25.619Z"
-    },
-    {
       "id": "web-newsletter-july-newsletter-for-the-place-f07a02af",
       "title": "July Newsletter for The Place — The Place",
       "url": "https://www.theplacega.org/newsletter/july-newsletter-for-the-place",
@@ -730,172 +226,178 @@
       "fetchedAt": "2026-08-23T16:26:02.874Z"
     },
     {
-      "id": "web-calendar-free-ged-classes-6t997-zlysg-d4yp4-syh62-xat6g-nf3y3-1fee637e",
-      "title": "Free GED Classes — The Place",
-      "url": "https://www.theplacega.org/calendar/free-ged-classes-6t997-zlysg-d4yp4-syh62-xat6g-nf3y3",
-      "fetchedAt": "2026-08-23T16:26:08.666Z"
+      "id": "web-holidayhouse-f405f465",
+      "title": "Holiday House — The Place",
+      "url": "https://www.theplacega.org/holidayhouse",
+      "fetchedAt": "2026-08-23T17:03:59.427Z"
     },
     {
-      "id": "web-calendar-free-ged-classes-6t997-zlysg-d4yp4-syh62-xat6g-nf3y3-ergt8-3619efe2",
-      "title": "Free GED Classes — The Place",
-      "url": "https://www.theplacega.org/calendar/free-ged-classes-6t997-zlysg-d4yp4-syh62-xat6g-nf3y3-ergt8",
-      "fetchedAt": "2026-08-23T16:26:07.984Z"
+      "id": "web-notes-from-the-place-the-cottage-a-place-to-find-stability-build-confidence-and-create-a-brighter-future-36b0abc1",
+      "title": "The Cottage: A Place to Find Stability, Build Confidence, and Create a Brighter Future — The Place",
+      "url": "https://www.theplacega.org/notes-from-the-place/the-cottage-a-place-to-find-stability-build-confidence-and-create-a-brighter-future",
+      "fetchedAt": "2026-08-23T17:03:56.670Z"
     },
     {
-      "id": "web-calendar-free-ged-classes-6t997-zlysg-d4yp4-syh62-xat6g-nf3y3-ergt8-rbe43-2b95c58f",
-      "title": "Free GED Classes — The Place",
-      "url": "https://www.theplacega.org/calendar/free-ged-classes-6t997-zlysg-d4yp4-syh62-xat6g-nf3y3-ergt8-rbe43",
-      "fetchedAt": "2026-08-23T16:26:07.476Z"
+      "id": "web-calendar-forsyth-county-drive-through-pet-food-supply-pantry-205ae801",
+      "title": "Forsyth County Drive-Through Pet Food & Supply Pantry — The Place",
+      "url": "https://www.theplacega.org/calendar/forsyth-county-drive-through-pet-food-supply-pantry",
+      "fetchedAt": "2026-07-23T18:36:18.737Z"
     },
     {
-      "id": "web-calendar-free-ged-classes-6t997-zlysg-d4yp4-syh62-xat6g-nf3y3-ergt8-rbe43-ra5lx-f81e14de",
-      "title": "Free GED Classes — The Place",
-      "url": "https://www.theplacega.org/calendar/free-ged-classes-6t997-zlysg-d4yp4-syh62-xat6g-nf3y3-ergt8-rbe43-ra5lx",
-      "fetchedAt": "2026-08-23T16:26:06.646Z"
+      "id": "web-calendar-farmington-creek-mobile-food-pantry-9cd9d207",
+      "title": "Farmington Creek Mobile Food Pantry — The Place",
+      "url": "https://www.theplacega.org/calendar/farmington-creek-mobile-food-pantry",
+      "fetchedAt": "2026-07-23T18:36:19.123Z"
     },
     {
-      "id": "web-calendar-free-ged-classes-6t997-zlysg-d4yp4-syh62-xat6g-nf3y3-ergt8-rbe43-ra5lx-8c5f8-1060dc01",
-      "title": "Free GED Classes — The Place",
-      "url": "https://www.theplacega.org/calendar/free-ged-classes-6t997-zlysg-d4yp4-syh62-xat6g-nf3y3-ergt8-rbe43-ra5lx-8c5f8",
-      "fetchedAt": "2026-08-23T16:26:05.883Z"
+      "id": "web-calendar-dine-to-donate-f71a6389",
+      "title": "Dine to Donate — The Place",
+      "url": "https://www.theplacega.org/calendar/dine-to-donate",
+      "fetchedAt": "2026-07-23T18:36:19.510Z"
     },
     {
-      "id": "web-calendar-free-ged-classes-6t997-zlysg-d4yp4-syh62-xat6g-nf3y3-ergt8-rbe43-ra5lx-8c5f8-dr2x7-7dc66b87",
-      "title": "Free GED Classes — The Place",
-      "url": "https://www.theplacega.org/calendar/free-ged-classes-6t997-zlysg-d4yp4-syh62-xat6g-nf3y3-ergt8-rbe43-ra5lx-8c5f8-dr2x7",
-      "fetchedAt": "2026-08-23T16:26:05.136Z"
+      "id": "web-calendar-bingo-night-d44da376",
+      "title": "Bingo Night — The Place",
+      "url": "https://www.theplacega.org/calendar/bingo-night",
+      "fetchedAt": "2026-07-23T18:36:19.888Z"
     },
     {
-      "id": "web-calendar-free-ged-classes-6t997-zlysg-d4yp4-syh62-xat6g-nf3y3-ergt8-rbe43-ra5lx-8c5f8-dr2x7-45wxx-bb1db7d1",
-      "title": "Free GED Classes — The Place",
-      "url": "https://www.theplacega.org/calendar/free-ged-classes-6t997-zlysg-d4yp4-syh62-xat6g-nf3y3-ergt8-rbe43-ra5lx-8c5f8-dr2x7-45wxx",
-      "fetchedAt": "2026-08-23T16:26:04.381Z"
+      "id": "web-calendar-mobile-pantry-dawsonville-july-23-2e5a7c65",
+      "title": "Mobile Pantry at Dawson County High School — The Place",
+      "url": "https://www.theplacega.org/calendar/mobile-pantry-dawsonville-july-23",
+      "fetchedAt": "2026-07-23T18:36:20.270Z"
     },
     {
-      "id": "web-calendar-free-ged-classes-6t997-zlysg-d4yp4-syh62-xat6g-nf3y3-ergt8-rbe43-ra5lx-8c5f8-dr2x7-45wxx-8nfpk-e472e9e2",
-      "title": "Free GED Classes — The Place",
-      "url": "https://www.theplacega.org/calendar/free-ged-classes-6t997-zlysg-d4yp4-syh62-xat6g-nf3y3-ergt8-rbe43-ra5lx-8c5f8-dr2x7-45wxx-8nfpk",
-      "fetchedAt": "2026-08-23T16:26:03.882Z"
+      "id": "web-calendar-mobile-food-pantry-september-45f5f6db",
+      "title": "Mobile Food Pantry — The Place",
+      "url": "https://www.theplacega.org/calendar/mobile-food-pantry-september",
+      "fetchedAt": "2026-08-23T16:25:05.856Z"
     },
     {
-      "id": "web-calendar-free-ged-classes-6t997-zlysg-d4yp4-syh62-xat6g-nf3y3-ergt8-rbe43-ra5lx-8c5f8-dr2x7-45wxx-8nfpk-c78r-6bb23c98",
-      "title": "Free GED Classes — The Place",
-      "url": "https://www.theplacega.org/calendar/free-ged-classes-6t997-zlysg-d4yp4-syh62-xat6g-nf3y3-ergt8-rbe43-ra5lx-8c5f8-dr2x7-45wxx-8nfpk-c78rj",
-      "fetchedAt": "2026-08-23T16:26:09.363Z"
+      "id": "web-calendar-financial-literacy-5-685ee50a",
+      "title": "Financial Literacy Summer Series — The Place",
+      "url": "https://www.theplacega.org/calendar/financial-literacy-5",
+      "fetchedAt": "2026-07-23T18:36:23.694Z"
     },
     {
-      "id": "web-calendar-free-ged-classes-6t997-zlysg-d4yp4-syh62-xat6g-nf3y3-ergt8-rbe43-ra5lx-8c5f8-dr2x7-45wxx-8nfpk-c78r-c596a3b4",
-      "title": "Free GED Classes — The Place",
-      "url": "https://www.theplacega.org/calendar/free-ged-classes-6t997-zlysg-d4yp4-syh62-xat6g-nf3y3-ergt8-rbe43-ra5lx-8c5f8-dr2x7-45wxx-8nfpk-c78rj-9hyry",
-      "fetchedAt": "2026-08-23T16:26:10.081Z"
+      "id": "web-calendar-free-ged-summer-study-hall-4ymr6-ffnty-2rerz-3ykba-34sxc-599m3-37c90276",
+      "title": "Free GED Summer Study Hall — The Place",
+      "url": "https://www.theplacega.org/calendar/free-ged-summer-study-hall-4ymr6-ffnty-2rerz-3ykba-34sxc-599m3",
+      "fetchedAt": "2026-07-23T18:36:25.985Z"
     },
     {
-      "id": "web-calendar-free-ged-classes-6t997-zlysg-d4yp4-syh62-xat6g-nf3y3-ergt8-rbe43-ra5lx-8c5f8-dr2x7-45wxx-8nfpk-c78r-3e9bf2f6",
-      "title": "Free GED Classes — The Place",
-      "url": "https://www.theplacega.org/calendar/free-ged-classes-6t997-zlysg-d4yp4-syh62-xat6g-nf3y3-ergt8-rbe43-ra5lx-8c5f8-dr2x7-45wxx-8nfpk-c78rj-9hyry-bxysb",
-      "fetchedAt": "2026-08-23T16:26:10.582Z"
+      "id": "web-calendar-down-derby-446fae97",
+      "title": "Down & Derby — The Place",
+      "url": "https://www.theplacega.org/calendar/down-derby",
+      "fetchedAt": "2026-07-23T18:36:28.745Z"
     },
     {
-      "id": "web-calendar-free-ged-classes-6t997-zlysg-d4yp4-syh62-xat6g-nf3y3-ergt8-rbe43-ra5lx-8c5f8-dr2x7-45wxx-8nfpk-c78r-e21fe1df",
-      "title": "Free GED Classes — The Place",
-      "url": "https://www.theplacega.org/calendar/free-ged-classes-6t997-zlysg-d4yp4-syh62-xat6g-nf3y3-ergt8-rbe43-ra5lx-8c5f8-dr2x7-45wxx-8nfpk-c78rj-9hyry-bxysb-28shm",
-      "fetchedAt": "2026-08-23T16:26:11.437Z"
+      "id": "web-calendar-aging-well-expo-a6dca280",
+      "title": "Aging Well Expo — The Place",
+      "url": "https://www.theplacega.org/calendar/aging-well-expo",
+      "fetchedAt": "2026-07-23T18:36:29.140Z"
     },
     {
-      "id": "web-calendar-free-ged-classes-6t997-zlysg-d4yp4-syh62-xat6g-nf3y3-ergt8-rbe43-ra5lx-8c5f8-dr2x7-45wxx-8nfpk-c78r-3326d69a",
-      "title": "Free GED Classes — The Place",
-      "url": "https://www.theplacega.org/calendar/free-ged-classes-6t997-zlysg-d4yp4-syh62-xat6g-nf3y3-ergt8-rbe43-ra5lx-8c5f8-dr2x7-45wxx-8nfpk-c78rj-9hyry-bxysb-yr659",
-      "fetchedAt": "2026-08-23T16:26:12.160Z"
+      "id": "web-calendar-mobile-pantry-newhope-september-90b6242c",
+      "title": "Mobile Pantry at New Hope Elementary — The Place",
+      "url": "https://www.theplacega.org/calendar/mobile-pantry-newhope-september",
+      "fetchedAt": "2026-08-23T16:25:18.109Z"
     },
     {
-      "id": "web-calendar-free-ged-classes-6t997-zlysg-d4yp4-syh62-xat6g-nf3y3-ergt8-rbe43-ra5lx-8c5f8-dr2x7-45wxx-8nfpk-c78r-d3a1b3d9",
-      "title": "Free GED Classes — The Place",
-      "url": "https://www.theplacega.org/calendar/free-ged-classes-6t997-zlysg-d4yp4-syh62-xat6g-nf3y3-ergt8-rbe43-ra5lx-8c5f8-dr2x7-45wxx-8nfpk-c78rj-9hyry-bxysb-yr659-llcl8",
-      "fetchedAt": "2026-08-23T16:26:12.670Z"
+      "id": "web-calendar-mobile-pantry-brandywine-september-832d367f",
+      "title": "Mobile Pantry at Brandywine Elementary — The Place",
+      "url": "https://www.theplacega.org/calendar/mobile-pantry-brandywine-september",
+      "fetchedAt": "2026-08-23T16:25:21.829Z"
     },
     {
-      "id": "web-calendar-free-ged-classes-6t997-zlysg-d4yp4-syh62-xat6g-nf3y3-ergt8-rbe43-ra5lx-8c5f8-dr2x7-45wxx-8nfpk-c78r-21b23286",
-      "title": "Free GED Classes — The Place",
-      "url": "https://www.theplacega.org/calendar/free-ged-classes-6t997-zlysg-d4yp4-syh62-xat6g-nf3y3-ergt8-rbe43-ra5lx-8c5f8-dr2x7-45wxx-8nfpk-c78rj-9hyry-bxysb-yr659-llcl8-hgte5",
-      "fetchedAt": "2026-08-23T16:26:13.413Z"
+      "id": "web-calendar-mobile-pantry-chestatee-september-920ba97b",
+      "title": "Mobile Pantry at Chestatee Elementary — The Place",
+      "url": "https://www.theplacega.org/calendar/mobile-pantry-chestatee-september",
+      "fetchedAt": "2026-08-23T16:25:27.683Z"
     },
     {
-      "id": "web-calendar-free-ged-classes-6t997-zlysg-d4yp4-syh62-xat6g-nf3y3-ergt8-rbe43-ra5lx-8c5f8-dr2x7-45wxx-8nfpk-c78r-5e31ab4a",
-      "title": "Free GED Classes — The Place",
-      "url": "https://www.theplacega.org/calendar/free-ged-classes-6t997-zlysg-d4yp4-syh62-xat6g-nf3y3-ergt8-rbe43-ra5lx-8c5f8-dr2x7-45wxx-8nfpk-c78rj-9hyry-bxysb-yr659-llcl8-hgte5-d5n7r",
-      "fetchedAt": "2026-08-23T16:26:14.188Z"
+      "id": "web-calendar-mobile-pantry-forsyth-chattahoochee-september-33c5ece2",
+      "title": "Mobile Pantry at Chattahoochee Elementary — The Place",
+      "url": "https://www.theplacega.org/calendar/mobile-pantry-forsyth-chattahoochee-september",
+      "fetchedAt": "2026-08-23T16:25:33.323Z"
     },
     {
-      "id": "web-calendar-free-ged-classes-6t997-zlysg-d4yp4-syh62-xat6g-nf3y3-ergt8-rbe43-ra5lx-8c5f8-dr2x7-45wxx-8nfpk-c78r-515d8f82",
-      "title": "Free GED Classes — The Place",
-      "url": "https://www.theplacega.org/calendar/free-ged-classes-6t997-zlysg-d4yp4-syh62-xat6g-nf3y3-ergt8-rbe43-ra5lx-8c5f8-dr2x7-45wxx-8nfpk-c78rj-9hyry-bxysb-yr659-llcl8-hgte5-d5n7r-l9y75",
-      "fetchedAt": "2026-08-23T16:26:14.847Z"
+      "id": "web-calendar-mobile-pantry-forsyth-september-e3b48b10",
+      "title": "Mobile Pantry at Cumming Elementary — The Place",
+      "url": "https://www.theplacega.org/calendar/mobile-pantry-forsyth-september",
+      "fetchedAt": "2026-08-23T16:25:37.970Z"
     },
     {
-      "id": "web-calendar-free-ged-classes-6t997-zlysg-d4yp4-syh62-xat6g-nf3y3-ergt8-rbe43-ra5lx-8c5f8-dr2x7-45wxx-8nfpk-c78r-54b2140b",
-      "title": "Free GED Classes — The Place",
-      "url": "https://www.theplacega.org/calendar/free-ged-classes-6t997-zlysg-d4yp4-syh62-xat6g-nf3y3-ergt8-rbe43-ra5lx-8c5f8-dr2x7-45wxx-8nfpk-c78rj-9hyry-bxysb-yr659-llcl8-hgte5-d5n7r-l9y75-9trx6",
-      "fetchedAt": "2026-08-23T16:26:15.505Z"
+      "id": "web-calendar-mobile-pantry-farmington-creek-gw5zd-ebedb88e",
+      "title": "Mobile Pantry at Farmington Creek — The Place",
+      "url": "https://www.theplacega.org/calendar/mobile-pantry-farmington-creek-gw5zd",
+      "fetchedAt": "2026-07-23T18:36:45.475Z"
     },
     {
-      "id": "web-calendar-free-ged-classes-6t997-zlysg-d4yp4-syh62-xat6g-nf3y3-ergt8-rbe43-ra5lx-8c5f8-dr2x7-45wxx-8nfpk-c78r-d37627ae",
-      "title": "Free GED Classes — The Place",
-      "url": "https://www.theplacega.org/calendar/free-ged-classes-6t997-zlysg-d4yp4-syh62-xat6g-nf3y3-ergt8-rbe43-ra5lx-8c5f8-dr2x7-45wxx-8nfpk-c78rj-9hyry-bxysb-yr659-llcl8-hgte5-d5n7r-l9y75-9trx6-f98e9",
-      "fetchedAt": "2026-08-23T16:26:16.184Z"
+      "id": "web-calendar-mobile-pantry-dawson-head-start-4-a26abec9",
+      "title": "Mobile Pantry at Dawson Head Start — The Place",
+      "url": "https://www.theplacega.org/calendar/mobile-pantry-dawson-head-start-4",
+      "fetchedAt": "2026-07-23T18:36:46.239Z"
     },
     {
-      "id": "web-calendar-free-ged-classes-6t997-zlysg-d4yp4-syh62-xat6g-nf3y3-ergt8-rbe43-ra5lx-8c5f8-dr2x7-45wxx-8nfpk-c78r-1f7c39f4",
-      "title": "Free GED Classes — The Place",
-      "url": "https://www.theplacega.org/calendar/free-ged-classes-6t997-zlysg-d4yp4-syh62-xat6g-nf3y3-ergt8-rbe43-ra5lx-8c5f8-dr2x7-45wxx-8nfpk-c78rj-9hyry-bxysb-yr659-llcl8-hgte5-d5n7r-l9y75-9trx6-f98e9-3mzyj",
-      "fetchedAt": "2026-08-23T16:26:16.664Z"
+      "id": "web-calendar-mobile-pantry-professional-development-center-f2eb961f",
+      "title": "Mobile Pantry at Professional Development Center — The Place",
+      "url": "https://www.theplacega.org/calendar/mobile-pantry-professional-development-center",
+      "fetchedAt": "2026-07-23T18:36:48.054Z"
     },
     {
-      "id": "web-calendar-free-ged-classes-6t997-zlysg-d4yp4-syh62-xat6g-nf3y3-ergt8-rbe43-ra5lx-8c5f8-dr2x7-45wxx-8nfpk-c78r-deba6538",
-      "title": "Free GED Classes — The Place",
-      "url": "https://www.theplacega.org/calendar/free-ged-classes-6t997-zlysg-d4yp4-syh62-xat6g-nf3y3-ergt8-rbe43-ra5lx-8c5f8-dr2x7-45wxx-8nfpk-c78rj-9hyry-bxysb-yr659-llcl8-hgte5-d5n7r-l9y75-9trx6-f98e9-3mzyj-p93cp",
-      "fetchedAt": "2026-08-23T16:26:17.429Z"
+      "id": "web-calendar-nofo-golf-invitational-543f1136",
+      "title": "NoFo Golf Invitational — The Place",
+      "url": "https://www.theplacega.org/calendar/nofo-golf-invitational",
+      "fetchedAt": "2026-07-23T18:36:48.437Z"
     },
     {
-      "id": "web-calendar-free-ged-classes-6t997-zlysg-d4yp4-syh62-xat6g-nf3y3-ergt8-rbe43-ra5lx-8c5f8-dr2x7-45wxx-8nfpk-c78r-65c9663a",
-      "title": "Free GED Classes — The Place",
-      "url": "https://www.theplacega.org/calendar/free-ged-classes-6t997-zlysg-d4yp4-syh62-xat6g-nf3y3-ergt8-rbe43-ra5lx-8c5f8-dr2x7-45wxx-8nfpk-c78rj-9hyry-bxysb-yr659-llcl8-hgte5-d5n7r-l9y75-9trx6-f98e9-3mzyj-p93cp-nj6lw",
-      "fetchedAt": "2026-08-23T16:26:18.166Z"
+      "id": "web-calendar-nonprofit-of-the-night-at-gwinnett-stripers-50eacd44",
+      "title": "Nonprofit of the Night at Gwinnett Stripers — The Place",
+      "url": "https://www.theplacega.org/calendar/nonprofit-of-the-night-at-gwinnett-stripers",
+      "fetchedAt": "2026-07-23T18:36:49.103Z"
     },
     {
-      "id": "web-calendar-free-ged-classes-6t997-zlysg-d4yp4-syh62-xat6g-nf3y3-ergt8-rbe43-ra5lx-8c5f8-dr2x7-45wxx-8nfpk-c78r-d72520fd",
-      "title": "Free GED Classes — The Place",
-      "url": "https://www.theplacega.org/calendar/free-ged-classes-6t997-zlysg-d4yp4-syh62-xat6g-nf3y3-ergt8-rbe43-ra5lx-8c5f8-dr2x7-45wxx-8nfpk-c78rj-9hyry-bxysb-yr659-llcl8-hgte5-d5n7r-l9y75-9trx6-f98e9-3mzyj-p93cp-nj6lw-k22x9",
-      "fetchedAt": "2026-08-23T16:26:18.874Z"
+      "id": "web-calendar-brusters-dine-to-donate-eb2a4c6a",
+      "title": "Bruster's Dine to Donate — The Place",
+      "url": "https://www.theplacega.org/calendar/brusters-dine-to-donate",
+      "fetchedAt": "2026-07-23T18:36:49.482Z"
     },
     {
-      "id": "web-calendar-free-ged-classes-6t997-zlysg-d4yp4-syh62-xat6g-nf3y3-ergt8-rbe43-ra5lx-8c5f8-dr2x7-45wxx-8nfpk-c78r-28ba5d38",
-      "title": "Free GED Classes — The Place",
-      "url": "https://www.theplacega.org/calendar/free-ged-classes-6t997-zlysg-d4yp4-syh62-xat6g-nf3y3-ergt8-rbe43-ra5lx-8c5f8-dr2x7-45wxx-8nfpk-c78rj-9hyry-bxysb-yr659-llcl8-hgte5-d5n7r-l9y75-9trx6-f98e9-3mzyj-p93cp-nj6lw-k22x9-8jd25",
-      "fetchedAt": "2026-08-23T16:26:19.392Z"
+      "id": "web-calendar-raising-canes-dine-to-donate-5fafcc96",
+      "title": "Raising Cane's Dine to Donate — The Place",
+      "url": "https://www.theplacega.org/calendar/raising-canes-dine-to-donate",
+      "fetchedAt": "2026-07-23T18:36:49.870Z"
     },
     {
-      "id": "web-calendar-free-ged-classes-6t997-zlysg-d4yp4-syh62-xat6g-nf3y3-ergt8-rbe43-ra5lx-8c5f8-dr2x7-45wxx-8nfpk-c78r-6a5a89d9",
-      "title": "Free GED Classes — The Place",
-      "url": "https://www.theplacega.org/calendar/free-ged-classes-6t997-zlysg-d4yp4-syh62-xat6g-nf3y3-ergt8-rbe43-ra5lx-8c5f8-dr2x7-45wxx-8nfpk-c78rj-9hyry-bxysb-yr659-llcl8-hgte5-d5n7r-l9y75-9trx6-f98e9-3mzyj-p93cp-nj6lw-k22x9-8jd25-t34m5",
-      "fetchedAt": "2026-08-23T16:26:20.097Z"
+      "id": "web-calendar-chick-fil-a-dine-to-donate-1d258ee2",
+      "title": "Chick Fil A Dine to Donate — The Place",
+      "url": "https://www.theplacega.org/calendar/chick-fil-a-dine-to-donate",
+      "fetchedAt": "2026-07-23T18:36:50.251Z"
     },
     {
-      "id": "web-calendar-free-ged-classes-6t997-zlysg-d4yp4-syh62-xat6g-nf3y3-ergt8-rbe43-ra5lx-8c5f8-dr2x7-45wxx-8nfpk-c78r-322865be",
-      "title": "Free GED Classes — The Place",
-      "url": "https://www.theplacega.org/calendar/free-ged-classes-6t997-zlysg-d4yp4-syh62-xat6g-nf3y3-ergt8-rbe43-ra5lx-8c5f8-dr2x7-45wxx-8nfpk-c78rj-9hyry-bxysb-yr659-llcl8-hgte5-d5n7r-l9y75-9trx6-f98e9-3mzyj-p93cp-nj6lw-k22x9-8jd25-t34m5-3ecph",
-      "fetchedAt": "2026-08-23T16:26:20.768Z"
+      "id": "web-calendar-poker-night-at-stars-and-strikes-aa0781cd",
+      "title": "Poker Night at Stars and Strikes — The Place",
+      "url": "https://www.theplacega.org/calendar/poker-night-at-stars-and-strikes",
+      "fetchedAt": "2026-07-23T18:36:50.630Z"
     },
     {
-      "id": "web-calendar-nlk24mh2fzh7ngn-896f9973",
-      "title": "Free GED Classes — The Place",
-      "url": "https://www.theplacega.org/calendar/nlk24mh2fzh7ngn",
-      "fetchedAt": "2026-08-23T16:26:21.548Z"
+      "id": "web-calendar-stars-and-strikes-giveback-day-d39c0767",
+      "title": "Stars and Strikes Giveback Day — The Place",
+      "url": "https://www.theplacega.org/calendar/stars-and-strikes-giveback-day",
+      "fetchedAt": "2026-07-23T18:36:51.007Z"
     },
     {
-      "id": "web-calendar-nlk24mh2fzh7ngn-ndakx-6df53458",
+      "id": "web-calendar-electronic-recycling-event-4ea9fb84",
+      "title": "Electronic Recycling Event — The Place",
+      "url": "https://www.theplacega.org/calendar/electronic-recycling-event",
+      "fetchedAt": "2026-07-31T11:37:25.619Z"
+    },
+    {
+      "id": "web-calendar-free-ged-classes-58b08e57",
       "title": "Free GED Classes — The Place",
-      "url": "https://www.theplacega.org/calendar/nlk24mh2fzh7ngn-ndakx",
-      "fetchedAt": "2026-08-23T16:26:22.308Z"
+      "url": "https://www.theplacega.org/calendar/free-ged-classes",
+      "fetchedAt": "2026-08-23T17:03:56.172Z"
     },
     {
       "id": "web-calendar-red-robin-dine-to-donate-e8b1e68d",
@@ -904,10 +406,40 @@
       "fetchedAt": "2026-08-23T16:26:03.381Z"
     }
   ],
-  "failedPages": [],
-  "duplicatePages": [],
+  "failedPages": [
+    {
+      "url": "https://www.theplacega.org/matching-gifts",
+      "reason": "No meaningful public page content found"
+    },
+    {
+      "url": "https://www.theplacega.org/gala-recap",
+      "reason": "No meaningful public page content found"
+    },
+    {
+      "url": "https://www.theplacega.org/furniture-pickup-request",
+      "reason": "No meaningful public page content found"
+    },
+    {
+      "url": "https://www.theplacega.org/faroi",
+      "reason": "No meaningful public page content found"
+    },
+    {
+      "url": "https://www.theplacega.org/upcoming-events",
+      "reason": "No meaningful public page content found"
+    },
+    {
+      "url": "https://www.theplacega.org/volunteer-handbook",
+      "reason": "Refusing to fetch or follow a URL outside The Place website."
+    }
+  ],
+  "duplicatePages": [
+    {
+      "url": "https://www.theplacega.org/home",
+      "duplicateOf": "https://www.theplacega.org/"
+    }
+  ],
   "blockedPages": [],
   "retainedPages": [],
   "approvedRemovedPages": [],
-  "totalIndexed": 150
+  "totalIndexed": 67
 }
