@@ -3,7 +3,7 @@
 Source ID: web-calendar-mobile-pantry-forsyth-september-e3b48b10
 Source type: official_website
 Canonical URL: https://www.theplacega.org/calendar/mobile-pantry-forsyth-september
-Fetched at: 2026-07-23T18:36:43.170Z
+Fetched at: 2026-08-23T16:25:37.970Z
 
 ## Page content
 
@@ -19,7 +19,7 @@ United States
 Google Calendar
 ICS
 Everyone is welcome! Come get fresh produce, frozen meats, non-perishable items, and eggs (when available).
-Mobile Food Pantry
+Free GED Classes
 Mobile Pantry at Chattahoochee Elementary
 
 ## Relevant links
@@ -28,8 +28,8 @@ Mobile Pantry at Chattahoochee Elementary
 - ICS: https://www.theplacega.org/calendar/mobile-pantry-forsyth-september
 - Previous
 Previous
-September 2
-Mobile Food Pantry: https://www.theplacega.org/calendar/mobile-food-pantry-september
+September 9
+Free GED Classes: https://www.theplacega.org/calendar/free-ged-classes-6t997-zlysg-d4yp4
 - Next
 Next
 September 12

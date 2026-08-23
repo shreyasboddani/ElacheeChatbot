@@ -8,7 +8,7 @@ Canonical URL: https://www.theplacega.org/calendar/mobile-pantry-newhope-august
 
 - Mobile Pantry at New Hope Elementary
 - Electronic Recycling Event
-- Mobile Food Pantry
+- Free GED Classes
 
 ## Approved page content
 
@@ -25,7 +25,7 @@ Google Calendar
 ICS
 Everyone is welcome! Come get fresh produce, frozen meats, non-perishable items, and eggs (when available).
 Electronic Recycling Event
-Mobile Food Pantry
+Free GED Classes
 
 ## Relevant official links
 
@@ -37,5 +37,5 @@ August 22
 Electronic Recycling Event: https://www.theplacega.org/calendar/electronic-recycling-event
 - Next
 Next
-September 2
-Mobile Food Pantry: https://www.theplacega.org/calendar/mobile-food-pantry-september
+August 24
+Free GED Classes: https://www.theplacega.org/calendar/free-ged-classes

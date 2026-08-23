@@ -3,7 +3,7 @@
 Source ID: web-calendar-mobile-pantry-chestatee-december-fe31fb5d
 Source type: official_website
 Canonical URL: https://www.theplacega.org/calendar/mobile-pantry-chestatee-december
-Fetched at: 2026-07-23T18:36:37.894Z
+Fetched at: 2026-08-23T16:25:29.564Z
 
 ## Page content
 
@@ -19,8 +19,8 @@ United States
 Google Calendar
 ICS
 Everyone is welcome! Come get fresh produce, frozen meats, non-perishable items, and eggs (when available).
-Mobile Pantry at Chattahoochee Elementary
-Mobile Pantry at Brandywine Elementary
+Free GED Classes
+Free GED Classes
 
 ## Relevant links
 
@@ -28,9 +28,9 @@ Mobile Pantry at Brandywine Elementary
 - ICS: https://www.theplacega.org/calendar/mobile-pantry-chestatee-december
 - Previous
 Previous
-December 12
-Mobile Pantry at Chattahoochee Elementary: https://www.theplacega.org/calendar/mobile-pantry-forsyth-chattahoochee-december
+December 16
+Free GED Classes: https://www.theplacega.org/calendar/free-ged-classes-6t997-zlysg-d4yp4-syh62-xat6g-nf3y3-ergt8-rbe43-ra5lx-8c5f8-dr2x7-45wxx-8nfpk-c78rj-9hyry-bxysb-28shm
 - Next
 Next
-December 26
-Mobile Pantry at Brandywine Elementary: https://www.theplacega.org/calendar/mobile-pantry-brandywine-december
+December 21
+Free GED Classes: https://www.theplacega.org/calendar/free-ged-classes-dh7mh-hc34f-5s5zj-mrzzh-fty3x-ntp9b-rx7h3-f6sf4-rcc8j-l3rz5-a5259-sxbj7-5pk9w-l983g-4kzwy-hc3mb-hb3hc

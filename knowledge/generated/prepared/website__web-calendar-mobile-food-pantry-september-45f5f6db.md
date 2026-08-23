@@ -7,8 +7,8 @@ Canonical URL: https://www.theplacega.org/calendar/mobile-food-pantry-september
 ## Important headings
 
 - Mobile Food Pantry
-- Mobile Pantry at New Hope Elementary
-- Mobile Pantry at Cumming Elementary
+- Free GED Classes
+- Free GED Classes
 
 ## Approved page content
 
@@ -18,8 +18,8 @@ Wednesday, September 2, 2026
 1:30 PM
 Google Calendar
 ICS
-Mobile Pantry at New Hope Elementary
-Mobile Pantry at Cumming Elementary
+Free GED Classes
+Free GED Classes
 
 ## Relevant official links
 
@@ -27,9 +27,9 @@ Mobile Pantry at Cumming Elementary
 - ICS: https://www.theplacega.org/calendar/mobile-food-pantry-september
 - Previous
 Previous
-August 22
-Mobile Pantry at New Hope Elementary: https://www.theplacega.org/calendar/mobile-pantry-newhope-august
+August 31
+Free GED Classes: https://www.theplacega.org/calendar/free-ged-classes-dh7mh
 - Next
 Next
-September 12
-Mobile Pantry at Cumming Elementary: https://www.theplacega.org/calendar/mobile-pantry-forsyth-september
+September 2
+Free GED Classes: https://www.theplacega.org/calendar/free-ged-classes-6t997-zlysg

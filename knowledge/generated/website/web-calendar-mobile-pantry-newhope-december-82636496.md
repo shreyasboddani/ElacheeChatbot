@@ -3,7 +3,7 @@
 Source ID: web-calendar-mobile-pantry-newhope-december-82636496
 Source type: official_website
 Canonical URL: https://www.theplacega.org/calendar/mobile-pantry-newhope-december
-Fetched at: 2026-07-23T18:36:31.797Z
+Fetched at: 2026-08-23T16:25:19.464Z
 
 ## Page content
 
@@ -20,6 +20,7 @@ Google Calendar
 ICS
 Everyone is welcome! Come get fresh produce, frozen meats, non-perishable items, and eggs (when available).
 Mobile Pantry at Brandywine Elementary
+Free GED Classes
 
 ## Relevant links
 
@@ -29,3 +30,7 @@ Mobile Pantry at Brandywine Elementary
 Previous
 December 26
 Mobile Pantry at Brandywine Elementary: https://www.theplacega.org/calendar/mobile-pantry-brandywine-december
+- Next
+Next
+December 28
+Free GED Classes: https://www.theplacega.org/calendar/free-ged-classes-dh7mh-hc34f-5s5zj-mrzzh-fty3x-ntp9b-rx7h3-f6sf4-rcc8j-l3rz5-a5259-sxbj7-5pk9w-l983g-4kzwy-hc3mb-hb3hc-5xtf9

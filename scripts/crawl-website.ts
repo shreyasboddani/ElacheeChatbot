@@ -295,7 +295,7 @@ export function isAllowedByRobots(url: string, rules: RobotsRules): boolean {
 
 export function sourceIdForUrl(url: string): string {
   const parsed = new URL(url);
-  const slug =
+  const rawSlug =
     parsed.pathname
       .split("/")
       .filter(Boolean)
@@ -304,6 +304,11 @@ export function sourceIdForUrl(url: string): string {
       .replace(/^-|-$/g, "")
       .toLowerCase() || "home";
   const suffix = createHash("sha256").update(url).digest("hex").slice(0, 8);
+  // The verifier permits source IDs up to 121 characters. Keep the readable
+  // portion bounded while retaining a URL-derived hash so long recurring-event
+  // paths remain deterministic and distinct.
+  const maxSlugLength = 121 - "web--".length - suffix.length;
+  const slug = rawSlug.slice(0, maxSlugLength).replace(/-+$/g, "") || "page";
   return `web-${slug}-${suffix}`;
 }
 

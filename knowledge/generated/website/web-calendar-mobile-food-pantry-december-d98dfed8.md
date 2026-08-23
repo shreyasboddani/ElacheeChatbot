@@ -3,7 +3,7 @@
 Source ID: web-calendar-mobile-food-pantry-december-d98dfed8
 Source type: official_website
 Canonical URL: https://www.theplacega.org/calendar/mobile-food-pantry-december
-Fetched at: 2026-07-23T18:36:21.432Z
+Fetched at: 2026-08-23T16:25:03.926Z
 
 ## Page content
 
@@ -13,8 +13,8 @@ Wednesday, December 2, 2026
 1:30 PM
 Google Calendar
 ICS
-Mobile Pantry at New Hope Elementary
-Mobile Pantry at Cumming Elementary
+Free GED Classes
+Free GED Classes
 
 ## Relevant links
 
@@ -22,9 +22,9 @@ Mobile Pantry at Cumming Elementary
 - ICS: https://www.theplacega.org/calendar/mobile-food-pantry-december
 - Previous
 Previous
-November 28
-Mobile Pantry at New Hope Elementary: https://www.theplacega.org/calendar/mobile-pantry-newhope-november
+November 30
+Free GED Classes: https://www.theplacega.org/calendar/free-ged-classes-dh7mh-hc34f-5s5zj-mrzzh-fty3x-ntp9b-rx7h3-f6sf4-rcc8j-l3rz5-a5259-sxbj7-5pk9w-l983g
 - Next
 Next
-December 12
-Mobile Pantry at Cumming Elementary: https://www.theplacega.org/calendar/mobile-pantry-forsyth-november-7k66l
+December 2
+Free GED Classes: https://www.theplacega.org/calendar/free-ged-classes-6t997-zlysg-d4yp4-syh62-xat6g-nf3y3-ergt8-rbe43-ra5lx-8c5f8-dr2x7-45wxx-8nfpk-c78rj-9hyry

@@ -3,7 +3,7 @@
 Source ID: web-food-donations-60d14ec3
 Source type: official_website
 Canonical URL: https://www.theplacega.org/food-donations
-Fetched at: 2026-07-31T11:36:18.254Z
+Fetched at: 2026-08-23T16:24:55.809Z
 
 ## Page content
 
@@ -16,9 +16,12 @@ Food Needs
 (Click to enlarge)
 Household Needs
 (Click to enlarge)
+School Pantry Needs
+(Click to enlarge)
 
 ## Relevant links
 
 - Host A Food Drive: https://www.theplacega.org/host-a-drive
 - https://www.theplacega.org/s/June-26-Pantry-Needs-csjx.pdf: https://www.theplacega.org/s/June-26-Pantry-Needs-csjx.pdf
 - https://www.theplacega.org/s/Household-Needs-Jan-2026-mw9c.pdf: https://www.theplacega.org/s/Household-Needs-Jan-2026-mw9c.pdf
+- https://www.theplacega.org/s/Local-Schools-Pantry-Needs.pdf: https://www.theplacega.org/s/Local-Schools-Pantry-Needs.pdf

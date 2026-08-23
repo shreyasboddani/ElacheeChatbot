@@ -6,6 +6,7 @@ Canonical URL: https://www.theplacega.org/notes-from-the-place
 
 ## Important headings
 
+- The Cottage: A Place to Find Stability, Build Confidence, and Create a Brighter Future
 - Five Ways You Can Support The Place Year-Round
 - Summer Hunger Is Real. Together, We Can Make a Difference
 - Caring for our Homebound Seniors: Supporting Comfort, Dignity, and Connection
@@ -13,6 +14,8 @@ Canonical URL: https://www.theplacega.org/notes-from-the-place
 
 ## Approved page content
 
+The Cottage: A Place to Find Stability, Build Confidence, and Create a Brighter Future
+Every young woman deserves a safe place to call home. A place where she can feel supported, discover her strengths, set goals, and build a future she can be proud of. That is the heart behind The Cottage at The Place.
 Five Ways You Can Support The Place Year-Round
 When most people think about giving back, they often think of the holidays. While the holiday season is an important time for nonprofits, the needs of our neighbors don't disappear once the decorations come down.
 Summer Hunger Is Real. Together, We Can Make a Difference
@@ -24,6 +27,9 @@ At The Place, our food pantry is a vital resource for families across Forsyth an
 
 ## Relevant official links
 
+- https://www.theplacega.org/notes-from-the-place/the-cottage-a-place-to-find-stability-build-confidence-and-create-a-brighter-future: https://www.theplacega.org/notes-from-the-place/the-cottage-a-place-to-find-stability-build-confidence-and-create-a-brighter-future
+- The Cottage: A Place to Find Stability, Build Confidence, and Create a Brighter Future: https://www.theplacega.org/notes-from-the-place/the-cottage-a-place-to-find-stability-build-confidence-and-create-a-brighter-future
+- Read More: https://www.theplacega.org/notes-from-the-place/the-cottage-a-place-to-find-stability-build-confidence-and-create-a-brighter-future
 - https://www.theplacega.org/notes-from-the-place/five-ways-you-can-support-the-place-year-round: https://www.theplacega.org/notes-from-the-place/five-ways-you-can-support-the-place-year-round
 - Five Ways You Can Support The Place Year-Round: https://www.theplacega.org/notes-from-the-place/five-ways-you-can-support-the-place-year-round
 - Read More: https://www.theplacega.org/notes-from-the-place/five-ways-you-can-support-the-place-year-round

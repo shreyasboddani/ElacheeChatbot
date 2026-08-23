@@ -3,7 +3,7 @@
 Source ID: web-calendar-mobile-pantry-newhope-august-d52e5c4a
 Source type: official_website
 Canonical URL: https://www.theplacega.org/calendar/mobile-pantry-newhope-august
-Fetched at: 2026-07-31T11:36:40.391Z
+Fetched at: 2026-08-23T16:25:17.335Z
 
 ## Page content
 
@@ -20,7 +20,7 @@ Google Calendar
 ICS
 Everyone is welcome! Come get fresh produce, frozen meats, non-perishable items, and eggs (when available).
 Electronic Recycling Event
-Mobile Food Pantry
+Free GED Classes
 
 ## Relevant links
 
@@ -32,5 +32,5 @@ August 22
 Electronic Recycling Event: https://www.theplacega.org/calendar/electronic-recycling-event
 - Next
 Next
-September 2
-Mobile Food Pantry: https://www.theplacega.org/calendar/mobile-food-pantry-september
+August 24
+Free GED Classes: https://www.theplacega.org/calendar/free-ged-classes

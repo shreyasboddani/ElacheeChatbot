@@ -7,6 +7,7 @@ Canonical URL: https://www.theplacega.org/notes-from-the-place/five-ways-you-can
 ## Important headings
 
 - Five Ways You Can Support The Place Year-Round
+- The Cottage: A Place to Find Stability, Build Confidence, and Create a Brighter Future
 - Summer Hunger Is Real. Together, We Can Make a Difference
 
 ## Approved page content
@@ -28,6 +29,7 @@ Not everyone can give financially—but everyone can help share our mission. Fol
 Every Act of Kindness Matters
 At The Place, we believe that strong communities are built when neighbors help neighbors. Whether you choose to donate, volunteer, shop, host a drive, or simply share our mission, your support helps provide food, stability, education, and hope to individuals and families throughout Forsyth and Dawson counties.
 Together, we can continue to Support. Empower. Transform.—not just during the holidays, but every day of the year.
+The Cottage: A Place to Find Stability, Build Confidence, and Create a Brighter Future
 Summer Hunger Is Real. Together, We Can Make a Difference
 
 ## Relevant official links
@@ -36,6 +38,9 @@ Summer Hunger Is Real. Together, We Can Make a Difference
 - volunteer opportunity: https://www.theplacega.org/new-volunteers
 - food or donation drive: https://www.theplacega.org/host-a-drive
 - The Place Thrift Store: https://www.theplacega.org/thrift-store-donations
+- Previous
+Previous
+The Cottage: A Place to Find Stability, Build Confidence, and Create a Brighter Future: https://www.theplacega.org/notes-from-the-place/the-cottage-a-place-to-find-stability-build-confidence-and-create-a-brighter-future
 - Next
 Next
 Summer Hunger Is Real. Together, We Can Make a Difference: https://www.theplacega.org/notes-from-the-place/summer-hunger-is-real
