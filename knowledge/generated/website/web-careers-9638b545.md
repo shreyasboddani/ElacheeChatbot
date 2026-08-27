@@ -3,7 +3,7 @@
 Source ID: web-careers-9638b545
 Source type: official_website
 Canonical URL: https://www.theplacega.org/careers
-Fetched at: 2026-08-23T16:26:00.518Z
+Fetched at: 2026-08-27T20:21:11.872Z
 
 ## Page content
 
@@ -29,17 +29,7 @@ Click here for more information
 Click here for more information
 Click here to contact the hiring manager
 Click here to contact the hiring manager
-Thrift Store/Retail Training Position(6 months/full-time)
-Click here for more information
-Click here for more information
-Click here to contact the hiring manager
-Click here to contact the hiring manager
 Thrift Store Retail Specialist / Cashier(Part-time)
-Click here for more information
-Click here for more information
-Click here to contact the hiring manager
-Click here to contact the hiring manager
-Retail Volunteer Coordinator(Part-time)
 Click here for more information
 Click here for more information
 Click here to contact the hiring manager
@@ -48,6 +38,4 @@ Click here to contact the hiring manager
 ## Relevant links
 
 - Click here for more information: https://www.theplacega.org/s/Director-of-Food-and-Senior-Services-82026.pdf
-- Click here for more information: https://www.theplacega.org/s/ATP-Thrift-store-training-position.pdf
 - Click here for more information: https://www.theplacega.org/s/Retail-Cashier-and-Specialist-Saturday.pdf
-- Click here for more information: https://www.theplacega.org/s/Retail-Volunteer-Coordinator-826.pdf

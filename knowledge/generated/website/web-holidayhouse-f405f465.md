@@ -3,7 +3,7 @@
 Source ID: web-holidayhouse-f405f465
 Source type: official_website
 Canonical URL: https://www.theplacega.org/holidayhouse
-Fetched at: 2026-08-23T17:03:59.427Z
+Fetched at: 2026-08-27T20:21:13.989Z
 
 ## Page content
 
@@ -11,20 +11,6 @@ Holiday House
 What is Holiday House?
 Holiday House is a heartwarming program that gives parents and guardians the dignity and joy of selecting new, unwrapped gifts their children truly want. Families facing hardships are invited to shop for their kids, choosing items that fit their needs and wishes. We then provide wrapping paper, bows, and all the essentials so parents and guardians can experience the magic of giving gifts with love.
 Partnering with us and sponsoring Holiday House means helping families in our community share in the magic of the season. Together, we can bring a little extra joy to children and empower parents and guardians during the holidays.
-Thank you to our generous sponsors
-Presenting Sponsor
-North Pole Sponsor
-Hospitality Sponsor
-Elf Sponsor
-Elf Sponsor
-Elf Sponsor
-Elf Sponsor
-Elf Sponsor
-Snowman Sponsor
-Snowman Sponsor
-Snowman Sponsor
-Snowman Sponsor
-Candy Cane Sponsor
 How It Works
 Qualify and Shop
 click to enlarge
@@ -36,6 +22,7 @@ ELF SPONSOR$2,500
 SNOWMAN SPONSOR$1,500
 CANDY CANE SPONSOR$750
 VOLUNTEER OPPORTUNITIES
+Volunteer Opportunities will open on Monday, November 2, 2026
 Ages 0 - 3 yrs.
 BlanketsDiaper BagsPlay KitchenSit to StandSoft dollsBaby booksDisneyMusical toysPlay MatsPaw Patrol stuffTrain setsSesame Street stuffDress up clothesVTech toys
 Ages 0 - 3 yrs.
@@ -468,3 +455,8 @@ Books
 Books
 Gift Guide
 Items that are BOLD and UNDERLINED are highly sought after
+
+## Relevant links
+
+- host a drive: https://www.theplacega.org/host-a-drive
+- volunteer: https://www.theplacega.org/new-volunteers

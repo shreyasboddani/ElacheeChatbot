@@ -3,7 +3,7 @@
 Source ID: web-staff-564c6965
 Source type: official_website
 Canonical URL: https://www.theplacega.org/staff
-Fetched at: 2026-08-23T16:26:00.112Z
+Fetched at: 2026-08-27T20:21:11.487Z
 
 ## Page content
 
@@ -40,7 +40,7 @@ VICKIE HAWKINSRetail Manager (Dawson)​vickie@theplacega.orgext. 752
 PAUL BEDWELLRetail Warehouse Managerpbedwell@theplacega.orgext. 240
 WILLIAM BICERetail Warehouse Managerwilliam@theplacega.org
 WORKFORCE DEVELOPMENT & EDUCATION
-AMANDA O’DONNELLWorkforce Development & Education Manageramanda@theplacega.orgext. 224
+AMANDA WILSONWorkforce Development & Education Manageramanda@theplacega.orgext. 224
 PAIGE ASHKEBOUSSIAdult Education Coordinatorpashekeboussi@theplacega.orgext. 223
 YOUTH SERVICES
 SAM HENRYYouth Events Program Coordinator​sam@theplacega.org​​ext. 244

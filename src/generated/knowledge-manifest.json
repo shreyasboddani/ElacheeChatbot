@@ -55,7 +55,7 @@
     "documentPath": "knowledge/generated/prepared/website__web-financial-assistance-bfe6e37e.md",
     "title": "Financial Assistance | Get Help Today — Apply Now — The Place",
     "url": "https://www.theplacega.org/financial-assistance",
-    "fetchedAt": "2026-07-23T18:36:16.381Z",
+    "fetchedAt": "2026-08-27T20:21:00.010Z",
     "sourceType": "official_website",
     "priority": 50
   },
@@ -105,7 +105,7 @@
     "documentPath": "knowledge/generated/prepared/website__web-calendar-de55b331.md",
     "title": "Calendar — The Place",
     "url": "https://www.theplacega.org/calendar",
-    "fetchedAt": "2026-08-23T16:24:59.303Z",
+    "fetchedAt": "2026-08-27T20:21:02.283Z",
     "sourceType": "official_website",
     "priority": 50
   },
@@ -115,7 +115,7 @@
     "documentPath": "knowledge/generated/prepared/website__web-newsletter-89967774.md",
     "title": "Newsletter — The Place",
     "url": "https://www.theplacega.org/newsletter",
-    "fetchedAt": "2026-08-05T11:32:28.788Z",
+    "fetchedAt": "2026-08-27T20:21:03.011Z",
     "sourceType": "official_website",
     "priority": 50
   },
@@ -315,7 +315,7 @@
     "documentPath": "knowledge/generated/prepared/website__web-staff-564c6965.md",
     "title": "Staff — The Place",
     "url": "https://www.theplacega.org/staff",
-    "fetchedAt": "2026-08-23T16:26:00.112Z",
+    "fetchedAt": "2026-08-27T20:21:11.487Z",
     "sourceType": "official_website",
     "priority": 50
   },
@@ -325,7 +325,7 @@
     "documentPath": "knowledge/generated/prepared/website__web-careers-9638b545.md",
     "title": "Careers — The Place",
     "url": "https://www.theplacega.org/careers",
-    "fetchedAt": "2026-08-23T16:26:00.518Z",
+    "fetchedAt": "2026-08-27T20:21:11.872Z",
     "sourceType": "official_website",
     "priority": 50
   },
@@ -345,7 +345,7 @@
     "documentPath": "knowledge/generated/prepared/website__web-newsletter-july-newsletter-for-the-place-f07a02af.md",
     "title": "July Newsletter for The Place — The Place",
     "url": "https://www.theplacega.org/newsletter/july-newsletter-for-the-place",
-    "fetchedAt": "2026-08-05T11:32:41.935Z",
+    "fetchedAt": "2026-08-27T20:21:12.633Z",
     "sourceType": "official_website",
     "priority": 50
   },
@@ -375,7 +375,7 @@
     "documentPath": "knowledge/generated/prepared/website__web-holidayhouse-f405f465.md",
     "title": "Holiday House — The Place",
     "url": "https://www.theplacega.org/holidayhouse",
-    "fetchedAt": "2026-08-23T17:03:59.427Z",
+    "fetchedAt": "2026-08-27T20:21:13.989Z",
     "sourceType": "official_website",
     "priority": 50
   },
@@ -386,6 +386,16 @@
     "title": "The Cottage: A Place to Find Stability, Build Confidence, and Create a Brighter Future — The Place",
     "url": "https://www.theplacega.org/notes-from-the-place/the-cottage-a-place-to-find-stability-build-confidence-and-create-a-brighter-future",
     "fetchedAt": "2026-08-23T17:03:56.670Z",
+    "sourceType": "official_website",
+    "priority": 50
+  },
+  {
+    "id": "web-newsletter-august-newsletter-for-the-place-a93d0cc7",
+    "fileName": "website__web-newsletter-august-newsletter-for-the-place-a93d0cc7.md",
+    "documentPath": "knowledge/generated/prepared/website__web-newsletter-august-newsletter-for-the-place-a93d0cc7.md",
+    "title": "August Newsletter for The Place — The Place",
+    "url": "https://www.theplacega.org/newsletter/august-newsletter-for-the-place",
+    "fetchedAt": "2026-08-27T20:21:33.627Z",
     "sourceType": "official_website",
     "priority": 50
   },
@@ -650,12 +660,12 @@
     "priority": 50
   },
   {
-    "id": "web-calendar-free-ged-classes-58b08e57",
-    "fileName": "website__web-calendar-free-ged-classes-58b08e57.md",
-    "documentPath": "knowledge/generated/prepared/website__web-calendar-free-ged-classes-58b08e57.md",
+    "id": "web-calendar-free-ged-classes-dh7mh-c76a9cb8",
+    "fileName": "website__web-calendar-free-ged-classes-dh7mh-c76a9cb8.md",
+    "documentPath": "knowledge/generated/prepared/website__web-calendar-free-ged-classes-dh7mh-c76a9cb8.md",
     "title": "Free GED Classes — The Place",
-    "url": "https://www.theplacega.org/calendar/free-ged-classes",
-    "fetchedAt": "2026-08-23T17:03:56.172Z",
+    "url": "https://www.theplacega.org/calendar/free-ged-classes-dh7mh",
+    "fetchedAt": "2026-08-27T20:21:28.566Z",
     "sourceType": "official_website",
     "priority": 50
   },

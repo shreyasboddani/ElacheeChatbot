@@ -6,6 +6,7 @@ Canonical URL: https://www.theplacega.org/newsletter
 
 ## Important headings
 
+- August Newsletter for The Place
 - July Newsletter for The Place
 - June Newsletter for The Place
 - April Newsletter for The Place
@@ -16,6 +17,8 @@ Canonical URL: https://www.theplacega.org/newsletter
 ## Approved page content
 
 Enjoying these articles? Sign up for our newsletter and have them delivered directly to your inbox!
+August Newsletter for The Place
+The Cottage was created for goal-oriented young women ages 18–24 who are experiencing housing instability, young women who have dreams for their future and are ready to work toward them, but may need a safe and stable place to begin.
 July Newsletter for The Place
 For five decades, neighbors have been helping neighbors. Today, your compassion continues that legacy.
 June Newsletter for The Place
@@ -31,6 +34,9 @@ In 2025, The Place met people in moments of crisis and walked alongside them tow
 
 ## Relevant official links
 
+- https://www.theplacega.org/newsletter/august-newsletter-for-the-place: https://www.theplacega.org/newsletter/august-newsletter-for-the-place
+- August Newsletter for The Place: https://www.theplacega.org/newsletter/august-newsletter-for-the-place
+- Read More: https://www.theplacega.org/newsletter/august-newsletter-for-the-place
 - https://www.theplacega.org/newsletter/july-newsletter-for-the-place: https://www.theplacega.org/newsletter/july-newsletter-for-the-place
 - July Newsletter for The Place: https://www.theplacega.org/newsletter/july-newsletter-for-the-place
 - Read More: https://www.theplacega.org/newsletter/july-newsletter-for-the-place

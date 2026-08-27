@@ -14,6 +14,7 @@ Canonical URL: https://www.theplacega.org/financial-assistance
 Short Term Financial Assistance
 Request Assistance
 The Place offers financial assistance for rent, utilities, and prescription costs. If The Place is able to provide financial assistance, it is typically offered as a partial payment toward the expense.
+Currently, our financial assistance program is able to assist families with children and senior households.
 REQUIRED DOCUMENTS:
 Photo ID
 Photo ID

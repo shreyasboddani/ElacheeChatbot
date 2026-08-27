@@ -1,6 +1,6 @@
 {
   "startedFrom": "https://www.theplacega.org",
-  "crawledAt": "2026-08-23T17:09:32.520Z",
+  "crawledAt": "2026-08-27T20:21:34.326Z",
   "maxPages": 150,
   "indexedPages": [
     {
@@ -37,7 +37,7 @@
       "id": "web-financial-assistance-bfe6e37e",
       "title": "Financial Assistance | Get Help Today — Apply Now — The Place",
       "url": "https://www.theplacega.org/financial-assistance",
-      "fetchedAt": "2026-07-23T18:36:16.381Z"
+      "fetchedAt": "2026-08-27T20:21:00.010Z"
     },
     {
       "id": "web-fin-asst-initial-request-61d479bf",
@@ -67,13 +67,13 @@
       "id": "web-calendar-de55b331",
       "title": "Calendar — The Place",
       "url": "https://www.theplacega.org/calendar",
-      "fetchedAt": "2026-08-23T16:24:59.303Z"
+      "fetchedAt": "2026-08-27T20:21:02.283Z"
     },
     {
       "id": "web-newsletter-89967774",
       "title": "Newsletter — The Place",
       "url": "https://www.theplacega.org/newsletter",
-      "fetchedAt": "2026-08-05T11:32:28.788Z"
+      "fetchedAt": "2026-08-27T20:21:03.011Z"
     },
     {
       "id": "web-newsletter-april-newsletter-for-the-place-4813203b",
@@ -193,13 +193,13 @@
       "id": "web-staff-564c6965",
       "title": "Staff — The Place",
       "url": "https://www.theplacega.org/staff",
-      "fetchedAt": "2026-08-23T16:26:00.112Z"
+      "fetchedAt": "2026-08-27T20:21:11.487Z"
     },
     {
       "id": "web-careers-9638b545",
       "title": "Careers — The Place",
       "url": "https://www.theplacega.org/careers",
-      "fetchedAt": "2026-08-23T16:26:00.518Z"
+      "fetchedAt": "2026-08-27T20:21:11.872Z"
     },
     {
       "id": "web-board-of-directors-8d8056e2",
@@ -211,7 +211,7 @@
       "id": "web-newsletter-july-newsletter-for-the-place-f07a02af",
       "title": "July Newsletter for The Place — The Place",
       "url": "https://www.theplacega.org/newsletter/july-newsletter-for-the-place",
-      "fetchedAt": "2026-08-05T11:32:41.935Z"
+      "fetchedAt": "2026-08-27T20:21:12.633Z"
     },
     {
       "id": "web-newsletter-june-newsletter-for-the-place-75541533",
@@ -229,13 +229,19 @@
       "id": "web-holidayhouse-f405f465",
       "title": "Holiday House — The Place",
       "url": "https://www.theplacega.org/holidayhouse",
-      "fetchedAt": "2026-08-23T17:03:59.427Z"
+      "fetchedAt": "2026-08-27T20:21:13.989Z"
     },
     {
       "id": "web-notes-from-the-place-the-cottage-a-place-to-find-stability-build-confidence-and-create-a-brighter-future-36b0abc1",
       "title": "The Cottage: A Place to Find Stability, Build Confidence, and Create a Brighter Future — The Place",
       "url": "https://www.theplacega.org/notes-from-the-place/the-cottage-a-place-to-find-stability-build-confidence-and-create-a-brighter-future",
       "fetchedAt": "2026-08-23T17:03:56.670Z"
+    },
+    {
+      "id": "web-newsletter-august-newsletter-for-the-place-a93d0cc7",
+      "title": "August Newsletter for The Place — The Place",
+      "url": "https://www.theplacega.org/newsletter/august-newsletter-for-the-place",
+      "fetchedAt": "2026-08-27T20:21:33.627Z"
     },
     {
       "id": "web-calendar-forsyth-county-drive-through-pet-food-supply-pantry-205ae801",
@@ -394,10 +400,10 @@
       "fetchedAt": "2026-07-31T11:37:25.619Z"
     },
     {
-      "id": "web-calendar-free-ged-classes-58b08e57",
+      "id": "web-calendar-free-ged-classes-dh7mh-c76a9cb8",
       "title": "Free GED Classes — The Place",
-      "url": "https://www.theplacega.org/calendar/free-ged-classes",
-      "fetchedAt": "2026-08-23T17:03:56.172Z"
+      "url": "https://www.theplacega.org/calendar/free-ged-classes-dh7mh",
+      "fetchedAt": "2026-08-27T20:21:28.566Z"
     },
     {
       "id": "web-calendar-red-robin-dine-to-donate-e8b1e68d",
@@ -408,38 +414,25 @@
   ],
   "failedPages": [
     {
-      "url": "https://www.theplacega.org/matching-gifts",
-      "reason": "No meaningful public page content found"
-    },
-    {
-      "url": "https://www.theplacega.org/gala-recap",
-      "reason": "No meaningful public page content found"
-    },
-    {
       "url": "https://www.theplacega.org/furniture-pickup-request",
-      "reason": "No meaningful public page content found"
-    },
-    {
-      "url": "https://www.theplacega.org/faroi",
-      "reason": "No meaningful public page content found"
-    },
-    {
-      "url": "https://www.theplacega.org/upcoming-events",
       "reason": "No meaningful public page content found"
     },
     {
       "url": "https://www.theplacega.org/volunteer-handbook",
       "reason": "Refusing to fetch or follow a URL outside The Place website."
-    }
-  ],
-  "duplicatePages": [
+    },
     {
-      "url": "https://www.theplacega.org/home",
-      "duplicateOf": "https://www.theplacega.org/"
+      "url": "https://www.theplacega.org/matching-gifts",
+      "reason": "No meaningful public page content found"
+    },
+    {
+      "url": "https://www.theplacega.org/upcoming-events",
+      "reason": "No meaningful public page content found"
     }
   ],
+  "duplicatePages": [],
   "blockedPages": [],
   "retainedPages": [],
   "approvedRemovedPages": [],
-  "totalIndexed": 67
+  "totalIndexed": 68
 }
