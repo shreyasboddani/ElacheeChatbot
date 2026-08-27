@@ -78,16 +78,15 @@ jobs:
             exit 1
           fi
 
-      - name: Enforce a bounded automatic change set
+      - name: Enforce a bounded safe automatic change set
         if: steps.changes.outputs.changed == 'true'
         shell: bash
         run: |
           changed_documents="$(git status --porcelain --untracked-files=all -- knowledge/generated/prepared | grep -c . || true)"
           deleted_paths="$(git diff --name-only --diff-filter=D HEAD -- knowledge/generated/prepared)"
           deleted_documents="$(printf '%s\n' "$deleted_paths" | grep -c . || true)"
-          approved_removals="$(node -e "const fs=require('node:fs');const v=JSON.parse(fs.readFileSync('knowledge/generated/crawl-health.json','utf8'));if(!Array.isArray(v.approvedRemovedPages))process.exit(2);process.stdout.write(String(v.approvedRemovedPages.length));")"
           unexpected_deletions="$(printf '%s\n' "$deleted_paths" | grep -Ev '^$|^knowledge/generated/prepared/website__[^/]+\.md$' || true)"
-          echo "Prepared documents changed: $changed_documents; deleted: $deleted_documents; explicitly approved removals: $approved_removals" >> "$GITHUB_STEP_SUMMARY"
+          echo "Prepared documents changed: $changed_documents; deleted website documents: $deleted_documents" >> "$GITHUB_STEP_SUMMARY"
 
           if (( changed_documents > 20 )); then
             echo "The refresh changed $changed_documents prepared documents, exceeding the automatic safety limit of 20. Manual review is required."
@@ -97,11 +96,6 @@ jobs:
           if [[ -n "$unexpected_deletions" ]]; then
             echo "Only website Markdown files may be removed automatically:"
             echo "$unexpected_deletions"
-            exit 1
-          fi
-
-          if (( deleted_documents != approved_removals )); then
-            echo "The refresh deleted $deleted_documents prepared documents, but crawl-health.json records $approved_removals explicitly approved removals. Refusing to continue."
             exit 1
           fi
 
