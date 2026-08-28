@@ -13,6 +13,7 @@ Canonical URL: https://www.theplacega.org/holidayhouse
 - Calificar Y Comprar
 - How You Can Help
 - VOLUNTEER OPPORTUNITIES
+- Volunteer Opportunities will open on Monday, November 2, 2026
 - Gift Guide
 
 ## Approved page content
@@ -33,440 +34,187 @@ SNOWMAN SPONSOR$1,500
 CANDY CANE SPONSOR$750
 VOLUNTEER OPPORTUNITIES
 Volunteer Opportunities will open on Monday, November 2, 2026
-Ages 0 - 3 yrs.
-BlanketsDiaper BagsPlay KitchenSit to StandSoft dollsBaby booksDisneyMusical toysPlay MatsPaw Patrol stuffTrain setsSesame Street stuffDress up clothesVTech toys
-Ages 0 - 3 yrs.
-Blankets
-Blankets
-Diaper Bags
-Diaper Bags
-Play Kitchen
-Play Kitchen
-Sit to Stand
-Sit to Stand
-Soft dolls
-Soft dolls
-Baby books
-Baby books
-Disney
-Disney
-Musical toys
-Musical toys
-Play Mats
-Play Mats
-Paw Patrol stuff
-Paw Patrol stuff
-Train sets
-Train sets
-Sesame Street stuff
-Sesame Street stuff
-Dress up clothes
-Dress up clothes
-VTech toys
-VTech toys
-Boys and Girls | 4 - 11 yrs. | Grades K - 5
-Action and Character Toys﻿﻿Action Figures﻿﻿WWE Figures﻿﻿Animal related toys﻿﻿Dinosaurs﻿﻿Superheroes (Marvel, DC, general)﻿﻿Disney Characters﻿﻿Princesses﻿﻿Buzz Lightyear﻿﻿Sofia the First﻿﻿Frozen items﻿﻿Star Wars﻿﻿Pokémon﻿﻿Fortnite Toys﻿﻿Minecraft﻿﻿Video Game Related Toys﻿﻿Monster Jam﻿﻿Labubus and accessories﻿﻿My Little Pony﻿﻿LOL Dolls﻿﻿Barbie Dolls & Accessories﻿﻿American Girl Dolls﻿﻿Our Generation Dolls﻿﻿Baby Alive﻿﻿Character Dolls (general)﻿﻿Funko Pop﻿﻿Blume Dolls﻿﻿Hatchimals﻿﻿Interactive Dog / Fur Real Pets﻿﻿Owleez Toys﻿﻿Rainbow JelliesBuilding and STEMLego KitsMega BlocksMagnet TilesBuilding BlocksK'nexMarble RunsSTEM ProjectsRobo Alive (robotic toys)BatBot XtremeRoaring DragonsDino Eggs / Dig SetsTech ToysLincoln LogsCars, Trucks and Remote ControlHot Wheels Cars & Tracks Play Cars / TrucksRemote Control Cars & TrucksCar CasesWooden Train SetsPlaysets and Pretend PlayPlay Kitchen SetsPlay Sets (home, kitchen, etc.)Play TentsCostumes / Dress Up ClothesPrincess ItemsSports Balls & EquipmentLittle Tikes Cozy CoupeBedding & ComfortTwin Bedding SetsSleeping BagsLifestyle and AccessoriesKid-Friendly Nails / Makeup SetsKid-Friendly Skin CareKid Cameras & AccessoriesAlarm ClocksClocksWater BottlesOwalaStanleyBruMateClothesShoesArts, Crafts and CreativeArts & Craft KitsDrawing Kitscolored pencilsdrawing padsPlay-Doh SetsSlime KitsKid Jewelry / Jewelry BoxesLucky Fortune BraceletsJournals / DiariesFriendship Bracelet making suppliesPerler Bead KitsOutdoor ToysHoverboardsScooters
-Boys and Girls | 4 - 11 yrs. | Grades K - 5
-Action and Character Toys
-Action Figures
-Action Figures
-WWE Figures
-WWE Figures
-Animal related toys﻿﻿Dinosaurs
-Animal related toys
-Dinosaurs
-Dinosaurs
-Superheroes (Marvel, DC, general)
-Superheroes (Marvel, DC, general)
-Disney Characters﻿﻿Princesses﻿﻿Buzz Lightyear﻿﻿Sofia the First﻿﻿Frozen items
-Disney Characters
-Princesses
-Princesses
-Buzz Lightyear
-Buzz Lightyear
-Sofia the First
-Sofia the First
-Frozen items
-Frozen items
-Star Wars
-Star Wars
-Pokémon
-Pokémon
-Fortnite Toys
-Fortnite Toys
-Minecraft﻿﻿Video Game Related Toys
-Minecraft
-Video Game Related Toys
-Video Game Related Toys
-Monster Jam
-Monster Jam
-Labubus and accessories
-Labubus and accessories
-My Little Pony
-My Little Pony
-LOL Dolls
-LOL Dolls
-Barbie Dolls & Accessories
-Barbie Dolls & Accessories
-American Girl Dolls
-American Girl Dolls
-Our Generation Dolls
-Our Generation Dolls
-Baby Alive
-Baby Alive
-Character Dolls (general)
-Character Dolls (general)
-Funko Pop
-Funko Pop
-Blume Dolls
-Blume Dolls
-Hatchimals
-Hatchimals
-Interactive Dog / Fur Real Pets
-Interactive Dog / Fur Real Pets
-Owleez Toys
-Owleez Toys
-Rainbow Jellies
-Rainbow Jellies
-Building and STEM
-Lego Kits
-Lego Kits
-Mega Blocks
-Mega Blocks
-Magnet Tiles
-Magnet Tiles
-Building Blocks
-Building Blocks
-K'nex
-K'nex
-Marble Runs
-Marble Runs
-STEM Projects
-STEM Projects
-Robo Alive (robotic toys)
-Robo Alive (robotic toys)
-BatBot Xtreme
-BatBot Xtreme
-Roaring Dragons
-Roaring Dragons
-Dino Eggs / Dig Sets
-Dino Eggs / Dig Sets
-Tech Toys
-Tech Toys
-Lincoln Logs
-Lincoln Logs
-Cars, Trucks and Remote Control
-Hot Wheels Cars & Tracks
-Hot Wheels Cars & Tracks
-Play Cars / Trucks
-Play Cars / Trucks
-Remote Control Cars & Trucks
-Remote Control Cars & Trucks
-Car Cases
-Car Cases
-Wooden Train Sets
-Wooden Train Sets
-Playsets and Pretend Play
-Play Kitchen Sets
-Play Kitchen Sets
-Play Sets (home, kitchen, etc.)
-Play Sets (home, kitchen, etc.)
-Play Tents
-Play Tents
-Costumes / Dress Up Clothes
-Costumes / Dress Up Clothes
-Princess Items
-Princess Items
-Sports Balls & Equipment
-Sports Balls & Equipment
-Little Tikes Cozy Coupe
-Little Tikes Cozy Coupe
-Bedding & Comfort
-Twin Bedding Sets
-Twin Bedding Sets
-Sleeping Bags
-Sleeping Bags
-Lifestyle and Accessories
-Kid-Friendly Nails / Makeup Sets
-Kid-Friendly Nails / Makeup Sets
-Kid-Friendly Skin Care
-Kid-Friendly Skin Care
-Kid Cameras & Accessories
-Kid Cameras & Accessories
-Alarm Clocks
-Alarm Clocks
-Clocks
-Clocks
-Water BottlesOwalaStanleyBruMate
-Water Bottles
-Owala
-Owala
-Stanley
-Stanley
-BruMate
-BruMate
-Clothes
-Clothes
-Shoes
-Shoes
-Arts, Crafts and Creative
-Arts & Craft Kits
-Arts & Craft Kits
-Drawing Kitscolored pencilsdrawing pads
-Drawing Kits
-colored pencils
-colored pencils
-drawing pads
-drawing pads
-Play-Doh Sets
-Play-Doh Sets
-Slime Kits
-Slime Kits
-Kid Jewelry / Jewelry Boxes
-Kid Jewelry / Jewelry Boxes
-Lucky Fortune Bracelets
-Lucky Fortune Bracelets
-Journals / Diaries
-Journals / Diaries
-Friendship Bracelet making supplies
-Friendship Bracelet making supplies
-Perler Bead Kits
-Perler Bead Kits
-Outdoor Toys
-Hoverboards
-Hoverboards
-Scooters
-Scooters
-Boys | 12 - 18 yrs. | Grades 6 - 12
-Toiletry setsEarbudsWalletsTwin bed setsHammockCologneWatchesSunglassesSlippersSport Teams Merchandise:Atlanta UnitedAtlanta HawksAtlanta UnitedAtlanta BravesOther teamsGift CardsIphone projectorRBG Game KeyboardElectric razorsWireless speakersNecklacesWater BottlesPlaystationX-Box & gamesNintendo SwitchAdventure CameraLED light stripsCornholeShoes (men's sizes)Branded HoodiesSlides/SandalsIndoor BasketballSpikeballLaptopWireless Mouse
-Boys | 12 - 18 yrs. | Grades 6 - 12
-Toiletry sets
-Toiletry sets
-Earbuds
-Earbuds
-Wallets
-Wallets
-Twin bed sets
-Twin bed sets
-Hammock
-Hammock
-Cologne
-Cologne
-Watches
-Watches
-Sunglasses
-Sunglasses
-Slippers
-Slippers
-Sport Teams Merchandise:Atlanta UnitedAtlanta HawksAtlanta UnitedAtlanta BravesOther teams
-Sport Teams Merchandise:
-Atlanta United
-Atlanta United
-Atlanta Hawks
-Atlanta Hawks
-Atlanta United
-Atlanta United
-Atlanta Braves
-Atlanta Braves
-Other teams
-Other teams
-Gift Cards
-Gift Cards
-Iphone projector
-Iphone projector
-RBG Game Keyboard
-RBG Game Keyboard
-Electric razors
-Electric razors
-Wireless speakers
-Wireless speakers
-Necklaces
-Necklaces
-Water Bottles
-Water Bottles
-Playstation
-Playstation
-X-Box & games
-X-Box & games
-Nintendo Switch
-Nintendo Switch
-Adventure Camera
-Adventure Camera
-LED light strips
-LED light strips
-Cornhole
-Cornhole
-Shoes (men's sizes)
-Shoes (men's sizes)
-Branded Hoodies
-Branded Hoodies
-Slides/Sandals
-Slides/Sandals
-Indoor Basketball
-Indoor Basketball
-Spikeball
-Spikeball
-Laptop
-Laptop
-Wireless Mouse
-Wireless Mouse
-Girls | 12 - 18 yrs. | Grades 6 - 12
-PerfumePursesBath and Body Works productsWalletsSunglassesNail polish kitsSlippersMake-up kitsJewelryMake-up mirrorJewelry boxesMake-up organizersDiffusersArt /paint setsTwin bed setsOwala Water BottleBelt BagStanley Water BottleFuzzy SocksHairdryersTravel KitsStraightenersThrow pillowsCurling ironsWearable blanketsHeadphonesRing LightBranded HoodiesWireless SpeakersPolaroid Camera and suppliesShoes (Women's sizes)
-Girls | 12 - 18 yrs. | Grades 6 - 12
-Perfume
-Perfume
-Purses
-Purses
-Bath and Body Works products
-Bath and Body Works products
-Wallets
-Wallets
-Sunglasses
-Sunglasses
-Nail polish kits
-Nail polish kits
-Slippers
-Slippers
-Make-up kits
-Make-up kits
-Jewelry
-Jewelry
-Make-up mirror
-Make-up mirror
-Jewelry boxes
-Jewelry boxes
-Make-up organizers
-Make-up organizers
-Diffusers
-Diffusers
-Art /paint sets
-Art /paint sets
-Twin bed sets
-Twin bed sets
-Owala Water Bottle
-Owala Water Bottle
-Belt Bag
-Belt Bag
-Stanley Water Bottle
-Stanley Water Bottle
-Fuzzy Socks
-Fuzzy Socks
-Hairdryers
-Hairdryers
-Travel Kits
-Travel Kits
-Straighteners
-Straighteners
-Throw pillows
-Throw pillows
-Curling irons
-Curling irons
-Wearable blankets
-Wearable blankets
-Headphones
-Headphones
-Ring Light
-Ring Light
-Branded Hoodies
-Branded Hoodies
-Wireless Speakers
-Wireless Speakers
-Polaroid Camera and supplies
-Polaroid Camera and supplies
-Shoes (Women's sizes)
-Shoes (Women's sizes)
-Sporting Equipment For All
-BatsWiffle Ball setsFootballsHover BoardSoccer ballsBall AirSkate boardsPumps/NeedlesPickle BallRollerCornholeBlades/SkatesKanJamT-ball SetsDart Board SetsSoccer NetsTennis RacketsVolleyball SetCleatsHelmetsPads
-Sporting Equipment For All
-Bats
-Bats
-Wiffle Ball sets
-Wiffle Ball sets
-Footballs
-Footballs
-Hover Board
-Hover Board
-Soccer balls
-Soccer balls
-Ball Air
-Ball Air
-Skate boards
-Skate boards
-Pumps/Needles
-Pumps/Needles
-Pickle Ball
-Pickle Ball
-Roller
-Roller
-Cornhole
-Cornhole
-Blades/Skates
-Blades/Skates
-KanJam
-KanJam
-T-ball Sets
-T-ball Sets
-Dart Board Sets
-Dart Board Sets
-Soccer Nets
-Soccer Nets
-Tennis Rackets
-Tennis Rackets
-Volleyball Set
-Volleyball Set
-Cleats
-Cleats
-Helmets
-Helmets
-Pads
-Pads
-$25 Gift Card Ideas
-Dicks/AcademyTarget/WalmartTJMaxxRossVisa/MastercardBelk/Kohl'sOld NavyAmazonUlta BeautySephora
-$25 Gift Card Ideas
-Dicks/Academy
-Dicks/Academy
-Target/Walmart
-Target/Walmart
-TJMaxx
-TJMaxx
-Ross
-Ross
-Visa/Mastercard
-Visa/Mastercard
-Belk/Kohl's
-Belk/Kohl's
-Old Navy
-Old Navy
-Amazon
-Amazon
-Ulta Beauty
-Ulta Beauty
-Sephora
-Sephora
-Miscellaneous Items
-Wrapping PaperBowsTapeBatteries
-Miscellaneous Items
-Wrapping Paper
-Wrapping Paper
-Bows
-Bows
-Tape
-Tape
-Batteries
-Batteries
-Do NOT Need
-Stuffed AnimalsiTune CardsBooks
-Do NOT Need
-Stuffed Animals
-Stuffed Animals
-iTune Cards
-iTune Cards
-Books
-Books
+For more information, contact Amber Pham at Amber@theplacega.org
 Gift Guide
-Items that are BOLD and UNDERLINED are highly sought after
+Little Ones | Ages 0 - 4 yrs
+Baby dolls and soft dollsBaby booksMusical and interactive toysPlay matsSit-to-stand and push toysPretend play and play kitchensBuilding toysCharacter toysBlankets and comfort itemsToddler clothing and shoes
+Little Ones | Ages 0 - 4 yrs
+Baby dolls and soft dolls
+Baby dolls and soft dolls
+Baby books
+Baby books
+Musical and interactive toys
+Musical and interactive toys
+Play mats
+Play mats
+Sit-to-stand and push toys
+Sit-to-stand and push toys
+Pretend play and play kitchens
+Pretend play and play kitchens
+Building toys
+Building toys
+Character toys
+Character toys
+Blankets and comfort items
+Blankets and comfort items
+Toddler clothing and shoes
+Toddler clothing and shoes
+Boys and Girls | 5 - 11 yrs | Grades K - 5
+Toys and CharactersAction figures and character toysDoll and doll accessoriesDinosaurs and animal toysDisney, Marvel, Pokemon, Minecraft, and other popular charactersLEGO and building setsSTEM and science kitsRemote-control cars and trucksHot Wheels and car tracksTrains and train setsOutdoor and ActiveScootersSports balls and equipmentBikes and helmetsOutdoor gamesCreative and Pretend PlayArt and craft kitsDrawing and coloring suppliesPlay-Doh and slime kitsJewelry and bracelet-making kitsJournals and diariesCostumes and dress-up clothesPlay kitchens, playsets, and tentsBooksAccessories and ComfortKid-friendly makeup, nails, and skincareKid camerasWater bottlesTwin bedding and sleeping bagsClothes and shoes
+Boys and Girls | 5 - 11 yrs | Grades K - 5
+Toys and Characters
+Action figures and character toys
+Action figures and character toys
+Doll and doll accessories
+Doll and doll accessories
+Dinosaurs and animal toys
+Dinosaurs and animal toys
+Disney, Marvel, Pokemon, Minecraft, and other popular characters
+Disney, Marvel, Pokemon, Minecraft, and other popular characters
+LEGO and building sets
+LEGO and building sets
+STEM and science kits
+STEM and science kits
+Remote-control cars and trucks
+Remote-control cars and trucks
+Hot Wheels and car tracks
+Hot Wheels and car tracks
+Trains and train sets
+Trains and train sets
+Outdoor and Active
+Scooters
+Scooters
+Sports balls and equipment
+Sports balls and equipment
+Bikes and helmets
+Bikes and helmets
+Outdoor games
+Outdoor games
+Creative and Pretend Play
+Art and craft kits
+Art and craft kits
+Drawing and coloring supplies
+Drawing and coloring supplies
+Play-Doh and slime kits
+Play-Doh and slime kits
+Jewelry and bracelet-making kits
+Jewelry and bracelet-making kits
+Journals and diaries
+Journals and diaries
+Costumes and dress-up clothes
+Costumes and dress-up clothes
+Play kitchens, playsets, and tents
+Play kitchens, playsets, and tents
+Books
+Books
+Accessories and Comfort
+Kid-friendly makeup, nails, and skincare
+Kid-friendly makeup, nails, and skincare
+Kid cameras
+Kid cameras
+Water bottles
+Water bottles
+Twin bedding and sleeping bags
+Twin bedding and sleeping bags
+Clothes and shoes
+Clothes and shoes
+Tweens and Teens | 12 - 18 yrs | Grades 6 - 12
+Tech and EntertainmentWireless headphones and earbudsWireless speakersGaming systems and gamesGaming accessoriesLED light stripsDigital and Instant CamerasRing lightsBeauty and Self-CareBath and body gift setsCologne and perfumeMakeup and makeup kitsNail kitsHair dryers, straighteners, and curling ironsToiletry and travel kitsClothing and AccessoriesBranded hoodiesShoesSlides and slippersBelt bags, purses, and walletsJewelrySunglassesWatchesWater bottles$25 Gift CardsTarget/WalmartAmazonVisa/MastercardDick’s Sporting GoodUlta BeautyOld Navy/TJ Maxx/Belk/Khol’sAcademy Sports
+Tweens and Teens | 12 - 18 yrs | Grades 6 - 12
+Tech and Entertainment
+Wireless headphones and earbuds
+Wireless headphones and earbuds
+Wireless speakers
+Wireless speakers
+Gaming systems and games
+Gaming systems and games
+Gaming accessories
+Gaming accessories
+LED light strips
+LED light strips
+Digital and Instant Cameras
+Digital and Instant Cameras
+Ring lights
+Ring lights
+Beauty and Self-Care
+Bath and body gift sets
+Bath and body gift sets
+Cologne and perfume
+Cologne and perfume
+Makeup and makeup kits
+Makeup and makeup kits
+Nail kits
+Nail kits
+Hair dryers, straighteners, and curling irons
+Hair dryers, straighteners, and curling irons
+Toiletry and travel kits
+Toiletry and travel kits
+Clothing and Accessories
+Branded hoodies
+Branded hoodies
+Shoes
+Shoes
+Slides and slippers
+Slides and slippers
+Belt bags, purses, and wallets
+Belt bags, purses, and wallets
+Jewelry
+Jewelry
+Sunglasses
+Sunglasses
+Watches
+Watches
+Water bottles
+Water bottles
+$25 Gift Cards
+Target/Walmart
+Target/Walmart
+Amazon
+Amazon
+Visa/Mastercard
+Visa/Mastercard
+Dick’s Sporting Good
+Dick’s Sporting Good
+Ulta Beauty
+Ulta Beauty
+Old Navy/TJ Maxx/Belk/Khol’s
+Old Navy/TJ Maxx/Belk/Khol’s
+Academy Sports
+Academy Sports
+Gifts for All Ages
+Sports and ActivitiesBasketballs and indoor basketball equipment Soccer balls and equipmentFootballs and equipmentCornhole and other outdoor gamesSkateboards and roller skatesPickleball equipmentMiscellaneousBatteries Wrapping paper TapeBowsBagsTissue paper
+Gifts for All Ages
+Sports and Activities
+Basketballs and indoor basketball equipment
+Basketballs and indoor basketball equipment
+Soccer balls and equipment
+Soccer balls and equipment
+Footballs and equipment
+Footballs and equipment
+Cornhole and other outdoor games
+Cornhole and other outdoor games
+Skateboards and roller skates
+Skateboards and roller skates
+Pickleball equipment
+Pickleball equipment
+Miscellaneous
+Batteries
+Batteries
+Wrapping paper
+Wrapping paper
+Tape
+Tape
+Bows
+Bows
+Bags
+Bags
+Tissue paper
+Tissue paper
 
 ## Relevant official links
 
 - host a drive: https://www.theplacega.org/host-a-drive
-- volunteer: https://www.theplacega.org/new-volunteers
+- volunteer: https://www.theplacega.org/holidayhouse
+- gift guide: https://www.theplacega.org/holidayhouse
+- Host A Drive: https://www.theplacega.org/host-a-drive
+- Download the Gift Guide: https://www.theplacega.org/s/Holiday-House-Gift-Guide-2026.pdf
