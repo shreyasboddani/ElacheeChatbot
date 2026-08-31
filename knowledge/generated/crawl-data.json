@@ -109,8 +109,8 @@
     "id": "web-food-donations-60d14ec3",
     "title": "Food Donations | Support Community Through Donations — The Place",
     "canonicalUrl": "https://www.theplacega.org/food-donations",
-    "fetchedAt": "2026-08-28T20:56:02.800Z",
-    "text": "Food Donations\nCurrent Pantry Needs\nDrop-Off: Tuesday–Saturday from 10 AM–4 PM 2550 The Place Circle, Cumming or 829 Hwy 9N, Dawsonville Questions? Call (770) 887-1098 x231  or email deborah@theplacega.org\nPlease note: We cannot accept opened or expired items.\nOur food needs change each month. There is a flyer below that can help you decide which food items to donate.\nFood Needs\n(Click to enlarge)\nHousehold Needs\n(Click to enlarge)\nSchool Pantry Needs\n(Click to enlarge)",
+    "fetchedAt": "2026-08-31T17:05:41.697Z",
+    "text": "Food Donations\nCurrent Pantry Needs\nDrop-Off: Tuesday–Saturday from 10 AM–4 PM 2550 The Place Circle, Cumming or 829 Hwy 9N, Dawsonville Questions? Call (770) 887-1098 or email info@theplacega.org\nPlease note: We cannot accept opened or expired items.\nOur food needs change each month. There is a flyer below that can help you decide which food items to donate.\nFood Needs\n(Click to enlarge)\nHousehold Needs\n(Click to enlarge)\nSchool Pantry Needs\n(Click to enlarge)",
     "headings": [
       "Food Donations",
       "Current Pantry Needs"
@@ -1144,7 +1144,7 @@
     "id": "web-host-a-drive-b0edec6a",
     "title": "Host A Drive | Support Food Security – Donate Now — The Place",
     "canonicalUrl": "https://www.theplacega.org/host-a-drive",
-    "fetchedAt": "2026-08-28T20:56:15.185Z",
+    "fetchedAt": "2026-08-31T17:05:59.384Z",
     "text": "Host A Drive\nYou can make a direct impact for local families by organizing a drive with your school, church, workplace, neighborhood, team, or community group. Collect food, hygiene items, school supplies, holiday gifts, or other needed resources to help support The Place's programs.\nWhether you're planning a service project, friendly competition, or community event, hosting a drive is a simple way to rally others around a meaningful cause. Complete the form below to get started.\nPrintable Resources:\nHoliday House Gift Guide\nHoliday House Gift Guide\nHousehold needs\nHousehold needs\nSenior needs\nSenior needs\nHygiene needs\nHygiene needs\nPantry needs\nPantry needs",
     "headings": [
       "Host A Drive"
@@ -1156,19 +1156,19 @@
       },
       {
         "label": "Household needs",
-        "url": "https://www.theplacega.org/s/Household-Needs-Jan-2026.pdf"
+        "url": "https://www.theplacega.org/s/Household-Needs-Jan-2026-1-1.pdf"
       },
       {
         "label": "Senior needs",
-        "url": "https://www.theplacega.org/s/Senior-2026-Pantry-Needs.pdf"
+        "url": "https://www.theplacega.org/s/Senior-2026-Needs.pdf"
       },
       {
         "label": "Hygiene needs",
-        "url": "https://www.theplacega.org/s/Hygiene-Kit-Needs.pdf"
+        "url": "https://www.theplacega.org/s/Hygiene-Kit-Needs-1.pdf"
       },
       {
         "label": "Pantry needs",
-        "url": "https://www.theplacega.org/s/June-26-Pantry-Needs.pdf"
+        "url": "https://www.theplacega.org/s/September-26-Pantry-Needs.pdf"
       }
     ],
     "sourceType": "official_website"
@@ -2320,15 +2320,15 @@
     "sourceType": "official_website"
   },
   {
-    "id": "web-calendar-free-ged-classes-dh7mh-c76a9cb8",
+    "id": "web-calendar-free-ged-classes-6t997-zlysg-fed846ba",
     "title": "Free GED Classes — The Place",
-    "canonicalUrl": "https://www.theplacega.org/calendar/free-ged-classes-dh7mh",
-    "fetchedAt": "2026-08-27T20:21:28.566Z",
-    "text": "Free GED Classes\nMonday, August 31, 2026\n6:00 PM\n8:00 PM\nCumming Elementary\n540 Dahlonega Street\nCumming, Georgia, 30040\nUnited States\n(map)\nGoogle Calendar\nICS\nFree GED Classes\nMobile Food Pantry",
+    "canonicalUrl": "https://www.theplacega.org/calendar/free-ged-classes-6t997-zlysg",
+    "fetchedAt": "2026-08-31T17:06:33.556Z",
+    "text": "Free GED Classes\nWednesday, September 2, 2026\n6:00 PM\n8:00 PM\nCumming Elementary\n540 Dahlonega Street\nCumming, Georgia, 30040\nUnited States\n(map)\nGoogle Calendar\nICS\nMobile Food Pantry\nFree GED Classes",
     "headings": [
       "Free GED Classes",
-      "Free GED Classes",
-      "Mobile Food Pantry"
+      "Mobile Food Pantry",
+      "Free GED Classes"
     ],
     "links": [
       {
@@ -2337,15 +2337,15 @@
       },
       {
         "label": "ICS",
-        "url": "https://www.theplacega.org/calendar/free-ged-classes-dh7mh"
+        "url": "https://www.theplacega.org/calendar/free-ged-classes-6t997-zlysg"
       },
       {
-        "label": "Previous\nPrevious\nAugust 26\nFree GED Classes",
-        "url": "https://www.theplacega.org/calendar/free-ged-classes-6t997"
-      },
-      {
-        "label": "Next\nNext\nSeptember 2\nMobile Food Pantry",
+        "label": "Previous\nPrevious\nSeptember 2\nMobile Food Pantry",
         "url": "https://www.theplacega.org/calendar/mobile-food-pantry-september"
+      },
+      {
+        "label": "Next\nNext\nSeptember 7\nFree GED Classes",
+        "url": "https://www.theplacega.org/calendar/free-ged-classes-dh7mh-hc34f"
       }
     ],
     "sourceType": "official_website"

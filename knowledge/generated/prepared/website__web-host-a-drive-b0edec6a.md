@@ -28,7 +28,7 @@ Pantry needs
 ## Relevant official links
 
 - Holiday House Gift Guide: https://www.theplacega.org/s/Holiday-House-Gift-Guide-2026.pdf
-- Household needs: https://www.theplacega.org/s/Household-Needs-Jan-2026.pdf
-- Senior needs: https://www.theplacega.org/s/Senior-2026-Pantry-Needs.pdf
-- Hygiene needs: https://www.theplacega.org/s/Hygiene-Kit-Needs.pdf
-- Pantry needs: https://www.theplacega.org/s/June-26-Pantry-Needs.pdf
+- Household needs: https://www.theplacega.org/s/Household-Needs-Jan-2026-1-1.pdf
+- Senior needs: https://www.theplacega.org/s/Senior-2026-Needs.pdf
+- Hygiene needs: https://www.theplacega.org/s/Hygiene-Kit-Needs-1.pdf
+- Pantry needs: https://www.theplacega.org/s/September-26-Pantry-Needs.pdf
