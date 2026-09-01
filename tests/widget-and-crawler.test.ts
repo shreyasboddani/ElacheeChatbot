@@ -58,6 +58,9 @@ describe("widget and crawler boundaries", () => {
     expect(loader).toContain(".tp-resize{display:none}");
     expect(loader).toContain('script.getAttribute("data-prompt")');
     expect(loader).toContain('script.getAttribute("data-prompt-text")');
+    expect(loader).toContain('iframe.loading = "eager"');
+    expect(loader).toContain("Loading The Place assistant");
+    expect(loader).toContain('panel.setAttribute("data-ready", "true")');
     expect(loader).toContain('"the-place-chatbot:close"');
     expect(loader).toContain("event.source !== iframe.contentWindow");
     expect(loader).toContain("event.origin !== chatbotUrl.origin");

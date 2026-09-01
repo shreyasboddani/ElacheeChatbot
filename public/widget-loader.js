@@ -90,6 +90,7 @@
     ":host([data-theme=dark]) .tp-nudge,[data-the-place-chatbot][data-theme=dark] .tp-nudge{color:#f1edf4;background:#24293e;border-color:#444960}:host([data-theme=dark]) .tp-nudge::after,[data-the-place-chatbot][data-theme=dark] .tp-nudge::after{background:#24293e;border-color:#444960}:host([data-theme=dark]) .tp-nudge-action small,:host([data-theme=dark]) .tp-nudge-close,[data-the-place-chatbot][data-theme=dark] .tp-nudge-action small,[data-the-place-chatbot][data-theme=dark] .tp-nudge-close{color:#c7c2cd}" +
     ".tp-panel{position:relative;display:none;width:min(390px,calc(100vw - 28px));height:min(650px,calc(100vh - 90px));margin-bottom:12px;overflow:hidden;background:#fff;border:1px solid rgba(37,33,62,.14);border-radius:20px;box-shadow:0 28px 80px rgba(19,21,42,.28)}" +
     ".tp-panel[data-open=true]{display:block;animation:tp-pop .2s ease-out}" +
+    ".tp-loading{position:absolute;inset:0;z-index:1;display:grid;place-content:center;gap:10px;color:#003b59;background:#fbfaf8;font:700 14px/1.4 system-ui,-apple-system,Segoe UI,sans-serif;text-align:center}.tp-loading::before{width:24px;height:24px;margin:auto;border:3px solid #d8e4e9;border-top-color:#003b59;border-radius:50%;content:'';animation:tp-spin .7s linear infinite}.tp-panel[data-ready=true] .tp-loading{display:none}" +
     ".tp-frame{display:block;width:100%;height:100%;border:0;background:#fbfaf8}" +
     ".tp-close{position:absolute;z-index:2;top:10px;display:grid;width:34px;height:34px;place-items:center;padding:0;color:#fff;background:#292f4c;border:1px solid rgba(255,255,255,.18);border-radius:9px;cursor:pointer;box-shadow:0 4px 14px rgba(0,0,0,.18)}" +
     ".tp-close-bottom-right{right:10px}.tp-close-bottom-left{left:10px}" +
@@ -101,7 +102,7 @@
     ".tp-resize-bottom-left span{border-right:2px solid currentColor;border-left:0}" +
     ".tp-resize:hover{background:#7d4b8e}" +
     "@keyframes tp-pop{from{opacity:0;transform:translateY(12px) scale(.97)}to{opacity:1;transform:none}}" +
-    "@keyframes tp-nudge-pop{from{opacity:0;transform:translateY(7px) scale(.97)}to{opacity:1;transform:none}}" +
+    "@keyframes tp-nudge-pop{from{opacity:0;transform:translateY(7px) scale(.97)}to{opacity:1;transform:none}}@keyframes tp-spin{to{transform:rotate(360deg)}}" +
     "@media(max-width:560px){.tp-panel{position:fixed;inset:0;width:100vw!important;height:100dvh!important;margin:0;border:0;border-radius:0}.tp-nudge{bottom:64px;width:min(238px,calc(100vw - 36px))}.tp-resize{display:none}.tp-launcher{min-height:50px}}" +
     "@media(prefers-color-scheme:dark){:host([data-theme=auto]) .tp-nudge,[data-the-place-chatbot][data-theme=auto] .tp-nudge{color:#f1edf4;background:#24293e;border-color:#444960}:host([data-theme=auto]) .tp-nudge::after,[data-the-place-chatbot][data-theme=auto] .tp-nudge::after{background:#24293e;border-color:#444960}:host([data-theme=auto]) .tp-nudge-action small,:host([data-theme=auto]) .tp-nudge-close,[data-the-place-chatbot][data-theme=auto] .tp-nudge-action small,[data-the-place-chatbot][data-theme=auto] .tp-nudge-close{color:#c7c2cd}}" +
     "@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}";
@@ -165,13 +166,35 @@
   var iframe = document.createElement("iframe");
   iframe.className = "tp-frame";
   iframe.title = "The Place information assistant";
-  iframe.loading = "lazy";
+  iframe.loading = "eager";
   iframe.referrerPolicy = "strict-origin-when-cross-origin";
   iframe.setAttribute(
     "sandbox",
     "allow-scripts allow-forms allow-same-origin allow-popups allow-popups-to-escape-sandbox",
   );
   iframe.src = chatbotUrl.toString();
+
+  var loading = document.createElement("div");
+  loading.className = "tp-loading";
+  loading.setAttribute("role", "status");
+  loading.setAttribute("aria-live", "polite");
+  loading.textContent = "Loading The Place assistant…";
+
+  function markFrameLoading() {
+    panel.setAttribute("data-ready", "false");
+    panel.setAttribute("aria-busy", "true");
+    loading.textContent = "Loading The Place assistant…";
+  }
+
+  iframe.addEventListener("load", function () {
+    panel.setAttribute("data-ready", "true");
+    panel.setAttribute("aria-busy", "false");
+  });
+  iframe.addEventListener("error", function () {
+    panel.setAttribute("aria-busy", "false");
+    loading.textContent = "The assistant could not load. Please close and try again.";
+  });
+  markFrameLoading();
 
   var launcher = document.createElement("button");
   launcher.type = "button";
@@ -345,6 +368,7 @@
   });
 
   panel.appendChild(iframe);
+  panel.appendChild(loading);
   panel.appendChild(resizeButton);
   panel.appendChild(closeButton);
   root.appendChild(style);
