@@ -7,7 +7,6 @@ Canonical URL: https://www.theplacega.org/calendar
 ## Important headings
 
 - Upcoming Events
-- Free GED Classes
 - Mobile Food Pantry
 - Free GED Classes
 - Free GED Classes
@@ -46,18 +45,11 @@ Canonical URL: https://www.theplacega.org/calendar
 - Mobile Pantry at Cumming Elementary
 - Mobile Pantry at Chattahoochee Elementary
 - Free GED Classes
+- Free GED Classes
 
 ## Approved page content
 
 Upcoming Events
-Free GED Classes
-Monday, August 31, 2026
-6:00 PM
-8:00 PM
-Cumming Elementary
-(map)
-Google Calendar
-ICS
 Mobile Food Pantry
 Wednesday, September 2, 2026
 12:30 PM
@@ -855,6 +847,14 @@ Cumming Elementary
 Google Calendar
 ICS
 Free GED Classes
+Monday, August 31, 2026
+6:00 PM
+8:00 PM
+Cumming Elementary
+(map)
+Google Calendar
+ICS
+Free GED Classes
 Wednesday, August 26, 2026
 6:00 PM
 8:00 PM
@@ -1074,19 +1074,9 @@ Wednesday, June 17, 2026
 8:30 PM
 Google Calendar
 ICS
-Free GED Summer Study Hall
-Monday, June 15, 2026
-6:00 PM
-8:30 PM
-Google Calendar
-ICS
 
 ## Relevant official links
 
-- https://www.theplacega.org/calendar/free-ged-classes-dh7mh: https://www.theplacega.org/calendar/free-ged-classes-dh7mh
-- Free GED Classes: https://www.theplacega.org/calendar/free-ged-classes-dh7mh
-- ICS: https://www.theplacega.org/calendar/free-ged-classes-dh7mh
-- View Event →: https://www.theplacega.org/calendar/free-ged-classes-dh7mh
 - https://www.theplacega.org/calendar/mobile-food-pantry-september: https://www.theplacega.org/calendar/mobile-food-pantry-september
 - Mobile Food Pantry: https://www.theplacega.org/calendar/mobile-food-pantry-september
 - ICS: https://www.theplacega.org/calendar/mobile-food-pantry-september
@@ -1183,3 +1173,7 @@ ICS
 - Mobile Pantry at Chestatee Elementary: https://www.theplacega.org/calendar/mobile-pantry-chestatee-october
 - ICS: https://www.theplacega.org/calendar/mobile-pantry-chestatee-october
 - View Event →: https://www.theplacega.org/calendar/mobile-pantry-chestatee-october
+- https://www.theplacega.org/calendar/free-ged-classes-dh7mh-hc34f-5s5zj-mrzzh-fty3x-ntp9b-rx7h3-f6sf4: https://www.theplacega.org/calendar/free-ged-classes-dh7mh-hc34f-5s5zj-mrzzh-fty3x-ntp9b-rx7h3-f6sf4
+- Free GED Classes: https://www.theplacega.org/calendar/free-ged-classes-dh7mh-hc34f-5s5zj-mrzzh-fty3x-ntp9b-rx7h3-f6sf4
+- ICS: https://www.theplacega.org/calendar/free-ged-classes-dh7mh-hc34f-5s5zj-mrzzh-fty3x-ntp9b-rx7h3-f6sf4
+- View Event →: https://www.theplacega.org/calendar/free-ged-classes-dh7mh-hc34f-5s5zj-mrzzh-fty3x-ntp9b-rx7h3-f6sf4

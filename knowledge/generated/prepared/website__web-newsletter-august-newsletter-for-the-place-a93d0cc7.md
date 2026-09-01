@@ -1,4 +1,4 @@
-# August Newsletter for The Place — The Place
+# August 2026 Newsletter for The Place — The Place
 
 Source ID: web-newsletter-august-newsletter-for-the-place-a93d0cc7
 Source type: official_website
@@ -6,13 +6,13 @@ Canonical URL: https://www.theplacega.org/newsletter/august-newsletter-for-the-p
 
 ## Important headings
 
-- August Newsletter for The Place
+- August 2026 Newsletter for The Place
 - Join Hearts of Impact, Give Hope Every Month!
-- July Newsletter for The Place
+- July 2026 Newsletter for The Place
 
 ## Approved page content
 
-August Newsletter for The Place
+August 2026 Newsletter for The Place
 Welcome to The Cottage!
 A Place to Call Home. A Future to Call Her Own.
 The Cottage was created for goal-oriented young women ages 18–24 who are experiencing housing instability, young women who have dreams for their future and are ready to work toward them, but may need a safe and stable place to begin.
@@ -48,7 +48,7 @@ Hearts of Impact is our monthly giving community. When you join, you help The Pl
 Monthly gifts help provide food, housing support, and hope when neighbors need it most. Because these gifts are steady and reliable, we can plan ahead, respond faster, and serve more people when needs rise.
 Your monthly support means families don’t have to wait for help.
 Join Hearts of Impact today and make a difference every single month.
-July Newsletter for The Place
+July 2026 Newsletter for The Place
 
 ## Relevant official links
 
@@ -57,4 +57,4 @@ July Newsletter for The Place
 - Notes from The Place: https://www.theplacega.org/notes-from-the-place
 - Next
 Next
-July Newsletter for The Place: https://www.theplacega.org/newsletter/july-newsletter-for-the-place
+July 2026 Newsletter for The Place: https://www.theplacega.org/newsletter/july-newsletter-for-the-place

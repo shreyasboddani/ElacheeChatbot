@@ -1,6 +1,6 @@
 {
   "startedFrom": "https://www.theplacega.org",
-  "crawledAt": "2026-08-31T17:06:41.758Z",
+  "crawledAt": "2026-09-01T14:11:56.532Z",
   "maxPages": 150,
   "indexedPages": [
     {
@@ -67,37 +67,37 @@
       "id": "web-calendar-de55b331",
       "title": "Calendar — The Place",
       "url": "https://www.theplacega.org/calendar",
-      "fetchedAt": "2026-08-27T20:21:02.283Z"
+      "fetchedAt": "2026-09-01T14:10:35.902Z"
     },
     {
       "id": "web-newsletter-89967774",
       "title": "Newsletter — The Place",
       "url": "https://www.theplacega.org/newsletter",
-      "fetchedAt": "2026-08-27T20:21:03.011Z"
+      "fetchedAt": "2026-09-01T14:10:36.578Z"
     },
     {
       "id": "web-newsletter-april-newsletter-for-the-place-4813203b",
-      "title": "April Newsletter for The Place — The Place",
+      "title": "April 2026 Newsletter for The Place — The Place",
       "url": "https://www.theplacega.org/newsletter/april-newsletter-for-the-place",
-      "fetchedAt": "2026-08-05T11:32:29.589Z"
+      "fetchedAt": "2026-09-01T14:10:37.502Z"
     },
     {
       "id": "web-newsletter-march-newsletter-for-the-place-d244942f",
-      "title": "March Newsletter for The Place — The Place",
+      "title": "March 2026 Newsletter for The Place — The Place",
       "url": "https://www.theplacega.org/newsletter/march-newsletter-for-the-place",
-      "fetchedAt": "2026-07-23T18:36:52.147Z"
+      "fetchedAt": "2026-09-01T14:10:38.309Z"
     },
     {
       "id": "web-newsletter-february-newsletter-for-the-place-167d8e49",
-      "title": "February Newsletter for The Place — The Place",
+      "title": "February 2026 Newsletter for The Place — The Place",
       "url": "https://www.theplacega.org/newsletter/february-newsletter-for-the-place",
-      "fetchedAt": "2026-07-23T18:36:52.524Z"
+      "fetchedAt": "2026-09-01T14:10:38.883Z"
     },
     {
       "id": "web-newsletter-hello-january-see-whats-happening-at-the-place-3d7af936",
-      "title": "Hello January! See What’s Happening at The Place — The Place",
+      "title": "Hello January 2026! See What’s Happening at The Place — The Place",
       "url": "https://www.theplacega.org/newsletter/hello-january-see-whats-happening-at-the-place",
-      "fetchedAt": "2026-07-23T18:36:52.905Z"
+      "fetchedAt": "2026-09-01T14:10:39.729Z"
     },
     {
       "id": "web-notes-from-the-place-05499b1d",
@@ -209,15 +209,15 @@
     },
     {
       "id": "web-newsletter-july-newsletter-for-the-place-f07a02af",
-      "title": "July Newsletter for The Place — The Place",
+      "title": "July 2026 Newsletter for The Place — The Place",
       "url": "https://www.theplacega.org/newsletter/july-newsletter-for-the-place",
-      "fetchedAt": "2026-08-27T20:21:12.633Z"
+      "fetchedAt": "2026-09-01T14:10:52.014Z"
     },
     {
       "id": "web-newsletter-june-newsletter-for-the-place-75541533",
-      "title": "June Newsletter for The Place — The Place",
+      "title": "June 2026 Newsletter for The Place — The Place",
       "url": "https://www.theplacega.org/newsletter/june-newsletter-for-the-place",
-      "fetchedAt": "2026-08-05T11:32:42.680Z"
+      "fetchedAt": "2026-09-01T14:10:52.916Z"
     },
     {
       "id": "web-notes-from-the-place-five-ways-you-can-support-the-place-year-round-ef0baeb5",
@@ -239,9 +239,9 @@
     },
     {
       "id": "web-newsletter-august-newsletter-for-the-place-a93d0cc7",
-      "title": "August Newsletter for The Place — The Place",
+      "title": "August 2026 Newsletter for The Place — The Place",
       "url": "https://www.theplacega.org/newsletter/august-newsletter-for-the-place",
-      "fetchedAt": "2026-08-27T20:21:33.627Z"
+      "fetchedAt": "2026-09-01T14:10:56.379Z"
     },
     {
       "id": "web-calendar-forsyth-county-drive-through-pet-food-supply-pantry-205ae801",
@@ -414,23 +414,36 @@
   ],
   "failedPages": [
     {
+      "url": "https://www.theplacega.org/matching-gifts",
+      "reason": "No meaningful public page content found"
+    },
+    {
+      "url": "https://www.theplacega.org/gala-recap",
+      "reason": "No meaningful public page content found"
+    },
+    {
       "url": "https://www.theplacega.org/furniture-pickup-request",
       "reason": "No meaningful public page content found"
     },
     {
-      "url": "https://www.theplacega.org/volunteer-handbook",
-      "reason": "Refusing to fetch or follow a URL outside The Place website."
-    },
-    {
-      "url": "https://www.theplacega.org/matching-gifts",
+      "url": "https://www.theplacega.org/faroi",
       "reason": "No meaningful public page content found"
     },
     {
       "url": "https://www.theplacega.org/upcoming-events",
       "reason": "No meaningful public page content found"
+    },
+    {
+      "url": "https://www.theplacega.org/volunteer-handbook",
+      "reason": "Refusing to fetch or follow a URL outside The Place website."
     }
   ],
-  "duplicatePages": [],
+  "duplicatePages": [
+    {
+      "url": "https://www.theplacega.org/home",
+      "duplicateOf": "https://www.theplacega.org/"
+    }
+  ],
   "blockedPages": [],
   "retainedPages": [],
   "approvedRemovedPages": [],

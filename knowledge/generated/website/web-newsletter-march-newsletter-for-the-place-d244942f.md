@@ -1,13 +1,13 @@
-# March Newsletter for The Place — The Place
+# March 2026 Newsletter for The Place — The Place
 
 Source ID: web-newsletter-march-newsletter-for-the-place-d244942f
 Source type: official_website
 Canonical URL: https://www.theplacega.org/newsletter/march-newsletter-for-the-place
-Fetched at: 2026-07-23T18:36:52.147Z
+Fetched at: 2026-09-01T14:10:38.309Z
 
 ## Page content
 
-March Newsletter for The Place
+March 2026 Newsletter for The Place
 Gift of Prom reached an exciting milestone this year as we served 98 students across Forsyth and Dawson counties - our largest number ever.
 What began seven years ago as a small effort to ensure that every student can experience the joy of prom has grown significantly, from serving just 23 students in 2022 to 98 in 2026. This year’s record participation reflects both the growing need in our community and the generosity of our donors and volunteers who make this event possible.
 Thanks to remarkable community support, our boutique was stocked more abundantly than ever.
@@ -48,8 +48,8 @@ Hearts of Impact is our monthly giving community. When you join, you help The Pl
 Monthly gifts help provide food, housing support, and hope when neighbors need it most. Because these gifts are steady and reliable, we can plan ahead, respond faster, and serve more people when needs rise.
 Your monthly support means families don’t have to wait for help.
 Join Hearts of Impact today and make a difference every single month.
-April Newsletter for The Place
-February Newsletter for The Place
+April 2026 Newsletter for The Place
+February 2026 Newsletter for The Place
 
 ## Relevant links
 
@@ -57,7 +57,7 @@ February Newsletter for The Place
 - theplacega.org: https://www.theplacega.org/
 - Previous
 Previous
-April Newsletter for The Place: https://www.theplacega.org/newsletter/april-newsletter-for-the-place
+April 2026 Newsletter for The Place: https://www.theplacega.org/newsletter/april-newsletter-for-the-place
 - Next
 Next
-February Newsletter for The Place: https://www.theplacega.org/newsletter/february-newsletter-for-the-place
+February 2026 Newsletter for The Place: https://www.theplacega.org/newsletter/february-newsletter-for-the-place

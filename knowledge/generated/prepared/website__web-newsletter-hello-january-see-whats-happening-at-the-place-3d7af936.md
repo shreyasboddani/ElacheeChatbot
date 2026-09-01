@@ -1,4 +1,4 @@
-# Hello January! See What’s Happening at The Place — The Place
+# Hello January 2026! See What’s Happening at The Place — The Place
 
 Source ID: web-newsletter-hello-january-see-whats-happening-at-the-place-3d7af936
 Source type: official_website
@@ -6,13 +6,13 @@ Canonical URL: https://www.theplacega.org/newsletter/hello-january-see-whats-hap
 
 ## Important headings
 
-- Hello January! See What’s Happening at The Place
+- Hello January 2026! See What’s Happening at The Place
 - Join Hearts of Impact, Give Hope Every Month!
-- February Newsletter for The Place
+- February 2026 Newsletter for The Place
 
 ## Approved page content
 
-Hello January! See What’s Happening at The Place
+Hello January 2026! See What’s Happening at The Place
 In 2025, The Place met people in moments of crisis and walked alongside them toward stability.Because of our community, families had food, seniors weren’t forgotten, young women had a safe place to grow, and students were given tools to build a future beyond poverty.Thank you for being a part of our Impact!
 Welcome Our New Board Members!
 We are thrilled to welcome Jeff Allen, Anna Lyle, and Alex Warner to The Place Board of Directors! Each brings valuable experience, strong leadership, and a heart for serving our community.
@@ -45,11 +45,11 @@ Monthly gifts help provide food, housing support, and hope when neighbors need i
 Your monthly support means families don’t have to wait for help.
 Join Hearts of Impact today and make a difference every single month.
 Have a Heart of Impact
-February Newsletter for The Place
+February 2026 Newsletter for The Place
 
 ## Relevant official links
 
 - Greg Tirico: https://www.theplacega.org/newsletter
 - Previous
 Previous
-February Newsletter for The Place: https://www.theplacega.org/newsletter/february-newsletter-for-the-place
+February 2026 Newsletter for The Place: https://www.theplacega.org/newsletter/february-newsletter-for-the-place

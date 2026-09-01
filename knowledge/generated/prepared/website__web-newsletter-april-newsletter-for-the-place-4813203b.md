@@ -1,4 +1,4 @@
-# April Newsletter for The Place — The Place
+# April 2026 Newsletter for The Place — The Place
 
 Source ID: web-newsletter-april-newsletter-for-the-place-4813203b
 Source type: official_website
@@ -6,14 +6,14 @@ Canonical URL: https://www.theplacega.org/newsletter/april-newsletter-for-the-pl
 
 ## Important headings
 
-- April Newsletter for The Place
+- April 2026 Newsletter for The Place
 - Join Hearts of Impact, Give Hope Every Month!
-- June Newsletter for The Place
-- March Newsletter for The Place
+- June 2026 Newsletter for The Place
+- March 2026 Newsletter for The Place
 
 ## Approved page content
 
-April Newsletter for The Place
+April 2026 Newsletter for The Place
 Orange Duffel Bag Initiative Graduation:Celebrating 17 Students
 This past weekend, we celebrated an incredible milestone! 17 students graduated from our Orange Duffel Bag Initiative (ODBI)!
 Each student stood up and gave a final presentation, sharing their goals, what they’ve learned, and the steps they are taking toward their future. It was a powerful moment to see their growth, confidence, and determination on full display.Through the 12 weeks of ODBI, students build life skills like goal setting, decision making, and healthy coping strategies. They are challenged to think about their future and take real steps toward it. At graduation, you can truly see that transformation.
@@ -44,15 +44,15 @@ Hearts of Impact is our monthly giving community. When you join, you help The Pl
 Monthly gifts help provide food, housing support, and hope when neighbors need it most. Because these gifts are steady and reliable, we can plan ahead, respond faster, and serve more people when needs rise.
 Your monthly support means families don’t have to wait for help.
 Join Hearts of Impact today and make a difference every single month.
-June Newsletter for The Place
-March Newsletter for The Place
+June 2026 Newsletter for The Place
+March 2026 Newsletter for The Place
 
 ## Relevant official links
 
 - Greg Tirico: https://www.theplacega.org/newsletter
 - Previous
 Previous
-June Newsletter for The Place: https://www.theplacega.org/newsletter/june-newsletter-for-the-place
+June 2026 Newsletter for The Place: https://www.theplacega.org/newsletter/june-newsletter-for-the-place
 - Next
 Next
-March Newsletter for The Place: https://www.theplacega.org/newsletter/march-newsletter-for-the-place
+March 2026 Newsletter for The Place: https://www.theplacega.org/newsletter/march-newsletter-for-the-place

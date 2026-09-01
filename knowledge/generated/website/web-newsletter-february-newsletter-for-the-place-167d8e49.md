@@ -1,13 +1,13 @@
-# February Newsletter for The Place — The Place
+# February 2026 Newsletter for The Place — The Place
 
 Source ID: web-newsletter-february-newsletter-for-the-place-167d8e49
 Source type: official_website
 Canonical URL: https://www.theplacega.org/newsletter/february-newsletter-for-the-place
-Fetched at: 2026-07-23T18:36:52.524Z
+Fetched at: 2026-09-01T14:10:38.883Z
 
 ## Page content
 
-February Newsletter for The Place
+February 2026 Newsletter for The Place
 What does real, lasting change look like?
 In our newest podcast episode, we sit down with Meghan Livingston, our Case Management Manager at The Place, to talk about our Long-Term Case Management Program. This powerful program is made possible through a state grant and the generous support of community donors and partners like you.
 Through this program, we walk closely with families for an extended period of time as they work toward self-sustainability. Participants commit to meeting one-on-one with staff and attending adult education classes, including financial literacy classes. Together, we create a plan for stability. Along the way, we can help with rent, deposits, utilities, and other urgent expenses, removing barriers while families build the skills and confidence they need for long-term success.
@@ -41,15 +41,15 @@ Hearts of Impact is our monthly giving community. When you join, you help The Pl
 Monthly gifts help provide food, housing support, and hope when neighbors need it most. Because these gifts are steady and reliable, we can plan ahead, respond faster, and serve more people when needs rise.
 Your monthly support means families don’t have to wait for help.
 Join Hearts of Impact today and make a difference every single month.
-March Newsletter for The Place
-Hello January! See What’s Happening at The Place
+March 2026 Newsletter for The Place
+Hello January 2026! See What’s Happening at The Place
 
 ## Relevant links
 
 - Greg Tirico: https://www.theplacega.org/newsletter
 - Previous
 Previous
-March Newsletter for The Place: https://www.theplacega.org/newsletter/march-newsletter-for-the-place
+March 2026 Newsletter for The Place: https://www.theplacega.org/newsletter/march-newsletter-for-the-place
 - Next
 Next
-Hello January! See What’s Happening at The Place: https://www.theplacega.org/newsletter/hello-january-see-whats-happening-at-the-place
+Hello January 2026! See What’s Happening at The Place: https://www.theplacega.org/newsletter/hello-january-see-whats-happening-at-the-place

@@ -1,13 +1,13 @@
-# June Newsletter for The Place — The Place
+# June 2026 Newsletter for The Place — The Place
 
 Source ID: web-newsletter-june-newsletter-for-the-place-75541533
 Source type: official_website
 Canonical URL: https://www.theplacega.org/newsletter/june-newsletter-for-the-place
-Fetched at: 2026-08-05T11:32:42.680Z
+Fetched at: 2026-09-01T14:10:52.916Z
 
 ## Page content
 
-June Newsletter for The Place
+June 2026 Newsletter for The Place
 Summer Snack Packs
 We are so thankful for our community stepping up to help us meet the need of our students over summer break!
 When school is out, many children lose access to the meals they rely on throughout the week.Thanks to the generosity of individuals, businesses, churches, and community groups, we have been able to provide snack packs to help fill that gap and ensure local children have food during the summer months.So far this summer, we have given away over 1,000 snack packs at the Mobile Food Pantries at local schools.
@@ -30,15 +30,15 @@ Hearts of Impact is our monthly giving community. When you join, you help The Pl
 Monthly gifts help provide food, housing support, and hope when neighbors need it most. Because these gifts are steady and reliable, we can plan ahead, respond faster, and serve more people when needs rise.
 Your monthly support means families don’t have to wait for help.
 Join Hearts of Impact today and make a difference every single month.
-July Newsletter for The Place
-April Newsletter for The Place
+July 2026 Newsletter for The Place
+April 2026 Newsletter for The Place
 
 ## Relevant links
 
 - Greg Tirico: https://www.theplacega.org/newsletter
 - Previous
 Previous
-July Newsletter for The Place: https://www.theplacega.org/newsletter/july-newsletter-for-the-place
+July 2026 Newsletter for The Place: https://www.theplacega.org/newsletter/july-newsletter-for-the-place
 - Next
 Next
-April Newsletter for The Place: https://www.theplacega.org/newsletter/april-newsletter-for-the-place
+April 2026 Newsletter for The Place: https://www.theplacega.org/newsletter/april-newsletter-for-the-place
