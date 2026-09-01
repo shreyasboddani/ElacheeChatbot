@@ -1,3 +1,6 @@
+import { existsSync } from "node:fs";
+import path from "node:path";
+
 import { NextRequest } from "next/server";
 
 import {
@@ -28,8 +31,23 @@ export async function GET(request: NextRequest): Promise<Response> {
   }
 
   try {
+    const root = process.cwd();
+    const sourcesPath = path.join(root, "knowledge/generated/sources.json");
+    const preparedDirectory = path.join(root, "knowledge/generated/prepared");
+    if (!existsSync(sourcesPath) || !existsSync(preparedDirectory)) {
+      console.error("Knowledge corpus is unavailable to the Cron function", {
+        root,
+        sourcesAvailable: existsSync(sourcesPath),
+        preparedDirectoryAvailable: existsSync(preparedDirectory),
+      });
+      return Response.json(
+        { status: "retry" },
+        { status: 503, headers: { "Cache-Control": "no-store" } },
+      );
+    }
     const result = await runFileSearchSync({
       args: ["--reconcile", "--apply"],
+      root,
       environment: process.env,
       maxUploads: MAX_PARALLEL_UPLOADS,
       uploadAttempts: 1,
