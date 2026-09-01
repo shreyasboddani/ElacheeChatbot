@@ -382,7 +382,13 @@ async function preparedDocuments(
       if (!absolutePath || path.basename(absolutePath) !== source.fileName) {
         throw new Error(`Source ${source.id} has an unsafe document path.`);
       }
-      const content = await readFile(absolutePath);
+      let content: Uint8Array;
+      try {
+        content = await readFile(absolutePath);
+      } catch (error: unknown) {
+        if (error instanceof Error) error.name = "KnowledgePreparedDocumentReadError";
+        throw error;
+      }
       const contentHash = sha256(content);
       if (source.contentHash && source.contentHash !== contentHash) {
         throw new Error(`Source ${source.id} failed its content hash check.`);
@@ -689,7 +695,12 @@ export async function runFileSearchSync(
   }
 
   const root = options.root ?? process.cwd();
-  await verifyKnowledgeSnapshot(root);
+  try {
+    await verifyKnowledgeSnapshot(root);
+  } catch (error: unknown) {
+    if (error instanceof Error) error.name = "KnowledgeSnapshotVerificationError";
+    throw error;
+  }
   loadEnvConfig(root);
   const environment = options.environment ?? process.env;
   const apiKey = environment.GEMINI_API_KEY?.trim();
@@ -698,9 +709,14 @@ export async function runFileSearchSync(
   }
 
   const generatedDir = path.resolve(root, "knowledge/generated");
-  const sourcesValue: unknown = JSON.parse(
-    await readFile(path.join(generatedDir, "sources.json"), "utf8"),
-  );
+  let sourcesText: string;
+  try {
+    sourcesText = await readFile(path.join(generatedDir, "sources.json"), "utf8");
+  } catch (error: unknown) {
+    if (error instanceof Error) error.name = "KnowledgeManifestReadError";
+    throw error;
+  }
+  const sourcesValue: unknown = JSON.parse(sourcesText);
   if (!Array.isArray(sourcesValue) || !sourcesValue.every(isManifestEntry)) {
     throw new Error("sources.json is invalid. Run npm run knowledge:prepare first.");
   }
