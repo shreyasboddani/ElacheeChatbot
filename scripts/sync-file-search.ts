@@ -668,6 +668,7 @@ export interface FileSearchSyncOptions {
   operationTimeoutMs?: number;
   waitForIndexing?: boolean;
   writeReport?: boolean;
+  verifySnapshot?: boolean;
 }
 
 export interface FileSearchSyncResult {
@@ -695,11 +696,13 @@ export async function runFileSearchSync(
   }
 
   const root = options.root ?? process.cwd();
-  try {
-    await verifyKnowledgeSnapshot(root);
-  } catch (error: unknown) {
-    if (error instanceof Error) error.name = "KnowledgeSnapshotVerificationError";
-    throw error;
+  if (options.verifySnapshot !== false) {
+    try {
+      await verifyKnowledgeSnapshot(root);
+    } catch (error: unknown) {
+      if (error instanceof Error) error.name = "KnowledgeSnapshotVerificationError";
+      throw error;
+    }
   }
   loadEnvConfig(root);
   const environment = options.environment ?? process.env;

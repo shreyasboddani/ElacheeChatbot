@@ -55,6 +55,7 @@ export async function GET(request: NextRequest): Promise<Response> {
       operationTimeoutMs: INDEXING_TIMEOUT_MS,
       waitForIndexing: false,
       writeReport: false,
+      verifySnapshot: false,
     });
     return Response.json(
       { status: result.pendingUploads > 0 ? "indexing" : "synchronized", ...result },
