@@ -32,6 +32,9 @@ const nextConfig: NextConfig = {
     // removes an unnecessary runtime image-decoding surface.
     unoptimized: true,
   },
+  outputFileTracingIncludes: {
+    "/api/knowledge/sync": ["./knowledge/**/*"],
+  },
   async headers() {
     return [{ source: "/(.*)", headers: securityHeaders }];
   },

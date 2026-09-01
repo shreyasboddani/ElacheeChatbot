@@ -401,6 +401,32 @@ describe("incremental File Search reconciliation", () => {
     ]);
   });
 
+  it("waits for an in-progress replacement instead of creating duplicates", () => {
+    const plan = buildReconcilePlan(
+      [{ sourceId: "current", contentHash: "new-hash" }],
+      [
+        {
+          name: "stores/example/documents/current-uploading",
+          sourceId: "current",
+          contentHash: "new-hash",
+          managedBy: "the-place-chatbot",
+          state: "STATE_PENDING",
+        },
+        {
+          name: "stores/example/documents/current-old",
+          sourceId: "current",
+          contentHash: "old-hash",
+          managedBy: "the-place-chatbot",
+          state: "STATE_ACTIVE",
+        },
+      ],
+    );
+
+    expect(plan.uploads).toEqual([]);
+    expect(plan.pending).toEqual(["current"]);
+    expect(plan.deletions).toEqual([]);
+  });
+
   it("replaces a failed document even when its hash matches", () => {
     const plan = buildReconcilePlan(
       [{ sourceId: "failed", contentHash: "same" }],
@@ -601,17 +627,17 @@ describe("deployment automation configuration", () => {
     expect(refresh).not.toContain("knowledge:sync");
   });
 
-  it("runs reconciliation only in the Vercel production build", () => {
+  it("keeps Vercel deployments credential-free and schedules background reconciliation", () => {
     const vercel = JSON.parse(readFileSync("vercel.json", "utf8")) as Record<
       string,
       unknown
     >;
     expect(vercel.buildCommand).toBe("npm run build:vercel");
     const buildScript = readFileSync("scripts/vercel-build.ts", "utf8");
-    expect(buildScript).toContain('target !== "production"');
-    expect(buildScript).toContain("GEMINI_API_KEY");
-    expect(buildScript).toContain("--reconcile");
-    expect(buildScript).toContain("--apply");
+    expect(buildScript).toContain("knowledge:verify");
+    expect(buildScript).not.toContain("GEMINI_API_KEY");
+    expect(buildScript).not.toContain("knowledge:sync");
+    expect(JSON.stringify(vercel.crons)).toContain("/api/knowledge/sync");
   });
 
   it("keeps dependency update configuration valid", () => {

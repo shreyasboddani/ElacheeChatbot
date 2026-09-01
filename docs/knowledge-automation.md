@@ -1,6 +1,6 @@
 # Knowledge automation setup and operations
 
-The automation keeps the Gemini credential in Vercel only. GitHub Actions crawls and validates public website content without any Gemini or Vercel secret. A successful production deployment uses Vercel's existing server-side Gemini configuration to reconcile File Search before building the chatbot.
+The automation keeps all Gemini credentials in Vercel only. GitHub Actions crawls and validates public website content without any Gemini or Vercel secret. Production deployments validate and build the app; a protected Vercel Cron job uses Vercel's server-side configuration to reconcile Gemini File Search after deployment.
 
 ## Workflow sequence
 
@@ -9,11 +9,11 @@ The automation keeps the Gemini credential in Vercel only. GitHub Actions crawls
 3. Failed, incomplete, redirected, missing, or suspiciously shrunken approved pages retain their last-known-good documents and appear in `retainedPages`. A permanent removal requires a canonical URL already committed to `knowledge/source/approved-removals.json` after human review.
 4. The public Volunteer Handbook and July Birthday Cake Kits PDF are rebuilt from checksum-verified files in `knowledge/source/official-documents/`; the website crawler neither owns nor removes them.
 5. If deterministic crawl health and prepared retrieval content are unchanged, the workflow creates no commit. No Vercel deployment or Gemini request occurs.
-6. If content changed, GitHub verifies that only generated files changed, rejects tracked or newly created staff-FAQ changes, counts tracked and untracked prepared documents toward the 20-document automatic limit, and runs all tests, lint, production build, and diff checks. Every deletion must be a website Markdown document, match an explicit removal recorded in `crawl-health.json`, and stay within a separate five-document automatic-removal cap.
+6. If content changed, GitHub verifies that only generated files changed, rejects tracked or newly created staff-FAQ changes, counts tracked and untracked prepared documents toward the 20-document automatic limit, and runs all tests, lint, production build, and diff checks. Every deletion must be a website Markdown document and stay within a separate five-document automatic-removal cap.
 7. Immediately before committing, it fetches `origin/main`. If `main` advanced during validation, it exits instead of rebasing or overwriting newer work. Otherwise, the knowledge bot creates a normal commit directly on `main` and pushes without force.
 8. Vercel's Git integration starts a Production deployment for the new `main` commit. `vercel.json` selects `npm run build:vercel`.
-9. The production build requires the Vercel `GEMINI_API_KEY` and `GEMINI_FILE_SEARCH_STORE`, verifies the committed corpus again, uploads changed documents through the bounded native HTTPS resumable transport, deletes obsolete managed copies only after all uploads succeed, verifies zero remote drift, and then runs `next build`.
-10. Preview and Development builds run `next build` without mutating Gemini. After a successful Production build, the deployed API uses the same Vercel key and store to answer grounded questions.
+9. The production build verifies the committed corpus and runs `next build`; it never waits for Gemini indexing or requires a Gemini key.
+10. Vercel Cron invokes `/api/knowledge/sync` daily. The protected route uses only Vercel's `GEMINI_API_KEY` and `GEMINI_FILE_SEARCH_STORE`, starts missing replacements without waiting for indexing, and deletes stale managed copies only on a later run after every replacement is active. Preview and Development builds never mutate Gemini.
 
 The GitHub workflow never receives, references, or logs the Gemini key. Crawl timestamps remain in audit data and the source manifest but are omitted from retrieval text, preventing timestamp-only changes from consuming indexing quota.
 
@@ -31,20 +31,21 @@ Add these values to the Vercel **Production** environment:
 
 | Kind | Name | Purpose |
 | --- | --- | --- |
-| Sensitive | `GEMINI_API_KEY` | Server-side Gemini authentication for build-time synchronization and runtime answers. |
+| Sensitive | `GEMINI_API_KEY` | Server-side Gemini authentication for Cron synchronization and runtime answers. |
 | Variable | `GEMINI_FILE_SEARCH_STORE` | Stable existing `fileSearchStores/...` resource name. |
 | Variable | `GEMINI_MODEL` | Runtime chat model, currently `gemini-3.5-flash-lite`. |
 | Variable | `NEXT_PUBLIC_SITE_URL` | Stable public deployment origin. |
+| Sensitive | `CRON_SECRET` | Random value (16+ characters) used only by Vercel to authorize `/api/knowledge/sync`. |
 
 The key must never use the `NEXT_PUBLIC_` prefix. Vercel makes environment variables available during builds and Function execution, while keeping sensitive values outside repository files. Variable changes apply only to new deployments.
 
-Preview may have its own key and store if preview chat must function, but the build script never mutates File Search unless `VERCEL_ENV` is exactly `production`.
+Vercel automatically sends `CRON_SECRET` as the authorization header for the configured daily Cron invocation. The Gemini key must never use the `NEXT_PUBLIC_` prefix and is never added to GitHub. Changing the Gemini key or store in Vercel takes effect after the next production deployment, with no GitHub secret or workflow change required.
 
 ## Initial and periodic checks
 
 1. Push the automation and verified corpus to `main`.
-2. Confirm the Vercel Production build log runs, in order: `knowledge:verify`, `knowledge:sync -- --reconcile --apply`, and `next build`.
-3. Confirm the sync reports zero unknown documents and ends with the full expected unchanged count after verification.
+2. Confirm the Vercel Production build log runs `knowledge:verify` and then `next build` without a File Search synchronization step.
+3. Confirm the Vercel Cron Job at `/api/knowledge/sync` reports `indexing` or `synchronized`; a later run removes stale managed copies after pending replacements become active.
 4. Run **Actions -> Detect and commit website knowledge updates -> Run workflow**.
 5. Confirm an unchanged crawl completes without creating a commit.
 6. Confirm the deployed `/api/health`, one grounded question, one follow-up, source cards, and a contact fallback.
@@ -92,7 +93,7 @@ Update Vercel's store variable after verifying a new store. Keep the previous st
 - Approved-page fetch or suspicious shrink failure: retain last-known-good content and record the warning.
 - Staff FAQ or out-of-boundary file change: no commit.
 - `main` advances during validation: no push; the next run starts from the new revision.
-- Missing Vercel Gemini configuration: the new Production build fails and the existing deployment stays live.
+- Missing Vercel Gemini configuration: deployment still succeeds, while the protected Cron job returns a retriable failure and the existing File Search store remains untouched.
 - Unmanaged Gemini documents: reconciliation aborts before mutation.
 - Upload failure: every pre-existing remote document remains. A successfully uploaded replacement may remain as a safe duplicate for the next retry.
 - Upload transport accepts only `fileSearchStores/...` resources and the exact HTTPS `generativelanguage.googleapis.com` upload host. The Gemini key is sent only in the upload-session header, never in a URL, document body, report, or log.

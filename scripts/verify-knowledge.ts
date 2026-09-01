@@ -429,7 +429,7 @@ export async function verifyKnowledgeSnapshot(
       continue;
     }
     try {
-      const content = await readFile(sourcePath);
+      const content = await readFile(/* turbopackIgnore: true */ sourcePath);
       if (!content.subarray(0, 5).equals(Buffer.from("%PDF-"))) {
         errors.push(`Official document ${source.id} is not a valid PDF.`);
       }
@@ -568,7 +568,7 @@ export async function verifyKnowledgeSnapshot(
       errors.push(`Manager FAQ ${source.id} has an unexpected priority.`);
     }
     try {
-      const fileStat = await stat(resolvedPath);
+      const fileStat = await stat(/* turbopackIgnore: true */ resolvedPath);
       totalBytes += fileStat.size;
       const maximumDocumentBytes =
         source.sourceType === "official_document"
@@ -577,7 +577,7 @@ export async function verifyKnowledgeSnapshot(
       if (fileStat.size > maximumDocumentBytes) {
         errors.push(`Source ${source.id} exceeds the per-document size limit.`);
       }
-      const content = await readFile(resolvedPath);
+      const content = await readFile(/* turbopackIgnore: true */ resolvedPath);
       if (source.sourceType === "official_document") {
         if (!content.subarray(0, 5).equals(Buffer.from("%PDF-"))) {
           errors.push(`Official document ${source.id} is not a valid prepared PDF.`);

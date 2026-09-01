@@ -8,29 +8,9 @@ export type BuildEnvironment = Readonly<Record<string, string | undefined>>;
 export function buildVercelCommandPlan(
   environment: BuildEnvironment,
 ): NpmArguments[] {
-  const target = environment.VERCEL_ENV?.trim();
-  if (!target) {
-    throw new Error(
-      "VERCEL_ENV is missing. Refusing to guess whether this is a production deployment.",
-    );
-  }
-
-  if (target !== "production") {
-    return [["run", "build"]];
-  }
-
-  const missing = ["GEMINI_API_KEY", "GEMINI_FILE_SEARCH_STORE"].filter(
-    (name) => !environment[name]?.trim(),
-  );
-  if (missing.length > 0) {
-    throw new Error(
-      `Production knowledge synchronization requires these Vercel variables: ${missing.join(", ")}.`,
-    );
-  }
-
+  void environment;
   return [
     ["run", "knowledge:verify"],
-    ["run", "knowledge:sync", "--", "--reconcile", "--apply"],
     ["run", "build"],
   ];
 }
@@ -67,11 +47,6 @@ export async function runVercelBuild(
   runner: NpmRunner = runNpm,
 ): Promise<void> {
   const plan = buildVercelCommandPlan(environment);
-  if (environment.VERCEL_ENV !== "production") {
-    process.stdout.write(
-      "Non-production deployment: skipping Gemini File Search mutation.\n",
-    );
-  }
   for (const args of plan) await runner(args);
 }
 

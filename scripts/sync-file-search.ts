@@ -44,6 +44,7 @@ export interface ReconcileDeletion {
 
 export interface ReconcilePlan {
   uploads: string[];
+  pending: string[];
   deletions: ReconcileDeletion[];
   unchanged: string[];
   unknownRemoteDocuments: string[];
@@ -92,6 +93,13 @@ function isActiveDocument(document: RemoteDocumentFingerprint): boolean {
   );
 }
 
+function isIndexingDocument(document: RemoteDocumentFingerprint): boolean {
+  return (
+    !isActiveDocument(document) &&
+    !/(?:FAILED|ERROR)/i.test(document.state ?? "")
+  );
+}
+
 export function buildReconcilePlan(
   desiredDocuments: DesiredDocumentFingerprint[],
   remoteDocuments: RemoteDocumentFingerprint[],
@@ -121,6 +129,7 @@ export function buildReconcilePlan(
   }
 
   const uploads: string[] = [];
+  const pending: string[] = [];
   const deletions: ReconcileDeletion[] = [];
   const unchanged: string[] = [];
   for (const desired of desiredDocuments) {
@@ -131,6 +140,16 @@ export function buildReconcilePlan(
         isActiveDocument(candidate),
     );
     if (exact.length === 0) {
+      if (
+        candidates.some(
+          (candidate) =>
+            candidate.contentHash === desired.contentHash &&
+            isIndexingDocument(candidate),
+        )
+      ) {
+        pending.push(desired.sourceId);
+        continue;
+      }
       uploads.push(desired.sourceId);
       deletions.push(
         ...candidates.flatMap((candidate) =>
@@ -182,7 +201,7 @@ export function buildReconcilePlan(
     );
   }
 
-  return { uploads, deletions, unchanged, unknownRemoteDocuments };
+  return { uploads, pending, deletions, unchanged, unknownRemoteDocuments };
 }
 
 async function waitForOperation(
@@ -190,25 +209,32 @@ async function waitForOperation(
   getOperation: (
     current: UploadToFileSearchStoreOperation,
   ) => Promise<UploadToFileSearchStoreOperation>,
+  timeoutMs = OPERATION_TIMEOUT_MS,
 ) {
   const startedAt = Date.now();
   let current = operation;
   while (!current.done) {
-    if (Date.now() - startedAt > OPERATION_TIMEOUT_MS) {
-      throw new Error("File Search indexing timed out after 10 minutes.");
+    if (Date.now() - startedAt > timeoutMs) {
+      throw new Error(
+        `File Search indexing timed out after ${Math.floor(timeoutMs / 60_000)} minutes.`,
+      );
     }
     await new Promise((resolve) => setTimeout(resolve, POLL_INTERVAL_MS));
     current = await getOperation(current);
   }
-  if (current.error) {
+  assertSuccessfulOperation(current);
+}
+
+function assertSuccessfulOperation(operation: UploadToFileSearchStoreOperation): void {
+  if (operation.error) {
     const operationError = new Error(
       "Gemini reported an indexing failure for this document.",
     ) as Error & { status?: number; code?: string };
-    if (typeof current.error.code === "number") {
-      operationError.status = current.error.code;
+    if (typeof operation.error.code === "number") {
+      operationError.status = operation.error.code;
     }
-    if (typeof current.error.status === "string") {
-      operationError.code = current.error.status;
+    if (typeof operation.error.status === "string") {
+      operationError.code = operation.error.status;
     }
     throw operationError;
   }
@@ -402,10 +428,26 @@ async function uploadDocuments(
   apiKey: string,
   storeName: string,
   documents: PreparedDocument[],
+  options: {
+    attempts?: number;
+    concurrency?: number;
+    operationTimeoutMs?: number;
+    waitForIndexing?: boolean;
+  } = {},
 ) {
   const failures: Array<{ sourceId: string; reason: string }> = [];
   let uploaded = 0;
-  for (const document of documents) {
+  const concurrency = Math.min(
+    documents.length,
+    Math.max(1, Math.floor(options.concurrency ?? 1)),
+  );
+  let nextDocument = 0;
+
+  async function uploadNext(): Promise<void> {
+    const index = nextDocument;
+    nextDocument += 1;
+    const document = documents[index];
+    if (!document) return;
     try {
       await retryTransientFileSearchOperation(
         async () => {
@@ -423,11 +465,18 @@ async function uploadDocuments(
               },
             },
           });
-          await waitForOperation(operation, (current) =>
-            ai.operations.get({ operation: current }),
-          );
+          if (options.waitForIndexing === false) {
+            if (operation.done) assertSuccessfulOperation(operation);
+          } else {
+            await waitForOperation(
+              operation,
+              (current) => ai.operations.get({ operation: current }),
+              options.operationTimeoutMs,
+            );
+          }
         },
         {
+          attempts: options.attempts,
           onRetry: (details, nextAttempt, attempts) => {
             process.stderr.write(
               `Transient File Search upload failure for ${document.source.id}; retrying attempt ${nextAttempt}/${attempts} (${JSON.stringify(details)}).\n`,
@@ -448,6 +497,11 @@ async function uploadDocuments(
       );
     }
   }
+  await Promise.all(
+    Array.from({ length: concurrency }, async () => {
+      while (nextDocument < documents.length) await uploadNext();
+    }),
+  );
   return { uploaded, failures };
 }
 
@@ -598,10 +652,33 @@ async function writeSyncReport(
   ]);
 }
 
-async function main() {
-  const createNewStore = process.argv.includes("--new-store");
-  const reconcile = process.argv.includes("--reconcile");
-  const apply = process.argv.includes("--apply");
+export interface FileSearchSyncOptions {
+  args?: readonly string[];
+  root?: string;
+  environment?: Readonly<Record<string, string | undefined>>;
+  maxUploads?: number;
+  uploadAttempts?: number;
+  uploadConcurrency?: number;
+  operationTimeoutMs?: number;
+  waitForIndexing?: boolean;
+  writeReport?: boolean;
+}
+
+export interface FileSearchSyncResult {
+  desiredDocuments: number;
+  uploaded: number;
+  deleted: number;
+  unchanged: number;
+  pendingUploads: number;
+}
+
+export async function runFileSearchSync(
+  options: FileSearchSyncOptions = {},
+): Promise<FileSearchSyncResult> {
+  const args = options.args ?? process.argv.slice(2);
+  const createNewStore = args.includes("--new-store");
+  const reconcile = args.includes("--reconcile");
+  const apply = args.includes("--apply");
   if (createNewStore === reconcile) {
     throw new Error(
       "Choose exactly one sync mode: --new-store or --reconcile.",
@@ -611,10 +688,11 @@ async function main() {
     throw new Error("--apply is only valid with --reconcile.");
   }
 
-  const root = process.cwd();
+  const root = options.root ?? process.cwd();
   await verifyKnowledgeSnapshot(root);
   loadEnvConfig(root);
-  const apiKey = process.env.GEMINI_API_KEY?.trim();
+  const environment = options.environment ?? process.env;
+  const apiKey = environment.GEMINI_API_KEY?.trim();
   if (!apiKey) {
     throw new Error("GEMINI_API_KEY is not configured. No upload was attempted.");
   }
@@ -654,29 +732,42 @@ async function main() {
     if (!store.name) {
       throw new Error("Gemini did not return a File Search store name.");
     }
-    const uploadResult = await uploadDocuments(ai, apiKey, store.name, documents);
+    const uploadResult = await uploadDocuments(ai, apiKey, store.name, documents, {
+      attempts: options.uploadAttempts,
+      concurrency: options.uploadConcurrency,
+      operationTimeoutMs: options.operationTimeoutMs,
+      waitForIndexing: options.waitForIndexing,
+    });
     if (uploadResult.failures.length === 0) {
       await verifyRemoteDocuments(ai, store.name, desired);
     }
-    await writeSyncReport(generatedDir, {
-      storeName: store.name,
-      displayName: store.displayName,
-      mode: "new-store",
-      desiredDocuments: documents.length,
-      uploaded: uploadResult.uploaded,
-      deleted: 0,
-      unchanged: 0,
-      uploadFailures: uploadResult.failures,
-      deleteFailures: [],
-    });
+    if (options.writeReport !== false) {
+      await writeSyncReport(generatedDir, {
+        storeName: store.name,
+        displayName: store.displayName,
+        mode: "new-store",
+        desiredDocuments: documents.length,
+        uploaded: uploadResult.uploaded,
+        deleted: 0,
+        unchanged: 0,
+        uploadFailures: uploadResult.failures,
+        deleteFailures: [],
+      });
+    }
     process.stdout.write(`GEMINI_FILE_SEARCH_STORE=${store.name}\n`);
     if (uploadResult.failures.length > 0) {
       throw new Error(`${uploadResult.failures.length} document upload(s) failed.`);
     }
-    return;
+    return {
+      desiredDocuments: documents.length,
+      uploaded: uploadResult.uploaded,
+      deleted: 0,
+      unchanged: 0,
+      pendingUploads: 0,
+    };
   }
 
-  const configuredStore = process.env.GEMINI_FILE_SEARCH_STORE?.trim();
+  const configuredStore = environment.GEMINI_FILE_SEARCH_STORE?.trim();
   if (!configuredStore) {
     throw new Error(
       "GEMINI_FILE_SEARCH_STORE is required for --reconcile mode.",
@@ -693,6 +784,7 @@ async function main() {
         desiredDocuments: desired.length,
         remoteDocuments: remoteDocuments.length,
         uploads: plan.uploads.length,
+        pending: plan.pending.length,
         deletions: plan.deletions.length,
         unchanged: plan.unchanged.length,
         unknownRemoteDocuments: plan.unknownRemoteDocuments.length,
@@ -705,7 +797,13 @@ async function main() {
     process.stdout.write(
       "Preview only. Re-run with --reconcile --apply after reviewing the plan.\n",
     );
-    return;
+    return {
+      desiredDocuments: documents.length,
+      uploaded: 0,
+      deleted: 0,
+      unchanged: plan.unchanged.length,
+      pendingUploads: plan.uploads.length + plan.pending.length,
+    };
   }
   if (plan.unknownRemoteDocuments.length > 0) {
     throw new Error(
@@ -713,7 +811,12 @@ async function main() {
     );
   }
 
-  const documentsToUpload = plan.uploads.flatMap((sourceId) => {
+  const uploadLimit =
+    options.maxUploads === undefined
+      ? plan.uploads.length
+      : Math.max(1, Math.floor(options.maxUploads));
+  const selectedUploads = plan.uploads.slice(0, uploadLimit);
+  const documentsToUpload = selectedUploads.flatMap((sourceId) => {
     const document = bySourceId.get(sourceId);
     return document ? [document] : [];
   });
@@ -722,43 +825,77 @@ async function main() {
     apiKey,
     store.name,
     documentsToUpload,
+    {
+      attempts: options.uploadAttempts,
+      concurrency: options.uploadConcurrency,
+      operationTimeoutMs: options.operationTimeoutMs,
+      waitForIndexing: options.waitForIndexing,
+    },
   );
   if (uploadResult.failures.length > 0) {
-    await writeSyncReport(generatedDir, {
-      storeName: store.name,
-      displayName: store.displayName,
-      mode: "reconcile",
-      desiredDocuments: documents.length,
-      uploaded: uploadResult.uploaded,
-      deleted: 0,
-      unchanged: plan.unchanged.length,
-      uploadFailures: uploadResult.failures,
-      deleteFailures: [],
-    });
+    if (options.writeReport !== false) {
+      await writeSyncReport(generatedDir, {
+        storeName: store.name,
+        displayName: store.displayName,
+        mode: "reconcile",
+        desiredDocuments: documents.length,
+        uploaded: uploadResult.uploaded,
+        deleted: 0,
+        unchanged: plan.unchanged.length,
+        uploadFailures: uploadResult.failures,
+        deleteFailures: [],
+      });
+    }
     throw new Error(
       `${uploadResult.failures.length} upload(s) failed; existing documents were preserved.`,
     );
   }
 
-  const cleanupPlan = await planAfterUploads(ai, store.name, desired);
-  if (
-    cleanupPlan.unknownRemoteDocuments.length > 0 ||
-    cleanupPlan.uploads.length > 0
-  ) {
-    await writeSyncReport(generatedDir, {
-      storeName: store.name,
-      displayName: store.displayName,
-      mode: "reconcile",
+  if (selectedUploads.length < plan.uploads.length) {
+    return {
       desiredDocuments: documents.length,
       uploaded: uploadResult.uploaded,
       deleted: 0,
-      unchanged: cleanupPlan.unchanged.length,
-      uploadFailures: cleanupPlan.uploads.map((sourceId) => ({
-        sourceId,
-        reason: "The replacement was not active after upload; existing documents were preserved.",
-      })),
-      deleteFailures: [],
-    });
+      unchanged: plan.unchanged.length,
+      pendingUploads:
+        plan.uploads.length - selectedUploads.length + plan.pending.length,
+    };
+  }
+
+  const cleanupPlan = await planAfterUploads(ai, store.name, desired);
+  if (
+    cleanupPlan.unknownRemoteDocuments.length > 0 ||
+    cleanupPlan.uploads.length > 0 ||
+    cleanupPlan.pending.length > 0
+  ) {
+    if (
+      options.waitForIndexing === false &&
+      cleanupPlan.unknownRemoteDocuments.length === 0
+    ) {
+      return {
+        desiredDocuments: documents.length,
+        uploaded: uploadResult.uploaded,
+        deleted: 0,
+        unchanged: cleanupPlan.unchanged.length,
+        pendingUploads: cleanupPlan.uploads.length + cleanupPlan.pending.length,
+      };
+    }
+    if (options.writeReport !== false) {
+      await writeSyncReport(generatedDir, {
+        storeName: store.name,
+        displayName: store.displayName,
+        mode: "reconcile",
+        desiredDocuments: documents.length,
+        uploaded: uploadResult.uploaded,
+        deleted: 0,
+        unchanged: cleanupPlan.unchanged.length,
+        uploadFailures: [...cleanupPlan.uploads, ...cleanupPlan.pending].map((sourceId) => ({
+          sourceId,
+          reason: "The replacement was not active after upload; existing documents were preserved.",
+        })),
+        deleteFailures: [],
+      });
+    }
     throw new Error(
       "The replacement documents were not fully active after upload; existing documents were preserved.",
     );
@@ -768,26 +905,35 @@ async function main() {
   if (deleteResult.failures.length === 0) {
     await verifyRemoteDocuments(ai, store.name, desired);
   }
-  await writeSyncReport(generatedDir, {
-    storeName: store.name,
-    displayName: store.displayName,
-    mode: "reconcile",
-    desiredDocuments: documents.length,
-    uploaded: uploadResult.uploaded,
-    deleted: deleteResult.deleted,
-    unchanged: desired.length,
-    uploadFailures: [],
-    deleteFailures: deleteResult.failures,
-  });
+  if (options.writeReport !== false) {
+    await writeSyncReport(generatedDir, {
+      storeName: store.name,
+      displayName: store.displayName,
+      mode: "reconcile",
+      desiredDocuments: documents.length,
+      uploaded: uploadResult.uploaded,
+      deleted: deleteResult.deleted,
+      unchanged: desired.length,
+      uploadFailures: [],
+      deleteFailures: deleteResult.failures,
+    });
+  }
   if (deleteResult.failures.length > 0) {
     throw new Error(`${deleteResult.failures.length} stale document deletion(s) failed.`);
   }
   process.stdout.write(`GEMINI_FILE_SEARCH_STORE=${store.name}\n`);
+  return {
+    desiredDocuments: documents.length,
+    uploaded: uploadResult.uploaded,
+    deleted: deleteResult.deleted,
+    unchanged: desired.length,
+    pendingUploads: 0,
+  };
 }
 
 const invokedPath = process.argv[1] ? pathToFileURL(process.argv[1]).href : "";
 if (import.meta.url === invokedPath) {
-  main().catch((error: unknown) => {
+  runFileSearchSync().catch((error: unknown) => {
     const message = error instanceof Error ? error.message : "Unknown sync error";
     process.stderr.write(`File Search sync failed: ${message}\n`);
     process.exitCode = 1;
