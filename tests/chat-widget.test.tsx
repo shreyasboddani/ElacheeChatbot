@@ -57,7 +57,7 @@ describe("chat widget lifecycle", () => {
     expect(screen.getAllByText(/approved information from The Place/i)).toHaveLength(1);
   });
 
-  it("does not reveal a second launcher when a hidden embedded chat is minimized", () => {
+  it("keeps a hidden embedded chat ready when it is minimized", () => {
     render(
       <ChatWidget
         variant="embedded"
@@ -68,7 +68,7 @@ describe("chat widget lifecycle", () => {
 
     fireEvent.click(screen.getByRole("button", { name: "Minimize chat" }));
 
-    expect(screen.queryByRole("dialog")).toBeNull();
+    expect(screen.getByRole("dialog")).toBeDefined();
     expect(screen.queryByRole("button", { name: "Open The Place assistant" })).toBeNull();
     expect(EMBED_CLOSE_MESSAGE_TYPE).toBe("the-place-chatbot:close");
   });

@@ -106,11 +106,17 @@ export function ChatWidget({
 
   function minimizePanel() {
     notifyEmbeddingHostToClose();
+    // The loader owns visibility for an embedded chat. Keeping the iframe's
+    // panel mounted and open makes the next launcher click immediately usable.
+    if (embedded) return;
     setOpen(false);
   }
 
   function closePanel() {
     notifyEmbeddingHostToClose();
+    // As above, the embedding host hides the iframe. Unmounting it here would
+    // leave the host with a blank panel when the visitor reopens the widget.
+    if (embedded) return;
     setOpen(false);
     setPanelMounted(false);
   }
