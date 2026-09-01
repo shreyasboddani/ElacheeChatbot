@@ -3,7 +3,7 @@
 Source ID: web-calendar-de55b331
 Source type: official_website
 Canonical URL: https://www.theplacega.org/calendar
-Fetched at: 2026-09-01T14:10:35.902Z
+Fetched at: 2026-09-01T18:39:16.802Z
 
 ## Page content
 
@@ -192,6 +192,14 @@ Wednesday, October 14, 2026
 6:00 PM
 8:00 PM
 Cumming Elementary
+(map)
+Google Calendar
+ICS
+Witches Night Out
+Thursday, October 15, 2026
+6:00 PM
+10:00 PM
+Halcyon
 (map)
 Google Calendar
 ICS
@@ -1127,11 +1135,11 @@ ICS
 - Free GED Classes: https://www.theplacega.org/calendar/free-ged-classes-6t997-zlysg-d4yp4-syh62-xat6g-nf3y3-ergt8-rbe43
 - ICS: https://www.theplacega.org/calendar/free-ged-classes-6t997-zlysg-d4yp4-syh62-xat6g-nf3y3-ergt8-rbe43
 - View Event →: https://www.theplacega.org/calendar/free-ged-classes-6t997-zlysg-d4yp4-syh62-xat6g-nf3y3-ergt8-rbe43
+- https://www.theplacega.org/calendar/witches-night-out: https://www.theplacega.org/calendar/witches-night-out
+- Witches Night Out: https://www.theplacega.org/calendar/witches-night-out
+- ICS: https://www.theplacega.org/calendar/witches-night-out
+- View Event →: https://www.theplacega.org/calendar/witches-night-out
 - https://www.theplacega.org/calendar/mobile-pantry-chestatee-october: https://www.theplacega.org/calendar/mobile-pantry-chestatee-october
 - Mobile Pantry at Chestatee Elementary: https://www.theplacega.org/calendar/mobile-pantry-chestatee-october
 - ICS: https://www.theplacega.org/calendar/mobile-pantry-chestatee-october
 - View Event →: https://www.theplacega.org/calendar/mobile-pantry-chestatee-october
-- https://www.theplacega.org/calendar/free-ged-classes-dh7mh-hc34f-5s5zj-mrzzh-fty3x-ntp9b-rx7h3-f6sf4: https://www.theplacega.org/calendar/free-ged-classes-dh7mh-hc34f-5s5zj-mrzzh-fty3x-ntp9b-rx7h3-f6sf4
-- Free GED Classes: https://www.theplacega.org/calendar/free-ged-classes-dh7mh-hc34f-5s5zj-mrzzh-fty3x-ntp9b-rx7h3-f6sf4
-- ICS: https://www.theplacega.org/calendar/free-ged-classes-dh7mh-hc34f-5s5zj-mrzzh-fty3x-ntp9b-rx7h3-f6sf4
-- View Event →: https://www.theplacega.org/calendar/free-ged-classes-dh7mh-hc34f-5s5zj-mrzzh-fty3x-ntp9b-rx7h3-f6sf4

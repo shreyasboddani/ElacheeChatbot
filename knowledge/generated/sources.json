@@ -105,7 +105,7 @@
     "documentPath": "knowledge/generated/prepared/website__web-calendar-de55b331.md",
     "title": "Calendar — The Place",
     "url": "https://www.theplacega.org/calendar",
-    "fetchedAt": "2026-09-01T14:10:35.902Z",
+    "fetchedAt": "2026-09-01T18:39:16.802Z",
     "sourceType": "official_website",
     "priority": 50
   },
@@ -676,6 +676,16 @@
     "title": "Red Robin Dine to Donate — The Place",
     "url": "https://www.theplacega.org/calendar/red-robin-dine-to-donate",
     "fetchedAt": "2026-08-23T16:26:03.381Z",
+    "sourceType": "official_website",
+    "priority": 50
+  },
+  {
+    "id": "web-calendar-witches-night-out-c2da5a76",
+    "fileName": "website__web-calendar-witches-night-out-c2da5a76.md",
+    "documentPath": "knowledge/generated/prepared/website__web-calendar-witches-night-out-c2da5a76.md",
+    "title": "Witches Night Out — The Place",
+    "url": "https://www.theplacega.org/calendar/witches-night-out",
+    "fetchedAt": "2026-09-01T18:40:03.493Z",
     "sourceType": "official_website",
     "priority": 50
   },

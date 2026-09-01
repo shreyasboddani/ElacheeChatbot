@@ -1,6 +1,6 @@
 {
   "startedFrom": "https://www.theplacega.org",
-  "crawledAt": "2026-09-01T14:11:56.532Z",
+  "crawledAt": "2026-09-01T18:40:04.381Z",
   "maxPages": 150,
   "indexedPages": [
     {
@@ -67,7 +67,7 @@
       "id": "web-calendar-de55b331",
       "title": "Calendar — The Place",
       "url": "https://www.theplacega.org/calendar",
-      "fetchedAt": "2026-09-01T14:10:35.902Z"
+      "fetchedAt": "2026-09-01T18:39:16.802Z"
     },
     {
       "id": "web-newsletter-89967774",
@@ -410,42 +410,35 @@
       "title": "Red Robin Dine to Donate — The Place",
       "url": "https://www.theplacega.org/calendar/red-robin-dine-to-donate",
       "fetchedAt": "2026-08-23T16:26:03.381Z"
+    },
+    {
+      "id": "web-calendar-witches-night-out-c2da5a76",
+      "title": "Witches Night Out — The Place",
+      "url": "https://www.theplacega.org/calendar/witches-night-out",
+      "fetchedAt": "2026-09-01T18:40:03.493Z"
     }
   ],
   "failedPages": [
-    {
-      "url": "https://www.theplacega.org/matching-gifts",
-      "reason": "No meaningful public page content found"
-    },
-    {
-      "url": "https://www.theplacega.org/gala-recap",
-      "reason": "No meaningful public page content found"
-    },
     {
       "url": "https://www.theplacega.org/furniture-pickup-request",
       "reason": "No meaningful public page content found"
     },
     {
-      "url": "https://www.theplacega.org/faroi",
+      "url": "https://www.theplacega.org/volunteer-handbook",
+      "reason": "Refusing to fetch or follow a URL outside The Place website."
+    },
+    {
+      "url": "https://www.theplacega.org/matching-gifts",
       "reason": "No meaningful public page content found"
     },
     {
       "url": "https://www.theplacega.org/upcoming-events",
       "reason": "No meaningful public page content found"
-    },
-    {
-      "url": "https://www.theplacega.org/volunteer-handbook",
-      "reason": "Refusing to fetch or follow a URL outside The Place website."
     }
   ],
-  "duplicatePages": [
-    {
-      "url": "https://www.theplacega.org/home",
-      "duplicateOf": "https://www.theplacega.org/"
-    }
-  ],
+  "duplicatePages": [],
   "blockedPages": [],
   "retainedPages": [],
   "approvedRemovedPages": [],
-  "totalIndexed": 68
+  "totalIndexed": 69
 }

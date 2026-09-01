@@ -30,6 +30,7 @@ Canonical URL: https://www.theplacega.org/calendar
 - Mobile Pantry at Chattahoochee Elementary
 - Free GED Classes
 - Free GED Classes
+- Witches Night Out
 - Mobile Pantry at Chestatee Elementary
 - Free GED Classes
 - Free GED Classes
@@ -44,7 +45,6 @@ Canonical URL: https://www.theplacega.org/calendar
 - Free GED Classes
 - Mobile Pantry at Cumming Elementary
 - Mobile Pantry at Chattahoochee Elementary
-- Free GED Classes
 - Free GED Classes
 
 ## Approved page content
@@ -234,6 +234,14 @@ Wednesday, October 14, 2026
 6:00 PM
 8:00 PM
 Cumming Elementary
+(map)
+Google Calendar
+ICS
+Witches Night Out
+Thursday, October 15, 2026
+6:00 PM
+10:00 PM
+Halcyon
 (map)
 Google Calendar
 ICS
@@ -1169,11 +1177,11 @@ ICS
 - Free GED Classes: https://www.theplacega.org/calendar/free-ged-classes-6t997-zlysg-d4yp4-syh62-xat6g-nf3y3-ergt8-rbe43
 - ICS: https://www.theplacega.org/calendar/free-ged-classes-6t997-zlysg-d4yp4-syh62-xat6g-nf3y3-ergt8-rbe43
 - View Event →: https://www.theplacega.org/calendar/free-ged-classes-6t997-zlysg-d4yp4-syh62-xat6g-nf3y3-ergt8-rbe43
+- https://www.theplacega.org/calendar/witches-night-out: https://www.theplacega.org/calendar/witches-night-out
+- Witches Night Out: https://www.theplacega.org/calendar/witches-night-out
+- ICS: https://www.theplacega.org/calendar/witches-night-out
+- View Event →: https://www.theplacega.org/calendar/witches-night-out
 - https://www.theplacega.org/calendar/mobile-pantry-chestatee-october: https://www.theplacega.org/calendar/mobile-pantry-chestatee-october
 - Mobile Pantry at Chestatee Elementary: https://www.theplacega.org/calendar/mobile-pantry-chestatee-october
 - ICS: https://www.theplacega.org/calendar/mobile-pantry-chestatee-october
 - View Event →: https://www.theplacega.org/calendar/mobile-pantry-chestatee-october
-- https://www.theplacega.org/calendar/free-ged-classes-dh7mh-hc34f-5s5zj-mrzzh-fty3x-ntp9b-rx7h3-f6sf4: https://www.theplacega.org/calendar/free-ged-classes-dh7mh-hc34f-5s5zj-mrzzh-fty3x-ntp9b-rx7h3-f6sf4
-- Free GED Classes: https://www.theplacega.org/calendar/free-ged-classes-dh7mh-hc34f-5s5zj-mrzzh-fty3x-ntp9b-rx7h3-f6sf4
-- ICS: https://www.theplacega.org/calendar/free-ged-classes-dh7mh-hc34f-5s5zj-mrzzh-fty3x-ntp9b-rx7h3-f6sf4
-- View Event →: https://www.theplacega.org/calendar/free-ged-classes-dh7mh-hc34f-5s5zj-mrzzh-fty3x-ntp9b-rx7h3-f6sf4
