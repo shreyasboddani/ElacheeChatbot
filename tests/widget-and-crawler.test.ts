@@ -58,6 +58,9 @@ describe("widget and crawler boundaries", () => {
     expect(loader).toContain(".tp-resize{display:none}");
     expect(loader).toContain('script.getAttribute("data-prompt")');
     expect(loader).toContain('script.getAttribute("data-prompt-text")');
+    expect(loader).toContain('"the-place-chatbot:close"');
+    expect(loader).toContain("event.source !== iframe.contentWindow");
+    expect(loader).toContain("event.origin !== chatbotUrl.origin");
     expect(loader).toContain("the-place-chatbot-nudge-seen");
     expect(loader).toContain("nudgeText.textContent = promptText");
     expect(loader).toContain('nudgeAction.addEventListener("click"');

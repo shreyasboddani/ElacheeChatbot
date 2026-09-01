@@ -9,6 +9,7 @@ import { ChatIcon, CloseIcon } from "@/components/chatbot/Icons";
 export const CHAT_NUDGE_DELAY_MS = 2200;
 export const CHAT_NUDGE_VISIBLE_MS = 9000;
 export const CHAT_NUDGE_SESSION_KEY = "the-place-chatbot-nudge-seen";
+export const EMBED_CLOSE_MESSAGE_TYPE = "the-place-chatbot:close";
 
 interface ChatWidgetProps {
   variant?: "floating" | "embedded";
@@ -32,7 +33,7 @@ export function ChatWidget({
   const [nudgeVisible, setNudgeVisible] = useState(false);
   const nudgeAttemptedRef = useRef(initialOpen);
   const embedded = variant === "embedded";
-  const showLauncher = !open && (launcherVisible || embedded);
+  const showLauncher = !open && launcherVisible;
 
   function markNudgeSeen() {
     nudgeAttemptedRef.current = true;
@@ -90,7 +91,26 @@ export function ChatWidget({
     setOpen(true);
   }
 
+  function notifyEmbeddingHostToClose() {
+    if (!embedded || window.parent === window) return;
+
+    let targetOrigin = "*";
+    try {
+      targetOrigin = new URL(document.referrer).origin;
+    } catch {
+      // An empty referrer can occur with stricter host-page privacy settings.
+      // The loader still verifies the message sender and its origin.
+    }
+    window.parent.postMessage({ type: EMBED_CLOSE_MESSAGE_TYPE }, targetOrigin);
+  }
+
+  function minimizePanel() {
+    notifyEmbeddingHostToClose();
+    setOpen(false);
+  }
+
   function closePanel() {
+    notifyEmbeddingHostToClose();
     setOpen(false);
     setPanelMounted(false);
   }
@@ -105,7 +125,7 @@ export function ChatWidget({
             embedded={embedded}
             active={open}
             position={position}
-            onMinimize={() => setOpen(false)}
+            onMinimize={minimizePanel}
             onClose={closePanel}
           />
         </div>

@@ -195,6 +195,7 @@
   launcher.appendChild(labelSpan);
 
   var NUDGE_SESSION_KEY = "the-place-chatbot-nudge-seen";
+  var EMBED_CLOSE_MESSAGE_TYPE = "the-place-chatbot:close";
   var nudgeShowTimer;
   var nudgeHideTimer;
   function markNudgeSeen() {
@@ -291,6 +292,18 @@
       resizeButton.releasePointerCapture(event.pointerId);
     }
   }
+
+  window.addEventListener("message", function (event) {
+    if (
+      event.origin !== chatbotUrl.origin ||
+      event.source !== iframe.contentWindow ||
+      !event.data ||
+      event.data.type !== EMBED_CLOSE_MESSAGE_TYPE
+    ) {
+      return;
+    }
+    setOpen(false);
+  });
   resizeButton.addEventListener("pointerup", stopResize);
   resizeButton.addEventListener("pointercancel", stopResize);
   resizeButton.addEventListener("keydown", function (event) {
