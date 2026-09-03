@@ -3,7 +3,7 @@
 Source ID: web-new-volunteers-51338cd7
 Source type: official_website
 Canonical URL: https://www.theplacega.org/new-volunteers
-Fetched at: 2026-08-07T10:12:52.048Z
+Fetched at: 2026-09-03T13:37:20.796Z
 
 ## Page content
 
@@ -50,4 +50,3 @@ Home Projects The opportunities to volunteer at home are great for families with
 ## Relevant links
 
 - The Place Volunteer Handbook: https://www.theplacega.org/volunteer-handbook
-- https://www.theplacega.org/s/Heart-of-Service-August-2026.pdf: https://www.theplacega.org/s/Heart-of-Service-August-2026.pdf

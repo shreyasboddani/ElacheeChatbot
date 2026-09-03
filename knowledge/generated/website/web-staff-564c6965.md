@@ -3,14 +3,13 @@
 Source ID: web-staff-564c6965
 Source type: official_website
 Canonical URL: https://www.theplacega.org/staff
-Fetched at: 2026-08-27T20:21:11.487Z
+Fetched at: 2026-09-03T13:37:40.876Z
 
 ## Page content
 
 Our Amazing Staff
 Cristy FerenciePresident /CEOext. 225
 Colette KemeryDirector of Retailext. 238
-Deborah RossDirector of Food and Senior Servicesext. 231
 Nicole MorganDirector of Developmentext. 242
 Paige WhalenDirector of Client Servicesext. 235
 DEVELOPMENT
@@ -23,7 +22,7 @@ MEGHAN LIVINGSTONCase Management Managermeghan@theplacega.orgext. 229
 JESSICA MCGUIREOffice Coordinatorfrontdesk@theplacega.org​ext. 295
 HOLLIS MEYER​Financial Assistance Coordinatorhollis@theplacega.orgext. 296
 OPERATIONS
-BRAD EVERSONFacilities and Logistics Coordinatorbrad@theplacega.orgext. 228
+BRAD EVERSONInterim Food and Operations Managerbrad@theplacega.orgext. 228
 FOOD SERVICES
 ​ERIC THURMANFood Warehouse Coordinatoreric@theplacega.org
 LEANDREA VOSKANIANFood Distribution Coordinator (Forsyth)leandrea@theplacega.orgext. 232

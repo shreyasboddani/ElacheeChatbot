@@ -7,8 +7,6 @@ Canonical URL: https://www.theplacega.org/calendar
 ## Important headings
 
 - Upcoming Events
-- Mobile Food Pantry
-- Free GED Classes
 - Free GED Classes
 - Free GED Classes
 - Mobile Pantry at Cumming Elementary
@@ -26,14 +24,17 @@ Canonical URL: https://www.theplacega.org/calendar
 - Free GED Classes
 - Mobile Food Pantry
 - Free GED Classes
+- Parenting Class
 - Mobile Pantry at Cumming Elementary
 - Mobile Pantry at Chattahoochee Elementary
 - Free GED Classes
 - Free GED Classes
 - Witches Night Out
+- Parenting Class
 - Mobile Pantry at Chestatee Elementary
 - Free GED Classes
 - Free GED Classes
+- Parenting Class
 - Mobile Pantry at Brandywine Elementary
 - Mobile Pantry at New Hope Elementary
 - Free GED Classes
@@ -45,25 +46,10 @@ Canonical URL: https://www.theplacega.org/calendar
 - Free GED Classes
 - Mobile Pantry at Cumming Elementary
 - Mobile Pantry at Chattahoochee Elementary
-- Free GED Classes
 
 ## Approved page content
 
 Upcoming Events
-Mobile Food Pantry
-Wednesday, September 2, 2026
-12:30 PM
-1:30 PM
-Google Calendar
-ICS
-Free GED Classes
-Wednesday, September 2, 2026
-6:00 PM
-8:00 PM
-Cumming Elementary
-(map)
-Google Calendar
-ICS
 Free GED Classes
 Monday, September 7, 2026
 6:00 PM
@@ -203,6 +189,14 @@ Cumming Elementary
 (map)
 Google Calendar
 ICS
+Parenting Class
+Thursday, October 8, 2026
+6:00 PM
+8:00 PM
+Cumming Elementary School
+(map)
+Google Calendar
+ICS
 Mobile Pantry at Cumming Elementary
 Saturday, October 10, 2026
 10:00 AM
@@ -245,6 +239,14 @@ Halcyon
 (map)
 Google Calendar
 ICS
+Parenting Class
+Thursday, October 15, 2026
+6:00 PM
+8:00 PM
+Cumming Elementary School
+(map)
+Google Calendar
+ICS
 Mobile Pantry at Chestatee Elementary
 Saturday, October 17, 2026
 10:00 AM
@@ -267,6 +269,14 @@ Wednesday, October 21, 2026
 6:00 PM
 8:00 PM
 Cumming Elementary
+(map)
+Google Calendar
+ICS
+Parenting Class
+Thursday, October 22, 2026
+6:00 PM
+8:00 PM
+Cumming Elementary School
 (map)
 Google Calendar
 ICS
@@ -855,6 +865,20 @@ Cumming Elementary
 Google Calendar
 ICS
 Free GED Classes
+Wednesday, September 2, 2026
+6:00 PM
+8:00 PM
+Cumming Elementary
+(map)
+Google Calendar
+ICS
+Mobile Food Pantry
+Wednesday, September 2, 2026
+12:30 PM
+1:30 PM
+Google Calendar
+ICS
+Free GED Classes
 Monday, August 31, 2026
 6:00 PM
 8:00 PM
@@ -1067,32 +1091,9 @@ Monday, June 22, 2026
 8:30 PM
 Google Calendar
 ICS
-Mobile Pantry at Chestatee Elementary
-Saturday, June 20, 2026
-10:00 AM
-11:00 AM
-Chestatee Elementary
-(map)
-Google Calendar
-ICS
-Everyone is welcome! Come get fresh produce, frozen meats, non-perishable items, and eggs (when available).
-Free GED Summer Study Hall
-Wednesday, June 17, 2026
-6:00 PM
-8:30 PM
-Google Calendar
-ICS
 
 ## Relevant official links
 
-- https://www.theplacega.org/calendar/mobile-food-pantry-september: https://www.theplacega.org/calendar/mobile-food-pantry-september
-- Mobile Food Pantry: https://www.theplacega.org/calendar/mobile-food-pantry-september
-- ICS: https://www.theplacega.org/calendar/mobile-food-pantry-september
-- View Event →: https://www.theplacega.org/calendar/mobile-food-pantry-september
-- https://www.theplacega.org/calendar/free-ged-classes-6t997-zlysg: https://www.theplacega.org/calendar/free-ged-classes-6t997-zlysg
-- Free GED Classes: https://www.theplacega.org/calendar/free-ged-classes-6t997-zlysg
-- ICS: https://www.theplacega.org/calendar/free-ged-classes-6t997-zlysg
-- View Event →: https://www.theplacega.org/calendar/free-ged-classes-6t997-zlysg
 - https://www.theplacega.org/calendar/free-ged-classes-dh7mh-hc34f: https://www.theplacega.org/calendar/free-ged-classes-dh7mh-hc34f
 - Free GED Classes: https://www.theplacega.org/calendar/free-ged-classes-dh7mh-hc34f
 - ICS: https://www.theplacega.org/calendar/free-ged-classes-dh7mh-hc34f
@@ -1161,6 +1162,10 @@ ICS
 - Free GED Classes: https://www.theplacega.org/calendar/free-ged-classes-6t997-zlysg-d4yp4-syh62-xat6g-nf3y3-ergt8
 - ICS: https://www.theplacega.org/calendar/free-ged-classes-6t997-zlysg-d4yp4-syh62-xat6g-nf3y3-ergt8
 - View Event →: https://www.theplacega.org/calendar/free-ged-classes-6t997-zlysg-d4yp4-syh62-xat6g-nf3y3-ergt8
+- https://www.theplacega.org/calendar/parenting-class: https://www.theplacega.org/calendar/parenting-class
+- Parenting Class: https://www.theplacega.org/calendar/parenting-class
+- ICS: https://www.theplacega.org/calendar/parenting-class
+- View Event →: https://www.theplacega.org/calendar/parenting-class
 - https://www.theplacega.org/calendar/mobile-pantry-forsyth-october: https://www.theplacega.org/calendar/mobile-pantry-forsyth-october
 - Mobile Pantry at Cumming Elementary: https://www.theplacega.org/calendar/mobile-pantry-forsyth-october
 - ICS: https://www.theplacega.org/calendar/mobile-pantry-forsyth-october
@@ -1181,6 +1186,10 @@ ICS
 - Witches Night Out: https://www.theplacega.org/calendar/witches-night-out
 - ICS: https://www.theplacega.org/calendar/witches-night-out
 - View Event →: https://www.theplacega.org/calendar/witches-night-out
+- https://www.theplacega.org/calendar/parenting-class-ejs4y: https://www.theplacega.org/calendar/parenting-class-ejs4y
+- Parenting Class: https://www.theplacega.org/calendar/parenting-class-ejs4y
+- ICS: https://www.theplacega.org/calendar/parenting-class-ejs4y
+- View Event →: https://www.theplacega.org/calendar/parenting-class-ejs4y
 - https://www.theplacega.org/calendar/mobile-pantry-chestatee-october: https://www.theplacega.org/calendar/mobile-pantry-chestatee-october
 - Mobile Pantry at Chestatee Elementary: https://www.theplacega.org/calendar/mobile-pantry-chestatee-october
 - ICS: https://www.theplacega.org/calendar/mobile-pantry-chestatee-october

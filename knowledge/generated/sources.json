@@ -75,7 +75,7 @@
     "documentPath": "knowledge/generated/prepared/website__web-new-volunteers-51338cd7.md",
     "title": "New Volunteers | Get Involved Today — The Place",
     "url": "https://www.theplacega.org/new-volunteers",
-    "fetchedAt": "2026-08-07T10:12:52.048Z",
+    "fetchedAt": "2026-09-03T13:37:20.796Z",
     "sourceType": "official_website",
     "priority": 50
   },
@@ -105,7 +105,7 @@
     "documentPath": "knowledge/generated/prepared/website__web-calendar-de55b331.md",
     "title": "Calendar — The Place",
     "url": "https://www.theplacega.org/calendar",
-    "fetchedAt": "2026-09-01T18:39:16.802Z",
+    "fetchedAt": "2026-09-03T13:37:23.615Z",
     "sourceType": "official_website",
     "priority": 50
   },
@@ -315,7 +315,7 @@
     "documentPath": "knowledge/generated/prepared/website__web-staff-564c6965.md",
     "title": "Staff — The Place",
     "url": "https://www.theplacega.org/staff",
-    "fetchedAt": "2026-08-27T20:21:11.487Z",
+    "fetchedAt": "2026-09-03T13:37:40.876Z",
     "sourceType": "official_website",
     "priority": 50
   },
@@ -325,7 +325,7 @@
     "documentPath": "knowledge/generated/prepared/website__web-careers-9638b545.md",
     "title": "Careers — The Place",
     "url": "https://www.theplacega.org/careers",
-    "fetchedAt": "2026-08-27T20:21:11.872Z",
+    "fetchedAt": "2026-09-03T13:37:41.653Z",
     "sourceType": "official_website",
     "priority": 50
   },
@@ -685,7 +685,17 @@
     "documentPath": "knowledge/generated/prepared/website__web-calendar-witches-night-out-c2da5a76.md",
     "title": "Witches Night Out — The Place",
     "url": "https://www.theplacega.org/calendar/witches-night-out",
-    "fetchedAt": "2026-09-01T18:40:03.493Z",
+    "fetchedAt": "2026-09-03T13:38:08.773Z",
+    "sourceType": "official_website",
+    "priority": 50
+  },
+  {
+    "id": "web-calendar-parenting-class-45caf2dd",
+    "fileName": "website__web-calendar-parenting-class-45caf2dd.md",
+    "documentPath": "knowledge/generated/prepared/website__web-calendar-parenting-class-45caf2dd.md",
+    "title": "Parenting Class — The Place",
+    "url": "https://www.theplacega.org/calendar/parenting-class",
+    "fetchedAt": "2026-09-03T13:38:17.475Z",
     "sourceType": "official_website",
     "priority": 50
   },

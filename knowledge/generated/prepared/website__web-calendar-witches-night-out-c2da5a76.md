@@ -8,7 +8,7 @@ Canonical URL: https://www.theplacega.org/calendar/witches-night-out
 
 - Witches Night Out
 - Free GED Classes
-- Mobile Pantry at Chestatee Elementary
+- Parenting Class
 
 ## Approved page content
 
@@ -24,7 +24,7 @@ United States
 Google Calendar
 ICS
 Free GED Classes
-Mobile Pantry at Chestatee Elementary
+Parenting Class
 
 ## Relevant official links
 
@@ -36,5 +36,5 @@ October 14
 Free GED Classes: https://www.theplacega.org/calendar/free-ged-classes-6t997-zlysg-d4yp4-syh62-xat6g-nf3y3-ergt8-rbe43
 - Next
 Next
-October 17
-Mobile Pantry at Chestatee Elementary: https://www.theplacega.org/calendar/mobile-pantry-chestatee-october
+October 15
+Parenting Class: https://www.theplacega.org/calendar/parenting-class-ejs4y
