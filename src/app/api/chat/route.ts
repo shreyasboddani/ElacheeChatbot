@@ -106,14 +106,31 @@ export async function POST(request: NextRequest): Promise<Response> {
     );
   }
 
-  let rawBody: string;
+  let rawBody = "";
   try {
-    rawBody = await request.text();
+    const reader = request.body?.getReader();
+    if (reader) {
+      const decoder = new TextDecoder();
+      let bytesRead = 0;
+      try {
+        while (true) {
+          const { done, value } = await reader.read();
+          if (done) break;
+          bytesRead += value.byteLength;
+          if (bytesRead > MAX_REQUEST_BYTES) {
+            // Stop consuming immediately; cancellation must not delay rejection.
+            void reader.cancel().catch(() => undefined);
+            return jsonResponse(invalidRequest("That message is too large to process."), 413);
+          }
+          rawBody += decoder.decode(value, { stream: true });
+        }
+        rawBody += decoder.decode();
+      } finally {
+        reader.releaseLock();
+      }
+    }
   } catch {
     return jsonResponse(invalidRequest("The request could not be read."), 400);
-  }
-  if (new TextEncoder().encode(rawBody).byteLength > MAX_REQUEST_BYTES) {
-    return jsonResponse(invalidRequest("That message is too large to process."), 413);
   }
 
   let body: unknown;

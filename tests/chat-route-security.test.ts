@@ -18,7 +18,7 @@ vi.mock("@/lib/gemini/client", () => ({
 }));
 
 import { POST } from "@/app/api/chat/route";
-import { MAX_HISTORY_CONTENT_LENGTH } from "@/lib/chat/limits";
+import { MAX_HISTORY_CONTENT_LENGTH, MAX_REQUEST_BYTES } from "@/lib/chat/limits";
 import { resetRateLimitForTests } from "@/lib/security/rate-limit";
 
 function chatRequest(body: unknown): NextRequest {
@@ -36,6 +36,60 @@ beforeEach(() => {
 });
 
 describe("chat route request safety", () => {
+  it.each([undefined, "1"])("stops oversized streaming bodies with content-length %s", async (contentLength) => {
+    const cancel = vi.fn();
+    let chunksRead = 0;
+    const stream = new ReadableStream<Uint8Array>({
+      pull(controller) {
+        chunksRead += 1;
+        controller.enqueue(new Uint8Array(MAX_REQUEST_BYTES));
+      },
+      cancel,
+    }, { highWaterMark: 0 });
+    const headers = new Headers({ "Content-Type": "application/json" });
+    if (contentLength) headers.set("Content-Length", contentLength);
+    const response = await POST(new NextRequest("http://localhost:3000/api/chat", {
+      method: "POST", headers, body: stream,
+      duplex: "half",
+    } as ConstructorParameters<typeof NextRequest>[1]));
+    expect(response.status).toBe(413);
+    expect(chunksRead).toBe(2);
+    expect(cancel).toHaveBeenCalledOnce();
+    expect(mocks.createGroundedInteractionClient).not.toHaveBeenCalled();
+  });
+
+  it("accepts exactly the byte limit with split UTF-8 characters", async () => {
+    const json = JSON.stringify({ message: "hello", padding: "é" });
+    const encoded = new TextEncoder().encode(json);
+    const bytes = new TextEncoder().encode(json + " ".repeat(MAX_REQUEST_BYTES - encoded.byteLength));
+    const split = bytes.indexOf(0xc3) + 1;
+    const stream = new ReadableStream<Uint8Array>({
+      start(controller) {
+        controller.enqueue(bytes.slice(0, split));
+        controller.enqueue(bytes.slice(split));
+        controller.close();
+      },
+    });
+    const response = await POST(new NextRequest("http://localhost:3000/api/chat", {
+      method: "POST", headers: { "Content-Type": "application/json" }, body: stream,
+      duplex: "half",
+    } as ConstructorParameters<typeof NextRequest>[1]));
+    expect(response.status).toBe(200);
+    expect(mocks.createGroundedInteractionClient).not.toHaveBeenCalled();
+  });
+
+  it("handles a failed request stream without calling Gemini", async () => {
+    const stream = new ReadableStream<Uint8Array>({
+      start(controller) { controller.error(new Error("Disconnected")); },
+    });
+    const response = await POST(new NextRequest("http://localhost:3000/api/chat", {
+      method: "POST", headers: { "Content-Type": "application/json" }, body: stream,
+      duplex: "half",
+    } as ConstructorParameters<typeof NextRequest>[1]));
+    expect(response.status).toBe(400);
+    expect(mocks.createGroundedInteractionClient).not.toHaveBeenCalled();
+  });
+
   it("requires application/json to prevent cross-origin form submissions", async () => {
     const response = await POST(
       new NextRequest("http://localhost:3000/api/chat", {
