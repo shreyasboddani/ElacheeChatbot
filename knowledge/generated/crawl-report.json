@@ -1,6 +1,6 @@
 {
   "startedFrom": "https://www.theplacega.org",
-  "crawledAt": "2026-09-08T13:41:12.864Z",
+  "crawledAt": "2026-09-08T21:38:18.106Z",
   "maxPages": 150,
   "indexedPages": [
     {
@@ -193,7 +193,7 @@
       "id": "web-staff-564c6965",
       "title": "Staff — The Place",
       "url": "https://www.theplacega.org/staff",
-      "fetchedAt": "2026-09-03T13:37:40.876Z"
+      "fetchedAt": "2026-09-08T21:37:16.346Z"
     },
     {
       "id": "web-careers-9638b545",
@@ -426,23 +426,36 @@
   ],
   "failedPages": [
     {
+      "url": "https://www.theplacega.org/matching-gifts",
+      "reason": "No meaningful public page content found"
+    },
+    {
+      "url": "https://www.theplacega.org/gala-recap",
+      "reason": "No meaningful public page content found"
+    },
+    {
       "url": "https://www.theplacega.org/furniture-pickup-request",
       "reason": "No meaningful public page content found"
     },
     {
-      "url": "https://www.theplacega.org/volunteer-handbook",
-      "reason": "Refusing to fetch or follow a URL outside The Place website."
-    },
-    {
-      "url": "https://www.theplacega.org/matching-gifts",
+      "url": "https://www.theplacega.org/faroi",
       "reason": "No meaningful public page content found"
     },
     {
       "url": "https://www.theplacega.org/upcoming-events",
       "reason": "No meaningful public page content found"
+    },
+    {
+      "url": "https://www.theplacega.org/volunteer-handbook",
+      "reason": "Refusing to fetch or follow a URL outside The Place website."
     }
   ],
-  "duplicatePages": [],
+  "duplicatePages": [
+    {
+      "url": "https://www.theplacega.org/home",
+      "duplicateOf": "https://www.theplacega.org/"
+    }
+  ],
   "blockedPages": [],
   "retainedPages": [],
   "approvedRemovedPages": [],

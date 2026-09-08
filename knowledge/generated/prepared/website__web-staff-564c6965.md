@@ -13,7 +13,7 @@ Canonical URL: https://www.theplacega.org/staff
 - FOOD SERVICES
 - SENIOR SERVICES
 - THRIFT STORE
-- WORKFORCE DEVELOPMENT & EDUCATION
+- WORKFORCE DEVELOPMENT AND EDUCATION
 - YOUTH SERVICES
 
 ## Approved page content
@@ -49,8 +49,8 @@ BRENDA TORRES​​Retail Supervisorbrenda@theplacega.org
 VICKIE HAWKINSRetail Manager (Dawson)​vickie@theplacega.orgext. 752
 PAUL BEDWELLRetail Warehouse Managerpbedwell@theplacega.orgext. 240
 WILLIAM BICERetail Warehouse Managerwilliam@theplacega.org
-WORKFORCE DEVELOPMENT & EDUCATION
-AMANDA WILSONWorkforce Development & Education Manageramanda@theplacega.orgext. 224
+WORKFORCE DEVELOPMENT AND EDUCATION
+AMANDA WILSONWorkforce Development and Education Manageramanda@theplacega.orgext. 224
 PAIGE ASHKEBOUSSIAdult Education Coordinatorpashekeboussi@theplacega.orgext. 223
 YOUTH SERVICES
 SAM HENRYYouth Events Program Coordinator​sam@theplacega.org​​ext. 244
