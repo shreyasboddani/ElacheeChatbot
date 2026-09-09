@@ -1,5 +1,5 @@
 {
-  "preparedAt": "2026-09-08T21:38:18.565Z",
+  "preparedAt": "2026-09-09T13:46:22.276Z",
   "successfullyIndexedPages": [
     {
       "id": "web-home-8044e23b",
@@ -398,10 +398,10 @@
       "fetchedAt": "2026-07-31T11:37:25.619Z"
     },
     {
-      "id": "web-calendar-free-ged-classes-6t997-zlysg-d4yp4-964f843d",
+      "id": "web-calendar-free-ged-classes-dh7mh-hc34f-5s5zj-eb76ee8a",
       "title": "Free GED Classes — The Place",
-      "url": "https://www.theplacega.org/calendar/free-ged-classes-6t997-zlysg-d4yp4",
-      "fetchedAt": "2026-09-07T15:05:53.374Z"
+      "url": "https://www.theplacega.org/calendar/free-ged-classes-dh7mh-hc34f-5s5zj",
+      "fetchedAt": "2026-09-09T13:46:17.218Z"
     },
     {
       "id": "web-calendar-red-robin-dine-to-donate-e8b1e68d",
@@ -424,36 +424,23 @@
   ],
   "failedPages": [
     {
-      "url": "https://www.theplacega.org/matching-gifts",
-      "reason": "No meaningful public page content found"
-    },
-    {
-      "url": "https://www.theplacega.org/gala-recap",
-      "reason": "No meaningful public page content found"
-    },
-    {
       "url": "https://www.theplacega.org/furniture-pickup-request",
-      "reason": "No meaningful public page content found"
-    },
-    {
-      "url": "https://www.theplacega.org/faroi",
-      "reason": "No meaningful public page content found"
-    },
-    {
-      "url": "https://www.theplacega.org/upcoming-events",
       "reason": "No meaningful public page content found"
     },
     {
       "url": "https://www.theplacega.org/volunteer-handbook",
       "reason": "Refusing to fetch or follow a URL outside The Place website."
-    }
-  ],
-  "duplicatePages": [
+    },
     {
-      "url": "https://www.theplacega.org/home",
-      "duplicateOf": "https://www.theplacega.org/"
+      "url": "https://www.theplacega.org/matching-gifts",
+      "reason": "No meaningful public page content found"
+    },
+    {
+      "url": "https://www.theplacega.org/upcoming-events",
+      "reason": "No meaningful public page content found"
     }
   ],
+  "duplicatePages": [],
   "retainedPages": [],
   "approvedRemovedPages": [],
   "pendingFaqEntries": [
@@ -523,13 +510,7 @@
       "url": "https://www.theplacega.org/s/Heart-of-Service-July-2026.pdf"
     }
   ],
-  "totalDocumentsUploaded": 1,
+  "totalDocumentsUploaded": 0,
   "uploadFailures": [],
-  "fileSearchStoreName": "fileSearchStores/the-place-grounded-knowledg-b2ir5guzf5jg",
-  "syncMode": "reconcile",
-  "totalDocumentsDeleted": 1,
-  "totalDocumentsUnchanged": 99,
-  "managedDocumentsAfterSync": 99,
-  "deleteFailures": [],
-  "uploadedAt": "2026-09-08T21:38:43.724Z"
+  "fileSearchStoreName": null
 }
