@@ -375,7 +375,7 @@
     "documentPath": "knowledge/generated/prepared/website__web-holidayhouse-f405f465.md",
     "title": "Holiday House — The Place",
     "url": "https://www.theplacega.org/holidayhouse",
-    "fetchedAt": "2026-09-11T13:37:43.824Z",
+    "fetchedAt": "2026-09-12T12:53:33.886Z",
     "sourceType": "official_website",
     "priority": 50
   },
@@ -396,6 +396,16 @@
     "title": "August 2026 Newsletter for The Place — The Place",
     "url": "https://www.theplacega.org/newsletter/august-newsletter-for-the-place",
     "fetchedAt": "2026-09-01T14:10:56.379Z",
+    "sourceType": "official_website",
+    "priority": 50
+  },
+  {
+    "id": "web-host-a-holiday-house-drive-e1ae04e8",
+    "fileName": "website__web-host-a-holiday-house-drive-e1ae04e8.md",
+    "documentPath": "knowledge/generated/prepared/website__web-host-a-holiday-house-drive-e1ae04e8.md",
+    "title": "Host A Drive | Support Food Security – Donate Now — The Place",
+    "url": "https://www.theplacega.org/host-a-holiday-house-drive",
+    "fetchedAt": "2026-09-12T12:54:01.031Z",
     "sourceType": "official_website",
     "priority": 50
   },

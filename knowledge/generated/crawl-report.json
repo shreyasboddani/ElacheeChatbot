@@ -1,6 +1,6 @@
 {
   "startedFrom": "https://www.theplacega.org",
-  "crawledAt": "2026-09-11T13:38:15.925Z",
+  "crawledAt": "2026-09-12T12:54:01.605Z",
   "maxPages": 150,
   "indexedPages": [
     {
@@ -229,7 +229,7 @@
       "id": "web-holidayhouse-f405f465",
       "title": "Holiday House — The Place",
       "url": "https://www.theplacega.org/holidayhouse",
-      "fetchedAt": "2026-09-11T13:37:43.824Z"
+      "fetchedAt": "2026-09-12T12:53:33.886Z"
     },
     {
       "id": "web-notes-from-the-place-the-cottage-a-place-to-find-stability-build-confidence-and-create-a-brighter-future-36b0abc1",
@@ -242,6 +242,12 @@
       "title": "August 2026 Newsletter for The Place — The Place",
       "url": "https://www.theplacega.org/newsletter/august-newsletter-for-the-place",
       "fetchedAt": "2026-09-01T14:10:56.379Z"
+    },
+    {
+      "id": "web-host-a-holiday-house-drive-e1ae04e8",
+      "title": "Host A Drive | Support Food Security – Donate Now — The Place",
+      "url": "https://www.theplacega.org/host-a-holiday-house-drive",
+      "fetchedAt": "2026-09-12T12:54:01.031Z"
     },
     {
       "id": "web-calendar-forsyth-county-drive-through-pet-food-supply-pantry-205ae801",
@@ -446,5 +452,5 @@
   "blockedPages": [],
   "retainedPages": [],
   "approvedRemovedPages": [],
-  "totalIndexed": 70
+  "totalIndexed": 71
 }
