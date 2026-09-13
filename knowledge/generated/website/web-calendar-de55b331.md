@@ -3,29 +3,11 @@
 Source ID: web-calendar-de55b331
 Source type: official_website
 Canonical URL: https://www.theplacega.org/calendar
-Fetched at: 2026-09-10T13:39:04.660Z
+Fetched at: 2026-09-13T13:49:13.056Z
 
 ## Page content
 
 Upcoming Events
-Mobile Pantry at Cumming Elementary
-Saturday, September 12, 2026
-10:00 AM
-11:00 AM
-Cumming Elementary
-(map)
-Google Calendar
-ICS
-Everyone is welcome! Come get fresh produce, frozen meats, non-perishable items, and eggs (when available).
-Mobile Pantry at Chattahoochee Elementary
-Saturday, September 12, 2026
-11:30 AM
-12:30 PM
-Chattahoochee Elementary
-(map)
-Google Calendar
-ICS
-Everyone is welcome! Come get fresh produce, frozen meats, non-perishable items, and eggs (when available).
 Free GED Classes
 Monday, September 14, 2026
 6:00 PM
@@ -806,6 +788,24 @@ Cumming Elementary
 (map)
 Google Calendar
 ICS
+Mobile Pantry at Chattahoochee Elementary
+Saturday, September 12, 2026
+11:30 AM
+12:30 PM
+Chattahoochee Elementary
+(map)
+Google Calendar
+ICS
+Everyone is welcome! Come get fresh produce, frozen meats, non-perishable items, and eggs (when available).
+Mobile Pantry at Cumming Elementary
+Saturday, September 12, 2026
+10:00 AM
+11:00 AM
+Cumming Elementary
+(map)
+Google Calendar
+ICS
+Everyone is welcome! Come get fresh produce, frozen meats, non-perishable items, and eggs (when available).
 Free GED Classes
 Wednesday, September 9, 2026
 6:00 PM
@@ -1025,29 +1025,9 @@ Cumming Elementary
 Google Calendar
 ICS
 Everyone is welcome! Come get fresh produce, frozen meats, non-perishable items, and eggs (when available).
-Mobile Pantry at Dawson County High School
-Thursday, July 9, 2026
-11:30 AM
-12:30 PM
-Google Calendar
-ICS
-Financial Literacy Summer Series
-Tuesday, July 7, 2026
-6:00 PM
-7:30 PM
-Google Calendar
-ICS
 
 ## Relevant links
 
-- https://www.theplacega.org/calendar/mobile-pantry-forsyth-september: https://www.theplacega.org/calendar/mobile-pantry-forsyth-september
-- Mobile Pantry at Cumming Elementary: https://www.theplacega.org/calendar/mobile-pantry-forsyth-september
-- ICS: https://www.theplacega.org/calendar/mobile-pantry-forsyth-september
-- View Event →: https://www.theplacega.org/calendar/mobile-pantry-forsyth-september
-- https://www.theplacega.org/calendar/mobile-pantry-forsyth-chattahoochee-september: https://www.theplacega.org/calendar/mobile-pantry-forsyth-chattahoochee-september
-- Mobile Pantry at Chattahoochee Elementary: https://www.theplacega.org/calendar/mobile-pantry-forsyth-chattahoochee-september
-- ICS: https://www.theplacega.org/calendar/mobile-pantry-forsyth-chattahoochee-september
-- View Event →: https://www.theplacega.org/calendar/mobile-pantry-forsyth-chattahoochee-september
 - https://www.theplacega.org/calendar/free-ged-classes-dh7mh-hc34f-5s5zj: https://www.theplacega.org/calendar/free-ged-classes-dh7mh-hc34f-5s5zj
 - Free GED Classes: https://www.theplacega.org/calendar/free-ged-classes-dh7mh-hc34f-5s5zj
 - ICS: https://www.theplacega.org/calendar/free-ged-classes-dh7mh-hc34f-5s5zj
@@ -1140,3 +1120,11 @@ ICS
 - Free GED Classes: https://www.theplacega.org/calendar/free-ged-classes-6t997-zlysg-d4yp4-syh62-xat6g-nf3y3-ergt8-rbe43-ra5lx
 - ICS: https://www.theplacega.org/calendar/free-ged-classes-6t997-zlysg-d4yp4-syh62-xat6g-nf3y3-ergt8-rbe43-ra5lx
 - View Event →: https://www.theplacega.org/calendar/free-ged-classes-6t997-zlysg-d4yp4-syh62-xat6g-nf3y3-ergt8-rbe43-ra5lx
+- https://www.theplacega.org/calendar/parenting-class-ejs4y-8cdsn: https://www.theplacega.org/calendar/parenting-class-ejs4y-8cdsn
+- Parenting Class: https://www.theplacega.org/calendar/parenting-class-ejs4y-8cdsn
+- ICS: https://www.theplacega.org/calendar/parenting-class-ejs4y-8cdsn
+- View Event →: https://www.theplacega.org/calendar/parenting-class-ejs4y-8cdsn
+- https://www.theplacega.org/calendar/mobile-pantry-brandywine-october: https://www.theplacega.org/calendar/mobile-pantry-brandywine-october
+- Mobile Pantry at Brandywine Elementary: https://www.theplacega.org/calendar/mobile-pantry-brandywine-october
+- ICS: https://www.theplacega.org/calendar/mobile-pantry-brandywine-october
+- View Event →: https://www.theplacega.org/calendar/mobile-pantry-brandywine-october
