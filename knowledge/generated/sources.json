@@ -410,6 +410,96 @@
     "priority": 50
   },
   {
+    "id": "web-heartsgiving-71cc983a",
+    "fileName": "website__web-heartsgiving-71cc983a.md",
+    "documentPath": "knowledge/generated/prepared/website__web-heartsgiving-71cc983a.md",
+    "title": "Heartsgiving — The Place",
+    "url": "https://www.theplacega.org/heartsgiving",
+    "fetchedAt": "2026-09-14T15:56:14.443Z",
+    "sourceType": "official_website",
+    "priority": 50
+  },
+  {
+    "id": "web-press-releases-31d36e55",
+    "fileName": "website__web-press-releases-31d36e55.md",
+    "documentPath": "knowledge/generated/prepared/website__web-press-releases-31d36e55.md",
+    "title": "Press Releases — The Place",
+    "url": "https://www.theplacega.org/press-releases",
+    "fetchedAt": "2026-09-14T15:56:15.653Z",
+    "sourceType": "official_website",
+    "priority": 50
+  },
+  {
+    "id": "web-press-releases-1-174d5115",
+    "fileName": "website__web-press-releases-1-174d5115.md",
+    "documentPath": "knowledge/generated/prepared/website__web-press-releases-1-174d5115.md",
+    "title": "Press Releases — The Place",
+    "url": "https://www.theplacega.org/press-releases-1",
+    "fetchedAt": "2026-09-14T15:56:07.199Z",
+    "sourceType": "official_website",
+    "priority": 50
+  },
+  {
+    "id": "web-press-releases-1-the-cottage-provides-young-women-facing-housing-insecurity-with-a-path-to-stability-and-suc-7f06f6a3",
+    "fileName": "website__web-press-releases-1-the-cottage-provides-young-women-facing-housing-insecurity-with-a-path-to-stability-and-suc-7f06f6a3.md",
+    "documentPath": "knowledge/generated/prepared/website__web-press-releases-1-the-cottage-provides-young-women-facing-housing-insecurity-with-a-path-to-stability-and-suc-7f06f6a3.md",
+    "title": "The Cottage Provides Young Women Facing Housing Insecurity with a Path to Stability and Success — The Place",
+    "url": "https://www.theplacega.org/press-releases-1/the-cottage-provides-young-women-facing-housing-insecurity-with-a-path-to-stability-and-success",
+    "fetchedAt": "2026-09-14T15:56:07.977Z",
+    "sourceType": "official_website",
+    "priority": 50
+  },
+  {
+    "id": "web-press-releases-1-the-place-brings-the-magic-of-prom-to-local-students-1078c018",
+    "fileName": "website__web-press-releases-1-the-place-brings-the-magic-of-prom-to-local-students-1078c018.md",
+    "documentPath": "knowledge/generated/prepared/website__web-press-releases-1-the-place-brings-the-magic-of-prom-to-local-students-1078c018.md",
+    "title": "The Place Brings the Magic of Prom to Local Students — The Place",
+    "url": "https://www.theplacega.org/press-releases-1/the-place-brings-the-magic-of-prom-to-local-students",
+    "fetchedAt": "2026-09-14T15:56:08.808Z",
+    "sourceType": "official_website",
+    "priority": 50
+  },
+  {
+    "id": "web-press-releases-1-the-place-honors-precision-concrete-construction-with-community-partnership-award-72bc8b2e",
+    "fileName": "website__web-press-releases-1-the-place-honors-precision-concrete-construction-with-community-partnership-award-72bc8b2e.md",
+    "documentPath": "knowledge/generated/prepared/website__web-press-releases-1-the-place-honors-precision-concrete-construction-with-community-partnership-award-72bc8b2e.md",
+    "title": "The Place Honors Precision Concrete Construction With Community Partnership Award — The Place",
+    "url": "https://www.theplacega.org/press-releases-1/the-place-honors-precision-concrete-construction-with-community-partnership-award",
+    "fetchedAt": "2026-09-14T15:56:11.180Z",
+    "sourceType": "official_website",
+    "priority": 50
+  },
+  {
+    "id": "web-press-releases-1-the-place-hosts-heartsgiving-to-support-local-families-in-need-a7644a3f",
+    "fileName": "website__web-press-releases-1-the-place-hosts-heartsgiving-to-support-local-families-in-need-a7644a3f.md",
+    "documentPath": "knowledge/generated/prepared/website__web-press-releases-1-the-place-hosts-heartsgiving-to-support-local-families-in-need-a7644a3f.md",
+    "title": "The Place Hosts \"Heartsgiving\" to Support Local Families in Need — The Place",
+    "url": "https://www.theplacega.org/press-releases-1/the-place-hosts-heartsgiving-to-support-local-families-in-need",
+    "fetchedAt": "2026-09-14T15:56:11.968Z",
+    "sourceType": "official_website",
+    "priority": 50
+  },
+  {
+    "id": "web-press-releases-1-the-places-11th-annual-holiday-house-brings-dignity-and-joy-to-local-families-858ed7c1",
+    "fileName": "website__web-press-releases-1-the-places-11th-annual-holiday-house-brings-dignity-and-joy-to-local-families-858ed7c1.md",
+    "documentPath": "knowledge/generated/prepared/website__web-press-releases-1-the-places-11th-annual-holiday-house-brings-dignity-and-joy-to-local-families-858ed7c1.md",
+    "title": "The Place's 11th Annual Holiday House Brings Dignity and Joy to Local Families — The Place",
+    "url": "https://www.theplacega.org/press-releases-1/the-places-11th-annual-holiday-house-brings-dignity-and-joy-to-local-families",
+    "fetchedAt": "2026-09-14T15:56:10.401Z",
+    "sourceType": "official_website",
+    "priority": 50
+  },
+  {
+    "id": "web-press-releases-1-the-places-holiday-house-brings-joy-dignity-and-hope-to-more-than-2100-children-this-christ-c8473b07",
+    "fileName": "website__web-press-releases-1-the-places-holiday-house-brings-joy-dignity-and-hope-to-more-than-2100-children-this-christ-c8473b07.md",
+    "documentPath": "knowledge/generated/prepared/website__web-press-releases-1-the-places-holiday-house-brings-joy-dignity-and-hope-to-more-than-2100-children-this-christ-c8473b07.md",
+    "title": "The Place's Holiday House Brings Joy, Dignity, and Hope to More Than 2,100 Children This Christmas Season — The Place",
+    "url": "https://www.theplacega.org/press-releases-1/the-places-holiday-house-brings-joy-dignity-and-hope-to-more-than-2100-children-this-christmas-season",
+    "fetchedAt": "2026-09-14T15:56:09.624Z",
+    "sourceType": "official_website",
+    "priority": 50
+  },
+  {
     "id": "web-calendar-forsyth-county-drive-through-pet-food-supply-pantry-205ae801",
     "fileName": "website__web-calendar-forsyth-county-drive-through-pet-food-supply-pantry-205ae801.md",
     "documentPath": "knowledge/generated/prepared/website__web-calendar-forsyth-county-drive-through-pet-food-supply-pantry-205ae801.md",
@@ -670,12 +760,12 @@
     "priority": 50
   },
   {
-    "id": "web-calendar-free-ged-classes-dh7mh-hc34f-5s5zj-eb76ee8a",
-    "fileName": "website__web-calendar-free-ged-classes-dh7mh-hc34f-5s5zj-eb76ee8a.md",
-    "documentPath": "knowledge/generated/prepared/website__web-calendar-free-ged-classes-dh7mh-hc34f-5s5zj-eb76ee8a.md",
+    "id": "web-calendar-free-ged-classes-6t997-zlysg-d4yp4-syh62-7321d633",
+    "fileName": "website__web-calendar-free-ged-classes-6t997-zlysg-d4yp4-syh62-7321d633.md",
+    "documentPath": "knowledge/generated/prepared/website__web-calendar-free-ged-classes-6t997-zlysg-d4yp4-syh62-7321d633.md",
     "title": "Free GED Classes — The Place",
-    "url": "https://www.theplacega.org/calendar/free-ged-classes-dh7mh-hc34f-5s5zj",
-    "fetchedAt": "2026-09-09T13:46:17.218Z",
+    "url": "https://www.theplacega.org/calendar/free-ged-classes-6t997-zlysg-d4yp4-syh62",
+    "fetchedAt": "2026-09-14T15:55:37.417Z",
     "sourceType": "official_website",
     "priority": 50
   },
