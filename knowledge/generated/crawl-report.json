@@ -1,13 +1,13 @@
 {
   "startedFrom": "https://www.theplacega.org",
-  "crawledAt": "2026-09-14T15:56:17.539Z",
+  "crawledAt": "2026-09-15T14:22:18.300Z",
   "maxPages": 150,
   "indexedPages": [
     {
       "id": "web-home-8044e23b",
       "title": "The Place | Get Assistance Today",
       "url": "https://www.theplacega.org/",
-      "fetchedAt": "2026-07-23T18:36:14.368Z"
+      "fetchedAt": "2026-09-15T14:20:52.373Z"
     },
     {
       "id": "web-contact-us-eac5f990",
@@ -67,7 +67,7 @@
       "id": "web-calendar-de55b331",
       "title": "Calendar — The Place",
       "url": "https://www.theplacega.org/calendar",
-      "fetchedAt": "2026-09-13T13:49:13.056Z"
+      "fetchedAt": "2026-09-15T14:20:57.156Z"
     },
     {
       "id": "web-newsletter-89967774",
@@ -229,7 +229,7 @@
       "id": "web-holidayhouse-f405f465",
       "title": "Holiday House — The Place",
       "url": "https://www.theplacega.org/holidayhouse",
-      "fetchedAt": "2026-09-12T12:53:33.886Z"
+      "fetchedAt": "2026-09-15T14:21:12.773Z"
     },
     {
       "id": "web-notes-from-the-place-the-cottage-a-place-to-find-stability-build-confidence-and-create-a-brighter-future-36b0abc1",
@@ -302,6 +302,12 @@
       "title": "The Place's Holiday House Brings Joy, Dignity, and Hope to More Than 2,100 Children This Christmas Season — The Place",
       "url": "https://www.theplacega.org/press-releases-1/the-places-holiday-house-brings-joy-dignity-and-hope-to-more-than-2100-children-this-christmas-season",
       "fetchedAt": "2026-09-14T15:56:09.624Z"
+    },
+    {
+      "id": "web-request-a-speaker-6ab42c87",
+      "title": "Request a Speaker — The Place",
+      "url": "https://www.theplacega.org/request-a-speaker",
+      "fetchedAt": "2026-09-15T14:22:16.344Z"
     },
     {
       "id": "web-calendar-forsyth-county-drive-through-pet-food-supply-pantry-205ae801",
@@ -519,5 +525,5 @@
   "blockedPages": [],
   "retainedPages": [],
   "approvedRemovedPages": [],
-  "totalIndexed": 80
+  "totalIndexed": 81
 }

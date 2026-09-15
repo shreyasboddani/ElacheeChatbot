@@ -3,7 +3,7 @@
 Source ID: web-holidayhouse-f405f465
 Source type: official_website
 Canonical URL: https://www.theplacega.org/holidayhouse
-Fetched at: 2026-09-12T12:53:33.886Z
+Fetched at: 2026-09-15T14:21:12.773Z
 
 ## Page content
 
@@ -11,6 +11,7 @@ Holiday House
 What is Holiday House?
 Holiday House is a heartwarming program that gives parents and guardians the dignity and joy of selecting new, unwrapped gifts their children truly want. Families facing hardships are invited to shop for their kids, choosing items that fit their needs and wishes. We then provide wrapping paper, bows, and all the essentials so parents and guardians can experience the magic of giving gifts with love.
 Partnering with us and sponsoring Holiday House means helping families in our community share in the magic of the season. Together, we can bring a little extra joy to children and empower parents and guardians during the holidays.
+Thank you to our generous sponsors
 How It Works
 Qualify and Shop
 click to enlarge

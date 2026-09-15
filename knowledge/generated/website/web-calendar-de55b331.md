@@ -3,19 +3,11 @@
 Source ID: web-calendar-de55b331
 Source type: official_website
 Canonical URL: https://www.theplacega.org/calendar
-Fetched at: 2026-09-13T13:49:13.056Z
+Fetched at: 2026-09-15T14:20:57.156Z
 
 ## Page content
 
 Upcoming Events
-Free GED Classes
-Monday, September 14, 2026
-6:00 PM
-8:00 PM
-Cumming Elementary
-(map)
-Google Calendar
-ICS
 Red Robin Dine to Donate
 Tuesday, September 15, 2026
 11:00 AM
@@ -788,6 +780,14 @@ Cumming Elementary
 (map)
 Google Calendar
 ICS
+Free GED Classes
+Monday, September 14, 2026
+6:00 PM
+8:00 PM
+Cumming Elementary
+(map)
+Google Calendar
+ICS
 Mobile Pantry at Chattahoochee Elementary
 Saturday, September 12, 2026
 11:30 AM
@@ -1016,22 +1016,9 @@ Chattahoochee Elementary
 Google Calendar
 ICS
 Everyone is welcome! Come get fresh produce, frozen meats, non-perishable items, and eggs (when available).
-Mobile Pantry at Cumming Elementary
-Saturday, July 11, 2026
-10:00 AM
-11:00 AM
-Cumming Elementary
-(map)
-Google Calendar
-ICS
-Everyone is welcome! Come get fresh produce, frozen meats, non-perishable items, and eggs (when available).
 
 ## Relevant links
 
-- https://www.theplacega.org/calendar/free-ged-classes-dh7mh-hc34f-5s5zj: https://www.theplacega.org/calendar/free-ged-classes-dh7mh-hc34f-5s5zj
-- Free GED Classes: https://www.theplacega.org/calendar/free-ged-classes-dh7mh-hc34f-5s5zj
-- ICS: https://www.theplacega.org/calendar/free-ged-classes-dh7mh-hc34f-5s5zj
-- View Event →: https://www.theplacega.org/calendar/free-ged-classes-dh7mh-hc34f-5s5zj
 - https://www.theplacega.org/calendar/red-robin-dine-to-donate: https://www.theplacega.org/calendar/red-robin-dine-to-donate
 - Red Robin Dine to Donate: https://www.theplacega.org/calendar/red-robin-dine-to-donate
 - ICS: https://www.theplacega.org/calendar/red-robin-dine-to-donate
@@ -1128,3 +1115,7 @@ Everyone is welcome! Come get fresh produce, frozen meats, non-perishable items,
 - Mobile Pantry at Brandywine Elementary: https://www.theplacega.org/calendar/mobile-pantry-brandywine-october
 - ICS: https://www.theplacega.org/calendar/mobile-pantry-brandywine-october
 - View Event →: https://www.theplacega.org/calendar/mobile-pantry-brandywine-october
+- https://www.theplacega.org/calendar/mobile-pantry-newhope-october: https://www.theplacega.org/calendar/mobile-pantry-newhope-october
+- Mobile Pantry at New Hope Elementary: https://www.theplacega.org/calendar/mobile-pantry-newhope-october
+- ICS: https://www.theplacega.org/calendar/mobile-pantry-newhope-october
+- View Event →: https://www.theplacega.org/calendar/mobile-pantry-newhope-october

@@ -56,6 +56,7 @@ Sign up with your email address to receive news and updates.
 
 ## Relevant official links
 
+- Request a Speaker: https://www.theplacega.org/request-a-speaker
 - Food Pantry: https://www.theplacega.org/food-pantry
 - ThriftStore: https://www.theplacega.org/thrift-store
 - Financial Assistance: https://www.theplacega.org/financial-assistance

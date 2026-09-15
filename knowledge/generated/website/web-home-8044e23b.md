@@ -3,7 +3,7 @@
 Source ID: web-home-8044e23b
 Source type: official_website
 Canonical URL: https://www.theplacega.org/
-Fetched at: 2026-07-23T18:36:14.368Z
+Fetched at: 2026-09-15T14:20:52.373Z
 
 ## Page content
 
@@ -46,6 +46,7 @@ Sign up with your email address to receive news and updates.
 
 ## Relevant links
 
+- Request a Speaker: https://www.theplacega.org/request-a-speaker
 - Food Pantry: https://www.theplacega.org/food-pantry
 - ThriftStore: https://www.theplacega.org/thrift-store
 - Financial Assistance: https://www.theplacega.org/financial-assistance

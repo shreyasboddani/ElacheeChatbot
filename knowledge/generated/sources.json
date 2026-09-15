@@ -5,7 +5,7 @@
     "documentPath": "knowledge/generated/prepared/website__web-home-8044e23b.md",
     "title": "The Place | Get Assistance Today",
     "url": "https://www.theplacega.org/",
-    "fetchedAt": "2026-07-23T18:36:14.368Z",
+    "fetchedAt": "2026-09-15T14:20:52.373Z",
     "sourceType": "official_website",
     "priority": 50
   },
@@ -105,7 +105,7 @@
     "documentPath": "knowledge/generated/prepared/website__web-calendar-de55b331.md",
     "title": "Calendar — The Place",
     "url": "https://www.theplacega.org/calendar",
-    "fetchedAt": "2026-09-13T13:49:13.056Z",
+    "fetchedAt": "2026-09-15T14:20:57.156Z",
     "sourceType": "official_website",
     "priority": 50
   },
@@ -375,7 +375,7 @@
     "documentPath": "knowledge/generated/prepared/website__web-holidayhouse-f405f465.md",
     "title": "Holiday House — The Place",
     "url": "https://www.theplacega.org/holidayhouse",
-    "fetchedAt": "2026-09-12T12:53:33.886Z",
+    "fetchedAt": "2026-09-15T14:21:12.773Z",
     "sourceType": "official_website",
     "priority": 50
   },
@@ -496,6 +496,16 @@
     "title": "The Place's Holiday House Brings Joy, Dignity, and Hope to More Than 2,100 Children This Christmas Season — The Place",
     "url": "https://www.theplacega.org/press-releases-1/the-places-holiday-house-brings-joy-dignity-and-hope-to-more-than-2100-children-this-christmas-season",
     "fetchedAt": "2026-09-14T15:56:09.624Z",
+    "sourceType": "official_website",
+    "priority": 50
+  },
+  {
+    "id": "web-request-a-speaker-6ab42c87",
+    "fileName": "website__web-request-a-speaker-6ab42c87.md",
+    "documentPath": "knowledge/generated/prepared/website__web-request-a-speaker-6ab42c87.md",
+    "title": "Request a Speaker — The Place",
+    "url": "https://www.theplacega.org/request-a-speaker",
+    "fetchedAt": "2026-09-15T14:22:16.344Z",
     "sourceType": "official_website",
     "priority": 50
   },
