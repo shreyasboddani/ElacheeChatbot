@@ -3,11 +3,13 @@
 Source ID: web-press-releases-1-174d5115
 Source type: official_website
 Canonical URL: https://www.theplacega.org/press-releases-1
-Fetched at: 2026-09-14T15:56:07.199Z
+Fetched at: 2026-09-16T14:13:45.966Z
 
 ## Page content
 
 PressReleases
+How The Place is providing a living space for young women facing housing insecurity
+Read more at Forsyth County News
 The Cottage Provides Young Women Facing Housing Insecurity with a Path to Stability and Success
 The Place Brings the Magic of Prom to Local Students
 The Place's Holiday House Brings Joy, Dignity, and Hope to More Than 2,100 Children This Christmas Season
@@ -17,6 +19,8 @@ The Place Hosts "Heartsgiving" to Support Local Families in Need
 
 ## Relevant links
 
+- How The Place is providing a living space for young women facing housing insecurity: https://www.theplacega.org/press-releases-1/how-the-place-is-providing-a-living-space-for-young-women-facing-housing-insecurity
+- Read More: https://www.theplacega.org/press-releases-1/how-the-place-is-providing-a-living-space-for-young-women-facing-housing-insecurity
 - The Cottage Provides Young Women Facing Housing Insecurity with a Path to Stability and Success: https://www.theplacega.org/press-releases-1/the-cottage-provides-young-women-facing-housing-insecurity-with-a-path-to-stability-and-success
 - Read More: https://www.theplacega.org/press-releases-1/the-cottage-provides-young-women-facing-housing-insecurity-with-a-path-to-stability-and-success
 - The Place Brings the Magic of Prom to Local Students: https://www.theplacega.org/press-releases-1/the-place-brings-the-magic-of-prom-to-local-students

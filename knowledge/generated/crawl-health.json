@@ -1,6 +1,11 @@
 {
   "maxPages": 150,
-  "totalIndexed": 81,
-  "retainedPages": [],
+  "totalIndexed": 83,
+  "retainedPages": [
+    {
+      "url": "https://www.theplacega.org/press-releases",
+      "reason": "No meaningful public page content found"
+    }
+  ],
   "approvedRemovedPages": []
 }

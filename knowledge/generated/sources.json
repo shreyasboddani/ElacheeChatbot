@@ -105,7 +105,7 @@
     "documentPath": "knowledge/generated/prepared/website__web-calendar-de55b331.md",
     "title": "Calendar — The Place",
     "url": "https://www.theplacega.org/calendar",
-    "fetchedAt": "2026-09-15T14:20:57.156Z",
+    "fetchedAt": "2026-09-16T14:13:28.216Z",
     "sourceType": "official_website",
     "priority": 50
   },
@@ -315,7 +315,7 @@
     "documentPath": "knowledge/generated/prepared/website__web-staff-564c6965.md",
     "title": "Staff — The Place",
     "url": "https://www.theplacega.org/staff",
-    "fetchedAt": "2026-09-08T21:37:16.346Z",
+    "fetchedAt": "2026-09-16T14:13:40.265Z",
     "sourceType": "official_website",
     "priority": 50
   },
@@ -375,7 +375,7 @@
     "documentPath": "knowledge/generated/prepared/website__web-holidayhouse-f405f465.md",
     "title": "Holiday House — The Place",
     "url": "https://www.theplacega.org/holidayhouse",
-    "fetchedAt": "2026-09-15T14:21:12.773Z",
+    "fetchedAt": "2026-09-16T14:13:43.065Z",
     "sourceType": "official_website",
     "priority": 50
   },
@@ -435,7 +435,7 @@
     "documentPath": "knowledge/generated/prepared/website__web-press-releases-1-174d5115.md",
     "title": "Press Releases — The Place",
     "url": "https://www.theplacega.org/press-releases-1",
-    "fetchedAt": "2026-09-14T15:56:07.199Z",
+    "fetchedAt": "2026-09-16T14:13:45.966Z",
     "sourceType": "official_website",
     "priority": 50
   },
@@ -445,7 +445,7 @@
     "documentPath": "knowledge/generated/prepared/website__web-press-releases-1-the-cottage-provides-young-women-facing-housing-insecurity-with-a-path-to-stability-and-suc-7f06f6a3.md",
     "title": "The Cottage Provides Young Women Facing Housing Insecurity with a Path to Stability and Success — The Place",
     "url": "https://www.theplacega.org/press-releases-1/the-cottage-provides-young-women-facing-housing-insecurity-with-a-path-to-stability-and-success",
-    "fetchedAt": "2026-09-14T15:56:07.977Z",
+    "fetchedAt": "2026-09-16T14:13:46.597Z",
     "sourceType": "official_website",
     "priority": 50
   },
@@ -506,6 +506,16 @@
     "title": "Request a Speaker — The Place",
     "url": "https://www.theplacega.org/request-a-speaker",
     "fetchedAt": "2026-09-15T14:22:16.344Z",
+    "sourceType": "official_website",
+    "priority": 50
+  },
+  {
+    "id": "web-press-releases-1-how-the-place-is-providing-a-living-space-for-young-women-facing-housing-insecurity-37c03c7c",
+    "fileName": "website__web-press-releases-1-how-the-place-is-providing-a-living-space-for-young-women-facing-housing-insecurity-37c03c7c.md",
+    "documentPath": "knowledge/generated/prepared/website__web-press-releases-1-how-the-place-is-providing-a-living-space-for-young-women-facing-housing-insecurity-37c03c7c.md",
+    "title": "How The Place is providing a living space for young women facing housing insecurity — The Place",
+    "url": "https://www.theplacega.org/press-releases-1/how-the-place-is-providing-a-living-space-for-young-women-facing-housing-insecurity",
+    "fetchedAt": "2026-09-16T14:14:40.972Z",
     "sourceType": "official_website",
     "priority": 50
   },
@@ -770,12 +780,12 @@
     "priority": 50
   },
   {
-    "id": "web-calendar-free-ged-classes-6t997-zlysg-d4yp4-syh62-7321d633",
-    "fileName": "website__web-calendar-free-ged-classes-6t997-zlysg-d4yp4-syh62-7321d633.md",
-    "documentPath": "knowledge/generated/prepared/website__web-calendar-free-ged-classes-6t997-zlysg-d4yp4-syh62-7321d633.md",
+    "id": "web-calendar-free-ged-classes-dh7mh-hc34f-5s5zj-mrzzh-fdce9098",
+    "fileName": "website__web-calendar-free-ged-classes-dh7mh-hc34f-5s5zj-mrzzh-fdce9098.md",
+    "documentPath": "knowledge/generated/prepared/website__web-calendar-free-ged-classes-dh7mh-hc34f-5s5zj-mrzzh-fdce9098.md",
     "title": "Free GED Classes — The Place",
-    "url": "https://www.theplacega.org/calendar/free-ged-classes-6t997-zlysg-d4yp4-syh62",
-    "fetchedAt": "2026-09-14T15:55:37.417Z",
+    "url": "https://www.theplacega.org/calendar/free-ged-classes-dh7mh-hc34f-5s5zj-mrzzh",
+    "fetchedAt": "2026-09-16T14:14:34.318Z",
     "sourceType": "official_website",
     "priority": 50
   },
@@ -806,6 +816,16 @@
     "title": "Parenting Class — The Place",
     "url": "https://www.theplacega.org/calendar/parenting-class",
     "fetchedAt": "2026-09-03T13:38:17.475Z",
+    "sourceType": "official_website",
+    "priority": 50
+  },
+  {
+    "id": "web-calendar-financial-literacy-fall-series-161006ea",
+    "fileName": "website__web-calendar-financial-literacy-fall-series-161006ea.md",
+    "documentPath": "knowledge/generated/prepared/website__web-calendar-financial-literacy-fall-series-161006ea.md",
+    "title": "Financial Literacy Fall Series — The Place",
+    "url": "https://www.theplacega.org/calendar/financial-literacy-fall-series",
+    "fetchedAt": "2026-09-16T14:14:40.195Z",
     "sourceType": "official_website",
     "priority": 50
   },

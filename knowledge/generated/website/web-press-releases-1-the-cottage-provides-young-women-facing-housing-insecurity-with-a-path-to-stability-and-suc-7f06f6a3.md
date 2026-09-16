@@ -3,7 +3,7 @@
 Source ID: web-press-releases-1-the-cottage-provides-young-women-facing-housing-insecurity-with-a-path-to-stability-and-suc-7f06f6a3
 Source type: official_website
 Canonical URL: https://www.theplacega.org/press-releases-1/the-cottage-provides-young-women-facing-housing-insecurity-with-a-path-to-stability-and-success
-Fetched at: 2026-09-14T15:56:07.977Z
+Fetched at: 2026-09-16T14:13:46.597Z
 
 ## Page content
 
@@ -23,11 +23,15 @@ The Cottage is more than a home. It is a place where young women can find stabil
 About The Place
 The Place is a nonprofit organization dedicated to supporting individuals and families in Forsyth and Dawson counties by providing essential resources, career coaching, and community programs to help them achieve self-sufficiency.
 For interview opportunities or pictures, please contact Jennifer Raaths at jraaths@theplacega.org.
+How The Place is providing a living space for young women facing housing insecurity
 The Place Brings the Magic of Prom to Local Students
 
 ## Relevant links
 
 - Greg Tirico: https://www.theplacega.org/press-releases-1
+- Previous
+Previous
+How The Place is providing a living space for young women facing housing insecurity: https://www.theplacega.org/press-releases-1/how-the-place-is-providing-a-living-space-for-young-women-facing-housing-insecurity
 - Next
 Next
 The Place Brings the Magic of Prom to Local Students: https://www.theplacega.org/press-releases-1/the-place-brings-the-magic-of-prom-to-local-students

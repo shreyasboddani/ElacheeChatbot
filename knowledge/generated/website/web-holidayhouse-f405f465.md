@@ -3,7 +3,7 @@
 Source ID: web-holidayhouse-f405f465
 Source type: official_website
 Canonical URL: https://www.theplacega.org/holidayhouse
-Fetched at: 2026-09-15T14:21:12.773Z
+Fetched at: 2026-09-16T14:13:43.065Z
 
 ## Page content
 
@@ -207,7 +207,7 @@ Tissue paper
 - host a drive: https://www.theplacega.org/host-a-holiday-house-drive
 - volunteer: https://www.theplacega.org/holidayhouse
 - gift guide: https://www.theplacega.org/holidayhouse
-- https://www.theplacega.org/s/SocialMediaHolidayHouseQualification1webp.pdf: https://www.theplacega.org/s/SocialMediaHolidayHouseQualification1webp.pdf
+- https://www.theplacega.org/s/Social-Media-Holiday-House-Qualification.pdf: https://www.theplacega.org/s/Social-Media-Holiday-House-Qualification.pdf
 - https://www.theplacega.org/s/SocialMediaHolidayHouseQualificationspanishwebp.pdf: https://www.theplacega.org/s/SocialMediaHolidayHouseQualificationspanishwebp.pdf
 - Host A Drive: https://www.theplacega.org/host-a-holiday-house-drive
 - Download the Gift Guide: https://www.theplacega.org/s/Holiday-House-Gift-Guide-2026.pdf

@@ -3,7 +3,7 @@
 Source ID: web-staff-564c6965
 Source type: official_website
 Canonical URL: https://www.theplacega.org/staff
-Fetched at: 2026-09-08T21:37:16.346Z
+Fetched at: 2026-09-16T14:13:40.265Z
 
 ## Page content
 
@@ -19,7 +19,7 @@ AMBER PHAMVolunteer Coordinatoramber@theplacega.orgext. 226
 KALEIGH TUHOLSKYDevelopment Coordinatorkaleigh@theplacega.orgext. 250
 CLIENT SERVICES
 MEGHAN LIVINGSTONCase Management Managermeghan@theplacega.orgext. 229
-JESSICA MCGUIREOffice Coordinatorfrontdesk@theplacega.org​ext. 295
+JESSICA MCGUIREOffice Coordinator/Benefitsfrontdesk@theplacega.org​ext. 295
 HOLLIS MEYER​Financial Assistance Coordinatorhollis@theplacega.orgext. 296
 OPERATIONS
 BRAD EVERSONInterim Food and Operations Managerbrad@theplacega.orgext. 228

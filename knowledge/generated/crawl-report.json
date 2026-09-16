@@ -1,6 +1,6 @@
 {
   "startedFrom": "https://www.theplacega.org",
-  "crawledAt": "2026-09-15T14:22:18.300Z",
+  "crawledAt": "2026-09-16T14:14:41.294Z",
   "maxPages": 150,
   "indexedPages": [
     {
@@ -67,7 +67,7 @@
       "id": "web-calendar-de55b331",
       "title": "Calendar — The Place",
       "url": "https://www.theplacega.org/calendar",
-      "fetchedAt": "2026-09-15T14:20:57.156Z"
+      "fetchedAt": "2026-09-16T14:13:28.216Z"
     },
     {
       "id": "web-newsletter-89967774",
@@ -193,7 +193,7 @@
       "id": "web-staff-564c6965",
       "title": "Staff — The Place",
       "url": "https://www.theplacega.org/staff",
-      "fetchedAt": "2026-09-08T21:37:16.346Z"
+      "fetchedAt": "2026-09-16T14:13:40.265Z"
     },
     {
       "id": "web-careers-9638b545",
@@ -229,7 +229,7 @@
       "id": "web-holidayhouse-f405f465",
       "title": "Holiday House — The Place",
       "url": "https://www.theplacega.org/holidayhouse",
-      "fetchedAt": "2026-09-15T14:21:12.773Z"
+      "fetchedAt": "2026-09-16T14:13:43.065Z"
     },
     {
       "id": "web-notes-from-the-place-the-cottage-a-place-to-find-stability-build-confidence-and-create-a-brighter-future-36b0abc1",
@@ -265,13 +265,13 @@
       "id": "web-press-releases-1-174d5115",
       "title": "Press Releases — The Place",
       "url": "https://www.theplacega.org/press-releases-1",
-      "fetchedAt": "2026-09-14T15:56:07.199Z"
+      "fetchedAt": "2026-09-16T14:13:45.966Z"
     },
     {
       "id": "web-press-releases-1-the-cottage-provides-young-women-facing-housing-insecurity-with-a-path-to-stability-and-suc-7f06f6a3",
       "title": "The Cottage Provides Young Women Facing Housing Insecurity with a Path to Stability and Success — The Place",
       "url": "https://www.theplacega.org/press-releases-1/the-cottage-provides-young-women-facing-housing-insecurity-with-a-path-to-stability-and-success",
-      "fetchedAt": "2026-09-14T15:56:07.977Z"
+      "fetchedAt": "2026-09-16T14:13:46.597Z"
     },
     {
       "id": "web-press-releases-1-the-place-brings-the-magic-of-prom-to-local-students-1078c018",
@@ -308,6 +308,12 @@
       "title": "Request a Speaker — The Place",
       "url": "https://www.theplacega.org/request-a-speaker",
       "fetchedAt": "2026-09-15T14:22:16.344Z"
+    },
+    {
+      "id": "web-press-releases-1-how-the-place-is-providing-a-living-space-for-young-women-facing-housing-insecurity-37c03c7c",
+      "title": "How The Place is providing a living space for young women facing housing insecurity — The Place",
+      "url": "https://www.theplacega.org/press-releases-1/how-the-place-is-providing-a-living-space-for-young-women-facing-housing-insecurity",
+      "fetchedAt": "2026-09-16T14:14:40.972Z"
     },
     {
       "id": "web-calendar-forsyth-county-drive-through-pet-food-supply-pantry-205ae801",
@@ -466,10 +472,10 @@
       "fetchedAt": "2026-07-31T11:37:25.619Z"
     },
     {
-      "id": "web-calendar-free-ged-classes-6t997-zlysg-d4yp4-syh62-7321d633",
+      "id": "web-calendar-free-ged-classes-dh7mh-hc34f-5s5zj-mrzzh-fdce9098",
       "title": "Free GED Classes — The Place",
-      "url": "https://www.theplacega.org/calendar/free-ged-classes-6t997-zlysg-d4yp4-syh62",
-      "fetchedAt": "2026-09-14T15:55:37.417Z"
+      "url": "https://www.theplacega.org/calendar/free-ged-classes-dh7mh-hc34f-5s5zj-mrzzh",
+      "fetchedAt": "2026-09-16T14:14:34.318Z"
     },
     {
       "id": "web-calendar-red-robin-dine-to-donate-e8b1e68d",
@@ -488,9 +494,19 @@
       "title": "Parenting Class — The Place",
       "url": "https://www.theplacega.org/calendar/parenting-class",
       "fetchedAt": "2026-09-03T13:38:17.475Z"
+    },
+    {
+      "id": "web-calendar-financial-literacy-fall-series-161006ea",
+      "title": "Financial Literacy Fall Series — The Place",
+      "url": "https://www.theplacega.org/calendar/financial-literacy-fall-series",
+      "fetchedAt": "2026-09-16T14:14:40.195Z"
     }
   ],
   "failedPages": [
+    {
+      "url": "https://www.theplacega.org/press-releases",
+      "reason": "No meaningful public page content found"
+    },
     {
       "url": "https://www.theplacega.org/matching-gifts",
       "reason": "No meaningful public page content found"
@@ -523,7 +539,12 @@
     }
   ],
   "blockedPages": [],
-  "retainedPages": [],
+  "retainedPages": [
+    {
+      "url": "https://www.theplacega.org/press-releases",
+      "reason": "No meaningful public page content found"
+    }
+  ],
   "approvedRemovedPages": [],
-  "totalIndexed": 81
+  "totalIndexed": 83
 }

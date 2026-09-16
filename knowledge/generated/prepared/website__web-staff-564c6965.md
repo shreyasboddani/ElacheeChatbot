@@ -30,7 +30,7 @@ AMBER PHAMVolunteer Coordinatoramber@theplacega.orgext. 226
 KALEIGH TUHOLSKYDevelopment Coordinatorkaleigh@theplacega.orgext. 250
 CLIENT SERVICES
 MEGHAN LIVINGSTONCase Management Managermeghan@theplacega.orgext. 229
-JESSICA MCGUIREOffice Coordinatorfrontdesk@theplacega.org​ext. 295
+JESSICA MCGUIREOffice Coordinator/Benefitsfrontdesk@theplacega.org​ext. 295
 HOLLIS MEYER​Financial Assistance Coordinatorhollis@theplacega.orgext. 296
 OPERATIONS
 BRAD EVERSONInterim Food and Operations Managerbrad@theplacega.orgext. 228

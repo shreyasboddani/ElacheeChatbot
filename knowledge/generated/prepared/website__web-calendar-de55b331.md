@@ -7,7 +7,6 @@ Canonical URL: https://www.theplacega.org/calendar
 ## Important headings
 
 - Upcoming Events
-- Red Robin Dine to Donate
 - Free GED Classes
 - Mobile Pantry at Chestatee Elementary
 - Free GED Classes
@@ -23,41 +22,34 @@ Canonical URL: https://www.theplacega.org/calendar
 - Mobile Pantry at Cumming Elementary
 - Mobile Pantry at Chattahoochee Elementary
 - Free GED Classes
+- Financial Literacy Fall Series
 - Free GED Classes
 - Witches Night Out
 - Parenting Class
 - Mobile Pantry at Chestatee Elementary
 - Free GED Classes
+- Financial Literacy Fall Series
 - Free GED Classes
 - Parenting Class
 - Mobile Pantry at Brandywine Elementary
 - Mobile Pantry at New Hope Elementary
 - Free GED Classes
+- Financial Literacy Fall Series
 - Free GED Classes
 - Free GED Classes
+- Financial Literacy Fall Series
 - Mobile Food Pantry
 - Free GED Classes
 - Free GED Classes
 - Free GED Classes
 - Mobile Pantry at Cumming Elementary
 - Mobile Pantry at Chattahoochee Elementary
-- Free GED Classes
-- Free GED Classes
-- Mobile Pantry at Chestatee Elementary
 - Free GED Classes
 - Free GED Classes
 
 ## Approved page content
 
 Upcoming Events
-Red Robin Dine to Donate
-Tuesday, September 15, 2026
-11:00 AM
-10:00 PM
-Red Robin at The Collection
-(map)
-Google Calendar
-ICS
 Free GED Classes
 Wednesday, September 16, 2026
 6:00 PM
@@ -181,6 +173,14 @@ Cumming Elementary
 (map)
 Google Calendar
 ICS
+Financial Literacy Fall Series
+Tuesday, October 13, 2026
+6:00 PM
+7:30 PM
+Family Promise
+(map)
+Google Calendar
+ICS
 Free GED Classes
 Wednesday, October 14, 2026
 6:00 PM
@@ -219,6 +219,14 @@ Monday, October 19, 2026
 6:00 PM
 8:00 PM
 Cumming Elementary
+(map)
+Google Calendar
+ICS
+Financial Literacy Fall Series
+Tuesday, October 20, 2026
+6:00 PM
+7:30 PM
+Family Promise
 (map)
 Google Calendar
 ICS
@@ -264,6 +272,14 @@ Cumming Elementary
 (map)
 Google Calendar
 ICS
+Financial Literacy Fall Series
+Tuesday, October 27, 2026
+6:00 PM
+7:30 PM
+Family Promise
+(map)
+Google Calendar
+ICS
 Free GED Classes
 Wednesday, October 28, 2026
 6:00 PM
@@ -277,6 +293,14 @@ Monday, November 2, 2026
 6:00 PM
 8:00 PM
 Cumming Elementary
+(map)
+Google Calendar
+ICS
+Financial Literacy Fall Series
+Tuesday, November 3, 2026
+6:00 PM
+7:30 PM
+Family Promise
 (map)
 Google Calendar
 ICS
@@ -822,6 +846,14 @@ Cumming Elementary
 (map)
 Google Calendar
 ICS
+Red Robin Dine to Donate
+Tuesday, September 15, 2026
+11:00 AM
+10:00 PM
+Red Robin at The Collection
+(map)
+Google Calendar
+ICS
 Free GED Classes
 Monday, September 14, 2026
 6:00 PM
@@ -1049,22 +1081,9 @@ NoFo Brew Co
 (map)
 Google Calendar
 ICS
-Mobile Pantry at Chattahoochee Elementary
-Saturday, July 11, 2026
-11:30 AM
-12:30 PM
-Chattahoochee Elementary
-(map)
-Google Calendar
-ICS
-Everyone is welcome! Come get fresh produce, frozen meats, non-perishable items, and eggs (when available).
 
 ## Relevant official links
 
-- https://www.theplacega.org/calendar/red-robin-dine-to-donate: https://www.theplacega.org/calendar/red-robin-dine-to-donate
-- Red Robin Dine to Donate: https://www.theplacega.org/calendar/red-robin-dine-to-donate
-- ICS: https://www.theplacega.org/calendar/red-robin-dine-to-donate
-- View Event →: https://www.theplacega.org/calendar/red-robin-dine-to-donate
 - https://www.theplacega.org/calendar/free-ged-classes-6t997-zlysg-d4yp4-syh62: https://www.theplacega.org/calendar/free-ged-classes-6t997-zlysg-d4yp4-syh62
 - Free GED Classes: https://www.theplacega.org/calendar/free-ged-classes-6t997-zlysg-d4yp4-syh62
 - ICS: https://www.theplacega.org/calendar/free-ged-classes-6t997-zlysg-d4yp4-syh62
@@ -1125,6 +1144,10 @@ Everyone is welcome! Come get fresh produce, frozen meats, non-perishable items,
 - Free GED Classes: https://www.theplacega.org/calendar/free-ged-classes-dh7mh-hc34f-5s5zj-mrzzh-fty3x-ntp9b-rx7h3
 - ICS: https://www.theplacega.org/calendar/free-ged-classes-dh7mh-hc34f-5s5zj-mrzzh-fty3x-ntp9b-rx7h3
 - View Event →: https://www.theplacega.org/calendar/free-ged-classes-dh7mh-hc34f-5s5zj-mrzzh-fty3x-ntp9b-rx7h3
+- https://www.theplacega.org/calendar/financial-literacy-fall-series: https://www.theplacega.org/calendar/financial-literacy-fall-series
+- Financial Literacy Fall Series: https://www.theplacega.org/calendar/financial-literacy-fall-series
+- ICS: https://www.theplacega.org/calendar/financial-literacy-fall-series
+- View Event →: https://www.theplacega.org/calendar/financial-literacy-fall-series
 - https://www.theplacega.org/calendar/free-ged-classes-6t997-zlysg-d4yp4-syh62-xat6g-nf3y3-ergt8-rbe43: https://www.theplacega.org/calendar/free-ged-classes-6t997-zlysg-d4yp4-syh62-xat6g-nf3y3-ergt8-rbe43
 - Free GED Classes: https://www.theplacega.org/calendar/free-ged-classes-6t997-zlysg-d4yp4-syh62-xat6g-nf3y3-ergt8-rbe43
 - ICS: https://www.theplacega.org/calendar/free-ged-classes-6t997-zlysg-d4yp4-syh62-xat6g-nf3y3-ergt8-rbe43
@@ -1145,6 +1168,10 @@ Everyone is welcome! Come get fresh produce, frozen meats, non-perishable items,
 - Free GED Classes: https://www.theplacega.org/calendar/free-ged-classes-dh7mh-hc34f-5s5zj-mrzzh-fty3x-ntp9b-rx7h3-f6sf4
 - ICS: https://www.theplacega.org/calendar/free-ged-classes-dh7mh-hc34f-5s5zj-mrzzh-fty3x-ntp9b-rx7h3-f6sf4
 - View Event →: https://www.theplacega.org/calendar/free-ged-classes-dh7mh-hc34f-5s5zj-mrzzh-fty3x-ntp9b-rx7h3-f6sf4
+- https://www.theplacega.org/calendar/financial-literacy-fall-series-szalb: https://www.theplacega.org/calendar/financial-literacy-fall-series-szalb
+- Financial Literacy Fall Series: https://www.theplacega.org/calendar/financial-literacy-fall-series-szalb
+- ICS: https://www.theplacega.org/calendar/financial-literacy-fall-series-szalb
+- View Event →: https://www.theplacega.org/calendar/financial-literacy-fall-series-szalb
 - https://www.theplacega.org/calendar/free-ged-classes-6t997-zlysg-d4yp4-syh62-xat6g-nf3y3-ergt8-rbe43-ra5lx: https://www.theplacega.org/calendar/free-ged-classes-6t997-zlysg-d4yp4-syh62-xat6g-nf3y3-ergt8-rbe43-ra5lx
 - Free GED Classes: https://www.theplacega.org/calendar/free-ged-classes-6t997-zlysg-d4yp4-syh62-xat6g-nf3y3-ergt8-rbe43-ra5lx
 - ICS: https://www.theplacega.org/calendar/free-ged-classes-6t997-zlysg-d4yp4-syh62-xat6g-nf3y3-ergt8-rbe43-ra5lx
@@ -1157,7 +1184,3 @@ Everyone is welcome! Come get fresh produce, frozen meats, non-perishable items,
 - Mobile Pantry at Brandywine Elementary: https://www.theplacega.org/calendar/mobile-pantry-brandywine-october
 - ICS: https://www.theplacega.org/calendar/mobile-pantry-brandywine-october
 - View Event →: https://www.theplacega.org/calendar/mobile-pantry-brandywine-october
-- https://www.theplacega.org/calendar/mobile-pantry-newhope-october: https://www.theplacega.org/calendar/mobile-pantry-newhope-october
-- Mobile Pantry at New Hope Elementary: https://www.theplacega.org/calendar/mobile-pantry-newhope-october
-- ICS: https://www.theplacega.org/calendar/mobile-pantry-newhope-october
-- View Event →: https://www.theplacega.org/calendar/mobile-pantry-newhope-october
