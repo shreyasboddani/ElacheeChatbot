@@ -3,19 +3,11 @@
 Source ID: web-calendar-de55b331
 Source type: official_website
 Canonical URL: https://www.theplacega.org/calendar
-Fetched at: 2026-09-16T14:13:28.216Z
+Fetched at: 2026-09-17T14:19:09.812Z
 
 ## Page content
 
 Upcoming Events
-Free GED Classes
-Wednesday, September 16, 2026
-6:00 PM
-8:00 PM
-Cumming Elementary
-(map)
-Google Calendar
-ICS
 Mobile Pantry at Chestatee Elementary
 Saturday, September 19, 2026
 10:00 AM
@@ -804,6 +796,14 @@ Cumming Elementary
 (map)
 Google Calendar
 ICS
+Free GED Classes
+Wednesday, September 16, 2026
+6:00 PM
+8:00 PM
+Cumming Elementary
+(map)
+Google Calendar
+ICS
 Red Robin Dine to Donate
 Tuesday, September 15, 2026
 11:00 AM
@@ -1031,21 +1031,9 @@ Tuesday, July 14, 2026
 7:30 PM
 Google Calendar
 ICS
-Bingo Night
-Tuesday, July 14, 2026
-5:30 PM
-8:30 PM
-NoFo Brew Co
-(map)
-Google Calendar
-ICS
 
 ## Relevant links
 
-- https://www.theplacega.org/calendar/free-ged-classes-6t997-zlysg-d4yp4-syh62: https://www.theplacega.org/calendar/free-ged-classes-6t997-zlysg-d4yp4-syh62
-- Free GED Classes: https://www.theplacega.org/calendar/free-ged-classes-6t997-zlysg-d4yp4-syh62
-- ICS: https://www.theplacega.org/calendar/free-ged-classes-6t997-zlysg-d4yp4-syh62
-- View Event →: https://www.theplacega.org/calendar/free-ged-classes-6t997-zlysg-d4yp4-syh62
 - https://www.theplacega.org/calendar/mobile-pantry-chestatee-september: https://www.theplacega.org/calendar/mobile-pantry-chestatee-september
 - Mobile Pantry at Chestatee Elementary: https://www.theplacega.org/calendar/mobile-pantry-chestatee-september
 - ICS: https://www.theplacega.org/calendar/mobile-pantry-chestatee-september
@@ -1142,3 +1130,7 @@ ICS
 - Mobile Pantry at Brandywine Elementary: https://www.theplacega.org/calendar/mobile-pantry-brandywine-october
 - ICS: https://www.theplacega.org/calendar/mobile-pantry-brandywine-october
 - View Event →: https://www.theplacega.org/calendar/mobile-pantry-brandywine-october
+- https://www.theplacega.org/calendar/mobile-pantry-newhope-october: https://www.theplacega.org/calendar/mobile-pantry-newhope-october
+- Mobile Pantry at New Hope Elementary: https://www.theplacega.org/calendar/mobile-pantry-newhope-october
+- ICS: https://www.theplacega.org/calendar/mobile-pantry-newhope-october
+- View Event →: https://www.theplacega.org/calendar/mobile-pantry-newhope-october
