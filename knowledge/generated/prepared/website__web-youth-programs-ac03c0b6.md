@@ -29,4 +29,5 @@ The Summer Internship Program provides high school students with hands-on experi
 ## Relevant official links
 
 - https://www.theplacega.org/s/School-Snack-Bags-2026.pdf: https://www.theplacega.org/s/School-Snack-Bags-2026.pdf
+- Visit the Holiday House: https://www.theplacega.org/holidayhouse
 - Host a Collections Drive For Youth: https://www.theplacega.org/host-a-drive

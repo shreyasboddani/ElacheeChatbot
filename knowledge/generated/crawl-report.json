@@ -1,6 +1,6 @@
 {
   "startedFrom": "https://www.theplacega.org",
-  "crawledAt": "2026-09-17T14:20:22.258Z",
+  "crawledAt": "2026-09-18T13:39:17.137Z",
   "maxPages": 150,
   "indexedPages": [
     {
@@ -151,7 +151,7 @@
       "id": "web-youth-programs-ac03c0b6",
       "title": "Youth Programs | Empower Youth Today—Join Us — The Place",
       "url": "https://www.theplacega.org/youth-programs",
-      "fetchedAt": "2026-07-23T18:36:56.692Z"
+      "fetchedAt": "2026-09-18T13:38:29.483Z"
     },
     {
       "id": "web-planned-giving-a2c37c92",
@@ -253,7 +253,7 @@
       "id": "web-heartsgiving-71cc983a",
       "title": "Heartsgiving — The Place",
       "url": "https://www.theplacega.org/heartsgiving",
-      "fetchedAt": "2026-09-14T15:56:14.443Z"
+      "fetchedAt": "2026-09-18T13:38:39.231Z"
     },
     {
       "id": "web-press-releases-31d36e55",
@@ -508,36 +508,23 @@
       "reason": "No meaningful public page content found"
     },
     {
-      "url": "https://www.theplacega.org/matching-gifts",
-      "reason": "No meaningful public page content found"
-    },
-    {
-      "url": "https://www.theplacega.org/gala-recap",
-      "reason": "No meaningful public page content found"
-    },
-    {
       "url": "https://www.theplacega.org/furniture-pickup-request",
-      "reason": "No meaningful public page content found"
-    },
-    {
-      "url": "https://www.theplacega.org/faroi",
-      "reason": "No meaningful public page content found"
-    },
-    {
-      "url": "https://www.theplacega.org/upcoming-events",
       "reason": "No meaningful public page content found"
     },
     {
       "url": "https://www.theplacega.org/volunteer-handbook",
       "reason": "Refusing to fetch or follow a URL outside The Place website."
-    }
-  ],
-  "duplicatePages": [
+    },
     {
-      "url": "https://www.theplacega.org/home",
-      "duplicateOf": "https://www.theplacega.org/"
+      "url": "https://www.theplacega.org/matching-gifts",
+      "reason": "No meaningful public page content found"
+    },
+    {
+      "url": "https://www.theplacega.org/upcoming-events",
+      "reason": "No meaningful public page content found"
     }
   ],
+  "duplicatePages": [],
   "blockedPages": [],
   "retainedPages": [
     {

@@ -27,10 +27,10 @@ A winter coat for each member of the household
 Support Heartsgiving
 Give a Thanksgiving Turkey
 Your $30 donation provides a turkey for a local family, helping make their Thanksgiving meal complete.
-Donate or Host a Drive
-Drop-off locations:Forsyth: 2550 The Place Circle, Cumming, GA 30040Dawson: 829 GA-9, Dawsonville, GA 30534
-Host a Coat Drive or Food Drive
+Donate or Host a Coat Drive or Food Drive
 Host a drive with your business, church, or organization.
+Donation drop-off locations:
+Forsyth: 2550 The Place Circle, Cumming, GA 30040Dawson: 829 GA-9, Dawsonville, GA 30534
 Volunteer Opportunities
 Help us sort coat donations prior to the event and help families pick out coats, restock coats, and keep track of the inventory
 Become a Heartsgiving Sponsor

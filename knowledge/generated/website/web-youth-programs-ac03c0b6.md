@@ -3,7 +3,7 @@
 Source ID: web-youth-programs-ac03c0b6
 Source type: official_website
 Canonical URL: https://www.theplacega.org/youth-programs
-Fetched at: 2026-07-23T18:36:56.692Z
+Fetched at: 2026-09-18T13:38:29.483Z
 
 ## Page content
 
@@ -25,4 +25,5 @@ The Summer Internship Program provides high school students with hands-on experi
 ## Relevant links
 
 - https://www.theplacega.org/s/School-Snack-Bags-2026.pdf: https://www.theplacega.org/s/School-Snack-Bags-2026.pdf
+- Visit the Holiday House: https://www.theplacega.org/holidayhouse
 - Host a Collections Drive For Youth: https://www.theplacega.org/host-a-drive
