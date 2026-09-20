@@ -7,7 +7,6 @@ Canonical URL: https://www.theplacega.org/calendar
 ## Important headings
 
 - Upcoming Events
-- Mobile Pantry at Chestatee Elementary
 - Free GED Classes
 - Free GED Classes
 - Mobile Pantry at Brandywine Elementary
@@ -46,19 +45,11 @@ Canonical URL: https://www.theplacega.org/calendar
 - Free GED Classes
 - Free GED Classes
 - Mobile Pantry at Chestatee Elementary
+- Free GED Classes
 
 ## Approved page content
 
 Upcoming Events
-Mobile Pantry at Chestatee Elementary
-Saturday, September 19, 2026
-10:00 AM
-11:00 AM
-Chestatee Elementary
-(map)
-Google Calendar
-ICS
-Everyone is welcome! Come get fresh produce, frozen meats, non-perishable items, and eggs (when available).
 Free GED Classes
 Monday, September 21, 2026
 6:00 PM
@@ -838,6 +829,15 @@ Cumming Elementary
 (map)
 Google Calendar
 ICS
+Mobile Pantry at Chestatee Elementary
+Saturday, September 19, 2026
+10:00 AM
+11:00 AM
+Chestatee Elementary
+(map)
+Google Calendar
+ICS
+Everyone is welcome! Come get fresh produce, frozen meats, non-perishable items, and eggs (when available).
 Free GED Classes
 Wednesday, September 16, 2026
 6:00 PM
@@ -1067,19 +1067,9 @@ United States
 (map)
 Google Calendar
 ICS
-Financial Literacy Summer Series
-Tuesday, July 14, 2026
-6:00 PM
-7:30 PM
-Google Calendar
-ICS
 
 ## Relevant official links
 
-- https://www.theplacega.org/calendar/mobile-pantry-chestatee-september: https://www.theplacega.org/calendar/mobile-pantry-chestatee-september
-- Mobile Pantry at Chestatee Elementary: https://www.theplacega.org/calendar/mobile-pantry-chestatee-september
-- ICS: https://www.theplacega.org/calendar/mobile-pantry-chestatee-september
-- View Event →: https://www.theplacega.org/calendar/mobile-pantry-chestatee-september
 - https://www.theplacega.org/calendar/free-ged-classes-dh7mh-hc34f-5s5zj-mrzzh: https://www.theplacega.org/calendar/free-ged-classes-dh7mh-hc34f-5s5zj-mrzzh
 - Free GED Classes: https://www.theplacega.org/calendar/free-ged-classes-dh7mh-hc34f-5s5zj-mrzzh
 - ICS: https://www.theplacega.org/calendar/free-ged-classes-dh7mh-hc34f-5s5zj-mrzzh
@@ -1176,3 +1166,7 @@ ICS
 - Mobile Pantry at New Hope Elementary: https://www.theplacega.org/calendar/mobile-pantry-newhope-october
 - ICS: https://www.theplacega.org/calendar/mobile-pantry-newhope-october
 - View Event →: https://www.theplacega.org/calendar/mobile-pantry-newhope-october
+- https://www.theplacega.org/calendar/free-ged-classes-dh7mh-hc34f-5s5zj-mrzzh-fty3x-ntp9b-rx7h3-f6sf4-rcc8j: https://www.theplacega.org/calendar/free-ged-classes-dh7mh-hc34f-5s5zj-mrzzh-fty3x-ntp9b-rx7h3-f6sf4-rcc8j
+- Free GED Classes: https://www.theplacega.org/calendar/free-ged-classes-dh7mh-hc34f-5s5zj-mrzzh-fty3x-ntp9b-rx7h3-f6sf4-rcc8j
+- ICS: https://www.theplacega.org/calendar/free-ged-classes-dh7mh-hc34f-5s5zj-mrzzh-fty3x-ntp9b-rx7h3-f6sf4-rcc8j
+- View Event →: https://www.theplacega.org/calendar/free-ged-classes-dh7mh-hc34f-5s5zj-mrzzh-fty3x-ntp9b-rx7h3-f6sf4-rcc8j
