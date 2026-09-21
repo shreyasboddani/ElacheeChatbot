@@ -2763,15 +2763,15 @@
     "sourceType": "official_website"
   },
   {
-    "id": "web-calendar-free-ged-classes-dh7mh-hc34f-5s5zj-mrzzh-fdce9098",
+    "id": "web-calendar-free-ged-classes-6t997-zlysg-d4yp4-syh62-xat6g-97887da8",
     "title": "Free GED Classes — The Place",
-    "canonicalUrl": "https://www.theplacega.org/calendar/free-ged-classes-dh7mh-hc34f-5s5zj-mrzzh",
-    "fetchedAt": "2026-09-16T14:14:34.318Z",
-    "text": "Free GED Classes\nMonday, September 21, 2026\n6:00 PM\n8:00 PM\nCumming Elementary\n540 Dahlonega Street\nCumming, Georgia, 30040\nUnited States\n(map)\nGoogle Calendar\nICS\nMobile Pantry at Chestatee Elementary\nFree GED Classes",
+    "canonicalUrl": "https://www.theplacega.org/calendar/free-ged-classes-6t997-zlysg-d4yp4-syh62-xat6g",
+    "fetchedAt": "2026-09-21T15:56:32.995Z",
+    "text": "Free GED Classes\nWednesday, September 23, 2026\n6:00 PM\n8:00 PM\nCumming Elementary\n540 Dahlonega Street\nCumming, Georgia, 30040\nUnited States\n(map)\nGoogle Calendar\nICS\nFree GED Classes\nMobile Pantry at Brandywine Elementary",
     "headings": [
       "Free GED Classes",
-      "Mobile Pantry at Chestatee Elementary",
-      "Free GED Classes"
+      "Free GED Classes",
+      "Mobile Pantry at Brandywine Elementary"
     ],
     "links": [
       {
@@ -2780,15 +2780,15 @@
       },
       {
         "label": "ICS",
+        "url": "https://www.theplacega.org/calendar/free-ged-classes-6t997-zlysg-d4yp4-syh62-xat6g"
+      },
+      {
+        "label": "Previous\nPrevious\nSeptember 21\nFree GED Classes",
         "url": "https://www.theplacega.org/calendar/free-ged-classes-dh7mh-hc34f-5s5zj-mrzzh"
       },
       {
-        "label": "Previous\nPrevious\nSeptember 19\nMobile Pantry at Chestatee Elementary",
-        "url": "https://www.theplacega.org/calendar/mobile-pantry-chestatee-september"
-      },
-      {
-        "label": "Next\nNext\nSeptember 23\nFree GED Classes",
-        "url": "https://www.theplacega.org/calendar/free-ged-classes-6t997-zlysg-d4yp4-syh62-xat6g"
+        "label": "Next\nNext\nSeptember 26\nMobile Pantry at Brandywine Elementary",
+        "url": "https://www.theplacega.org/calendar/mobile-pantry-brandywine-september"
       }
     ],
     "sourceType": "official_website"
