@@ -8,7 +8,6 @@ Canonical URL: https://www.theplacega.org/calendar
 
 - Upcoming Events
 - Free GED Classes
-- Free GED Classes
 - Mobile Pantry at Brandywine Elementary
 - Mobile Pantry at New Hope Elementary
 - Free GED Classes
@@ -46,18 +45,11 @@ Canonical URL: https://www.theplacega.org/calendar
 - Free GED Classes
 - Mobile Pantry at Chestatee Elementary
 - Free GED Classes
+- Free GED Classes
 
 ## Approved page content
 
 Upcoming Events
-Free GED Classes
-Monday, September 21, 2026
-6:00 PM
-8:00 PM
-Cumming Elementary
-(map)
-Google Calendar
-ICS
 Free GED Classes
 Wednesday, September 23, 2026
 6:00 PM
@@ -829,6 +821,14 @@ Cumming Elementary
 (map)
 Google Calendar
 ICS
+Free GED Classes
+Monday, September 21, 2026
+6:00 PM
+8:00 PM
+Cumming Elementary
+(map)
+Google Calendar
+ICS
 Mobile Pantry at Chestatee Elementary
 Saturday, September 19, 2026
 10:00 AM
@@ -1057,23 +1057,9 @@ Thursday, July 16, 2026
 12:30 PM
 Google Calendar
 ICS
-Farmington Creek Mobile Food Pantry
-Wednesday, July 15, 2026
-1:00 PM
-2:00 PM
-35 Harvest Circle
-Dawsonville, Georgia, 30534
-United States
-(map)
-Google Calendar
-ICS
 
 ## Relevant official links
 
-- https://www.theplacega.org/calendar/free-ged-classes-dh7mh-hc34f-5s5zj-mrzzh: https://www.theplacega.org/calendar/free-ged-classes-dh7mh-hc34f-5s5zj-mrzzh
-- Free GED Classes: https://www.theplacega.org/calendar/free-ged-classes-dh7mh-hc34f-5s5zj-mrzzh
-- ICS: https://www.theplacega.org/calendar/free-ged-classes-dh7mh-hc34f-5s5zj-mrzzh
-- View Event →: https://www.theplacega.org/calendar/free-ged-classes-dh7mh-hc34f-5s5zj-mrzzh
 - https://www.theplacega.org/calendar/free-ged-classes-6t997-zlysg-d4yp4-syh62-xat6g: https://www.theplacega.org/calendar/free-ged-classes-6t997-zlysg-d4yp4-syh62-xat6g
 - Free GED Classes: https://www.theplacega.org/calendar/free-ged-classes-6t997-zlysg-d4yp4-syh62-xat6g
 - ICS: https://www.theplacega.org/calendar/free-ged-classes-6t997-zlysg-d4yp4-syh62-xat6g
@@ -1170,3 +1156,7 @@ ICS
 - Free GED Classes: https://www.theplacega.org/calendar/free-ged-classes-dh7mh-hc34f-5s5zj-mrzzh-fty3x-ntp9b-rx7h3-f6sf4-rcc8j
 - ICS: https://www.theplacega.org/calendar/free-ged-classes-dh7mh-hc34f-5s5zj-mrzzh-fty3x-ntp9b-rx7h3-f6sf4-rcc8j
 - View Event →: https://www.theplacega.org/calendar/free-ged-classes-dh7mh-hc34f-5s5zj-mrzzh-fty3x-ntp9b-rx7h3-f6sf4-rcc8j
+- https://www.theplacega.org/calendar/financial-literacy-fall-series-szalb-cslyd: https://www.theplacega.org/calendar/financial-literacy-fall-series-szalb-cslyd
+- Financial Literacy Fall Series: https://www.theplacega.org/calendar/financial-literacy-fall-series-szalb-cslyd
+- ICS: https://www.theplacega.org/calendar/financial-literacy-fall-series-szalb-cslyd
+- View Event →: https://www.theplacega.org/calendar/financial-literacy-fall-series-szalb-cslyd
