@@ -3,13 +3,19 @@ import { readFileSync } from "node:fs";
 
 import {
   collapseRecurringCalendarOccurrences,
+  extractWebsiteSource,
   isAllowedByRobots,
   isCalendarPaginationLink,
   isCrawlableUrl,
   parseApprovedRemovalUrls,
   parseRobotsTxt,
 } from "../scripts/crawl-website";
+import { hasConflictingVisitorCenterHours } from "../src/lib/knowledge/schedule-conflicts";
 import type { WebsiteSource } from "../src/lib/knowledge/types";
+import {
+  containsNonElacheePhoneNumber,
+  redactNonElacheePhoneNumbers,
+} from "@/lib/security/phone-numbers";
 
 function calendarSource(
   overrides: Partial<WebsiteSource> & { canonicalUrl: string; title: string; text: string },
@@ -27,8 +33,62 @@ import { isValidWidgetUrl } from "@/lib/widget/url-validation";
 import { parseEmbedPresentation } from "@/lib/widget/presentation";
 
 describe("widget and crawler boundaries", () => {
+  it("detects overlapping open and closed weekdays on the visitor page", () => {
+    expect(
+      hasConflictingVisitorCenterHours({
+        canonicalUrl: "https://elachee.org/visit",
+        text: [
+          "Hours",
+          "Mon-Fri: 12 PM - 3 PM",
+          "Sat: 10 AM - 4 PM",
+          "Sun, Mon & Tues: CLOSED",
+          "Admission",
+        ].join("\n"),
+      }),
+    ).toBe(true);
+    expect(
+      hasConflictingVisitorCenterHours({
+        canonicalUrl: "https://elachee.org/visit",
+        text: ["Hours", "Wed-Fri: 12 PM - 3 PM", "Sat: 10 AM - 4 PM", "Admission"].join("\n"),
+      }),
+    ).toBe(false);
+    expect(
+      hasConflictingVisitorCenterHours({
+        canonicalUrl: "https://elachee.org/resources/hours",
+        text: "Hours\nMon-Fri: 12 PM - 3 PM\nSun, Mon & Tues: CLOSED",
+      }),
+    ).toBe(false);
+  });
+
+  it("keeps indexed contact numbers limited to Elachee's official number", () => {
+    const outsidePhone = ["1", "800", "366", "2661"].join("-");
+    expect(containsNonElacheePhoneNumber("Call Elachee at 770-535-1976.")).toBe(
+      false,
+    );
+    expect(containsNonElacheePhoneNumber(`Wildlife hotline: ${outsidePhone}`)).toBe(
+      true,
+    );
+    expect(redactNonElacheePhoneNumbers(`Wildlife hotline: ${outsidePhone}`)).toBe(
+      "Wildlife hotline: [phone number omitted]",
+    );
+  });
+
+  it("redacts outside phone numbers from the daily crawl before indexing", () => {
+    const outsidePhone = ["1", "800", "366", "2661"].join("-");
+    const source = extractWebsiteSource(
+      `<html><head><title>Wildlife advice</title></head><body><main><h1>Wildlife advice at Elachee</h1><p>For additional help with injured wildlife, contact the hotline at ${outsidePhone}. Elachee can provide confirmed visitor information and conservation guidance.</p></main></body></html>`,
+      "https://elachee.org/wildlife-advice",
+      "2026-09-22T00:00:00.000Z",
+    );
+
+    expect(source?.text).toContain("[phone number omitted]");
+    expect(containsNonElacheePhoneNumber(source?.text ?? "")).toBe(false);
+  });
+
   it("validates widget URLs and requires HTTPS outside localhost", () => {
-    expect(isValidWidgetUrl("https://prototype.vercel.app/embed")).toBe(true);
+    expect(isValidWidgetUrl("https://elachee-chatbot.vercel.app/embed")).toBe(
+      true,
+    );
     expect(isValidWidgetUrl("http://localhost:3000/embed")).toBe(true);
     expect(isValidWidgetUrl("http://example.com/embed")).toBe(false);
     expect(isValidWidgetUrl("javascript:alert(1)")).toBe(false);
@@ -71,11 +131,13 @@ describe("widget and crawler boundaries", () => {
   });
 
   it("keeps the crawler on public Elachee HTML routes", () => {
-    expect(isCrawlableUrl("https://elachee.org/food-pantry/?utm_source=x")).toBe(
-      true,
-    );
+    expect(
+      isCrawlableUrl("https://elachee.org/visit/hiking-trails/?utm_source=x"),
+    ).toBe(true);
     expect(isCrawlableUrl("https://elachee.org/wp-admin/")).toBe(false);
-    expect(isCrawlableUrl("https://example.com/food-pantry")).toBe(false);
+    expect(isCrawlableUrl("https://example.com/visit/hiking-trails")).toBe(
+      false,
+    );
     expect(isCrawlableUrl("https://elachee.org/brochure.pdf")).toBe(false);
   });
 

@@ -81,7 +81,7 @@ describe("ChatPanel request pipeline", () => {
     render(<ChatPanel onMinimize={vi.fn()} onClose={vi.fn()} />);
 
     const input = screen.getByLabelText("Ask the Elachee Nature Guide");
-    fireEvent.change(input, { target: { value: "  I need food.  " } });
+    fireEvent.change(input, { target: { value: "  I need Elachee visit information.  " } });
     fireEvent.click(screen.getByRole("button", { name: "Send message" }));
     await screen.findByText("Elachee offers confirmed visit information.");
 
@@ -91,7 +91,7 @@ describe("ChatPanel request pipeline", () => {
 
     const firstInit = fetchMock.mock.calls[0]?.[1] as RequestInit;
     expect(JSON.parse(firstInit.body as string)).toEqual({
-      message: "I need food.",
+      message: "I need Elachee visit information.",
       history: [],
       language: "auto",
     });
@@ -99,7 +99,7 @@ describe("ChatPanel request pipeline", () => {
     expect(JSON.parse(secondInit.body as string)).toEqual({
       message: "What about Saturday?",
       history: [
-        { role: "user", content: "I need food." },
+        { role: "user", content: "I need Elachee visit information." },
         {
           role: "assistant",
           content: "Elachee offers confirmed visit information.",

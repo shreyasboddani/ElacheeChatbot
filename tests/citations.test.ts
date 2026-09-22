@@ -4,11 +4,11 @@ import { resolveFileCitations } from "@/lib/gemini/citations";
 import type { SourceManifestEntry } from "@/lib/knowledge/types";
 
 const websiteSource: SourceManifestEntry = {
-  id: "food-donations",
-  fileName: "website__food-donations.md",
-  documentPath: "knowledge/generated/prepared/website__food-donations.md",
-  title: "Food Donations",
-  url: "https://elachee.org/food-donations",
+  id: "elachee-trail-map",
+  fileName: "website__elachee-trail-map.md",
+  documentPath: "knowledge/generated/prepared/website__elachee-trail-map.md",
+  title: "Elachee Trail Map",
+  url: "https://elachee.org/resources/trail-map",
   sourceType: "official_website",
   priority: 50,
 };
@@ -20,16 +20,38 @@ describe("citation resolution", () => {
         {
           type: "file_citation",
           file_name: "display-name.md",
-          custom_metadata: { source_id: "food-donations" },
+          custom_metadata: { source_id: "elachee-trail-map" },
         },
       ],
       [websiteSource],
     );
     expect(sources).toEqual([
       {
-        id: "food-donations",
-        title: "Food Donations",
-        url: "https://elachee.org/food-donations",
+        id: "elachee-trail-map",
+        title: "Elachee Trail Map",
+        url: "https://elachee.org/resources/trail-map",
+        sourceType: "official_website",
+      },
+    ]);
+  });
+
+  it("maps Gemini file references using the uploaded document basename", () => {
+    expect(
+      resolveFileCitations(
+        [
+          {
+            type: "file_citation",
+            source:
+              "gs://approved-file-search/website__elachee-trail-map.md?part=1",
+          },
+        ],
+        [websiteSource],
+      ),
+    ).toEqual([
+      {
+        id: "elachee-trail-map",
+        title: "Elachee Trail Map",
+        url: "https://elachee.org/resources/trail-map",
         sourceType: "official_website",
       },
     ]);

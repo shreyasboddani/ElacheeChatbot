@@ -8,6 +8,7 @@ export interface FileCitationAnnotation {
   type?: string;
   file_name?: string;
   document_uri?: string;
+  source?: string;
   custom_metadata?: unknown;
 }
 
@@ -44,17 +45,42 @@ export function resolveFileCitations(
     const sourceId = metadataValue(annotation.custom_metadata, "source_id");
     const references = [
       sourceId,
+      metadataValue(annotation.custom_metadata, "canonical_url"),
       annotation.file_name,
       annotation.document_uri,
+      annotation.source,
     ].filter((value): value is string => Boolean(value));
 
-    const entry = manifest.find((candidate) =>
-      references.some((reference) =>
-        [candidate.id, candidate.fileName, candidate.documentPath]
-          .map((value) => value.toLowerCase())
-          .includes(reference.toLowerCase()),
-      ),
-    );
+    const entry = manifest.find((candidate) => {
+      const approvedReferences = [
+        candidate.id,
+        candidate.fileName,
+        candidate.documentPath,
+        candidate.url,
+      ].filter((value): value is string => Boolean(value));
+
+      return references.some((reference) => {
+        const normalized = reference.trim().toLowerCase();
+        if (
+          approvedReferences.some(
+            (value) => value.trim().toLowerCase() === normalized,
+          )
+        ) {
+          return true;
+        }
+
+        // Gemini may return a file URI or a full storage path instead of the
+        // uploaded filename. Match only its exact basename, never a fuzzy name.
+        let basename = normalized.split(/[\\/]/).at(-1) ?? normalized;
+        try {
+          basename = decodeURIComponent(basename);
+        } catch {
+          // Keep the original basename if it is not valid URI encoding.
+        }
+        basename = basename.split(/[?#]/, 1)[0] ?? basename;
+        return basename === candidate.fileName.toLowerCase();
+      });
+    });
     if (!entry) continue;
     if (
       (entry.sourceType === "official_website" ||

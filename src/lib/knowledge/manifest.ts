@@ -15,7 +15,12 @@ function isManifestEntry(value: unknown): value is SourceManifestEntry {
       entry.sourceType === "manager_faq") &&
     typeof entry.priority === "number" &&
     (entry.url === undefined || typeof entry.url === "string") &&
-    (entry.contentHash === undefined || typeof entry.contentHash === "string")
+    (entry.contentHash === undefined || typeof entry.contentHash === "string") &&
+    (entry.conflictingTopics === undefined ||
+      (Array.isArray(entry.conflictingTopics) &&
+        entry.conflictingTopics.every(
+          (topic) => topic === "visitor_center_hours",
+        )))
   );
 }
 

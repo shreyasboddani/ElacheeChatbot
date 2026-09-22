@@ -9,6 +9,7 @@ import type {
   SourceManifestEntry,
   WebsiteSource,
 } from "../src/lib/knowledge/types";
+import { conflictingTopicsForWebsiteSource } from "../src/lib/knowledge/schedule-conflicts";
 import { isApprovedWebsiteUrl } from "../src/lib/security/source-url";
 
 async function readJsonIfPresent(filePath: string): Promise<unknown> {
@@ -233,6 +234,7 @@ export async function prepareKnowledge(root = process.cwd()) {
     const fileName = `website__${source.id}.md`;
     const relativePath = `knowledge/generated/prepared/${fileName}`;
     await writeFile(path.join(preparedDir, fileName), websiteMarkdown(source), "utf8");
+    const conflictingTopics = conflictingTopicsForWebsiteSource(source);
     manifest.push({
       id: source.id,
       fileName,
@@ -242,6 +244,7 @@ export async function prepareKnowledge(root = process.cwd()) {
       fetchedAt: source.fetchedAt,
       sourceType: "official_website",
       priority: 50,
+      ...(conflictingTopics.length > 0 ? { conflictingTopics } : {}),
     });
   }
 

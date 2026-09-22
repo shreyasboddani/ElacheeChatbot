@@ -1,8 +1,8 @@
 # Elachee Information Assistant
 
-A grounded chatbot prototype for Elachee, created by LearnAI. The application answers only from a prepared Gemini File Search store containing Elachee's public website and any reviewed staff FAQ entries. Unsupported, uncited, sensitive, or conflicting questions are routed to Elachee instead of being guessed.
+A grounded information assistant for Elachee, created by LearnAI. It answers from a prepared Gemini File Search store containing Elachee's public website and any reviewed staff FAQ entries. Unsupported, uncited, sensitive, or conflicting questions are routed to Elachee instead of being guessed.
 
-This repository is a prototype for review. It is not a case-management system, does not check application status, and isn't represented as a final production service approved by Elachee.
+The assistant provides general visitor information; it cannot access personal program registrations or reservations.
 
 ## What is included
 
@@ -392,25 +392,14 @@ npm run knowledge:sync -- --reconcile --apply
 
 Use `--new-store` only for initial setup, ownership transfer, or an intentional blue/green rebuild. Reusing a store without `--reconcile` is rejected so duplicate documents cannot accumulate accidentally.
 
-## Current synchronization result
+## Current knowledge snapshot
 
-The initial Elachee preparation pass indexed 60 public website pages and produced 60 prepared documents with no crawl failures, staff FAQ entries, or bundled official PDFs. Rerun the refresh commands after reviewing future Elachee site changes.
-
-The following staff questions remain pending and are excluded from the approved FAQ corpus:
-
-- Furniture delivery fees
-- Return policy
-- Whether electronics-testing outlets are available
-- Meaning of colored clothing barbs
-- Whether prices are negotiable
-- Whether clothing exchanges are accepted
-
-Targeted searches of the crawled official corpus found no direct official answer for those six questions. A future website change can still become an official website source after a new crawl, but it does not silently convert a pending staff entry into an approved FAQ.
+The latest verified snapshot contains 78 public Elachee website pages, with no crawl failures, staff FAQ entries, or bundled official PDFs. The daily GitHub Action refreshes and verifies this corpus. The crawler retains Elachee's official contact number and removes other organizations' phone numbers before indexing; the chat response layer also blocks them from answers.
 
 ## Ownership transfer from LearnAI to Elachee
 
 1. Elachee creates its own Google AI project and Gemini API key.
-2. Greg (or the designated hosting administrator) configures that key in Elachee's Vercel project.
+2. The designated Elachee hosting administrator configures that key in Elachee's Vercel project.
 3. Run the knowledge crawl, FAQ parse, preparation, and File Search sync using Elachee's key/project.
 4. Copy the newly printed `GEMINI_FILE_SEARCH_STORE` into the hosting environment.
 5. Confirm `vercel.json` uses the guarded production build described in `docs/knowledge-automation.md`.

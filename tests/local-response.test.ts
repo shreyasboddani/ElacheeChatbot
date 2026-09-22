@@ -80,6 +80,44 @@ describe("local conversational responses", () => {
     expect(focusConversationalQuery(message)).toBe(expected);
   });
 
+  it("carries only prior user questions into a context-dependent follow-up", () => {
+    expect(
+      focusConversationalQuery("What about Saturday?", [
+        { role: "user", content: "Are dogs allowed on Elachee hiking trails?" },
+        {
+          role: "assistant",
+          content: "Leashed dogs are allowed on Sundays only.",
+        },
+      ]),
+    ).toBe(
+      "are dogs allowed on elachee hiking trails on saturday?",
+    );
+  });
+
+  it("carries a topic anchor through consecutive short follow-ups", () => {
+    expect(
+      focusConversationalQuery("Are they allowed on Sundays?", [
+        { role: "user", content: "Are dogs allowed on Elachee hiking trails?" },
+        { role: "assistant", content: "Dogs are allowed on Sundays." },
+        { role: "user", content: "What about Saturday?" },
+        { role: "assistant", content: "No, Saturday is not allowed." },
+      ]),
+    ).toBe(
+      "are dogs allowed on elachee hiking trails on sundays?",
+    );
+  });
+
+  it("keeps explanation requests tied to the earlier Elachee topic", () => {
+    expect(
+      focusConversationalQuery("Can you explain that more simply?", [
+        { role: "user", content: "Are dogs allowed on Elachee hiking trails?" },
+        { role: "assistant", content: "Dogs are allowed on Sundays only." },
+      ]),
+    ).toBe(
+      "are dogs allowed on elachee hiking trails can you explain that more simply",
+    );
+  });
+
   it.each([
     "what questions can You answer",
     "What can you help me with?",

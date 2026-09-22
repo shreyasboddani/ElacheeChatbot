@@ -6,7 +6,6 @@ import {
   serviceUnavailableResponse,
 } from "@/lib/contact-fallback";
 import {
-  focusConversationalQuery,
   getLocalConversationalResponse,
 } from "@/lib/chat/local-response";
 import {
@@ -173,13 +172,9 @@ export async function POST(request: NextRequest): Promise<Response> {
   }
 
   try {
-    const focusedMessage = focusConversationalQuery(validation.data.message);
     const response = await askGroundedQuestion(
       createGroundedInteractionClient(config.apiKey),
-      {
-        ...validation.data,
-        message: focusedMessage,
-      },
+      validation.data,
       {
         model: config.model,
         fileSearchStore: config.fileSearchStore,

@@ -9,6 +9,7 @@ import {
   canonicalizeElacheeUrl,
   ELACHEE,
 } from "../src/lib/config";
+import { redactNonElacheePhoneNumbers } from "../src/lib/security/phone-numbers";
 import type { WebsiteSource } from "../src/lib/knowledge/types";
 
 const USER_AGENT =
@@ -430,16 +431,20 @@ export function extractWebsiteSource(
     : $("article").first().length
       ? $("article").first()
       : $("body").first();
-  const title = normalizedText(
-    $("meta[property='og:title']").attr("content") ||
-      $("title").text() ||
-      root.find("h1").first().text() ||
-      "Elachee",
+  const title = redactNonElacheePhoneNumbers(
+    normalizedText(
+      $("meta[property='og:title']").attr("content") ||
+        $("title").text() ||
+        root.find("h1").first().text() ||
+        "Elachee",
+    ),
   );
   const headings = root
     .find("h1, h2, h3")
     .toArray()
-    .map((element) => normalizedText($(element).text()))
+    .map((element) =>
+      redactNonElacheePhoneNumbers(normalizedText($(element).text())),
+    )
     .filter(Boolean)
     .slice(0, 40);
 
@@ -457,7 +462,9 @@ export function extractWebsiteSource(
       }
       const url = canonicalizeElacheeUrl(absolute);
       if (!url) return [];
-      const label = normalizedText($(anchor).text());
+      const label = redactNonElacheePhoneNumbers(
+        normalizedText($(anchor).text()),
+      );
       return [{ label: label || url, url }];
     })
     .filter(
@@ -473,7 +480,7 @@ export function extractWebsiteSource(
     .toArray()
     .map((element) => normalizedText($(element).text()))
     .filter((text) => text.length > 1);
-  const text = normalizedText(blocks.join("\n"));
+  const text = redactNonElacheePhoneNumbers(normalizedText(blocks.join("\n")));
   if (text.length < 80) return undefined;
 
   return {

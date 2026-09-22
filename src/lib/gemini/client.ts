@@ -26,6 +26,9 @@ function normalizeAnnotation(value: unknown): FileCitationAnnotation | undefined
     ...(typeof annotation.document_uri === "string"
       ? { document_uri: annotation.document_uri }
       : {}),
+    ...(typeof annotation.source === "string"
+      ? { source: annotation.source }
+      : {}),
     ...(annotation.custom_metadata !== undefined
       ? { custom_metadata: annotation.custom_metadata }
       : {}),

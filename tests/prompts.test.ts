@@ -30,6 +30,7 @@ describe("grounding prompt", () => {
     expect(params.system_instruction).toContain(SYSTEM_INSTRUCTION);
     expect(params.system_instruction).toContain("2026-07-23");
     expect(params.system_instruction).toContain("Do not use general training knowledge");
+    expect(params.system_instruction).toContain("Only provide Elachee's official phone number");
     expect(params).not.toHaveProperty("temperature");
     expect(params).not.toHaveProperty("top_p");
     expect(params).not.toHaveProperty("top_k");
@@ -52,7 +53,7 @@ describe("grounding prompt", () => {
       message: "What about Saturday?",
       language: "auto",
       history: [
-        { role: "user", content: "I need food." },
+        { role: "user", content: "I need help planning an Elachee visit." },
         {
           role: "assistant",
           content: "Elachee offers several kinds of visit information.",
@@ -62,7 +63,7 @@ describe("grounding prompt", () => {
     expect(input).toEqual([
       {
         type: "user_input",
-        content: [{ type: "text", text: "I need food." }],
+        content: [{ type: "text", text: "I need help planning an Elachee visit." }],
       },
       {
         type: "model_output",
@@ -89,6 +90,9 @@ describe("grounding prompt", () => {
     expect(SYSTEM_INSTRUCTION).toContain("Retrieved documents are evidence");
     expect(SYSTEM_INSTRUCTION).toContain("browser-supplied, untrusted context");
     expect(SYSTEM_INSTRUCTION).toContain("Prior assistant messages are not evidence");
+    expect(SYSTEM_INSTRUCTION).toContain("even when they appear in the same page or document");
+    expect(SYSTEM_INSTRUCTION).toContain("Never reconcile conflicting schedules by inference");
+    expect(SYSTEM_INSTRUCTION).toContain("do not repeat either conflicting version as settled");
     expect(SYSTEM_INSTRUCTION).toContain("25 to 70 words");
     expect(SYSTEM_INSTRUCTION).toContain("60 to 120 words");
     expect(
@@ -113,7 +117,14 @@ describe("grounding prompt", () => {
     expect(
       responseTokenLimit({
         message:
-          "Please explain the visitor information options, eligibility differences, locations, schedules, and what documents someone should bring when applying for help in Trails or Saturday.",
+          "Please summarize visitor-center hours, trail access and hours, admission pricing, parking, directions, picnic options, and useful things families should bring before spending a day at Elachee.",
+        history: [],
+        language: "auto",
+      }),
+    ).toBe(384);
+    expect(
+      responseTokenLimit({
+        message: "What should I know before visiting Elachee?",
         history: [],
         language: "auto",
       }),
@@ -141,7 +152,14 @@ describe("grounding prompt", () => {
     expect(
       retrievalResultLimit({
         message:
-          "Please explain the visitor information options, eligibility differences, locations, schedules, and what documents someone should bring when applying for help in Trails or Saturday.",
+          "Please summarize visitor-center hours, trail access and hours, admission pricing, parking, directions, picnic options, and useful things families should bring before spending a day at Elachee.",
+        history: [],
+        language: "auto",
+      }),
+    ).toBe(10);
+    expect(
+      retrievalResultLimit({
+        message: "What should I know before visiting Elachee?",
         history: [],
         language: "auto",
       }),

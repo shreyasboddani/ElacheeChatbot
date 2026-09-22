@@ -105,7 +105,7 @@ function greetingPrefixWordCount(message: string): number {
   return ["thanks", "thx"].includes(messageWords[0] ?? "") ? 1 : 0;
 }
 
-export function focusConversationalQuery(message: string): string {
+function stripConversationalFiller(message: string): string {
   const normalized = normalizeConversationalMessage(message);
   const prefixWords = greetingPrefixWordCount(normalized);
   const matches = [...normalized.matchAll(/[a-z0-9]+/g)];
@@ -124,6 +124,73 @@ export function focusConversationalQuery(message: string): string {
     )
     .trim();
   return focused || normalized;
+}
+
+type ConversationalHistoryItem = {
+  role: "user" | "assistant";
+  content: string;
+};
+
+function isContextDependentFollowUp(message: string): boolean {
+  const normalized = normalizeConversationalMessage(message);
+  return /^(?:what about|how about|and\b|but\b|which one\b|what else\b|anything else\b|what time\b|how much\b|how many\b|how long\b|why\b|where is it\b|when is it\b|are they\b|is it\b|do they\b|does it\b|can i bring\b|can i take\b|will it\b|could they\b|tell me more\b|more (?:details?|information)\b|can you (?:explain|elaborate|expand|clarify|say more|give (?:me )?more detail)\b|could you (?:explain|elaborate|expand|clarify|say more|give (?:me )?more detail)\b|would you (?:explain|elaborate|expand|clarify|say more|give (?:me )?more detail)\b|(?:what|how) about\s+(?:today|tomorrow|this weekend|the weekend|weekdays?|weekends?|monday|tuesday|wednesday|thursday|friday|saturday|sunday)\b)/i.test(
+    normalized,
+  );
+}
+
+function schedulePeriodFollowUp(message: string): string | undefined {
+  const normalized = normalizeConversationalMessage(message);
+  const match = normalized.match(
+    /^(?:(?:what|how) about\s+|and\s+|but\s+)?(today|tomorrow|this weekend|the weekend|weekdays?|weekends?|mondays?|tuesdays?|wednesdays?|thursdays?|fridays?|saturdays?|sundays?)$/i,
+  );
+  const directMatch = normalized.match(
+    /^(?:are they allowed|can i bring|can i take|is it open|are they open|do they run)\s+(?:on\s+)?(today|tomorrow|weekdays?|weekends?|mondays?|tuesdays?|wednesdays?|thursdays?|fridays?|saturdays?|sundays?)$/i,
+  );
+  const period = match?.[1] ?? directMatch?.[1];
+  if (!period) return undefined;
+  if (/^(?:this weekend|the weekend)$/i.test(period)) {
+    return `during ${period}`;
+  }
+  if (/^weekdays?$/i.test(period)) return "on weekdays";
+  if (/^weekends?$/i.test(period)) return "on weekends";
+  return `on ${period}`;
+}
+
+export function focusConversationalQuery(
+  message: string,
+  history: readonly ConversationalHistoryItem[] = [],
+): string {
+  const focused = stripConversationalFiller(message);
+  if (!isContextDependentFollowUp(focused)) return focused;
+
+  const previousUserMessages = history
+    .filter((item) => item.role === "user")
+    .map((item) => item.content);
+  if (previousUserMessages.length === 0) return focused;
+
+  let contextStart = previousUserMessages.length - 1;
+  while (
+    contextStart > 0 &&
+    isContextDependentFollowUp(previousUserMessages[contextStart] ?? "")
+  ) {
+    contextStart -= 1;
+  }
+
+  const anchor = previousUserMessages[contextStart];
+  const latestPreviousMessage = previousUserMessages.at(-1);
+  const relevantContext = anchor
+    ? [
+        stripConversationalFiller(anchor),
+        ...(contextStart < previousUserMessages.length - 1 && latestPreviousMessage
+          ? [stripConversationalFiller(latestPreviousMessage)]
+          : []),
+      ]
+    : [];
+  const schedulePeriod = schedulePeriodFollowUp(focused);
+  if (schedulePeriod && relevantContext[0]) {
+    return `${relevantContext[0].replace(/[.!?]+$/g, "")} ${schedulePeriod}?`;
+  }
+  return [...relevantContext, focused].join(" ");
 }
 
 function hasApproximateIntent(message: string): boolean {

@@ -9,6 +9,8 @@ export type FaqStatus =
   | "conflicting"
   | "needs_review";
 
+export type KnowledgeConflictTopic = "visitor_center_hours";
+
 export interface FaqEntry {
   id: string;
   question: string;
@@ -50,6 +52,7 @@ export interface SourceManifestEntry {
   sourceType: SourceType;
   priority: number;
   contentHash?: string;
+  conflictingTopics?: KnowledgeConflictTopic[];
 }
 
 export interface ChatSource {

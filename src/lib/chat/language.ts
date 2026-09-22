@@ -1,3 +1,5 @@
+import { ELACHEE } from "@/lib/config";
+
 export const CHAT_LANGUAGE_PREFERENCES = ["auto", "en", "es"] as const;
 
 export type ChatLanguagePreference =
@@ -53,7 +55,7 @@ export const CHAT_UI_COPY = {
     invalidMessage:
       "The chat control could not read that message. Please type your question in the message box and try again.",
     unavailable:
-      "The Elachee Nature Guide is temporarily unavailable. Please try again in a moment. If you still need help, call 770-535-1976 or use the contact page.",
+      `The Elachee Nature Guide is temporarily unavailable. Please try again in a moment. If you still need help, call ${ELACHEE.contact.phone} or use the contact page.`,
     sensitiveReplacement: "Sensitive information was not sent.",
     resize:
       "Resize chat. Drag the corner, or use arrow keys while focused.",
@@ -99,7 +101,7 @@ export const CHAT_UI_COPY = {
     invalidMessage:
       "El chat no pudo leer ese mensaje. Escribe tu pregunta en el cuadro e inténtalo de nuevo.",
     unavailable:
-      "La Guía de Naturaleza de Elachee no está disponible temporalmente. Inténtalo de nuevo en un momento. Si aún necesitas ayuda, llama al 770-535-1976 o usa la página de contacto.",
+      `La Guía de Naturaleza de Elachee no está disponible temporalmente. Inténtalo de nuevo en un momento. Si aún necesitas ayuda, llama al ${ELACHEE.contact.phone} o usa la página de contacto.`,
     sensitiveReplacement: "La información confidencial no se envió.",
     resize:
       "Cambiar el tamaño del chat. Arrastra la esquina o usa las flechas del teclado.",

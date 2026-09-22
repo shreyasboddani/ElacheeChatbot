@@ -34,10 +34,10 @@ describe("client chat request builder", () => {
   });
 
   it("captures the current input before a caller clears its state", () => {
-    let input = "  I need food.  ";
+    let input = "  I need Elachee visit information.  ";
     const messageToSend = captureMessageForSubmit(input);
     input = "";
-    expect(messageToSend).toBe("I need food.");
+    expect(messageToSend).toBe("I need Elachee visit information.");
     expect(input).toBe("");
   });
 
@@ -51,7 +51,7 @@ describe("client chat request builder", () => {
     const result = buildChatRequest("Who should I contact?", [
       {
         role: "user",
-        content: "I applied for assistance.",
+        content: "I registered my child for Camp Elachee.",
         includeInHistory: true,
         id: "ui-id",
         timestamp: 123,
@@ -68,7 +68,7 @@ describe("client chat request builder", () => {
       payload: {
         message: "Who should I contact?",
         history: [
-          { role: "user", content: "I applied for assistance." },
+          { role: "user", content: "I registered my child for Camp Elachee." },
         ],
         language: "auto",
       },
@@ -79,10 +79,10 @@ describe("client chat request builder", () => {
   });
 
   it("includes a validated explicit language preference", () => {
-    expect(buildChatRequest("¿Dónde puedo donar alimentos?", [], "es")).toEqual({
+    expect(buildChatRequest("Como puedo hacer una donacion a Elachee?", [], "es")).toEqual({
       success: true,
       payload: {
-        message: "¿Dónde puedo donar alimentos?",
+        message: "Como puedo hacer una donacion a Elachee?",
         history: [],
         language: "es",
       },
@@ -97,7 +97,7 @@ describe("client chat request builder", () => {
       { role: "assistant", content: "   ", includeInHistory: true },
       { role: "bot", content: "Not a valid role", includeInHistory: true },
       { role: "model", content: "Not a valid role", includeInHistory: true },
-      { role: "user", content: "I need food.", includeInHistory: true },
+      { role: "user", content: "I need Elachee visit information.", includeInHistory: true },
       {
         role: "assistant",
         content: "Elachee offers visitor information.",
@@ -107,7 +107,7 @@ describe("client chat request builder", () => {
     expect(result.success).toBe(true);
     if (result.success) {
       expect(result.payload.history).toEqual([
-        { role: "user", content: "I need food." },
+        { role: "user", content: "I need Elachee visit information." },
         {
           role: "assistant",
           content: "Elachee offers visitor information.",
@@ -146,7 +146,7 @@ describe("client chat request builder", () => {
   it("preserves backend-sized assistant answers and produces schema-valid follow-up history", () => {
     const previousAnswer = "A".repeat(MAX_HISTORY_CONTENT_LENGTH);
     const result = buildChatRequest("Can you explain that more simply?", [
-      { role: "user", content: "I need food.", includeInHistory: true },
+      { role: "user", content: "I need Elachee visit information.", includeInHistory: true },
       {
         role: "assistant",
         content: previousAnswer,

@@ -179,8 +179,9 @@ export default function Home() {
             <span>Prototype technology by <strong>LearnAI</strong></span>
           </div>
           <p>
-            This demonstration is not a case-management service and is not a
-            final production deployment.
+            Elachee Nature Guide provides general information from approved
+            public sources. It cannot check personal program registrations or
+            reservations.
           </p>
         </div>
       </footer>

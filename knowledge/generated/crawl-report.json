@@ -1,6 +1,6 @@
 {
   "startedFrom": "https://elachee.org",
-  "crawledAt": "2026-09-22T19:38:28.622Z",
+  "crawledAt": "2026-09-22T20:31:24.664Z",
   "maxPages": 150,
   "indexedPages": [
     {
@@ -31,7 +31,7 @@
       "id": "web-about-us-81d1aaac",
       "title": "About Us",
       "url": "https://elachee.org/about-us",
-      "fetchedAt": "2026-09-22T19:11:33.797Z"
+      "fetchedAt": "2026-09-22T20:30:35.589Z"
     },
     {
       "id": "web-blog-69cc3735",

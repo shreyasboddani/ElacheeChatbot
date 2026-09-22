@@ -1,5 +1,5 @@
 {
-  "preparedAt": "2026-09-22T19:38:33.216Z",
+  "preparedAt": "2026-09-22T20:47:43.022Z",
   "successfullyIndexedPages": [
     {
       "id": "web-home-a686d9ad",
@@ -29,7 +29,7 @@
       "id": "web-about-us-81d1aaac",
       "title": "About Us",
       "url": "https://elachee.org/about-us",
-      "fetchedAt": "2026-09-22T19:11:33.797Z"
+      "fetchedAt": "2026-09-22T20:30:35.589Z"
     },
     {
       "id": "web-blog-69cc3735",
@@ -634,13 +634,7 @@
   "unmappedSourceDocuments": [],
   "totalDocumentsPrepared": 78,
   "officialDocuments": [],
-  "totalDocumentsUploaded": 78,
+  "totalDocumentsUploaded": 0,
   "uploadFailures": [],
-  "fileSearchStoreName": "fileSearchStores/elachee-grounded-knowledge--bscrlt1nd4mv",
-  "syncMode": "new-store",
-  "totalDocumentsDeleted": 0,
-  "totalDocumentsUnchanged": 0,
-  "managedDocumentsAfterSync": 78,
-  "deleteFailures": [],
-  "uploadedAt": "2026-09-22T19:51:34.604Z"
+  "fileSearchStoreName": "fileSearchStores/elachee-grounded-knowledge--bscrlt1nd4mv"
 }

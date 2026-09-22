@@ -4,6 +4,7 @@ import path from "node:path";
 import { pathToFileURL } from "node:url";
 
 import { isApprovedWebsiteUrl } from "../src/lib/security/source-url";
+import { containsNonElacheePhoneNumber } from "../src/lib/security/phone-numbers";
 import type {
   FaqEntry,
   OfficialDocumentSource,
@@ -390,6 +391,13 @@ export async function verifyKnowledgeSnapshot(
     }
   }
   for (const entry of faqEntries) {
+    if (
+      containsNonElacheePhoneNumber(
+        [entry.question, entry.answer, ...entry.contacts].join("\n"),
+      )
+    ) {
+      errors.push(`Manager FAQ ${entry.id} includes a non-Elachee phone number.`);
+    }
     for (const relatedUrl of entry.relatedUrls) {
       if (!isApprovedWebsiteUrl(relatedUrl)) {
         errors.push(`Manager FAQ ${entry.id} contains an unapproved related URL.`);
@@ -401,6 +409,20 @@ export async function verifyKnowledgeSnapshot(
     websiteSources.map((source) => [source.id, source]),
   );
   for (const websiteSource of websiteSources) {
+    if (
+      containsNonElacheePhoneNumber(
+        [
+          websiteSource.title,
+          websiteSource.text,
+          ...websiteSource.headings,
+          ...websiteSource.links.map((link) => link.label),
+        ].join("\n"),
+      )
+    ) {
+      errors.push(
+        `Crawled source ${websiteSource.id} includes a non-Elachee phone number.`,
+      );
+    }
     if (approvedRemovalUrls.has(websiteSource.canonicalUrl)) {
       errors.push(
         `Approved removal ${websiteSource.canonicalUrl} remained in the crawl.`,

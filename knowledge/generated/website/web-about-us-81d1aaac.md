@@ -3,7 +3,7 @@
 Source ID: web-about-us-81d1aaac
 Source type: official_website
 Canonical URL: https://elachee.org/about-us
-Fetched at: 2026-09-22T19:11:33.797Z
+Fetched at: 2026-09-22T20:30:35.589Z
 
 ## Page content
 
@@ -91,7 +91,7 @@ Elachee’s hiking trails are part of one of Georgia’s largest protected urban
 No. By law, Elachee is not licensed for wildlife rehabilitation. Please contact:
 Animal Help Now
 Georgia DNR Wildlife Division
-Wildlife Hotline: 1-800-366-2661
+Wildlife Hotline: [phone number omitted]
 Visit our [Wildlife Advice Page] for guidance on baby birds, turtles, snakes, and more.
 Leashed dogs are allowed on hiking trails on Sundays. Please follow all local laws and ordinances.
 Laurel Bark Park (Gainesville)

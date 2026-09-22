@@ -4,6 +4,7 @@ import { MAX_ASSISTANT_ANSWER_LENGTH } from "@/lib/chat/limits";
 import {
   contactFallback,
   sourceVerificationFallback,
+  visitorCenterHoursConflictFallback,
 } from "@/lib/contact-fallback";
 import { resolveFileCitations } from "@/lib/gemini/citations";
 import type { FileCitationAnnotation } from "@/lib/gemini/citations";
@@ -11,12 +12,14 @@ import {
   buildInteractionInput,
   buildSystemInstruction,
 } from "@/lib/gemini/prompts";
+import { containsNonElacheePhoneNumber } from "@/lib/security/phone-numbers";
 import type {
   ChatResponse,
   SourceManifestEntry,
 } from "@/lib/knowledge/types";
 import type { ChatRequest } from "@/lib/security/input-validation";
 import type { ChatLanguagePreference } from "@/lib/chat/language";
+import { focusConversationalQuery } from "@/lib/chat/local-response";
 
 const modelPayloadSchema = z.object({
   status: z.enum(["answered", "not_found", "conflicting_information"]),
@@ -28,7 +31,6 @@ const COMPLEX_RESPONSE_TOKEN_LIMIT = 384;
 const SIMPLE_RETRIEVAL_RESULT_LIMIT = 6;
 const FOLLOW_UP_RETRIEVAL_RESULT_LIMIT = 8;
 const COMPLEX_RETRIEVAL_RESULT_LIMIT = 10;
-
 function isComplexRequest(request: ChatRequest): boolean {
   const wordCount = request.message.trim().split(/\s+/).filter(Boolean).length;
   return (
@@ -39,14 +41,22 @@ function isComplexRequest(request: ChatRequest): boolean {
   );
 }
 
+function isBroadPlanningRequest(request: ChatRequest): boolean {
+  return /\b(what should i know|before (?:i )?visit(?:ing)?|plan (?:a|my|our) visit|first visit|visiting elachee)\b/i.test(
+    request.message,
+  );
+}
+
 export function responseTokenLimit(request: ChatRequest): number {
-  return isComplexRequest(request)
+  return isComplexRequest(request) || isBroadPlanningRequest(request)
     ? COMPLEX_RESPONSE_TOKEN_LIMIT
     : SIMPLE_RESPONSE_TOKEN_LIMIT;
 }
 
 export function retrievalResultLimit(request: ChatRequest): number {
-  if (isComplexRequest(request)) return COMPLEX_RETRIEVAL_RESULT_LIMIT;
+  if (isComplexRequest(request) || isBroadPlanningRequest(request)) {
+    return COMPLEX_RETRIEVAL_RESULT_LIMIT;
+  }
   return request.history.length > 0
     ? FOLLOW_UP_RETRIEVAL_RESULT_LIMIT
     : SIMPLE_RETRIEVAL_RESULT_LIMIT;
@@ -140,6 +150,7 @@ export function interpretGroundedInteraction(
   interaction: GroundedInteraction,
   manifest: SourceManifestEntry[],
   language: ChatLanguagePreference = "auto",
+  request?: ChatRequest,
 ): ChatResponse {
   const textBlocks = interaction.steps.flatMap((step) =>
     step.type === "model_output" ? (step.content ?? []) : [],
@@ -165,8 +176,33 @@ export function interpretGroundedInteraction(
   if (parsed.status === "not_found") {
     return contactFallback("not_found", undefined, language);
   }
+  const visitorCenterHoursConflict = manifest.some((entry) =>
+    entry.conflictingTopics?.includes("visitor_center_hours"),
+  );
+  const visitorCenterScheduleAnswer =
+    /\b(?:visitor cent(?:er|re)|exhibits?)\b/i.test(parsed.answer) &&
+    /\b(?:hours?|open(?:ed)?|closed|schedule|\d{1,2}(?::\d{2})?\s*(?:a\.?m\.?|p\.?m\.?))\b/i.test(
+      parsed.answer,
+    );
+  const asksAboutSchedule =
+    request !== undefined &&
+    /\b(?:hours?|open|closed|when)\b/i.test(request.message);
+  const asksOnlyAboutTrailSchedule =
+    request !== undefined &&
+    /\b(?:hiking )?trails?\b/i.test(request.message) &&
+    !/\b(?:visitor cent(?:er|re)|exhibits?)\b/i.test(request.message);
+  if (
+    visitorCenterHoursConflict &&
+    (visitorCenterScheduleAnswer ||
+      (asksAboutSchedule && !asksOnlyAboutTrailSchedule))
+  ) {
+    return visitorCenterHoursConflictFallback(sources, language);
+  }
   if (sources.length === 0) {
     return sourceVerificationFallback(undefined, language);
+  }
+  if (containsNonElacheePhoneNumber(parsed.answer)) {
+    return sourceVerificationFallback(sources, language);
   }
 
   return {
@@ -186,15 +222,46 @@ export async function askGroundedQuestion(
     manifest: SourceManifestEntry[];
   },
 ): Promise<ChatResponse> {
+  const groundedRequest: ChatRequest = {
+    ...request,
+    message: focusConversationalQuery(request.message, request.history),
+  };
   const params = buildGroundedInteractionParams(
-    request,
+    groundedRequest,
     options.model,
     options.fileSearchStore,
   );
   const interaction = await client.create(params);
-  return interpretGroundedInteraction(
+  const response = interpretGroundedInteraction(
     interaction,
     options.manifest,
     request.language,
+    request,
   );
+  if (request.history.length === 0 || response.status !== "not_found") {
+    return response;
+  }
+
+  // A contextual turn can occasionally be answered from the conversation
+  // without a fresh File Search citation. Retry the already-expanded question
+  // once without history so a current approved source must support the answer.
+  try {
+    const retryRequest: ChatRequest = { ...groundedRequest, history: [] };
+    const retryInteraction = await client.create(
+      buildGroundedInteractionParams(
+        retryRequest,
+        options.model,
+        options.fileSearchStore,
+      ),
+    );
+    const retryResponse = interpretGroundedInteraction(
+      retryInteraction,
+      options.manifest,
+      request.language,
+      request,
+    );
+    return retryResponse.status === "not_found" ? response : retryResponse;
+  } catch {
+    return response;
+  }
 }

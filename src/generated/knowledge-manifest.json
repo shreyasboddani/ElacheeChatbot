@@ -45,7 +45,7 @@
     "documentPath": "knowledge/generated/prepared/website__web-about-us-81d1aaac.md",
     "title": "About Us",
     "url": "https://elachee.org/about-us",
-    "fetchedAt": "2026-09-22T19:11:33.797Z",
+    "fetchedAt": "2026-09-22T20:30:35.589Z",
     "sourceType": "official_website",
     "priority": 50
   },
@@ -557,7 +557,10 @@
     "url": "https://elachee.org/visit",
     "fetchedAt": "2026-09-22T19:11:24.779Z",
     "sourceType": "official_website",
-    "priority": 50
+    "priority": 50,
+    "conflictingTopics": [
+      "visitor_center_hours"
+    ]
   },
   {
     "id": "web-visit-elachee-for-grown-ups-2e62e0a8",
