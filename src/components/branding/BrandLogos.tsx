@@ -6,17 +6,17 @@ interface BrandLogoProps {
   priority?: boolean;
 }
 
-export function ThePlaceLogo({
+export function ElacheeLogo({
   className,
   decorative = false,
   priority = false,
 }: BrandLogoProps) {
   return (
     <Image
-      src="/branding/the-place-logo.png"
-      alt={decorative ? "" : "The Place"}
-      width={171}
-      height={32}
+      src="/branding/elachee-logo.png"
+      alt={decorative ? "" : "Elachee Nature Science Center"}
+      width={524}
+      height={182}
       className={className}
       priority={priority}
     />

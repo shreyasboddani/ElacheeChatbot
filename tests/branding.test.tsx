@@ -4,7 +4,7 @@ import { afterEach, describe, expect, it, vi } from "vitest";
 import Home from "@/app/page";
 import {
   LearnAILogo,
-  ThePlaceLogo,
+  ElacheeLogo,
 } from "@/components/branding/BrandLogos";
 import { ChatPanel } from "@/components/chatbot/ChatPanel";
 
@@ -15,33 +15,33 @@ function imageSource(image: HTMLImageElement): string {
 }
 
 describe("product branding", () => {
-  it("uses the supplied The Place and LearnAI image assets", () => {
+  it("uses the supplied Elachee and LearnAI image assets", () => {
     render(
       <>
-        <ThePlaceLogo />
+        <ElacheeLogo />
         <LearnAILogo />
       </>,
     );
     expect(
-      imageSource(screen.getByAltText("The Place") as HTMLImageElement),
-    ).toContain("branding%2Fthe-place-logo.png");
+      imageSource(screen.getByAltText("Elachee Nature Science Center") as HTMLImageElement),
+    ).toContain("branding%2Felachee-logo.png");
     expect(
       imageSource(screen.getByAltText("LearnAI") as HTMLImageElement),
     ).toContain("branding%2Flearnai-logo.png");
   });
 
-  it("brands the standalone page as The Place and includes LearnAI attribution marks", () => {
+  it("brands the standalone page as Elachee and includes LearnAI attribution marks", () => {
     const { container } = render(<Home />);
     const sources = [...container.querySelectorAll("img")].map(imageSource);
     expect(
-      sources.filter((source) => source.includes("the-place-logo.png")).length,
+      sources.filter((source) => source.includes("elachee-logo.png")).length,
     ).toBeGreaterThanOrEqual(3);
     expect(
       sources.filter((source) => source.includes("learnai-logo.png")).length,
     ).toBeGreaterThanOrEqual(2);
   });
 
-  it("shows The Place branding and the LearnAI mark inside the chat panel", () => {
+  it("shows Elachee branding and the LearnAI mark inside the chat panel", () => {
     Object.defineProperty(HTMLElement.prototype, "scrollTo", {
       configurable: true,
       value: vi.fn(),
@@ -51,7 +51,7 @@ describe("product branding", () => {
     );
     const sources = [...container.querySelectorAll("img")].map(imageSource);
     expect(
-      sources.some((source) => source.includes("the-place-logo.png")),
+      sources.some((source) => source.includes("elachee-logo.png")),
     ).toBe(true);
     expect(
       sources.some((source) => source.includes("learnai-logo.png")),

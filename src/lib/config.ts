@@ -1,16 +1,15 @@
 import {
-  APPROVED_THE_PLACE_HOSTS,
-  canonicalizeThePlaceUrl,
+  APPROVED_ELACHEE_HOSTS,
+  canonicalizeElacheeUrl,
   isApprovedWebsiteUrl,
 } from "@/lib/security/source-url";
 
-export const THE_PLACE = {
-  canonicalOrigin: "https://www.theplacega.org",
-  allowedHosts: APPROVED_THE_PLACE_HOSTS,
+export const ELACHEE = {
+  canonicalOrigin: "https://elachee.org",
+  allowedHosts: APPROVED_ELACHEE_HOSTS,
   contact: {
-    phone: "770-887-1098",
-    email: "info@theplacega.org",
-    url: "https://www.theplacega.org/contact-us",
+    phone: "770-535-1976",
+    url: "https://elachee.org/resources/contact-us/",
   },
 } as const;
 
@@ -31,8 +30,8 @@ export function getRuntimeConfig(): RuntimeConfig {
     model: process.env.GEMINI_MODEL?.trim() || DEFAULT_GEMINI_MODEL,
     siteUrl:
       process.env.NEXT_PUBLIC_SITE_URL?.trim() ||
-      "https://theplacechatbot.vercel.app",
+      "https://elachee-chatbot.vercel.app",
   };
 }
 
-export { canonicalizeThePlaceUrl, isApprovedWebsiteUrl };
+export { canonicalizeElacheeUrl, isApprovedWebsiteUrl };

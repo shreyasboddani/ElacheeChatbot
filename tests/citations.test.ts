@@ -8,7 +8,7 @@ const websiteSource: SourceManifestEntry = {
   fileName: "website__food-donations.md",
   documentPath: "knowledge/generated/prepared/website__food-donations.md",
   title: "Food Donations",
-  url: "https://www.theplacega.org/food-donations",
+  url: "https://elachee.org/food-donations",
   sourceType: "official_website",
   priority: 50,
 };
@@ -29,7 +29,7 @@ describe("citation resolution", () => {
       {
         id: "food-donations",
         title: "Food Donations",
-        url: "https://www.theplacega.org/food-donations",
+        url: "https://elachee.org/food-donations",
         sourceType: "official_website",
       },
     ]);
@@ -37,12 +37,12 @@ describe("citation resolution", () => {
 
   it("resolves an approved public official-document citation", () => {
     const officialDocument: SourceManifestEntry = {
-      id: "volunteer-handbook-2026",
-      fileName: "official_document__volunteer-handbook-2026.pdf",
+      id: "elachee-staff-guide",
+      fileName: "official_document__elachee-staff-guide.pdf",
       documentPath:
-        "knowledge/generated/prepared/official_document__volunteer-handbook-2026.pdf",
-      title: "The Place Volunteer Handbook",
-      url: "https://www.theplacega.org/volunteer-handbook",
+        "knowledge/generated/prepared/official_document__elachee-staff-guide.pdf",
+      title: "Elachee Staff Guide",
+      url: "https://elachee.org/resources/staff-guide",
       sourceType: "official_document",
       priority: 75,
       contentHash: "a".repeat(64),

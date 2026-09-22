@@ -10,7 +10,7 @@ import {
 
 import {
   LearnAILogo,
-  ThePlaceLogo,
+  ElacheeLogo,
 } from "@/components/branding/BrandLogos";
 import { ChatInput } from "@/components/chatbot/ChatInput";
 import { LanguageSelector } from "@/components/chatbot/LanguageSelector";
@@ -62,7 +62,7 @@ interface ChatPanelProps {
 export function ChatPanel({
   embedded,
   active = true,
-  position = "bottom-right",
+  position = "bottom-left",
   onMinimize,
   onClose,
 }: ChatPanelProps) {
@@ -271,9 +271,9 @@ export function ChatPanel({
           content: copy.unavailable,
           sources: [
             {
-              id: "contact-the-place",
-              title: "Contact The Place",
-              url: "https://www.theplacega.org/contact-us",
+              id: "contact-elachee",
+              title: "Contact Elachee",
+              url: "https://elachee.org/resources/contact-us/",
               sourceType: "official_website",
             },
           ],
@@ -334,10 +334,10 @@ export function ChatPanel({
       ) : null}
       <header className="chat-panel-header">
         <div className="chat-brand-mark">
-          <ThePlaceLogo className="chat-place-logo" />
+          <ElacheeLogo className="chat-elachee-logo" />
         </div>
         <div className="chat-title-block">
-          <h2 id="chatbot-title" aria-label={`The Place ${copy.assistant}`}>
+          <h2 id="chatbot-title" aria-label={`Elachee ${copy.assistant}`}>
             {copy.assistant}
           </h2>
           <p><span aria-hidden="true" /> {copy.officialInformation}</p>

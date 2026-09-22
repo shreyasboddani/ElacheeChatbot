@@ -21,7 +21,7 @@ import { uploadToFileSearchStoreOverHttps } from "./file-search-upload";
 const POLL_INTERVAL_MS = 2_000;
 const OPERATION_TIMEOUT_MS = 10 * 60 * 1_000;
 const UPLOAD_ATTEMPTS = 3;
-const MANAGED_BY = "the-place-chatbot";
+const MANAGED_BY = "elachee-chatbot";
 
 export interface DesiredDocumentFingerprint {
   sourceId: string;
@@ -742,7 +742,7 @@ export async function runFileSearchSync(
   if (createNewStore) {
     const store = await ai.fileSearchStores.create({
       config: {
-        displayName: `The Place grounded knowledge ${new Date()
+        displayName: `Elachee grounded knowledge ${new Date()
           .toISOString()
           .replace(/[:.]/g, "-")}`,
         embeddingModel: "models/gemini-embedding-001",

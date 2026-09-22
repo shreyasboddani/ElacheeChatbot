@@ -1,20 +1,3 @@
 {
-  "documents": [
-    {
-      "id": "volunteer-handbook-2026",
-      "title": "The Place Volunteer Handbook - Version 1.1 (June 24, 2026)",
-      "url": "https://www.theplacega.org/volunteer-handbook",
-      "sourcePath": "knowledge/source/official-documents/the-place-volunteer-handbook-2026.pdf",
-      "contentHash": "63ad0d15735334b686bacf108a45cc47db53081c8aaba491a931bb61ed9aa6a3",
-      "sourceType": "official_document"
-    },
-    {
-      "id": "heart-of-service-july-2026",
-      "title": "Heart of Service - July 2026 Birthday Cake Kits",
-      "url": "https://www.theplacega.org/s/Heart-of-Service-July-2026.pdf",
-      "sourcePath": "knowledge/source/official-documents/heart-of-service-july-2026.pdf",
-      "contentHash": "8b62efbd185c1ae456f1e367ab5da87c4bbef9fb222c49421c21bbbcf27ce0d1",
-      "sourceType": "official_document"
-    }
-  ]
+  "documents": []
 }

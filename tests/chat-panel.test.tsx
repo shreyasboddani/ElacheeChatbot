@@ -11,7 +11,7 @@ import { ChatPanel } from "@/components/chatbot/ChatPanel";
 
 const staffSource = {
   id: "staff-answer",
-  title: "Information provided by The Place staff",
+  title: "Information provided by Elachee staff",
   sourceType: "manager_faq" as const,
 };
 
@@ -43,18 +43,18 @@ afterEach(() => {
 describe("ChatPanel request pipeline", () => {
   it("uses approved-information wording without exposing staff-source labels", () => {
     render(<ChatPanel onMinimize={vi.fn()} onClose={vi.fn()} />);
-    expect(screen.getByText(/approved information from The Place/i)).toBeDefined();
+    expect(screen.getByText(/Official Elachee information/i)).toBeDefined();
     expect(screen.queryByText(/staff-provided/i)).toBeNull();
   });
 
   it("sends a quick action through the normal JSON request pipeline", async () => {
     const fetchMock = vi.fn().mockResolvedValue(
-      mockHttpResponse(answered("You can donate food at The Place.")),
+      mockHttpResponse(answered("You can plan a visit to Elachee.")),
     );
     vi.stubGlobal("fetch", fetchMock);
     render(<ChatPanel onMinimize={vi.fn()} onClose={vi.fn()} />);
 
-    fireEvent.click(screen.getByRole("button", { name: "Donate food" }));
+    fireEvent.click(screen.getByRole("button", { name: "Plan my visit" }));
     await waitFor(() => expect(fetchMock).toHaveBeenCalledTimes(1));
     const init = fetchMock.mock.calls[0]?.[1] as RequestInit;
     expect(init.headers).toEqual({
@@ -62,7 +62,7 @@ describe("ChatPanel request pipeline", () => {
       "X-Chat-Language": "auto",
     });
     expect(JSON.parse(init.body as string)).toEqual({
-      message: "Where can I donate food?",
+      message: "What should I know before visiting Elachee?",
       history: [],
       language: "auto",
     });
@@ -72,20 +72,20 @@ describe("ChatPanel request pipeline", () => {
     const fetchMock = vi
       .fn()
       .mockResolvedValueOnce(
-        mockHttpResponse(answered("The Place offers confirmed food help.")),
+        mockHttpResponse(answered("Elachee offers confirmed visit information.")),
       )
       .mockResolvedValueOnce(
-        mockHttpResponse(answered("Dawson County has a separate next step.")),
+        mockHttpResponse(answered("Saturday has a separate next step.")),
       );
     vi.stubGlobal("fetch", fetchMock);
     render(<ChatPanel onMinimize={vi.fn()} onClose={vi.fn()} />);
 
-    const input = screen.getByLabelText("Ask The Place information assistant");
+    const input = screen.getByLabelText("Ask the Elachee Nature Guide");
     fireEvent.change(input, { target: { value: "  I need food.  " } });
     fireEvent.click(screen.getByRole("button", { name: "Send message" }));
-    await screen.findByText("The Place offers confirmed food help.");
+    await screen.findByText("Elachee offers confirmed visit information.");
 
-    fireEvent.change(input, { target: { value: "What about Dawson County?" } });
+    fireEvent.change(input, { target: { value: "What about Saturday?" } });
     fireEvent.click(screen.getByRole("button", { name: "Send message" }));
     await waitFor(() => expect(fetchMock).toHaveBeenCalledTimes(2));
 
@@ -97,12 +97,12 @@ describe("ChatPanel request pipeline", () => {
     });
     const secondInit = fetchMock.mock.calls[1]?.[1] as RequestInit;
     expect(JSON.parse(secondInit.body as string)).toEqual({
-      message: "What about Dawson County?",
+      message: "What about Saturday?",
       history: [
         { role: "user", content: "I need food." },
         {
           role: "assistant",
-          content: "The Place offers confirmed food help.",
+          content: "Elachee offers confirmed visit information.",
         },
       ],
       language: "auto",
@@ -113,9 +113,9 @@ describe("ChatPanel request pipeline", () => {
     const fetchMock = vi.fn().mockImplementation(() => new Promise(() => {}));
     vi.stubGlobal("fetch", fetchMock);
     render(<ChatPanel onMinimize={vi.fn()} onClose={vi.fn()} />);
-    const input = screen.getByLabelText("Ask The Place information assistant");
+    const input = screen.getByLabelText("Ask the Elachee Nature Guide");
     const form = input.closest("form");
-    fireEvent.change(input, { target: { value: "Where can I donate food?" } });
+    fireEvent.change(input, { target: { value: "What should I know before visiting Elachee?" } });
     if (!form) throw new Error("Chat form not found");
     fireEvent.submit(form);
     fireEvent.submit(form);
@@ -137,7 +137,7 @@ describe("ChatPanel request pipeline", () => {
       .mockResolvedValueOnce(mockHttpResponse(answered("A grounded answer.")));
     vi.stubGlobal("fetch", fetchMock);
     render(<ChatPanel onMinimize={vi.fn()} onClose={vi.fn()} />);
-    const input = screen.getByLabelText("Ask The Place information assistant");
+    const input = screen.getByLabelText("Ask the Elachee Nature Guide");
 
     fireEvent.change(input, { target: { value: "First question" } });
     fireEvent.click(screen.getByRole("button", { name: "Send message" }));
@@ -155,7 +155,7 @@ describe("ChatPanel request pipeline", () => {
 
   it("shows a visible language selector and sends localized Spanish questions", async () => {
     const fetchMock = vi.fn().mockResolvedValue(
-      mockHttpResponse(answered("Puedes donar alimentos en The Place.")),
+      mockHttpResponse(answered("Puedes planificar una visita a Elachee.")),
     );
     vi.stubGlobal("fetch", fetchMock);
     render(<ChatPanel onMinimize={vi.fn()} onClose={vi.fn()} />);
@@ -164,11 +164,11 @@ describe("ChatPanel request pipeline", () => {
     expect(
       screen.getByRole("group", { name: "Response language" }),
     ).toBeDefined();
-    fireEvent.click(screen.getByRole("button", { name: "Español" }));
-    expect(screen.getByText(/Puedo ayudarte a encontrar información aprobada/i)).toBeDefined();
-    expect(screen.getByLabelText(/Pregúntale al asistente/i)).toBeDefined();
+    fireEvent.click(screen.getByRole("button", { name: /Espa.ol/ }));
+    expect(screen.getByText(/Puedo ayudarte a encontrar informaci.n aprobada/i)).toBeDefined();
+    expect(screen.getByLabelText(/Preg.ntale a la Gu.a de Naturaleza de Elachee/i)).toBeDefined();
 
-    fireEvent.click(screen.getByRole("button", { name: "Donar alimentos" }));
+    fireEvent.click(screen.getByRole("button", { name: "Planificar mi visita" }));
     await waitFor(() => expect(fetchMock).toHaveBeenCalledTimes(1));
     const init = fetchMock.mock.calls[0]?.[1] as RequestInit;
     expect(init.headers).toEqual({
@@ -176,7 +176,7 @@ describe("ChatPanel request pipeline", () => {
       "X-Chat-Language": "es",
     });
     expect(JSON.parse(init.body as string)).toEqual({
-      message: "¿Dónde puedo donar alimentos?",
+      message: "\u00bfQu\u00e9 debo saber antes de visitar Elachee?",
       history: [],
       language: "es",
     });
@@ -248,7 +248,7 @@ describe("ChatPanel request pipeline", () => {
     });
     fireEvent.pointerUp(handle, { pointerId: 7 });
 
-    expect(dialog.style.width).toBe("440px");
+    expect(dialog.style.width).toBe("340px");
     expect(dialog.style.height).toBe("710px");
   });
 });

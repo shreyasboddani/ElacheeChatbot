@@ -8,22 +8,22 @@ import type { SourceManifestEntry } from "@/lib/knowledge/types";
 
 const officialDocuments: SourceManifestEntry[] = [
   {
-    id: "volunteer-handbook-2026",
-    fileName: "official_document__volunteer-handbook-2026.pdf",
+    id: "elachee-staff-guide",
+    fileName: "official_document__elachee-staff-guide.pdf",
     documentPath:
-      "knowledge/generated/prepared/official_document__volunteer-handbook-2026.pdf",
-    title: "The Place Volunteer Handbook - Version 1.1 (June 24, 2026)",
-    url: "https://www.theplacega.org/volunteer-handbook",
+      "knowledge/generated/prepared/official_document__elachee-staff-guide.pdf",
+    title: "Elachee Staff Guide - Version 1.0",
+    url: "https://elachee.org/resources/staff-guide",
     sourceType: "official_document",
     priority: 75,
   },
   {
-    id: "heart-of-service-july-2026",
-    fileName: "official_document__heart-of-service-july-2026.pdf",
+    id: "elachee-program-guide",
+    fileName: "official_document__elachee-program-guide.pdf",
     documentPath:
       "knowledge/generated/prepared/official_document__heart-of-service-july-2026.pdf",
-    title: "Heart of Service - July 2026 Birthday Cake Kits",
-    url: "https://www.theplacega.org/heart-of-service",
+    title: "Elachee Program Guide",
+    url: "https://elachee.org/camps-programs",
     sourceType: "official_document",
     priority: 75,
   },
@@ -37,7 +37,7 @@ describe("local conversational responses", () => {
 
       expect(response?.status).toBe("answered");
       expect(response?.contactRecommended).toBe(false);
-      expect(response?.sources[0]?.url).toBe("https://www.theplacega.org/");
+      expect(response?.sources[0]?.url).toBe("https://elachee.org/");
     },
   );
 
@@ -49,7 +49,7 @@ describe("local conversational responses", () => {
   );
 
   it.each([
-    ["hola", "¡Hola!"],
+    ["hola", "\u00a1Hola!"],
     ["namaste", "Namaste!"],
     ["salaam", "Ahlan!"],
     ["bonjour", "Bonjour !"],
@@ -65,17 +65,17 @@ describe("local conversational responses", () => {
       /^Hi! /,
     );
     expect(getLocalConversationalResponse("hello", [], "es")?.answer).toMatch(
-      /^¡Hola! /,
+      /^\u00a1Hola! /,
     );
   });
 
   it.each([
     [
-      "Hii, pls who can I contcat about thrift donations please?",
-      "who can i contcat about thrift donations",
+      "Hii, pls who can I contcat about trails please?",
+      "who can i contcat about trails",
     ],
-    ["Hello there — what are your hours, thanks", "what are your hours"],
-    ["Good afternoon! I need food help.", "i need food help"],
+    ["Hello there - what are your hours, thanks", "what are your hours"],
+    ["Good afternoon! I need visit information.", "i need visit information"],
   ])("focuses the substantive query without changing its meaning", (message, expected) => {
     expect(focusConversationalQuery(message)).toBe(expected);
   });
@@ -86,34 +86,32 @@ describe("local conversational responses", () => {
     "which topics can i ask?",
   ])("explains supported question areas: %j", (message) => {
     expect(getLocalConversationalResponse(message)?.answer).toContain(
-      "thrift-store donations",
+      "trails",
     );
   });
 
   it("does not intercept an organization-information question", () => {
     expect(
       getLocalConversationalResponse(
-        "Hello, who handles thrift store donations?",
+        "Hello, who handles trails?",
       ),
     ).toBeUndefined();
   });
 
   it.each([
-    "handbook",
-    "the handbook",
-    "hi do u have access to the handbook?",
-    "Hello, can you help me with the handbook?",
-    "Good afternoon — do you know about the handbook?",
-    "hii do u hav acess to the handbok?",
-    "helo can u halp with the handboook?",
-    "do u have access to the handbook?",
-    "do u have access to the volunteer handbook?",
-    "Do you have access to the volunteer handbook?",
-    "Can you read The Place volunteer handbook?",
-    "Are you able to reference the volunteer handbook?",
-    "Can you help me with the handbook?",
-    "I need help with the handbook.",
-    "Do you know about the handbook?",
+    "staff guide",
+    "the staff guide",
+    "hi do u have access to the staff guide?",
+    "Hello, can you help me with the staff guide?",
+    "Good afternoon - do you know about the staff guide?",
+    "hii do u hav acess to the staf guide?",
+    "helo can u halp with the staff guude?",
+    "do u have access to the staff guide?",
+    "Can you read the Elachee staff guide?",
+    "Are you able to reference the staff guide?",
+    "Can you help me with the staff guide?",
+    "I need help with the staff guide.",
+    "Do you know about the staff guide?",
   ])("confirms access only from the registered official document: %j", (message) => {
     const response = getLocalConversationalResponse(message, officialDocuments);
 
@@ -123,22 +121,22 @@ describe("local conversational responses", () => {
         contactRecommended: false,
         sources: [
           expect.objectContaining({
-            id: "volunteer-handbook-2026",
-            url: "https://www.theplacega.org/volunteer-handbook",
+            id: "elachee-staff-guide",
+            url: "https://elachee.org/resources/staff-guide",
             sourceType: "official_document",
           }),
         ],
       }),
     );
     expect(response?.answer).toMatch(/^Yes/);
-    expect(response?.answer).toContain("Volunteer Handbook");
+    expect(response?.answer).toContain("Elachee Staff Guide");
     expect(response?.answer).toContain("What would you like to know?");
   });
 
-  it("sends factual handbook questions through grounded File Search", () => {
+  it("sends factual staff-guide questions through grounded File Search", () => {
     expect(
       getLocalConversationalResponse(
-        "What does the handbook say about volunteer age requirements?",
+        "What does the staff guide say about program requirements?",
         officialDocuments,
       ),
     ).toBeUndefined();
@@ -147,13 +145,13 @@ describe("local conversational responses", () => {
   it("does not claim access to an unregistered or ambiguous document", () => {
     expect(
       getLocalConversationalResponse(
-        "Do you have access to my volunteer application?",
+        "Do you have access to my private registration?",
         officialDocuments,
       ),
     ).toBeUndefined();
     expect(
       getLocalConversationalResponse(
-        "Hii, do u hav acess to my volunter application?",
+        "Hii, do u hav acess to my private registration?",
         officialDocuments,
       ),
     ).toBeUndefined();

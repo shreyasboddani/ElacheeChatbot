@@ -18,7 +18,7 @@ describe("sensitive data detection", () => {
   it("does not block an ordinary phone-number question", () => {
     expect(
       containsLikelySensitiveInformation(
-        "Can I call The Place at 770-887-1098 about volunteering?",
+        "Can I call Elachee at 770-887-1098 about volunteering?",
       ),
     ).toBe(false);
   });

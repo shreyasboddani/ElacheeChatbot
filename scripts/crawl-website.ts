@@ -6,13 +6,13 @@ import { pathToFileURL } from "node:url";
 import { load } from "cheerio";
 
 import {
-  canonicalizeThePlaceUrl,
-  THE_PLACE,
+  canonicalizeElacheeUrl,
+  ELACHEE,
 } from "../src/lib/config";
 import type { WebsiteSource } from "../src/lib/knowledge/types";
 
 const USER_AGENT =
-  "LearnAI-ThePlaceKnowledgeBot/1.0 (+https://www.theplacega.org; offline knowledge sync)";
+  "LearnAI-ElacheeKnowledgeBot/1.0 (+https://www.elachee.org; offline knowledge sync)";
 const DEFAULT_MAX_PAGES = 150;
 const MINIMUM_FULL_CRAWL_PAGES = 50;
 const MAXIMUM_FAILURE_RATIO = 0.25;
@@ -20,21 +20,19 @@ const REQUEST_TIMEOUT_MS = 15_000;
 const REQUEST_DELAY_MS = 300;
 
 const SEED_URLS = [
-  "https://www.theplacega.org/",
-  "https://www.theplacega.org/contact-us",
-  "https://www.theplacega.org/food-pantry/",
-  "https://www.theplacega.org/food-donations",
-  "https://www.theplacega.org/thrift-store-donations/",
-  "https://www.theplacega.org/financial-assistance",
-  "https://www.theplacega.org/fin-asst-initial-request/",
-  "https://www.theplacega.org/new-volunteers",
-  "https://www.theplacega.org/food-pantry-request",
-  "https://www.theplacega.org/senior-assistance",
-  "https://www.theplacega.org/calendar",
+  "https://elachee.org/",
+  "https://elachee.org/visit/",
+  "https://elachee.org/visit/hiking-trails/",
+  "https://elachee.org/camps-programs/",
+  "https://elachee.org/field-trips/",
+  "https://elachee.org/resources/hours/",
+  "https://elachee.org/resources/contact-us/",
+  "https://elachee.org/events-parties/",
+  "https://elachee.org/memberships/",
 ];
 
 const BLOCKED_PATH =
-  /\/(?:wp-admin|wp-login|admin|login|logout|checkout|cart|account|search|feed|xmlrpc|wp-json)(?:\/|$)/i;
+  /\/(?:wp-admin|wp-login|admin|login|logout|checkout|cart|account|search|feed|xmlrpc|wp-json|calendar)(?:\/|$)/i;
 const BLOCKED_EXTENSION =
   /\.(?:avif|bmp|css|csv|docx?|eot|gif|ico|jpe?g|js|json|mp3|mp4|pdf|png|pptx?|svg|tiff?|txt|webm|webp|woff2?|xlsx?|xml)$/i;
 
@@ -158,9 +156,9 @@ export function parseApprovedRemovalUrls(value: unknown): Set<string> {
     if (typeof candidate !== "string") {
       throw new Error("Every approved removal must be a string URL.");
     }
-    const canonical = canonicalizeThePlaceUrl(candidate);
+    const canonical = canonicalizeElacheeUrl(candidate);
     if (!canonical || !isCrawlableUrl(canonical)) {
-      throw new Error(`Approved removal is not a public The Place page: ${candidate}`);
+      throw new Error(`Approved removal is not a public Elachee page: ${candidate}`);
     }
     if (approved.has(canonical)) {
       throw new Error(`Duplicate approved removal: ${canonical}`);
@@ -242,19 +240,23 @@ function sleep(milliseconds: number): Promise<void> {
   return new Promise((resolve) => setTimeout(resolve, milliseconds));
 }
 
-export function requireThePlaceFetchUrl(value: string): string {
-  const canonical = canonicalizeThePlaceUrl(value);
+export function requireElacheeFetchUrl(value: string): string {
+  const canonical = canonicalizeElacheeUrl(value);
   if (!canonical) {
-    throw new Error("Refusing to fetch or follow a URL outside The Place website.");
+    throw new Error("Refusing to fetch or follow a URL outside Elachee website.");
   }
   return canonical;
 }
 
 export function isCrawlableUrl(value: string): boolean {
-  const canonical = canonicalizeThePlaceUrl(value);
+  const canonical = canonicalizeElacheeUrl(value);
   if (!canonical) return false;
   const url = new URL(canonical);
-  return !BLOCKED_PATH.test(url.pathname) && !BLOCKED_EXTENSION.test(url.pathname);
+  return (
+    !BLOCKED_PATH.test(url.pathname) &&
+    !BLOCKED_EXTENSION.test(url.pathname) &&
+    !/%20/i.test(url.pathname)
+  );
 }
 
 const CALENDAR_EVENT_PATH = /^\/calendar\//;
@@ -412,11 +414,11 @@ export function extractWebsiteSource(
   fetchedAt: string,
 ): WebsiteSource | undefined {
   const $ = load(html);
-  const requestedCanonical = canonicalizeThePlaceUrl(requestedUrl);
+  const requestedCanonical = canonicalizeElacheeUrl(requestedUrl);
   if (!requestedCanonical) return undefined;
   const declaredCanonical = $("link[rel='canonical']").attr("href");
   const canonicalUrl =
-    (declaredCanonical && canonicalizeThePlaceUrl(declaredCanonical)) ||
+    (declaredCanonical && canonicalizeElacheeUrl(declaredCanonical)) ||
     requestedCanonical;
 
   $(
@@ -432,7 +434,7 @@ export function extractWebsiteSource(
     $("meta[property='og:title']").attr("content") ||
       $("title").text() ||
       root.find("h1").first().text() ||
-      "The Place",
+      "Elachee",
   );
   const headings = root
     .find("h1, h2, h3")
@@ -453,7 +455,7 @@ export function extractWebsiteSource(
       } catch {
         return [];
       }
-      const url = canonicalizeThePlaceUrl(absolute);
+      const url = canonicalizeElacheeUrl(absolute);
       if (!url) return [];
       const label = normalizedText($(anchor).text());
       return [{ label: label || url, url }];
@@ -487,7 +489,7 @@ export function extractWebsiteSource(
 }
 
 async function fetchWithRetry(url: string): Promise<Response> {
-  const requestUrl = requireThePlaceFetchUrl(url);
+  const requestUrl = requireElacheeFetchUrl(url);
   let lastError: unknown;
   for (let attempt = 0; attempt < 2; attempt += 1) {
     const controller = new AbortController();
@@ -501,7 +503,7 @@ async function fetchWithRetry(url: string): Promise<Response> {
         redirect: "follow",
         signal: controller.signal,
       });
-      requireThePlaceFetchUrl(response.url);
+      requireElacheeFetchUrl(response.url);
       if (response.ok || response.status < 500) return response;
       lastError = new Error(`HTTP ${response.status}`);
     } catch (error: unknown) {
@@ -541,11 +543,11 @@ async function discoverSitemapUrls(
         .filter(Boolean);
       if ($("sitemapindex").length > 0) {
         sitemapQueue.push(
-          ...locations.filter((url) => canonicalizeThePlaceUrl(url) !== undefined),
+          ...locations.filter((url) => canonicalizeElacheeUrl(url) !== undefined),
         );
       } else {
         for (const url of locations) {
-          const canonical = canonicalizeThePlaceUrl(url);
+          const canonical = canonicalizeElacheeUrl(url);
           if (canonical && isCrawlableUrl(canonical)) pageUrls.add(canonical);
           if (pageUrls.size >= maxCandidates) break;
         }
@@ -583,7 +585,7 @@ export async function crawlWebsite(
   previousSources: WebsiteSource[] = [],
   approvedRemovalUrls: ReadonlySet<string> = new Set(),
 ) {
-  const robotsUrl = `${THE_PLACE.canonicalOrigin}/robots.txt`;
+  const robotsUrl = `${ELACHEE.canonicalOrigin}/robots.txt`;
   let robots: RobotsRules = { allows: [], disallows: [], sitemaps: [] };
   try {
     const robotsResponse = await fetchWithRetry(robotsUrl);
@@ -594,16 +596,16 @@ export async function crawlWebsite(
 
   const sitemapSeeds = [
     ...robots.sitemaps,
-    `${THE_PLACE.canonicalOrigin}/sitemap.xml`,
-    `${THE_PLACE.canonicalOrigin}/wp-sitemap.xml`,
-    `${THE_PLACE.canonicalOrigin}/sitemap_index.xml`,
+    `${ELACHEE.canonicalOrigin}/sitemap.xml`,
+    `${ELACHEE.canonicalOrigin}/wp-sitemap.xml`,
+    `${ELACHEE.canonicalOrigin}/sitemap_index.xml`,
   ].filter((value, index, values) => values.indexOf(value) === index);
   const sitemapUrls = await discoverSitemapUrls(sitemapSeeds, maxPages * 3);
   const previousUrls = previousSources.map((source) => source.canonicalUrl);
   const queue = [
     ...new Set(
       [...previousUrls, ...SEED_URLS, ...sitemapUrls]
-        .map(canonicalizeThePlaceUrl)
+        .map(canonicalizeElacheeUrl)
         .filter(
           (url): url is string =>
             Boolean(url) && !approvedRemovalUrls.has(String(url)),
@@ -641,7 +643,7 @@ export async function crawlWebsite(
         failedPages.push({ url: current, reason: `Unsupported content type: ${contentType || "unknown"}` });
         continue;
       }
-      const finalUrl = canonicalizeThePlaceUrl(response.url) || current;
+      const finalUrl = canonicalizeElacheeUrl(response.url) || current;
       const extractedSource = extractWebsiteSource(
         await response.text(),
         finalUrl,
@@ -733,7 +735,7 @@ export async function crawlWebsite(
   return {
     sources: collapsedSources,
     report: {
-      startedFrom: THE_PLACE.canonicalOrigin,
+      startedFrom: ELACHEE.canonicalOrigin,
       crawledAt: new Date().toISOString(),
       maxPages,
       indexedPages: collapsedSources.map((source) => ({
@@ -837,7 +839,7 @@ async function main() {
     ),
   ]);
   process.stdout.write(
-    `Indexed ${sources.length} public HTML pages from ${THE_PLACE.canonicalOrigin}.\n`,
+    `Indexed ${sources.length} public HTML pages from ${ELACHEE.canonicalOrigin}.\n`,
   );
 }
 

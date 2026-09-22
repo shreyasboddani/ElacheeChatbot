@@ -26,35 +26,35 @@ afterEach(() => {
 describe("chat widget lifecycle", () => {
   it("preserves the browser-session draft when minimized", () => {
     render(<ChatWidget initialOpen />);
-    const input = screen.getByLabelText("Ask The Place information assistant");
-    fireEvent.change(input, { target: { value: "What about Dawson County?" } });
+    const input = screen.getByLabelText("Ask the Elachee Nature Guide");
+    fireEvent.change(input, { target: { value: "What about Saturday?" } });
 
     fireEvent.click(screen.getByRole("button", { name: "Minimize chat" }));
-    fireEvent.click(screen.getByRole("button", { name: "Open The Place assistant" }));
+    fireEvent.click(screen.getByRole("button", { name: "Open Elachee assistant" }));
 
     expect(
       (screen.getByLabelText(
-        "Ask The Place information assistant",
+        "Ask the Elachee Nature Guide",
       ) as HTMLTextAreaElement).value,
-    ).toBe("What about Dawson County?");
+    ).toBe("What about Saturday?");
   });
 
   it("starts a fresh conversation after the user closes the chat", () => {
     render(<ChatWidget initialOpen />);
     fireEvent.change(
-      screen.getByLabelText("Ask The Place information assistant"),
+      screen.getByLabelText("Ask the Elachee Nature Guide"),
       { target: { value: "A draft question" } },
     );
 
     fireEvent.click(screen.getByRole("button", { name: "Close chat" }));
-    fireEvent.click(screen.getByRole("button", { name: "Open The Place assistant" }));
+    fireEvent.click(screen.getByRole("button", { name: "Open Elachee assistant" }));
 
     expect(
       (screen.getByLabelText(
-        "Ask The Place information assistant",
+        "Ask the Elachee Nature Guide",
       ) as HTMLTextAreaElement).value,
     ).toBe("");
-    expect(screen.getAllByText(/approved information from The Place/i)).toHaveLength(1);
+    expect(screen.getAllByText(/Official Elachee information/i)).toHaveLength(1);
   });
 
   it("keeps a hidden embedded chat ready when it is minimized", () => {
@@ -69,8 +69,8 @@ describe("chat widget lifecycle", () => {
     fireEvent.click(screen.getByRole("button", { name: "Minimize chat" }));
 
     expect(screen.getByRole("dialog")).toBeDefined();
-    expect(screen.queryByRole("button", { name: "Open The Place assistant" })).toBeNull();
-    expect(EMBED_CLOSE_MESSAGE_TYPE).toBe("the-place-chatbot:close");
+    expect(screen.queryByRole("button", { name: "Open Elachee assistant" })).toBeNull();
+    expect(EMBED_CLOSE_MESSAGE_TYPE).toBe("elachee-chatbot:close");
   });
 
   it("places the resize handle on the inward corner", () => {
@@ -89,12 +89,12 @@ describe("chat widget lifecycle", () => {
 
     act(() => vi.advanceTimersByTime(CHAT_NUDGE_DELAY_MS));
     expect(screen.getByText("Need help?")).toBeDefined();
-    expect(screen.getByText("Ask The Place chatbot")).toBeDefined();
+    expect(screen.getByText("Ask Elachee chatbot")).toBeDefined();
     expect(document.activeElement).toBe(document.body);
 
     fireEvent.click(
       screen.getByRole("button", {
-        name: "Need help? Open The Place chatbot",
+        name: "Need help? Open Elachee chatbot",
       }),
     );
     expect(screen.getByRole("dialog")).toBeDefined();

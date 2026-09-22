@@ -10,7 +10,7 @@ describe("client API response handling", () => {
         ? [
             {
               id: "staff-answer",
-              title: "Information provided by The Place staff",
+              title: "Information provided by Elachee staff",
               sourceType: "manager_faq",
             },
           ]

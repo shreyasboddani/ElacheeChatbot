@@ -10,10 +10,10 @@ import { validateChatRequest } from "@/lib/security/input-validation";
 
 describe("client chat request builder", () => {
   it("creates the exact typed-message payload with a trimmed message", () => {
-    expect(buildChatRequest("  Where can I donate food?  ", [])).toEqual({
+    expect(buildChatRequest("  What should I know before visiting Elachee?  ", [])).toEqual({
       success: true,
       payload: {
-        message: "Where can I donate food?",
+        message: "What should I know before visiting Elachee?",
         history: [],
         language: "auto",
       },
@@ -21,12 +21,12 @@ describe("client chat request builder", () => {
   });
 
   it("sends a quick action through the same payload builder", () => {
-    const action = QUICK_ACTIONS.find(({ label }) => label === "Donate food");
+    const action = QUICK_ACTIONS.find(({ label }) => label === "Plan my visit");
     expect(action).toBeDefined();
     expect(buildChatRequest(action?.question, [])).toEqual({
       success: true,
       payload: {
-        message: "Where can I donate food?",
+        message: "What should I know before visiting Elachee?",
         history: [],
         language: "auto",
       },
@@ -90,7 +90,7 @@ describe("client chat request builder", () => {
   });
 
   it("excludes welcome, loading, error, empty, and unsupported-role messages", () => {
-    const result = buildChatRequest("What about Dawson?", [
+    const result = buildChatRequest("What about Saturday?", [
       { role: "assistant", content: "Welcome", includeInHistory: false },
       { role: "assistant", content: "Loading", includeInHistory: false },
       { role: "assistant", content: "Error", includeInHistory: false },
@@ -100,7 +100,7 @@ describe("client chat request builder", () => {
       { role: "user", content: "I need food.", includeInHistory: true },
       {
         role: "assistant",
-        content: "The Place offers food assistance.",
+        content: "Elachee offers visitor information.",
         includeInHistory: true,
       },
     ]);
@@ -110,7 +110,7 @@ describe("client chat request builder", () => {
         { role: "user", content: "I need food." },
         {
           role: "assistant",
-          content: "The Place offers food assistance.",
+          content: "Elachee offers visitor information.",
         },
       ]);
     }
@@ -128,7 +128,7 @@ describe("client chat request builder", () => {
 
   it("keeps only the four most recent valid messages", () => {
     const result = buildChatRequest(
-      "What about Dawson?",
+      "What about Saturday?",
       Array.from({ length: 9 }, (_, index) => ({
         role: index % 2 === 0 ? "user" : "assistant",
         content: `message ${index}`,

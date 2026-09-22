@@ -5,9 +5,9 @@ The automation keeps all Gemini credentials in Vercel only. GitHub Actions crawl
 ## Workflow sequence
 
 1. `Detect and commit website knowledge updates` runs daily, manually, or from an approved CMS webhook.
-2. It crawls only public The Place pages, rejects off-domain fetch and redirect targets, revalidates every previously approved URL first, preserves unchanged timestamps, prepares the corpus, and runs the knowledge verifier.
+2. It crawls only public Elachee pages, rejects off-domain fetch and redirect targets, revalidates every previously approved URL first, preserves unchanged timestamps, prepares the corpus, and runs the knowledge verifier.
 3. Failed, incomplete, redirected, missing, or suspiciously shrunken approved pages retain their last-known-good documents and appear in `retainedPages`. A permanent removal requires a canonical URL already committed to `knowledge/source/approved-removals.json` after human review.
-4. The public Volunteer Handbook and July Birthday Cake Kits PDF are rebuilt from checksum-verified files in `knowledge/source/official-documents/`; the website crawler neither owns nor removes them.
+4. Optional Elachee staff FAQ and official-document sources are kept outside the public-site crawl; the website crawler neither invents nor removes them.
 5. If deterministic crawl health and prepared retrieval content are unchanged, the workflow creates no commit. No Vercel deployment or Gemini request occurs.
 6. If content changed, GitHub verifies that only generated files changed, rejects tracked or newly created staff-FAQ changes, counts tracked and untracked prepared documents toward the 20-document automatic limit, and runs all tests, lint, production build, and diff checks. Every deletion must be a website Markdown document and stay within a separate five-document automatic-removal cap.
 7. Immediately before committing, it fetches `origin/main`. If `main` advanced during validation, it exits instead of rebasing or overwriting newer work. Otherwise, the knowledge bot creates a normal commit directly on `main` and pushes without force.
@@ -52,18 +52,18 @@ Vercel automatically sends `CRON_SECRET` as the authorization header for the con
 
 ## Permanent page removal
 
-The crawler never infers that approved information should be deleted. HTTP errors, empty responses, redirects, extraction shrinkage, discovery gaps, and crawl-capacity issues retain the last-known-good page. If The Place intentionally and permanently removes a page:
+The crawler never infers that approved information should be deleted. HTTP errors, empty responses, redirects, extraction shrinkage, discovery gaps, and crawl-capacity issues retain the last-known-good page. If Elachee intentionally and permanently removes a page:
 
 1. Verify the old URL and any replacement in a normal browser.
 2. Check that no unique policy, schedule, eligibility rule, address, contact, or service detail would be lost.
 3. Add the canonical URL to `knowledge/source/approved-removals.json` in a human-authored, reviewed commit.
 4. Run the refresh workflow and inspect the resulting deletion and Vercel synchronization log.
 
-Removal approvals accept only canonical public `theplacega.org` HTML routes. The public-site workflow never edits this allowlist or any staff FAQ approval file.
+Removal approvals accept only canonical public `elachee.org` HTML routes. The public-site workflow never edits this allowlist or any staff FAQ approval file.
 
 ## Immediate CMS-triggered refresh
 
-If The Place's website platform supports outgoing webhooks, configure a trusted integration to send the GitHub `repository_dispatch` event type `the-place-website-updated`. Its credential should have only permission to dispatch the workflow. The same crawl, change cap, tests, and main-race check apply.
+If Elachee's website platform supports outgoing webhooks, configure a trusted integration to send the GitHub `repository_dispatch` event type `elachee-website-updated`. Its credential should have only permission to dispatch the workflow. The same crawl, change cap, tests, and main-race check apply.
 
 Without a webhook, GitHub checks daily at 09:17 UTC. It must fetch the public site to discover updates, but an unchanged check creates no commit and therefore no deployment or Gemini request. Scheduled jobs can be delayed, so this provides eventual rather than exact-time synchronization.
 

@@ -21,12 +21,12 @@ export function chatUiLanguage(
 
 export const CHAT_UI_COPY = {
   en: {
-    assistant: "Assistant",
-    officialInformation: "Official information",
+    assistant: "Nature Guide",
+    officialInformation: "Official Elachee information",
     prototypeBy: "Prototype technology by",
     today: "Today",
     welcome:
-      "Hi! I can help you find approved information from The Place about services, donations, volunteering, and more. What would you like help with?",
+      "Hi! I can help you find approved information from Elachee Nature Science Center about visiting, trails, exhibits, programs, events, and more. What would you like to explore?",
     languageSelector: "Response language",
     languageLabel: "Language",
     languageAuto: "Auto",
@@ -35,17 +35,17 @@ export const CHAT_UI_COPY = {
     restart: "Restart conversation",
     minimize: "Minimize chat",
     close: "Close chat",
-    typing: "Assistant is looking through approved sources",
+    typing: "The guide is looking through approved Elachee sources",
     privacy:
       "Please do not share Social Security numbers, bank information, medical details, passwords, or private documents in this chat.",
-    inputLabel: "Ask The Place information assistant",
-    inputPlaceholder: "Ask about services, donations, or volunteering...",
+    inputLabel: "Ask the Elachee Nature Guide",
+    inputPlaceholder: "Ask about visiting, trails, programs, or events...",
     send: "Send message",
     groundingNote: "Answers require a confirmed official source.",
     suggestedQuestions: "Suggested questions",
     sources: "Sources",
-    officialSources: "Official sources",
-    viewSource: "View on The Place website",
+    officialSources: "Official Elachee sources",
+    viewSource: "View on the Elachee website",
     assistantMessage: "Assistant message",
     userMessage: "Your message",
     invalidLong:
@@ -53,35 +53,26 @@ export const CHAT_UI_COPY = {
     invalidMessage:
       "The chat control could not read that message. Please type your question in the message box and try again.",
     unavailable:
-      "The information assistant is temporarily unavailable. Please try again in a moment. If you still need help, contact The Place at 770-887-1098 or use the contact page.",
+      "The Elachee Nature Guide is temporarily unavailable. Please try again in a moment. If you still need help, call 770-535-1976 or use the contact page.",
     sensitiveReplacement: "Sensitive information was not sent.",
     resize:
       "Resize chat. Drag the corner, or use arrow keys while focused.",
     quickActions: [
-      { label: "I need food", question: "I need food. How can The Place help?" },
-      {
-        label: "Financial assistance",
-        question: "How do I request help with rent or a utility bill?",
-      },
-      { label: "Volunteer", question: "How do I become a volunteer?" },
-      { label: "Donate food", question: "Where can I donate food?" },
-      {
-        label: "Thrift store donations",
-        question: "How and when can I donate to the thrift store?",
-      },
-      {
-        label: "Hours and locations",
-        question: "What are The Place's office hours and locations?",
-      },
+      { label: "Plan my visit", question: "What should I know before visiting Elachee?" },
+      { label: "Trail information", question: "What trails are available at Elachee?" },
+      { label: "Camps & programs", question: "What camps and programs does Elachee offer?" },
+      { label: "Field trips", question: "How do I plan an Elachee field trip?" },
+      { label: "Upcoming events", question: "What upcoming events are listed for Elachee?" },
+      { label: "Hours & admission", question: "What are Elachee's hours and admission prices?" },
     ],
   },
   es: {
-    assistant: "Asistente",
-    officialInformation: "Información oficial",
+    assistant: "Guía de Naturaleza",
+    officialInformation: "Información oficial de Elachee",
     prototypeBy: "Tecnología prototipo de",
     today: "Hoy",
     welcome:
-      "¡Hola! Puedo ayudarte a encontrar información aprobada de The Place sobre servicios, donaciones, voluntariado y más. ¿En qué puedo ayudarte?",
+      "¡Hola! Puedo ayudarte a encontrar información aprobada de Elachee Nature Science Center sobre visitas, senderos, exhibiciones, programas, eventos y más. ¿Qué te gustaría explorar?",
     languageSelector: "Idioma de respuesta",
     languageLabel: "Idioma",
     languageAuto: "Auto",
@@ -90,17 +81,17 @@ export const CHAT_UI_COPY = {
     restart: "Reiniciar conversación",
     minimize: "Minimizar chat",
     close: "Cerrar chat",
-    typing: "El asistente está consultando fuentes aprobadas",
+    typing: "La guía está consultando fuentes aprobadas de Elachee",
     privacy:
       "No compartas números de Seguro Social, información bancaria, datos médicos, contraseñas ni documentos privados en este chat.",
-    inputLabel: "Pregúntale al asistente de información de The Place",
-    inputPlaceholder: "Pregunta sobre servicios, donaciones o voluntariado...",
+    inputLabel: "Pregúntale a la Guía de Naturaleza de Elachee",
+    inputPlaceholder: "Pregunta sobre visitas, senderos, programas o eventos...",
     send: "Enviar mensaje",
     groundingNote: "Las respuestas requieren una fuente oficial confirmada.",
     suggestedQuestions: "Preguntas sugeridas",
     sources: "Fuentes",
-    officialSources: "Fuentes oficiales",
-    viewSource: "Ver en el sitio web de The Place",
+    officialSources: "Fuentes oficiales de Elachee",
+    viewSource: "Ver en el sitio web de Elachee",
     assistantMessage: "Mensaje del asistente",
     userMessage: "Tu mensaje",
     invalidLong:
@@ -108,35 +99,17 @@ export const CHAT_UI_COPY = {
     invalidMessage:
       "El chat no pudo leer ese mensaje. Escribe tu pregunta en el cuadro e inténtalo de nuevo.",
     unavailable:
-      "El asistente de información no está disponible temporalmente. Inténtalo de nuevo en un momento. Si aún necesitas ayuda, llama a The Place al 770-887-1098 o usa la página de contacto.",
+      "La Guía de Naturaleza de Elachee no está disponible temporalmente. Inténtalo de nuevo en un momento. Si aún necesitas ayuda, llama al 770-535-1976 o usa la página de contacto.",
     sensitiveReplacement: "La información confidencial no se envió.",
     resize:
       "Cambiar el tamaño del chat. Arrastra la esquina o usa las flechas del teclado.",
     quickActions: [
-      {
-        label: "Necesito alimentos",
-        question: "Necesito alimentos. ¿Cómo puede ayudarme The Place?",
-      },
-      {
-        label: "Asistencia financiera",
-        question: "¿Cómo solicito ayuda con el alquiler o una factura de servicios?",
-      },
-      {
-        label: "Voluntariado",
-        question: "¿Cómo puedo ser voluntario en The Place?",
-      },
-      {
-        label: "Donar alimentos",
-        question: "¿Dónde puedo donar alimentos?",
-      },
-      {
-        label: "Donaciones a tiendas",
-        question: "¿Cómo y cuándo puedo donar a la tienda de segunda mano?",
-      },
-      {
-        label: "Horarios y ubicaciones",
-        question: "¿Cuáles son los horarios y las ubicaciones de The Place?",
-      },
+      { label: "Planificar mi visita", question: "¿Qué debo saber antes de visitar Elachee?" },
+      { label: "Información de senderos", question: "¿Qué senderos hay en Elachee?" },
+      { label: "Campamentos y programas", question: "¿Qué campamentos y programas ofrece Elachee?" },
+      { label: "Excursiones escolares", question: "¿Cómo planifico una excursión escolar a Elachee?" },
+      { label: "Próximos eventos", question: "¿Qué próximos eventos aparecen para Elachee?" },
+      { label: "Horarios y admisión", question: "¿Cuáles son los horarios y precios de admisión de Elachee?" },
     ],
   },
 } as const;

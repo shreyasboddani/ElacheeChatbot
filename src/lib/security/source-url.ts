@@ -1,6 +1,6 @@
-export const APPROVED_THE_PLACE_HOSTS = new Set([
-  "theplacega.org",
-  "www.theplacega.org",
+export const APPROVED_ELACHEE_HOSTS = new Set([
+  "elachee.org",
+  "www.elachee.org",
 ]);
 
 export function getApprovedWebsiteUrl(
@@ -11,7 +11,7 @@ export function getApprovedWebsiteUrl(
     const url = new URL(value);
     if (
       url.protocol !== "https:" ||
-      !APPROVED_THE_PLACE_HOSTS.has(url.hostname)
+      !APPROVED_ELACHEE_HOSTS.has(url.hostname)
     ) {
       return undefined;
     }
@@ -25,14 +25,14 @@ export function isApprovedWebsiteUrl(value: string): boolean {
   return getApprovedWebsiteUrl(value) !== undefined;
 }
 
-export function canonicalizeThePlaceUrl(value: string): string | undefined {
+export function canonicalizeElacheeUrl(value: string): string | undefined {
   try {
     const url = new URL(value);
-    if (!APPROVED_THE_PLACE_HOSTS.has(url.hostname)) return undefined;
+    if (!APPROVED_ELACHEE_HOSTS.has(url.hostname)) return undefined;
     if (url.protocol !== "https:" && url.protocol !== "http:") return undefined;
 
     url.protocol = "https:";
-    url.hostname = "www.theplacega.org";
+    url.hostname = "elachee.org";
     url.hash = "";
     url.search = "";
     url.pathname = url.pathname.replace(/\/{2,}/g, "/");

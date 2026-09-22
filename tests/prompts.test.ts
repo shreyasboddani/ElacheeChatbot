@@ -49,13 +49,13 @@ describe("grounding prompt", () => {
 
   it("passes alternating recent history as real interaction steps", () => {
     const input = buildInteractionInput({
-      message: "What about Dawson County?",
+      message: "What about Saturday?",
       language: "auto",
       history: [
         { role: "user", content: "I need food." },
         {
           role: "assistant",
-          content: "The Place offers several kinds of food help.",
+          content: "Elachee offers several kinds of visit information.",
         },
       ],
     });
@@ -69,13 +69,13 @@ describe("grounding prompt", () => {
         content: [
           {
             type: "text",
-            text: "The Place offers several kinds of food help.",
+            text: "Elachee offers several kinds of visit information.",
           },
         ],
       },
       {
         type: "user_input",
-        content: [{ type: "text", text: "What about Dawson County?" }],
+        content: [{ type: "text", text: "What about Saturday?" }],
       },
     ]);
     expect(SYSTEM_INSTRUCTION).toContain("recent conversation");
@@ -93,7 +93,7 @@ describe("grounding prompt", () => {
     expect(SYSTEM_INSTRUCTION).toContain("60 to 120 words");
     expect(
       (buildGroundedInteractionParams(
-        { message: "What about Dawson?", history: [], language: "auto" },
+        { message: "What about Saturday?", history: [], language: "auto" },
         "gemini-3.5-flash-lite",
         "fileSearchStores/example",
       ).response_format.schema as {
@@ -113,7 +113,7 @@ describe("grounding prompt", () => {
     expect(
       responseTokenLimit({
         message:
-          "Please explain the food assistance options, eligibility differences, locations, schedules, and what documents someone should bring when applying for help in Forsyth or Dawson County.",
+          "Please explain the visitor information options, eligibility differences, locations, schedules, and what documents someone should bring when applying for help in Trails or Saturday.",
         history: [],
         language: "auto",
       }),
@@ -133,15 +133,15 @@ describe("grounding prompt", () => {
         message: "Are they open Friday?",
         language: "auto",
         history: [
-          { role: "user", content: "What are the thrift store hours?" },
-          { role: "assistant", content: "The stores are open Tuesday through Saturday." },
+          { role: "user", content: "What are the trail hours?" },
+          { role: "assistant", content: "Elachee trails are open daily." },
         ],
       }),
     ).toBe(8);
     expect(
       retrievalResultLimit({
         message:
-          "Please explain the food assistance options, eligibility differences, locations, schedules, and what documents someone should bring when applying for help in Forsyth or Dawson County.",
+          "Please explain the visitor information options, eligibility differences, locations, schedules, and what documents someone should bring when applying for help in Trails or Saturday.",
         history: [],
         language: "auto",
       }),

@@ -44,39 +44,39 @@ describe("widget and crawler boundaries", () => {
     ).toEqual({
       theme: "light",
       launcherVisible: false,
-      position: "bottom-right",
+      position: "bottom-left",
     });
   });
 
-  it("uses the local The Place logo in the framework-independent launcher", () => {
+  it("uses the local Elachee logo in the framework-independent launcher", () => {
     const loader = readFileSync("public/widget-loader.js", "utf8");
-    expect(loader).toContain("/branding/the-place-logo.png");
+    expect(loader).toContain("/branding/elachee-logo.png");
     expect(loader).toContain('logoImage.alt = ""');
     expect(loader).toContain("chatbotUrl.origin !== scriptUrl.origin");
     expect(loader).toContain('resizeButton.addEventListener("pointerdown"');
     expect(loader).toContain('resizeButton.addEventListener("keydown"');
-    expect(loader).toContain(".tp-resize{display:none}");
+    expect(loader).toContain(".el-resize{display:none}");
     expect(loader).toContain('script.getAttribute("data-prompt")');
     expect(loader).toContain('script.getAttribute("data-prompt-text")');
     expect(loader).toContain('iframe.loading = "eager"');
-    expect(loader).toContain("Loading The Place assistant");
+    expect(loader).toContain("Loading Elachee assistant");
     expect(loader).toContain('panel.setAttribute("data-ready", "true")');
-    expect(loader).toContain('"the-place-chatbot:close"');
+    expect(loader).toContain('"elachee-chatbot:close"');
     expect(loader).toContain("event.source !== iframe.contentWindow");
     expect(loader).toContain("event.origin !== chatbotUrl.origin");
-    expect(loader).toContain("the-place-chatbot-nudge-seen");
+    expect(loader).toContain("elachee-chatbot-nudge-seen");
     expect(loader).toContain("nudgeText.textContent = promptText");
     expect(loader).toContain('nudgeAction.addEventListener("click"');
     expect(loader).toContain('nudgeClose.addEventListener("click"');
   });
 
-  it("keeps the crawler on public The Place HTML routes", () => {
-    expect(isCrawlableUrl("https://theplacega.org/food-pantry/?utm_source=x")).toBe(
+  it("keeps the crawler on public Elachee HTML routes", () => {
+    expect(isCrawlableUrl("https://elachee.org/food-pantry/?utm_source=x")).toBe(
       true,
     );
-    expect(isCrawlableUrl("https://www.theplacega.org/wp-admin/")).toBe(false);
+    expect(isCrawlableUrl("https://elachee.org/wp-admin/")).toBe(false);
     expect(isCrawlableUrl("https://example.com/food-pantry")).toBe(false);
-    expect(isCrawlableUrl("https://www.theplacega.org/brochure.pdf")).toBe(false);
+    expect(isCrawlableUrl("https://elachee.org/brochure.pdf")).toBe(false);
   });
 
   it("honors robots allow rules over shorter disallow rules", () => {
@@ -84,38 +84,38 @@ describe("widget and crawler boundaries", () => {
       "User-agent: *\nDisallow: /private\nAllow: /private/public\n",
     );
     expect(
-      isAllowedByRobots("https://www.theplacega.org/private/page", rules),
+      isAllowedByRobots("https://elachee.org/private/page", rules),
     ).toBe(false);
     expect(
-      isAllowedByRobots("https://www.theplacega.org/private/public/info", rules),
+      isAllowedByRobots("https://elachee.org/private/public/info", rules),
     ).toBe(true);
   });
 
   it("stops following recurring calendar event Previous/Next chains", () => {
     expect(
       isCalendarPaginationLink(
-        "https://www.theplacega.org/calendar/free-ged-classes-dh7mh-hc34f-5s5zj-mrzzh-fty3x-ntp9b",
+        "https://elachee.org/calendar/free-ged-classes-dh7mh-hc34f-5s5zj-mrzzh-fty3x-ntp9b",
         "Next\nNext\nOctober 5\nFree GED Classes",
       ),
     ).toBe(true);
     expect(
       isCalendarPaginationLink(
-        "https://www.theplacega.org/calendar/free-ged-classes-dh7mh-hc34f-5s5zj-mrzzh-fty3x",
+        "https://elachee.org/calendar/free-ged-classes-dh7mh-hc34f-5s5zj-mrzzh-fty3x",
         "Previous\nPrevious\nSeptember 28\nFree GED Classes",
       ),
     ).toBe(true);
     expect(
       isCalendarPaginationLink(
-        "https://www.theplacega.org/calendar/red-robin-dine-to-donate",
+        "https://elachee.org/calendar/red-robin-dine-to-donate",
         "Red Robin Dine to Donate",
       ),
     ).toBe(false);
     expect(
-      isCalendarPaginationLink("https://www.theplacega.org/calendar", "Back to All Events"),
+      isCalendarPaginationLink("https://elachee.org/calendar", "Back to All Events"),
     ).toBe(false);
     expect(
       isCalendarPaginationLink(
-        "https://www.theplacega.org/next-steps",
+        "https://elachee.org/next-steps",
         "Next",
       ),
     ).toBe(false);
@@ -125,28 +125,28 @@ describe("widget and crawler boundaries", () => {
     const now = new Date("2026-08-23T00:00:00Z");
     const sources = [
       calendarSource({
-        canonicalUrl: "https://www.theplacega.org/calendar/free-ged-classes-a",
-        title: "Free GED Classes — The Place",
+        canonicalUrl: "https://elachee.org/calendar/free-ged-classes-a",
+        title: "Free GED Classes — Elachee",
         text: "Free GED Classes\nWednesday, August 12, 2026\n6:00 PM",
       }),
       calendarSource({
-        canonicalUrl: "https://www.theplacega.org/calendar/free-ged-classes-b",
-        title: "Free GED Classes — The Place",
+        canonicalUrl: "https://elachee.org/calendar/free-ged-classes-b",
+        title: "Free GED Classes — Elachee",
         text: "Free GED Classes\nWednesday, September 2, 2026\n6:00 PM",
       }),
       calendarSource({
-        canonicalUrl: "https://www.theplacega.org/calendar/free-ged-classes-c",
-        title: "Free GED Classes — The Place",
+        canonicalUrl: "https://elachee.org/calendar/free-ged-classes-c",
+        title: "Free GED Classes — Elachee",
         text: "Free GED Classes\nWednesday, August 26, 2026\n6:00 PM",
       }),
       calendarSource({
-        canonicalUrl: "https://www.theplacega.org/calendar/red-robin-dine-to-donate",
-        title: "Red Robin Dine to Donate — The Place",
+        canonicalUrl: "https://elachee.org/calendar/red-robin-dine-to-donate",
+        title: "Red Robin Dine to Donate — Elachee",
         text: "Red Robin Dine to Donate\nThursday, October 1, 2026\n5:00 PM",
       }),
       calendarSource({
-        canonicalUrl: "https://www.theplacega.org/staff",
-        title: "Staff — The Place",
+        canonicalUrl: "https://elachee.org/staff",
+        title: "Staff — Elachee",
         text: "Non-calendar page content that should pass through untouched.",
       }),
     ];
@@ -156,9 +156,9 @@ describe("widget and crawler boundaries", () => {
     expect(collapsed).toHaveLength(3);
     expect(collapsed.map((source) => source.canonicalUrl).sort()).toEqual(
       [
-        "https://www.theplacega.org/calendar/free-ged-classes-c",
-        "https://www.theplacega.org/calendar/red-robin-dine-to-donate",
-        "https://www.theplacega.org/staff",
+        "https://elachee.org/calendar/free-ged-classes-c",
+        "https://elachee.org/calendar/red-robin-dine-to-donate",
+        "https://elachee.org/staff",
       ].sort(),
     );
   });
@@ -170,8 +170,8 @@ describe("widget and crawler boundaries", () => {
     expect(() =>
       parseApprovedRemovalUrls({
         canonicalUrls: [
-          "https://www.theplacega.org/contact-us",
-          "https://theplacega.org/contact-us/",
+          "https://elachee.org/contact-us",
+          "https://elachee.org/contact-us/",
         ],
       }),
     ).toThrow("Duplicate approved removal");

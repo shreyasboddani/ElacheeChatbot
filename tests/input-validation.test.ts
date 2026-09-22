@@ -9,7 +9,7 @@ import {
 describe("chat request validation", () => {
   it("accepts a normal supported question", () => {
     const result = validateChatRequest({
-      message: "Where can I donate food?",
+      message: "What should I know before visiting Elachee?",
       history: [],
     });
     expect(result.success).toBe(true);
@@ -62,7 +62,7 @@ describe("chat request validation", () => {
       history: [
         {
           role: "user",
-          content: "Tell me about food assistance.",
+          content: "Tell me about visitor information.",
         },
         {
           role: "assistant",
@@ -75,7 +75,7 @@ describe("chat request validation", () => {
 
   it("strips harmless unknown fields instead of letting them influence prompts", () => {
     const result = validateChatRequest({
-      message: "Where can I donate food?",
+      message: "What should I know before visiting Elachee?",
       pending: true,
       history: [
         {
@@ -95,7 +95,7 @@ describe("chat request validation", () => {
     expect(result.success).toBe(true);
     if (result.success) {
       expect(result.data).toEqual({
-        message: "Where can I donate food?",
+        message: "What should I know before visiting Elachee?",
         history: [
           { role: "user", content: "I want to donate." },
           { role: "assistant", content: "What would you like to donate?" },

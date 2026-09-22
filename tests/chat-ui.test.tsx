@@ -13,10 +13,10 @@ describe("chat input and quick actions", () => {
   it("captures and trims input before clearing it", () => {
     const onSend = vi.fn();
     render(<ChatInput disabled={false} onSend={onSend} />);
-    const input = screen.getByLabelText("Ask The Place information assistant");
-    fireEvent.change(input, { target: { value: "  Where can I donate food?  " } });
+    const input = screen.getByLabelText("Ask the Elachee Nature Guide");
+    fireEvent.change(input, { target: { value: "  What should I know before visiting Elachee?  " } });
     fireEvent.click(screen.getByRole("button", { name: "Send message" }));
-    expect(onSend).toHaveBeenCalledWith("Where can I donate food?");
+    expect(onSend).toHaveBeenCalledWith("What should I know before visiting Elachee?");
     expect(onSend.mock.calls[0]?.[0]).not.toHaveProperty("preventDefault");
     expect((input as HTMLTextAreaElement).value).toBe("");
   });
@@ -24,7 +24,7 @@ describe("chat input and quick actions", () => {
   it("routes Enter and the submit button through the same callback", () => {
     const onSend = vi.fn();
     render(<ChatInput disabled={false} onSend={onSend} />);
-    const input = screen.getByLabelText("Ask The Place information assistant");
+    const input = screen.getByLabelText("Ask the Elachee Nature Guide");
     fireEvent.change(input, { target: { value: "First question?" } });
     fireEvent.keyDown(input, { key: "Enter", shiftKey: false });
     fireEvent.change(input, { target: { value: "Second question?" } });
@@ -37,7 +37,7 @@ describe("chat input and quick actions", () => {
 
   it("shows and enforces the browser message limit", () => {
     render(<ChatInput disabled={false} onSend={vi.fn()} />);
-    const input = screen.getByLabelText("Ask The Place information assistant");
+    const input = screen.getByLabelText("Ask the Elachee Nature Guide");
     expect(input.getAttribute("maxlength")).toBe(String(MAX_MESSAGE_LENGTH));
     fireEvent.change(input, {
       target: { value: "x".repeat(MAX_MESSAGE_LENGTH + 25) },
@@ -53,8 +53,8 @@ describe("chat input and quick actions", () => {
   it("sends quick actions as natural-language strings", () => {
     const onSelect = vi.fn();
     render(<QuickActions onSelect={onSelect} />);
-    fireEvent.click(screen.getByRole("button", { name: "Donate food" }));
-    expect(onSelect).toHaveBeenCalledWith("Where can I donate food?");
+    fireEvent.click(screen.getByRole("button", { name: "Plan my visit" }));
+    expect(onSelect).toHaveBeenCalledWith("What should I know before visiting Elachee?");
     expect(typeof onSelect.mock.calls[0]?.[0]).toBe("string");
   });
 
@@ -66,9 +66,9 @@ describe("chat input and quick actions", () => {
         <QuickActions onSelect={onSelect} language="es" />
       </>,
     );
-    expect(screen.getByLabelText(/Pregúntale al asistente/i)).toBeDefined();
-    fireEvent.click(screen.getByRole("button", { name: "Donar alimentos" }));
-    expect(onSelect).toHaveBeenCalledWith("¿Dónde puedo donar alimentos?");
+    expect(screen.getByLabelText(/Preg.ntale a la Gu.a de Naturaleza de Elachee/i)).toBeDefined();
+    fireEvent.click(screen.getByRole("button", { name: "Planificar mi visita" }));
+    expect(onSelect).toHaveBeenCalledWith("\u00bfQu\u00e9 debo saber antes de visitar Elachee?");
   });
 });
 
@@ -81,14 +81,14 @@ describe("safe message rendering", () => {
           role: "assistant",
           includeInHistory: true,
           content:
-            "### Food help\n\n**Start here**\n\n- Pantry\n- Mobile pantry\n\n1. Choose a county\n2. Ask for details\n\nUse `Forsyth` when relevant.",
+            "### Visit planning\n\n**Start here**\n\n- Visitor center\n- Trails\n\n1. Check hours\n2. Ask for details\n\nUse `Elachee` when relevant.",
         }}
       />,
     );
-    expect(screen.getByRole("heading", { name: "Food help" })).toBeDefined();
+    expect(screen.getByRole("heading", { name: "Visit planning" })).toBeDefined();
     expect(screen.getByText("Start here").tagName).toBe("STRONG");
     expect(screen.getAllByRole("list")).toHaveLength(2);
-    expect(screen.getByText("Forsyth").tagName).toBe("CODE");
+    expect(screen.getByText("Elachee").tagName).toBe("CODE");
   });
 
   it("keeps user content escaped and plain", () => {
@@ -154,7 +154,7 @@ describe("safe message rendering", () => {
     expect(screen.getByText("Tracking pixel").tagName).toBe("SPAN");
   });
 
-  it("allows approved The Place Markdown links safely", () => {
+  it("allows approved Elachee Markdown links safely", () => {
     render(
       <ChatMessage
         message={{
@@ -162,11 +162,11 @@ describe("safe message rendering", () => {
           role: "assistant",
           includeInHistory: true,
           content:
-            "[Food donations](https://www.theplacega.org/food-donations)",
+            "[Plan a visit](https://elachee.org/visit/)",
         }}
       />,
     );
-    const link = screen.getByRole("link", { name: "Food donations" });
+    const link = screen.getByRole("link", { name: "Plan a visit" });
     expect(link.getAttribute("target")).toBe("_blank");
     expect(link.getAttribute("rel")).toBe("noopener noreferrer");
   });
@@ -177,35 +177,35 @@ describe("safe message rendering", () => {
         sources={[
           {
             id: "staff",
-            title: "Information provided by The Place staff",
+            title: "Information provided by Elachee staff",
             sourceType: "manager_faq",
           },
           {
             id: "website",
-            title: "Food Donations | Support Community Through Donations — The Place",
-            url: "https://www.theplacega.org/food-donations",
+            title: "Plan Your Visit | Elachee Nature Science Center",
+            url: "https://elachee.org/visit/",
             sourceType: "official_website",
           },
           {
-            id: "handbook",
-            title: "The Place Volunteer Handbook",
-            url: "https://www.theplacega.org/volunteer-handbook",
+            id: "staff-guide",
+            title: "Elachee Staff Guide",
+            url: "https://elachee.org/resources/staff-guide",
             sourceType: "official_document",
           },
         ]}
       />,
     );
     expect(
-      screen.queryByText("Information provided by The Place staff"),
+      screen.queryByText("Information provided by Elachee staff"),
     ).toBeNull();
     const website = screen.getByRole("link", {
-      name: /Food Donations.*View on The Place website/,
+      name: /Plan Your Visit.*View on the Elachee website/,
     });
     expect(website.getAttribute("href")).toBe(
-      "https://www.theplacega.org/food-donations",
+      "https://elachee.org/visit/",
     );
     expect(
-      screen.getByRole("link", { name: /Volunteer Handbook.*View on The Place website/ }),
+      screen.getByRole("link", { name: /Elachee Staff Guide.*View on the Elachee website/ }),
     ).toBeDefined();
   });
 
@@ -215,14 +215,14 @@ describe("safe message rendering", () => {
         sources={[
           {
             id: "website-a",
-            title: "Food Donations",
-            url: "https://www.theplacega.org/food-donations",
+            title: "Plan Your Visit",
+            url: "https://elachee.org/visit/",
             sourceType: "official_website",
           },
           {
             id: "website-b",
-            title: "Duplicate Food Donations",
-            url: "https://www.theplacega.org/food-donations",
+            title: "Duplicate Plan Your Visit",
+            url: "https://elachee.org/visit/",
             sourceType: "official_website",
           },
         ]}

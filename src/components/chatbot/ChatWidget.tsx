@@ -2,14 +2,14 @@
 
 import { useEffect, useRef, useState } from "react";
 
-import { ThePlaceLogo } from "@/components/branding/BrandLogos";
+import { ElacheeLogo } from "@/components/branding/BrandLogos";
 import { ChatPanel } from "@/components/chatbot/ChatPanel";
 import { ChatIcon, CloseIcon } from "@/components/chatbot/Icons";
 
 export const CHAT_NUDGE_DELAY_MS = 2200;
 export const CHAT_NUDGE_VISIBLE_MS = 9000;
-export const CHAT_NUDGE_SESSION_KEY = "the-place-chatbot-nudge-seen";
-export const EMBED_CLOSE_MESSAGE_TYPE = "the-place-chatbot:close";
+export const CHAT_NUDGE_SESSION_KEY = "elachee-chatbot-nudge-seen";
+export const EMBED_CLOSE_MESSAGE_TYPE = "elachee-chatbot:close";
 
 interface ChatWidgetProps {
   variant?: "floating" | "embedded";
@@ -24,7 +24,7 @@ export function ChatWidget({
   variant = "floating",
   initialOpen = false,
   launcherVisible = true,
-  position = "bottom-right",
+  position = "bottom-left",
   promptEnabled = true,
   theme = "light",
 }: ChatWidgetProps) {
@@ -144,14 +144,14 @@ export function ChatWidget({
                 type="button"
                 className="chat-launcher-nudge-action"
                 onClick={openPanel}
-                aria-label="Need help? Open The Place chatbot"
+                aria-label="Need help? Open Elachee chatbot"
               >
                 <span className="chat-launcher-nudge-icon" aria-hidden="true">
                   <ChatIcon size={16} />
                 </span>
                 <span>
                   <strong>Need help?</strong>
-                  <small>Ask The Place chatbot</small>
+                  <small>Ask Elachee chatbot</small>
                 </span>
               </button>
               <button
@@ -171,13 +171,13 @@ export function ChatWidget({
             type="button"
             className="chat-launcher"
             onClick={openPanel}
-            aria-label="Open The Place assistant"
+            aria-label="Open Elachee assistant"
             aria-expanded={open}
           >
             <span className="launcher-logo-wrap" aria-hidden="true">
-              <ThePlaceLogo className="launcher-place-logo" decorative />
+              <ElacheeLogo className="launcher-elachee-logo" decorative />
             </span>
-            <span>Ask The Place</span>
+            <span>Ask Elachee</span>
           </button>
         </>
       ) : null}

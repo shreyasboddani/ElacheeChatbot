@@ -22,7 +22,7 @@ export function parseEmbedPresentation(
     launcherVisible:
       requestedLauncher === "visible" || requestedLauncher === "true",
     position:
-      requestedPosition === "bottom-left" ? "bottom-left" : "bottom-right",
+      requestedPosition === "bottom-right" ? "bottom-right" : "bottom-left",
   };
 }
 

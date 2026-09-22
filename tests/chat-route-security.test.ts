@@ -59,7 +59,7 @@ describe("chat route request safety", () => {
   });
 
   it("accepts exactly the byte limit with split UTF-8 characters", async () => {
-    const json = JSON.stringify({ message: "hello", padding: "é" });
+    const json = JSON.stringify({ message: "hello", padding: "\u00e9" });
     const encoded = new TextEncoder().encode(json);
     const bytes = new TextEncoder().encode(json + " ".repeat(MAX_REQUEST_BYTES - encoded.byteLength));
     const split = bytes.indexOf(0xc3) + 1;
@@ -114,7 +114,7 @@ describe("chat route request safety", () => {
       expect(body.status).toBe("answered");
       expect(body.sources[0]).toEqual(
         expect.objectContaining({
-          url: "https://www.theplacega.org/",
+          url: "https://elachee.org/",
           sourceType: "official_website",
         }),
       );
@@ -123,30 +123,6 @@ describe("chat route request safety", () => {
     },
   );
 
-  it("answers registered document-access questions locally with the document source", async () => {
-    const response = await POST(
-      chatRequest({
-        message: "hi do u have access to the handbook?",
-        history: [],
-      }),
-    );
-    const body = await response.json();
-
-    expect(response.status).toBe(200);
-    expect(body).toEqual(
-      expect.objectContaining({
-        status: "answered",
-        sources: [
-          expect.objectContaining({
-            id: "volunteer-handbook-2026",
-            sourceType: "official_document",
-          }),
-        ],
-      }),
-    );
-    expect(mocks.askGroundedQuestion).not.toHaveBeenCalled();
-    expect(mocks.createGroundedInteractionClient).not.toHaveBeenCalled();
-  });
 
   it("returns a clear retry window after the temporary request limit", async () => {
     let response: Response | undefined;

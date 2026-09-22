@@ -12,7 +12,7 @@ const contentSecurityPolicy = [
   "base-uri 'self'",
   "form-action 'self'",
   "frame-src 'self'",
-  "frame-ancestors 'self' https://theplacega.org https://*.theplacega.org",
+  "frame-ancestors 'self' https://elachee.org https://www.elachee.org https://*.elachee.org",
   ...(isDevelopment ? [] : ["upgrade-insecure-requests"]),
 ].join("; ");
 

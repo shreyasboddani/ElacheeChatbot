@@ -1,8 +1,8 @@
-# The Place Information Assistant
+# Elachee Information Assistant
 
-A grounded chatbot prototype for The Place, created by LearnAI. The application answers only from a prepared Gemini File Search store containing The Place's public website and complete staff-provided FAQ entries. Unsupported, uncited, sensitive, or conflicting questions are routed to The Place instead of being guessed.
+A grounded chatbot prototype for Elachee, created by LearnAI. The application answers only from a prepared Gemini File Search store containing Elachee's public website and any reviewed staff FAQ entries. Unsupported, uncited, sensitive, or conflicting questions are routed to Elachee instead of being guessed.
 
-This repository is a prototype for review. It is not a case-management system, does not check application status, and isn't represented as a final production service approved by The Place.
+This repository is a prototype for review. It is not a case-management system, does not check application status, and isn't represented as a final production service approved by Elachee.
 
 ## What is included
 
@@ -16,7 +16,7 @@ This repository is a prototype for review. It is not a case-management system, d
 - `GET /api/health` with non-secret configuration status
 - A robots-aware, same-origin website crawler
 - Staff DOCX parsing with approved and pending separation
-- Prepared website/FAQ Markdown and checksum-verified official PDF documents
+- Prepared Elachee website/FAQ Markdown corpus
 - Gemini File Search create/reuse, upload, list, and manual-delete scripts
 - Local sensitive-data detection, Zod validation, source URL allowlisting, and best-effort rate limiting
 - Automated tests and a manual review checklist
@@ -30,7 +30,7 @@ src/lib/gemini/          Gemini request, prompt, citation, and response logic
 src/lib/knowledge/       Shared knowledge and manifest contracts
 src/lib/security/        Validation, privacy detection, and rate limiting
 src/generated/           Build-time source manifest
-knowledge/source/        Staff FAQ source plus durable official PDF sources
+knowledge/source/        Optional staff FAQ source and source approvals
 knowledge/generated/     Crawl, FAQ, prepared corpus, and sync reports
 scripts/                 Offline crawl, parse, prepare, and File Search tools
 public/widget-loader.js  Dependency-free host-site integration
@@ -65,11 +65,13 @@ No database, authentication provider, Redis service, or paid third-party depende
    npm install
    ```
 
-2. Confirm the source document exists here:
+2. Confirm the generated Elachee website corpus is present here:
 
    ```text
-   knowledge/source/chatbot-questions.docx
+   knowledge/generated/prepared/
    ```
+
+   A staff-provided DOCX is optional. If supplied, place it at `knowledge/source/elachee-questions.docx` or pass its path to the parser.
 
 3. Copy the environment template without committing the result:
 
@@ -93,7 +95,7 @@ No database, authentication provider, Redis service, or paid third-party depende
 GEMINI_API_KEY=
 GEMINI_FILE_SEARCH_STORE=
 GEMINI_MODEL=gemini-3.5-flash-lite
-NEXT_PUBLIC_SITE_URL=https://theplacechatbot.vercel.app
+NEXT_PUBLIC_SITE_URL=https://elachee-chatbot.vercel.app
 ```
 
 | Variable | Purpose |
@@ -103,7 +105,7 @@ NEXT_PUBLIC_SITE_URL=https://theplacechatbot.vercel.app
 | `GEMINI_MODEL` | Central model configuration. Defaults to stable `gemini-3.5-flash-lite`. |
 | `NEXT_PUBLIC_SITE_URL` | Public deployment origin used in documentation/integration context. It contains no secret. |
 
-The application still renders without Gemini configuration. `/api/chat` returns a non-technical service-unavailable response with The Place's official contact path. `/api/health` returns only `ok` or `unavailable`; it does not disclose the model or which credential is missing.
+The application still renders without Gemini configuration. `/api/chat` returns a non-technical service-unavailable response with Elachee's official contact path. `/api/health` returns only `ok` or `unavailable`; it does not disclose the model or which credential is missing.
 
 ### Gemini model selection
 
@@ -124,7 +126,7 @@ npm run knowledge:parse-faq
 To use a different input path:
 
 ```bash
-npm run knowledge:parse-faq -- path/to/chatbot-questions.docx
+npm run knowledge:parse-faq -- path/to/elachee-questions.docx
 ```
 
 This writes structured FAQ JSON plus:
@@ -147,7 +149,7 @@ The default and hard cap are 150 pages, leaving room for the current public site
 npm run knowledge:crawl -- --max-pages=25
 ```
 
-The crawler reads `robots.txt`, checks sitemap candidates, revalidates previously approved URLs first, follows only canonicalized `theplacega.org` pages, waits between requests, avoids blocked/private/asset routes, and records per-page timestamps and failures. It never submits forms. A failed or suspiciously incomplete refresh retains the last-known-good document; permanent removal requires a human-reviewed entry in `knowledge/source/approved-removals.json`.
+The crawler reads `robots.txt`, checks sitemap candidates, revalidates previously approved URLs first, follows only canonicalized `elachee.org` pages, waits between requests, avoids blocked/private/asset routes, and records per-page timestamps and failures. It never submits forms. A failed or suspiciously incomplete refresh retains the last-known-good document; permanent removal requires a human-reviewed entry in `knowledge/source/approved-removals.json`.
 
 ### 3. Prepare the approved corpus
 
@@ -171,7 +173,7 @@ npm run knowledge:verify
 
 The verifier fails closed on manifest drift, unsafe paths, duplicate IDs or URLs, pending FAQ leakage, fabricated staff URLs, excessive crawl failures, suspicious instruction-like content, and unexpected corpus size changes.
 
-Two official public PDFs are managed separately from the HTML crawler: the June 24, 2026 Volunteer Handbook and the July 2026 Heart of Service Birthday Cake Kits sheet. Their exact source files live in `knowledge/source/official-documents/` and are registered with approved public URLs and SHA-256 hashes in `knowledge/source/official-documents.json`. Preparation recreates their generated copies on every refresh, so a website crawl cannot remove or silently replace them. Updating either PDF requires a reviewed source-file and hash change.
+No staff FAQ or official PDF sources are bundled in this Elachee clone. If Elachee later supplies reviewed documents, add them through the approved source registries and rerun preparation; the public-site crawler will not invent or remove staff content.
 
 ### 4. Upload or reconcile File Search
 
@@ -231,7 +233,7 @@ Deletion is permanent, requires both an exact resource name and `--confirm`, and
 
 The repository includes a fail-closed, direct-to-main automation system for bounded public-site updates:
 
-- `Detect and commit website knowledge updates` runs daily at 09:17 UTC, on demand, or from the `the-place-website-updated` repository-dispatch event.
+- `Detect and commit website knowledge updates` runs daily at 09:17 UTC, on demand, or from the `elachee-website-updated` repository-dispatch event.
 - GitHub has no Gemini or Vercel secrets. An unchanged site produces no commit, deployment, or Gemini call.
 - A change can be committed directly to `main` only after file-boundary checks, staff-FAQ isolation, a 20-document automatic-change cap, exact reconciliation of every website deletion against the human removal allowlist, a separate five-deletion cap, corpus verification, all tests, lint, production build, and a final check that `main` did not advance. It never force-pushes.
 - The resulting Vercel Production build verifies the committed corpus again, reconciles the existing File Search store using Vercel's server-side key, and only then builds the deployable application. Preview builds never mutate Gemini.
@@ -282,7 +284,7 @@ Automated tests mock or interpret Gemini-shaped responses and do not consume API
 ## Standalone demo testing
 
 1. Start the app with all three Gemini variables configured.
-2. Open `/` and launch **Ask The Place**.
+2. Open `/` and launch **Ask Elachee**.
 3. Send a supported question and confirm approved website source cards appear when the answer cites a public page. Staff-only evidence remains hidden rather than being presented as a website link.
 4. Send an unresolved policy question and confirm the contact fallback appears.
 5. Remove `GEMINI_FILE_SEARCH_STORE`, restart, and confirm the page remains usable while chat shows the service-unavailable contact path.
@@ -292,8 +294,8 @@ Automated tests mock or interpret Gemini-shaped responses and do not consume API
 
 ```html
 <iframe
-  src="https://theplacechatbot.vercel.app/embed?theme=light&launcher=hidden"
-  title="The Place information assistant"
+  src="https://elachee-chatbot.vercel.app/embed?theme=light&launcher=hidden"
+  title="Elachee information assistant"
   style="width: 390px; height: 650px; border: 0;"
   loading="lazy">
 </iframe>
@@ -308,12 +310,12 @@ Add this before the host page's closing `</body>` tag or through its approved sc
 ```html
 <script
   async
-  src="https://theplacechatbot.vercel.app/widget-loader.js"
-  data-chatbot-url="https://theplacechatbot.vercel.app/embed"
+  src="https://elachee-chatbot.vercel.app/widget-loader.js"
+  data-chatbot-url="https://elachee-chatbot.vercel.app/embed"
   data-position="bottom-right"
-  data-label="Ask The Place"
+  data-label="Ask Elachee"
   data-prompt="visible"
-  data-prompt-text="Ask The Place chatbot">
+  data-prompt-text="Ask Elachee chatbot">
 </script>
 ```
 
@@ -360,7 +362,7 @@ The current official Vercel workflow is documented at [Deploying a project from 
 6. Verify the preview:
 
    ```bash
-   curl https://theplacechatbot.vercel.app/api/health
+   curl https://elachee-chatbot.vercel.app/api/health
    ```
 
 7. Only after stakeholder review, create production:
@@ -392,7 +394,7 @@ Use `--new-store` only for initial setup, ownership transfer, or an intentional 
 
 ## Current synchronization result
 
-The August 5, 2026 preparation pass indexed 120 public website pages, 27 approved staff FAQ entries, and 2 official public PDFs, producing 149 prepared documents. Five HTML routes (`/matching-gifts`, `/gala-recap`, `/furniture-pickup-request`, `/faroi`, and `/upcoming-events`) returned no meaningful public page content. The `/volunteer-handbook` route redirects to a document delivery target the HTML crawler intentionally refuses, so the exact verified PDF is supplied through the durable official-document registry instead. `/home` duplicates the canonical homepage and is not uploaded twice. The live File Search reconciliation finished with 149 unchanged desired documents, zero pending uploads, zero deletions, and zero unmanaged documents.
+The initial Elachee preparation pass indexed 60 public website pages and produced 60 prepared documents with no crawl failures, staff FAQ entries, or bundled official PDFs. Rerun the refresh commands after reviewing future Elachee site changes.
 
 The following staff questions remain pending and are excluded from the approved FAQ corpus:
 
@@ -405,11 +407,11 @@ The following staff questions remain pending and are excluded from the approved 
 
 Targeted searches of the crawled official corpus found no direct official answer for those six questions. A future website change can still become an official website source after a new crawl, but it does not silently convert a pending staff entry into an approved FAQ.
 
-## Ownership transfer from LearnAI to The Place
+## Ownership transfer from LearnAI to Elachee
 
-1. The Place creates its own Google AI project and Gemini API key.
-2. Greg (or the designated hosting administrator) configures that key in The Place's Vercel project.
-3. Run the knowledge crawl, FAQ parse, preparation, and File Search sync using The Place's key/project.
+1. Elachee creates its own Google AI project and Gemini API key.
+2. Greg (or the designated hosting administrator) configures that key in Elachee's Vercel project.
+3. Run the knowledge crawl, FAQ parse, preparation, and File Search sync using Elachee's key/project.
 4. Copy the newly printed `GEMINI_FILE_SEARCH_STORE` into the hosting environment.
 5. Confirm `vercel.json` uses the guarded production build described in `docs/knowledge-automation.md`.
 6. Redeploy and complete the manual checklist.
@@ -425,11 +427,11 @@ File Search stores belong to the Gemini project that created them; changing only
 - Gemini interactions use `store: false`; provider-side abuse monitoring and service policies may still apply.
 - Obvious SSNs, Luhn-valid card numbers, password disclosures, bank-account context with long numbers, and large private-document-like pastes are blocked before Gemini.
 - React renders answer text directly; raw HTML and `dangerouslySetInnerHTML` are not used for model output.
-- Website source URLs are limited to HTTPS `theplacega.org` hosts and must exist in the generated manifest.
+- Website source URLs are limited to HTTPS `elachee.org` hosts and must exist in the generated manifest.
 - The crawler revalidates both requested and final redirect hosts so off-domain content cannot enter the approved corpus through a redirect or external sitemap.
 - Request size, the 600-character message limit, history length, timeout, and response shape are bounded.
 - The optional language preference is restricted to `auto`, `en`, or `es`; arbitrary browser values cannot enter the system instruction.
-- The API requires `application/json`, model-generated images are not loaded, the widget iframe is same-origin with its loader, and response security headers limit framing to The Place domains.
+- The API requires `application/json`, model-generated images are not loaded, the widget iframe is same-origin with its loader, and response security headers limit framing to Elachee domains.
 - Production provider failures log only error type/status/code metadata, never visitor message text.
 - The in-memory rate limiter is best-effort only. Serverless instances do not share its state, so production should use a durable distributed limiter if abuse risk warrants it.
 - No browser analytics or transcript persistence is included by default.
@@ -441,10 +443,10 @@ File Search stores belong to the Gemini project that created them; changing only
 - Public-site updates are detected automatically. Large changes, staff-FAQ changes, unsafe content, invalid crawls, and unapproved removals fail closed for human investigation; no crawler can guarantee the correctness of a legitimately compromised official page.
 - The crawler uses practical main-content extraction; synchronization reports should be audited periodically for missing, duplicated, retained, or layout-heavy pages.
 - Semantic retrieval can miss relevant wording. The citation gate favors a safe fallback over an unsupported answer.
-- The app does not authenticate visitors or connect to The Place's internal systems.
+- The app does not authenticate visitors or connect to Elachee's internal systems.
 - In-memory rate limiting is not a strong production control.
 - Before broad public promotion, configure a Vercel Firewall rate-limit rule for `POST /api/chat`, plus a formal content-review workflow, uptime/error monitoring that excludes message text, accessibility testing with assistive technologies, retention/legal review, and a documented incident/rollback procedure.
-- Review Gemini and Vercel quotas, billing, and data-processing terms for The Place's expected traffic. Free-tier availability and limits can change.
+- Review Gemini and Vercel quotas, billing, and data-processing terms for Elachee's expected traffic. Free-tier availability and limits can change.
 - Next.js and its ESLint configuration are pinned to the current compatible 16.2.12 patch. `npm audit` reports 12 high-severity transitive findings: PostCSS and Sharp/libvips inside Next.js, plus glob-expansion packages used by development-only lint tooling. This app accepts neither user-provided CSS nor image uploads, has no remote image domains, disables runtime image optimization for its trusted local logos, and does not pass visitor input to lint tooling. npm's forced fix proposes an unsafe Next.js 9 downgrade; ESLint 10 is not yet compatible with the React plugin bundled by this Next configuration. Neither unsafe change is applied. Monitor the next stable compatible releases and rerun the audit regularly.
 
 ## Packages added

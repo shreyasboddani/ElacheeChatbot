@@ -5,7 +5,7 @@ import { pathToFileURL } from "node:url";
 import { load } from "cheerio";
 import mammoth from "mammoth";
 
-import { canonicalizeThePlaceUrl } from "../src/lib/config";
+import { canonicalizeElacheeUrl } from "../src/lib/config";
 import type { FaqEntry, FaqStatus } from "../src/lib/knowledge/types";
 
 interface ParagraphRecord {
@@ -21,52 +21,19 @@ interface FaqBlueprint {
   inlineAnswer?: (rawText: string) => string | undefined;
 }
 
-const pending: FaqStatus = "pending";
-
 const FAQ_BLUEPRINTS: FaqBlueprint[] = [
-  { id: "food-order-help", question: "I can't order my food. What should I do?", match: "i can't order my food" },
-  { id: "food-pantry-donation-items", question: "Will you accept these items for the food pantry?", match: "will you accept these items (for food pantry)" },
-  { id: "thrift-store-donation-items", question: "Will you accept these items for donation to the thrift store?", match: "will you accept these items for donation to the thrift store" },
-  { id: "thrift-store-shopping-hours", question: "What are your thrift store shopping hours?", match: "what are your thrift store shopping hours" },
-  { id: "thrift-store-donation-hours", question: "What are your thrift store donation hours?", match: "what are your thrift store donation hours" },
-  { id: "where-to-donate-food", question: "Where can I donate food?", match: "where can i donate food" },
-  { id: "current-food-needs", question: "What are your food needs?", match: "what are your food needs" },
-  { id: "new-volunteer", question: "I want to volunteer. What do I do?", match: "i want to volunteer, what do i do" },
-  { id: "community-service", question: "I need to do community service. What do I do?", match: "i need to do community service, what do i do" },
-  { id: "financial-assistance", question: "I need help paying my bills. What should I do?", match: "i need help paying my bills" },
-  { id: "food-assistance", question: "I need food. What should I do?", match: "i need food" },
-  { id: "assistance-application-follow-up", question: "I filled out an application for help and haven't heard anything. What should I do?", match: "i filled out an application for help and haven't heard anything" },
-  { id: "host-a-drive", question: "We are planning a drive. Will you take these items?", match: "we are planning a drive, will you take these items" },
-  { id: "drive-types", question: "What kind of drive can we host?", match: "what kind of drive?" },
-  { id: "group-volunteering", question: "My club or group wants to volunteer. Who do I contact?", match: "my club/group wants to volunteer, who do i contact" },
-  { id: "direct-family-item-donation", question: "I have a specific item that I want to go directly to a family in need. What should I do?", match: "i have a specific item that i want to go directly to a family in need" },
-  {
-    id: "financial-assistance-documents",
-    question: "Where do I send my documents for financial assistance?",
-    match: "where do i send my documents for financial assistance",
-    inlineAnswer: (text) => text.split("?").slice(1).join("?").replace(/^\s*answer\s*/i, "").trim() || undefined,
-  },
-  { id: "expired-shopper-id", question: "My shopper ID is expired. What do I do?", match: "my shopper id is expired, what do i do" },
-  {
-    id: "food-order-pickup-change",
-    question: "I won't be able to pick up my food order. Who should I notify?",
-    match: "i won't be able to pickup my food order",
-    inlineAnswer: (text) => text.match(/\((.+)\)\s*$/)?.[1]?.trim(),
-  },
-  { id: "benefits-application-help", question: "I need help applying for food stamps or Medicaid. Who can help?", match: "i need help applying for food stamps, medicaid" },
-  { id: "clothing-assistance", question: "I need help getting clothing. What should I do?", match: "i need help getting clothes" },
-  { id: "senior-food-assistance", question: "I'm a senior and need help getting food. Who should I contact?", match: "i'm a senior and need help getting food" },
-  { id: "furniture-delivery-fees", question: "What are your delivery fees for furniture?", match: "what are your delivery fees for furniture", status: pending },
-  { id: "return-policy", question: "What is your return policy?", match: "what is your return policy", status: pending },
-  { id: "fitting-rooms", question: "Does your store have fitting rooms?", match: "does your store have fitting rooms" },
-  { id: "electronics-testing-outlets", question: "Are there outlets to test electronics?", match: "are there outlets to test electronics", status: pending },
-  { id: "colored-clothing-barbs", question: "What do the colored barbs on the clothing mean?", match: "what do the colored barbs on the clothing mean", status: pending },
-  { id: "price-negotiation", question: "Do you negotiate prices?", match: "do you negotiate prices", status: pending },
-  { id: "clothing-exchanges", question: "Can I exchange my clothing for clothing in the store?", match: "can i exchange my clothing for clothing in the store", status: pending },
-  { id: "office-hours", question: "What are your office hours?", match: "what are your office hours?" },
-  { id: "diapers-and-formula", question: "Do you have diapers or formula?", match: "do you have diapers, formula?" },
-  { id: "baby-item-donations", question: "Do you take baby item donations such as cribs or car seats?", match: "do you take baby item donations such as cribs, car seats" },
-  { id: "free-car-seats", question: "Do you have free car seats?", match: "do you have free car seats?" },
+  { id: "visitor-hours", question: "What are the visitor center hours?", match: "what are the visitor center hours" },
+  { id: "admission-prices", question: "How much is admission?", match: "how much is admission" },
+  { id: "trail-hours", question: "When are the trails open?", match: "when are the trails open" },
+  { id: "trail-access", question: "Which trails are stroller friendly?", match: "which trails are stroller friendly" },
+  { id: "camp-elachee", question: "What is Camp Elachee?", match: "what is camp elachee" },
+  { id: "nature-academy", question: "What is Nature Academy?", match: "what is nature academy" },
+  { id: "sprouts", question: "What is Sprouts?", match: "what is sprouts" },
+  { id: "homeschool-programs", question: "What homeschool programs are available?", match: "what homeschool programs are available" },
+  { id: "field-trips", question: "How do I plan a field trip?", match: "how do i plan a field trip" },
+  { id: "volunteer", question: "How can I volunteer?", match: "how can i volunteer" },
+  { id: "upcoming-events", question: "What upcoming events are available?", match: "what upcoming events are available" },
+  { id: "membership", question: "What does membership include?", match: "what does membership include" },
 ];
 
 function normalize(value: string): string {
@@ -118,7 +85,7 @@ function contactsFrom(records: ParagraphRecord[]): string[] {
       }
     }
     values.push(
-      ...(record.text.match(/[A-Z0-9._%+-]+@theplacega\.org/gi) ?? []).map(
+      ...(record.text.match(/[A-Z0-9._%+-]+@elachee\.org/gi) ?? []).map(
         (email) => email.toLowerCase(),
       ),
     );
@@ -130,7 +97,7 @@ function urlsFrom(records: ParagraphRecord[]): string[] {
   return unique(
     records.flatMap((record) =>
       record.links
-        .map(canonicalizeThePlaceUrl)
+        .map(canonicalizeElacheeUrl)
         .filter((url): url is string => Boolean(url)),
     ),
   );
@@ -223,7 +190,7 @@ export async function writeFaqOutputs(entries: FaqEntry[], outputDir: string) {
   await mkdir(outputDir, { recursive: true });
   const approved = entries.filter((entry) => entry.status === "approved");
   const unresolved = entries.filter((entry) => entry.status !== "approved");
-  const header = "# The Place manager-provided FAQ\n\nGenerated from the staff-provided DOCX.\n";
+  const header = "# Elachee manager-provided FAQ\n\nGenerated from the staff-provided DOCX.\n";
 
   await Promise.all([
     writeFile(
@@ -267,10 +234,27 @@ async function main() {
   const root = process.cwd();
   const docxPath = path.resolve(
     root,
-    process.argv[2] || "knowledge/source/chatbot-questions.docx",
+    process.argv[2] || "knowledge/source/elachee-questions.docx",
   );
   const outputDir = path.resolve(root, "knowledge/generated");
-  const entries = await readManagerFaqDocument(docxPath);
+  let entries: FaqEntry[];
+  try {
+    entries = await readManagerFaqDocument(docxPath);
+  } catch (error) {
+    if (
+      error &&
+      typeof error === "object" &&
+      "code" in error &&
+      error.code === "ENOENT"
+    ) {
+      entries = [];
+      process.stdout.write(
+        `No optional staff FAQ DOCX found at ${docxPath}; writing an empty Elachee FAQ set.\n`,
+      );
+    } else {
+      throw error;
+    }
+  }
   await writeFaqOutputs(entries, outputDir);
 
   const approved = entries.filter((entry) => entry.status === "approved").length;

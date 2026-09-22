@@ -9,7 +9,7 @@ import {
   mergePreviouslyApprovedSources,
   parseApprovedRemovalUrls,
   preserveUnchangedFetchedAt,
-  requireThePlaceFetchUrl,
+  requireElacheeFetchUrl,
   sourceIdForUrl,
   websiteContentFingerprint,
 } from "../scripts/crawl-website";
@@ -38,9 +38,9 @@ function websiteSource(overrides: Partial<WebsiteSource> = {}): WebsiteSource {
   return {
     id: "web-example-12345678",
     title: "Example page",
-    canonicalUrl: "https://www.theplacega.org/example",
+    canonicalUrl: "https://elachee.org/example",
     fetchedAt: "2026-07-23T00:00:00.000Z",
-    text: "Confirmed public information from The Place.",
+    text: "Confirmed public information from Elachee.",
     headings: ["Example"],
     links: [],
     sourceType: "official_website",
@@ -51,7 +51,7 @@ function websiteSource(overrides: Partial<WebsiteSource> = {}): WebsiteSource {
 describe("automated website refresh", () => {
   it("keeps source IDs safe and distinct for very long recurring-event URLs", () => {
     const firstUrl =
-      "https://www.theplacega.org/calendar/free-ged-classes/" +
+      "https://elachee.org/calendar/free-ged-classes/" +
       "6t997-zlysg-d4yp4-syh62-xat6g-nf3y3-ergt8-rbe43-ra5lx-8c5f8-dr2x7-45wxx-8nfpk-c78rj-9hyry";
     const secondUrl = `${firstUrl}-another-occurrence`;
     const firstId = sourceIdForUrl(firstUrl);
@@ -81,7 +81,7 @@ describe("automated website refresh", () => {
     const health = crawlHealthSnapshot({
       maxPages: 120,
       totalIndexed: 117,
-      failedPages: [{ url: "https://www.theplacega.org/empty", reason: "empty" }],
+      failedPages: [{ url: "https://elachee.org/empty", reason: "empty" }],
       duplicatePages: [],
       blockedPages: [],
       retainedPages: [],
@@ -115,7 +115,7 @@ describe("automated website refresh", () => {
         maxPages: 150,
         totalIndexed: 0,
         failedPages: [
-          { url: "https://www.theplacega.org/", reason: "fetch failed" },
+          { url: "https://elachee.org/", reason: "fetch failed" },
         ],
         duplicatePages: [],
         blockedPages: [],
@@ -175,7 +175,7 @@ describe("automated website refresh", () => {
     expect(merged.retainedPages).toEqual([]);
     expect(() =>
       parseApprovedRemovalUrls({ canonicalUrls: ["https://example.com/page"] }),
-    ).toThrow("public The Place page");
+    ).toThrow("public Elachee page");
   });
 
   it("retains known content when a new robots rule blocks revalidation", () => {
@@ -194,15 +194,15 @@ describe("automated website refresh", () => {
   });
 
   it("refuses off-domain crawl and redirect targets", () => {
-    expect(requireThePlaceFetchUrl("http://theplacega.org/contact-us#top")).toBe(
-      "https://www.theplacega.org/contact-us",
+    expect(requireElacheeFetchUrl("http://elachee.org/contact-us#top")).toBe(
+      "https://elachee.org/contact-us",
     );
-    expect(() => requireThePlaceFetchUrl("https://example.com/poisoned")).toThrow(
-      "outside The Place website",
+    expect(() => requireElacheeFetchUrl("https://example.com/poisoned")).toThrow(
+      "outside Elachee website",
     );
     expect(() =>
-      requireThePlaceFetchUrl("https://www.theplacega.org.evil.example/page"),
-    ).toThrow("outside The Place website");
+      requireElacheeFetchUrl("https://elachee.org.evil.example/page"),
+    ).toThrow("outside Elachee website");
   });
 
   it("treats severe extraction shrinkage and soft error pages as unsafe", () => {
@@ -236,7 +236,7 @@ describe("incremental File Search reconciliation", () => {
     displayName: "website__test.md",
     mimeType: "text/markdown",
     customMetadata: [
-      { key: "managed_by", stringValue: "the-place-chatbot" },
+      { key: "managed_by", stringValue: "elachee-chatbot" },
       { key: "source_id", stringValue: "web-test" },
     ],
     chunkingConfig: {
@@ -359,28 +359,28 @@ describe("incremental File Search reconciliation", () => {
         name: "stores/example/documents/current",
         sourceId: "current",
         contentHash: "hash-current",
-        managedBy: "the-place-chatbot",
+        managedBy: "elachee-chatbot",
         state: "STATE_ACTIVE",
       },
       {
         name: "stores/example/documents/current-duplicate",
         sourceId: "current",
         contentHash: "hash-old",
-        managedBy: "the-place-chatbot",
+        managedBy: "elachee-chatbot",
         state: "STATE_ACTIVE",
       },
       {
         name: "stores/example/documents/changed",
         sourceId: "changed",
         contentHash: "hash-old",
-        managedBy: "the-place-chatbot",
+        managedBy: "elachee-chatbot",
         state: "STATE_ACTIVE",
       },
       {
         name: "stores/example/documents/obsolete",
         sourceId: "obsolete",
         contentHash: "hash-obsolete",
-        managedBy: "the-place-chatbot",
+        managedBy: "elachee-chatbot",
         state: "STATE_ACTIVE",
       },
       { name: "stores/example/documents/unmanaged" },
@@ -409,14 +409,14 @@ describe("incremental File Search reconciliation", () => {
           name: "stores/example/documents/current-uploading",
           sourceId: "current",
           contentHash: "new-hash",
-          managedBy: "the-place-chatbot",
+          managedBy: "elachee-chatbot",
           state: "STATE_PENDING",
         },
         {
           name: "stores/example/documents/current-old",
           sourceId: "current",
           contentHash: "old-hash",
-          managedBy: "the-place-chatbot",
+          managedBy: "elachee-chatbot",
           state: "STATE_ACTIVE",
         },
       ],
@@ -435,7 +435,7 @@ describe("incremental File Search reconciliation", () => {
           name: "stores/example/documents/failed",
           sourceId: "failed",
           contentHash: "same",
-          managedBy: "the-place-chatbot",
+          managedBy: "elachee-chatbot",
           state: "STATE_FAILED",
         },
       ],
@@ -464,7 +464,7 @@ describe("incremental File Search reconciliation", () => {
   });
 
   it("uses PDF MIME types and retries only transient sanitized failures", () => {
-    expect(preparedDocumentMimeType("official_document__handbook.pdf")).toBe(
+    expect(preparedDocumentMimeType("official_document__staff-guide.pdf")).toBe(
       "application/pdf",
     );
     expect(preparedDocumentMimeType("website__page.md")).toBe(
@@ -551,8 +551,8 @@ describe("knowledge automation safety gate", () => {
         summary.officialDocumentDocuments +
         summary.managerFaqDocuments,
     );
-    expect(summary.officialDocumentDocuments).toBe(2);
-    expect(summary.pendingFaqDocuments).toBeGreaterThan(0);
+    expect(summary.officialDocumentDocuments).toBe(0);
+    expect(summary.pendingFaqDocuments).toBe(0);
   });
 
   it("detects instruction-like retrieved content", () => {
@@ -563,7 +563,7 @@ describe("knowledge automation safety gate", () => {
     ).toBe(true);
     expect(
       containsKnowledgePromptInjection(
-        "The Place offers confirmed food assistance information.",
+        "Elachee offers confirmed visitor information information.",
       ),
     ).toBe(false);
   });
@@ -598,7 +598,7 @@ describe("deployment automation configuration", () => {
       "utf8",
     );
     expect(refresh).toContain("schedule:");
-    expect(refresh).toContain("the-place-website-updated");
+    expect(refresh).toContain("elachee-website-updated");
     expect(refresh).toContain("ref: main");
     expect(refresh).toContain("contents: write");
     expect(refresh).toContain("Guard the generated-file boundary");

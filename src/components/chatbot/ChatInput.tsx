@@ -34,14 +34,14 @@ export function ChatInput({ disabled, onSend, language = "en" }: ChatInputProps)
 
   return (
     <form className="chat-input-form" onSubmit={submit}>
-      <label htmlFor="the-place-chat-input" className="sr-only">
+      <label htmlFor="elachee-chat-input" className="sr-only">
         {copy.inputLabel}
       </label>
       <div className="chat-input-field">
         <textarea
           ref={inputRef}
-          id="the-place-chat-input"
-          aria-describedby="the-place-chat-character-count"
+          id="elachee-chat-input"
+          aria-describedby="elachee-chat-character-count"
           value={message}
           onChange={(event) =>
             setMessage(event.target.value.slice(0, MAX_MESSAGE_LENGTH))
@@ -58,7 +58,7 @@ export function ChatInput({ disabled, onSend, language = "en" }: ChatInputProps)
           disabled={disabled}
         />
         <span
-          id="the-place-chat-character-count"
+          id="elachee-chat-character-count"
           className="chat-character-count"
           aria-live="polite"
         >

@@ -1,6 +1,6 @@
 import {
   LearnAILogo,
-  ThePlaceLogo,
+  ElacheeLogo,
 } from "@/components/branding/BrandLogos";
 import { ArrowIcon, ShieldIcon } from "@/components/chatbot/Icons";
 import { ChatWidget } from "@/components/chatbot/ChatWidget";
@@ -8,18 +8,18 @@ import { ChatWidget } from "@/components/chatbot/ChatWidget";
 const serviceCards = [
   {
     number: "01",
-    title: "Find support",
-    body: "Ask about food, financial assistance, senior support, and other available information.",
+    title: "Plan your visit",
+    body: "Ask about visitor-center hours, admission, parking, directions, and what to bring.",
   },
   {
     number: "02",
-    title: "Give with purpose",
-    body: "Find official guidance for food donations, thrift store donations, and community drives.",
+    title: "Explore programs",
+    body: "Find official information about camps, Nature Academy, Sprouts, homeschool programs, and field trips.",
   },
   {
     number: "03",
-    title: "Get involved",
-    body: "Learn where to begin with volunteering, group service, and community service questions.",
+    title: "Find your trail",
+    body: "Learn about hiking routes, trail access, exhibits, live-animal encounters, and upcoming events.",
   },
 ] as const;
 
@@ -27,8 +27,8 @@ export default function Home() {
   return (
     <main className="demo-page">
       <header className="demo-header">
-        <a href="#top" className="demo-brand" aria-label="The Place assistant prototype home">
-          <ThePlaceLogo className="demo-place-logo" priority />
+        <a href="#top" className="demo-brand" aria-label="Elachee assistant prototype home">
+          <ElacheeLogo className="demo-elachee-logo" priority />
           <span className="brand-product-name">Information Assistant</span>
         </a>
         <nav aria-label="Prototype navigation">
@@ -36,11 +36,11 @@ export default function Home() {
           <a href="#integration">Integration</a>
           <a
             className="header-contact"
-            href="https://www.theplacega.org/contact-us"
+            href="https://elachee.org/resources/contact-us/"
             target="_blank"
             rel="noreferrer noopener"
           >
-            Contact The Place <ArrowIcon size={16} />
+            Contact Elachee <ArrowIcon size={16} />
           </a>
         </nav>
       </header>
@@ -56,9 +56,9 @@ export default function Home() {
             <span> trusted information.</span>
           </h1>
           <p className="hero-lede">
-            The Place Information Assistant helps visitors navigate approved
-            service, donation, and volunteer information with official sources
-            attached to every supported answer.
+            Elachee Nature Guide helps visitors navigate approved information
+            about trails, exhibits, programs, events, and visiting the forest,
+            with official sources attached to every supported answer.
           </p>
           <div className="hero-actions">
             <a className="primary-action" href="#assistant-preview">
@@ -71,7 +71,7 @@ export default function Home() {
           <div className="trust-line">
             <ShieldIcon />
             <span>
-              Answers come only from approved information from The Place.
+              Answers come only from approved information from Elachee.
             </span>
           </div>
         </div>
@@ -82,11 +82,11 @@ export default function Home() {
           <div className="hero-card">
             <div className="hero-card-top">
               <span className="hero-card-brand">
-                <ThePlaceLogo className="hero-card-logo" decorative />
+                <ElacheeLogo className="hero-card-logo" decorative />
               </span>
               <span className="live-pill"><i /> Grounded answers</span>
             </div>
-            <p className="hero-card-kicker">ONE TRUSTED PLACE TO START</p>
+            <p className="hero-card-kicker">ONE TRUSTED TRAILHEAD TO START</p>
             <h2>Ask naturally. Verify easily.</h2>
             <p>
               Visitors get a concise response, a direct link to the supporting
@@ -94,10 +94,10 @@ export default function Home() {
               approved information is incomplete.
             </p>
             <div className="hero-card-tags" aria-label="Example topics">
-              <span>Food support</span>
-              <span>Financial assistance</span>
-              <span>Donations</span>
-              <span>Volunteering</span>
+              <span>Visitor hours</span>
+              <span>Trails</span>
+              <span>Camps</span>
+              <span>Events</span>
             </div>
           </div>
           <div className="source-proof-card">
@@ -110,11 +110,10 @@ export default function Home() {
       <section className="context-section" id="assistant-preview">
         <div className="section-heading">
           <p className="eyebrow"><span /> Standalone demonstration</p>
-          <h2>A welcoming layer for an existing community website.</h2>
+          <h2>A welcoming layer for Elachee’s existing website.</h2>
           <p>
             This sample content shows how the floating assistant sits alongside
-            a normal public-service page without replacing its navigation or
-            content.
+            the public site without replacing its navigation or content.
           </p>
         </div>
         <div className="service-grid">
@@ -136,7 +135,7 @@ export default function Home() {
           <p>
             The runtime searches only a prepared Gemini File Search store. It
             does not browse the web during visitor conversations, and it does
-            not use general model knowledge to fill gaps in organization policy.
+            not use general model knowledge to fill gaps in Elachee’s visitor guidance.
           </p>
         </div>
         <ol className="grounding-steps">
@@ -158,19 +157,19 @@ export default function Home() {
         </div>
         <pre aria-label="Widget integration example"><code>{`<script
   async
-  src="https://theplacechatbot.vercel.app/widget-loader.js"
-  data-chatbot-url="https://theplacechatbot.vercel.app/embed"
-  data-position="bottom-right"
-  data-label="Ask The Place"
+  src="https://elachee-chatbot.vercel.app/widget-loader.js"
+  data-chatbot-url="https://elachee-chatbot.vercel.app/embed"
+  data-position="bottom-left"
+  data-label="Ask Elachee"
   data-prompt="visible"
-  data-prompt-text="Ask The Place chatbot">
+  data-prompt-text="Ask Elachee chatbot">
 </script>`}</code></pre>
       </section>
 
       <footer className="demo-footer">
-        <div className="footer-place-brand">
-          <span className="footer-place-logo-wrap">
-            <ThePlaceLogo className="footer-place-logo" />
+        <div className="footer-elachee-brand">
+          <span className="footer-elachee-logo-wrap">
+            <ElacheeLogo className="footer-elachee-logo" />
           </span>
           <span>Information Assistant</span>
         </div>

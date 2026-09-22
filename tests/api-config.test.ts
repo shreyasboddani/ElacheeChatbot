@@ -21,7 +21,7 @@ describe("chat API configuration failures", () => {
       new NextRequest("http://localhost:3000/api/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ message: "Where can I donate food?", history: [] }),
+        body: JSON.stringify({ message: "What should I know before visiting Elachee?", history: [] }),
       }),
     );
   }

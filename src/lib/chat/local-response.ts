@@ -1,4 +1,4 @@
-import { THE_PLACE } from "@/lib/config";
+import { ELACHEE } from "@/lib/config";
 import type { ChatLanguagePreference } from "@/lib/chat/language";
 import type {
   ChatResponse,
@@ -7,9 +7,9 @@ import type {
 } from "@/lib/knowledge/types";
 
 const OFFICIAL_HOME_SOURCE: ChatSource = {
-  id: "the-place-official-home",
-  title: "The Place — Official Website",
-  url: `${THE_PLACE.canonicalOrigin}/`,
+  id: "elachee-official-home",
+  title: "Elachee \u2014 Official Website",
+  url: ELACHEE.canonicalOrigin + "/",
   sourceType: "official_website",
 };
 
@@ -26,16 +26,13 @@ function normalizeConversationalMessage(message: string): string {
 const DOCUMENT_MATCH_STOP_WORDS = new Set([
   "document",
   "official",
-  "place",
+  "center",
   "the",
   "version",
 ]);
 
 function words(value: string): string[] {
-  return value
-    .normalize("NFKC")
-    .toLowerCase()
-    .match(/[a-z0-9]+/g) ?? [];
+  return value.normalize("NFKC").toLowerCase().match(/[a-z0-9]+/g) ?? [];
 }
 
 function editDistance(left: string, right: string): number {
@@ -55,28 +52,25 @@ function editDistance(left: string, right: string): number {
   return previous[right.length] ?? right.length;
 }
 
-function approximatelyMatchesWord(value: string, expected: string): boolean {
-  if (value === expected) return true;
-  if (Math.min(value.length, expected.length) < 5) return false;
-  const maximumDistance = Math.max(value.length, expected.length) >= 8 ? 2 : 1;
-  if (Math.abs(value.length - expected.length) > maximumDistance) return false;
-  return editDistance(value, expected) <= maximumDistance;
-}
-
-function squashedWord(value: string): string {
-  return value.replace(/(.)\1+/g, "$1");
-}
-
 function conversationalWordMatches(value: string, expected: string): boolean {
-  return (
-    approximatelyMatchesWord(value, expected) ||
-    approximatelyMatchesWord(squashedWord(value), expected)
-  );
+  if (value === expected) return true;
+  const squashed = value.replace(/(.)\1+/g, "$1");
+  return [value, squashed].some((candidate) => {
+    if (Math.min(candidate.length, expected.length) >= 4) {
+      if (editDistance(candidate, expected) <= 1) return true;
+    }
+    if (Math.min(candidate.length, expected.length) < 5) return false;
+    const maximumDistance = Math.max(candidate.length, expected.length) >= 8 ? 2 : 1;
+    return (
+      Math.abs(candidate.length - expected.length) <= maximumDistance &&
+      editDistance(candidate, expected) <= maximumDistance
+    );
+  });
 }
 
 function isGreetingWord(value: string): boolean {
   return ["hi", "hey", "hello", "howdy"].some((greeting) => {
-    const squashed = squashedWord(value);
+    const squashed = value.replace(/(.)\1+/g, "$1");
     return (
       value === greeting ||
       squashed === greeting ||
@@ -92,9 +86,7 @@ function greetingPrefixWordCount(message: string): number {
   const messageWords = words(message);
   if (messageWords.length === 0) return 0;
   if (isGreetingWord(messageWords[0] ?? "")) {
-    return conversationalWordMatches(messageWords[1] ?? "", "there")
-      ? 2
-      : 1;
+    return conversationalWordMatches(messageWords[1] ?? "", "there") ? 2 : 1;
   }
   if (
     conversationalWordMatches(messageWords[0] ?? "", "good") &&
@@ -124,10 +116,10 @@ export function focusConversationalQuery(message: string): string {
       : 0;
   let focused = prefixEnd > 0 ? normalized.slice(prefixEnd) : normalized;
   focused = focused
-    .replace(/^[\s,;:!—–-]+/, "")
-    .replace(/^(?:please|pls|plz)\b[\s,;:!—–-]*/, "")
+    .replace(/^[\s,;:!?\u2014\u2013-]+/, "")
+    .replace(/^(?:please|pls|plz)\b[\s,;:!?\u2014\u2013-]*/, "")
     .replace(
-      /[\s,;:!—–-]*(?:please|pls|plz|thanks|thank you|thx)$/,
+      /[\s,;:!?\u2014\u2013-]*(?:please|pls|plz|thanks|thank you|thx)$/,
       "",
     )
     .trim();
@@ -140,15 +132,28 @@ function hasApproximateIntent(message: string): boolean {
   const hasSecondPerson = messageWords.some((word) =>
     ["you", "u", "ya"].includes(word),
   );
-  const hasIntentVerb = messageWords.some((word) =>
-    ["access", "available", "have", "help", "know", "read", "reference", "see", "use"].some(
-      (expected) =>
-        conversationalWordMatches(word, expected) ||
-        (Math.min(word.length, expected.length) >= 4 &&
-          editDistance(word, expected) <= 1),
-    ),
+  const intentWords = [
+    "access",
+    "available",
+    "have",
+    "help",
+    "know",
+    "read",
+    "reference",
+    "see",
+    "use",
+  ];
+  return (
+    hasSecondPerson &&
+    messageWords.some((word) =>
+      intentWords.some(
+        (expected) =>
+          conversationalWordMatches(word, expected) ||
+          (Math.min(word.length, expected.length) >= 4 &&
+            editDistance(word, expected) <= 1),
+      ),
+    )
   );
-  return hasSecondPerson && hasIntentVerb;
 }
 
 function asksAboutDocumentAccess(message: string): boolean {
@@ -178,20 +183,11 @@ function matchingOfficialDocument(
   if (!asksAboutDocumentAccess(documentQuestion)) return undefined;
   const messageWords = words(documentQuestion);
   const candidates = manifest
-    .filter(
-      (entry) => entry.sourceType === "official_document" && Boolean(entry.url),
-    )
+    .filter((entry) => entry.sourceType === "official_document" && Boolean(entry.url))
     .map((entry) => {
       const baseTitle = entry.title.replace(/\s+-\s+Version\b.*$/i, "");
-      const titleWords = words(baseTitle).filter(
-        (word) =>
-          word.length >= 4 &&
-          !/^\d+$/.test(word) &&
-          !DOCUMENT_MATCH_STOP_WORDS.has(word),
-      );
-      const identifyingTitleWord = titleWords.at(-1);
       const documentWords = new Set(
-        words(`${entry.id} ${entry.title}`).filter(
+        words(entry.id + " " + baseTitle).filter(
           (word) =>
             word.length >= 4 &&
             !/^\d+$/.test(word) &&
@@ -203,12 +199,14 @@ function matchingOfficialDocument(
           conversationalWordMatches(messageWord, documentWord),
         ),
       );
+      const titleWords = words(baseTitle).filter(
+        (word) => word.length >= 4 && !DOCUMENT_MATCH_STOP_WORDS.has(word),
+      );
       return {
         entry,
         score: matchedWords.length,
         hasDistinctiveSingleMatch: matchedWords.some(
-          (word) =>
-            word.length >= 8 && word === identifyingTitleWord,
+          (word) => word.length >= 8 && word === titleWords.at(-1),
         ),
       };
     })
@@ -254,15 +252,13 @@ type AutomaticGreetingLanguage =
 function automaticGreetingLanguage(
   message: string,
 ): AutomaticGreetingLanguage | undefined {
-  if (/^(hola|buenos dias|buenas tardes|buenas noches)$/.test(message)) {
-    return "es";
-  }
+  if (/^(hola|buenos dias|buenas tardes|buenas noches)$/.test(message)) return "es";
   if (/^(bonjour|salut)$/.test(message)) return "fr";
   if (/^(namaste|namaskar)$/.test(message)) return "hi-latn";
   if (/^(salam|salaam|assalamu alaikum|as-salamu alaykum)$/.test(message)) {
     return "ar-latn";
   }
-  if (/^(ola|olá|bom dia|boa tarde|boa noite)$/.test(message)) return "pt";
+  if (/^(ola|ol\u00e1|bom dia|boa tarde|boa noite)$/.test(message)) return "pt";
   if (/^(ciao|buongiorno|buonasera)$/.test(message)) return "it";
   if (/^(xin chao)$/.test(message)) return "vi-latn";
   if (/^(kumusta|kamusta)$/.test(message)) return "tl";
@@ -274,15 +270,19 @@ function automaticGreetingAnswer(
   detectedLanguage: AutomaticGreetingLanguage,
 ): string {
   const responses: Record<AutomaticGreetingLanguage, string> = {
-    es: "¡Hola! Puedo ayudarte a encontrar información aprobada de The Place. ¿En qué puedo ayudarte?",
-    fr: "Bonjour ! Je peux vous aider à trouver des informations approuvées sur The Place. Que souhaitez-vous savoir ?",
-    "hi-latn": "Namaste! Main The Place ke baare mein approved jaankari dhoondhne mein aapki madad kar sakta hoon. Aap kya jaanna chahenge?",
-    "ar-latn": "Ahlan! Mumkin asaedak fi al-hosool ala maaloomat muetamada an The Place. Sho habeb taaraf?",
-    pt: "Olá! Posso ajudar você a encontrar informações aprovadas sobre The Place. O que você gostaria de saber?",
-    it: "Ciao! Posso aiutarti a trovare informazioni approvate su The Place. Cosa vorresti sapere?",
-    "vi-latn": "Xin chao! Toi co the giup ban tim thong tin da duoc phe duyet ve The Place. Ban muon biet gi?",
-    tl: "Kumusta! Matutulungan kitang makahanap ng aprubadong impormasyon tungkol sa The Place. Ano ang gusto mong malaman?",
-    "zh-latn": "Ni hao! Wo keyi bang ni chazhao The Place de yanzheng xinxi. Ni xiang liaojie shenme?",
+    es: "\u00a1Hola! Puedo ayudarte a encontrar informaci\u00f3n aprobada de Elachee. \u00bfEn qu\u00e9 puedo ayudarte?",
+    fr: "Bonjour ! Je peux vous aider \u00e0 trouver des informations approuv\u00e9es sur Elachee. Que souhaitez-vous savoir ?",
+    "hi-latn":
+      "Namaste! Main Elachee ke baare mein approved jaankari dhoondhne mein aapki madad kar sakta hoon. Aap kya jaanna chahenge?",
+    "ar-latn":
+      "Ahlan! Mumkin asaedak fi al-hosool ala maaloomat muetamada an Elachee. Sho habeb taaraf?",
+    pt: "Ol\u00e1! Posso ajudar voc\u00ea a encontrar informa\u00e7\u00f5es aprovadas sobre Elachee. O que voc\u00ea gostaria de saber?",
+    it: "Ciao! Posso aiutarti a trovare informazioni approvate su Elachee. Cosa vorresti sapere?",
+    "vi-latn":
+      "Xin chao! Toi co the giup ban tim thong tin da duoc phe duyet ve Elachee. Ban muon biet gi?",
+    tl: "Kumusta! Matutulungan kitang makahanap ng aprubadong impormasyon tungkol sa Elachee. Ano ang gusto mong malaman?",
+    "zh-latn":
+      "Ni hao! Wo keyi bang ni chazhao Elachee de yanzheng xinxi. Ni xiang liaojie shenme?",
   };
   return responses[detectedLanguage];
 }
@@ -294,8 +294,8 @@ export function getLocalConversationalResponse(
 ): ChatResponse | undefined {
   const normalized = normalizeConversationalMessage(message);
   const detectedGreeting = automaticGreetingLanguage(normalized);
-
   const officialDocument = matchingOfficialDocument(normalized, manifest);
+
   if (officialDocument?.url) {
     const conversationalTitle = officialDocument.title.replace(
       /\s+-\s+Version\b.*$/i,
@@ -303,8 +303,12 @@ export function getLocalConversationalResponse(
     );
     return answered(
       language === "es"
-        ? `Sí, tengo ${conversationalTitle} disponible como fuente aprobada y puedo ayudarte a responder preguntas basadas en ese documento. ¿Qué te gustaría saber?`
-        : `Yes—I have ${conversationalTitle} available as an approved source and can help answer questions from it. What would you like to know?`,
+        ? "S\u00ed, tengo " +
+          conversationalTitle +
+          " disponible como fuente aprobada y puedo ayudarte a responder preguntas basadas en ese documento. \u00bfQu\u00e9 te gustar\u00eda saber?"
+        : "Yes\u2014I have " +
+          conversationalTitle +
+          " available as an approved source and can help answer questions from it. What would you like to know?",
       [
         {
           id: officialDocument.id,
@@ -323,9 +327,9 @@ export function getLocalConversationalResponse(
   ) {
     return answered(
       language === "es"
-        ? "¡Hola! Puedo ayudarte a encontrar información confirmada sobre los servicios, donaciones, voluntariado, ubicaciones, horarios, contactos y eventos de The Place. ¿En qué puedo ayudarte?"
+        ? "\u00a1Hola! Puedo ayudarte a encontrar informaci\u00f3n confirmada sobre las visitas, senderos, exhibiciones, horarios, programas y eventos de Elachee. \u00bfEn qu\u00e9 puedo ayudarte?"
         : language === "en" || !detectedGreeting
-          ? "Hi! I can help you find confirmed information about The Place’s services, donations, volunteering, locations, hours, contacts, and events. What would you like help with?"
+          ? "Hi! I can help you find confirmed information about Elachee visits, trails, exhibits, programs, hours, contacts, and events. What would you like help with?"
           : automaticGreetingAnswer(detectedGreeting),
     );
   }
@@ -338,26 +342,21 @@ export function getLocalConversationalResponse(
   ) {
     return answered(
       language === "es"
-        ? "Puedes preguntar sobre asistencia alimentaria o financiera, donaciones y horarios de las tiendas de segunda mano, voluntariado, organización de campañas, ubicaciones, contactos y próximos eventos. Pregunta con naturalidad y haz preguntas de seguimiento si necesitas más detalles. No puedo consultar solicitudes ni casos personales; cuando la información aprobada no confirme una respuesta, te dirigiré al personal."
-        : "You can ask about food or financial assistance, thrift-store donations and hours, volunteering, hosting a drive, locations, contacts, and upcoming events. Ask naturally and use follow-up questions if you need more detail. I can’t check a personal application or case, and I’ll direct you to staff when the approved information doesn’t confirm an answer.",
+        ? "Puedes preguntar sobre visitas, senderos, exhibiciones, horarios, admisi\u00f3n, campamentos, programas, excursiones, voluntariado y pr\u00f3ximos eventos. Pregunta con naturalidad y haz preguntas de seguimiento si necesitas m\u00e1s detalles. No puedo consultar registros personales; cuando la informaci\u00f3n aprobada no confirme una respuesta, te dirigir\u00e9 al personal."
+        : "You can ask about visiting, trails, exhibits, hours, admission, camps, programs, field trips, volunteering, and upcoming events. Ask naturally and use follow-up questions if you need more detail. I cannot check a personal registration or reservation, and I will direct you to staff when the approved information does not confirm an answer.",
     );
   }
 
   if (/^(thanks|thank you|thank you so much|thanks so much|thx)$/.test(normalized)) {
     return answered(
       language === "es"
-        ? "¡Con gusto! Avísame si tienes otra pregunta sobre The Place."
-        : "You’re welcome! Let me know if you have another question about The Place.",
+        ? "\u00a1Con gusto! Av\u00edsame si tienes otra pregunta sobre Elachee."
+        : "You are welcome! Let me know if you have another question about Elachee.",
     );
   }
 
-  if (
-    language === "es" &&
-    /^(gracias|muchas gracias|mil gracias)$/.test(normalized)
-  ) {
-    return answered(
-      "¡Con gusto! Avísame si tienes otra pregunta sobre The Place.",
-    );
+  if (language === "es" && /^(gracias|muchas gracias|mil gracias)$/.test(normalized)) {
+    return answered("\u00a1Con gusto! Av\u00edsame si tienes otra pregunta sobre Elachee.");
   }
 
   return undefined;

@@ -68,7 +68,7 @@ export function resolveFileCitations(
       id: entry.id,
       title:
         entry.sourceType === "manager_faq"
-          ? "Information provided by The Place staff"
+          ? "Information provided by Elachee staff"
           : entry.title,
       ...(entry.url ? { url: entry.url } : {}),
       sourceType: entry.sourceType,
