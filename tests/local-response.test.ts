@@ -94,6 +94,15 @@ describe("local conversational responses", () => {
     );
   });
 
+  it("resolves informal misspelled follow-ups and day abbreviations from context", () => {
+    expect(
+      focusConversationalQuery("wut abt sat?", [
+        { role: "user", content: "Are dogs allowed on Elachee hiking trails?" },
+        { role: "assistant", content: "Dogs are allowed on Sundays only." },
+      ]),
+    ).toBe("are dogs allowed on elachee hiking trails on saturday?");
+  });
+
   it("carries a topic anchor through consecutive short follow-ups", () => {
     expect(
       focusConversationalQuery("Are they allowed on Sundays?", [

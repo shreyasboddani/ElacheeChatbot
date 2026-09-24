@@ -32,6 +32,13 @@ const COMPLEX_RESPONSE_TOKEN_LIMIT = 384;
 const SIMPLE_RETRIEVAL_RESULT_LIMIT = 6;
 const FOLLOW_UP_RETRIEVAL_RESULT_LIMIT = 8;
 const COMPLEX_RETRIEVAL_RESULT_LIMIT = 10;
+const TOPIC_MATCH_STOP_WORDS = new Set([
+  "about", "after", "again", "also", "been", "being", "could", "does",
+  "every", "from", "have", "here", "into", "just", "know", "more", "only",
+  "other", "some", "than", "that", "their", "them", "there", "these",
+  "they", "this", "those", "through", "under", "very", "were", "what",
+  "when", "where", "which", "while", "with", "would", "your",
+]);
 
 function normalizeForMatching(value: string): string {
   return value
@@ -40,27 +47,84 @@ function normalizeForMatching(value: string): string {
     .toLowerCase();
 }
 
+function editDistance(left: string, right: string): number {
+  const previous = Array.from({ length: right.length + 1 }, (_, index) => index);
+  for (let leftIndex = 1; leftIndex <= left.length; leftIndex += 1) {
+    const current = [leftIndex];
+    for (let rightIndex = 1; rightIndex <= right.length; rightIndex += 1) {
+      current[rightIndex] = Math.min(
+        (current[rightIndex - 1] ?? 0) + 1,
+        (previous[rightIndex] ?? 0) + 1,
+        (previous[rightIndex - 1] ?? 0) +
+          (left[leftIndex - 1] === right[rightIndex - 1] ? 0 : 1),
+      );
+    }
+    previous.splice(0, previous.length, ...current);
+  }
+  return previous[right.length] ?? right.length;
+}
+
+function includesTopicTerm(message: string, terms: readonly string[]): boolean {
+  const messageWords = normalizeForMatching(message).match(/[a-z0-9]+/g) ?? [];
+  return messageWords.some((word) => {
+    if (TOPIC_MATCH_STOP_WORDS.has(word)) return false;
+    const collapsed = word.replace(/(.)\1+/g, "$1");
+    return terms.some((term) => {
+      if (word === term || collapsed === term) return true;
+      if (Math.min(collapsed.length, term.length) < 4) return false;
+      const tolerance = Math.max(collapsed.length, term.length) >= 7 ? 2 : 1;
+      return (
+        Math.abs(collapsed.length - term.length) <= tolerance &&
+        editDistance(collapsed, term) <= tolerance
+      );
+    });
+  });
+}
+
+function includesExactTopicTerm(message: string, terms: readonly string[]): boolean {
+  const messageWords = normalizeForMatching(message).match(/[a-z0-9]+/g) ?? [];
+  return messageWords.some((word) => terms.includes(word));
+}
+
 type FeaturedQuestion = "visit" | "trails" | "programs" | "fieldTrips" | "events" | "hours";
 
-function featuredQuestion(message: string): FeaturedQuestion | undefined {
+export function featuredQuestion(message: string): FeaturedQuestion | undefined {
   const normalized = normalizeForMatching(message);
-  if (/\b(?:plan (?:a|my|our) visit|help me plan|what should i know before (?:i )?visiting|before (?:i )?visiting|first visit|visiting elachee|plan(?:ear|ifica(?:r)?) (?:mi|una|la) visita)\b/.test(normalized)) {
+  if (/\b(?:plan (?:a|my|our) visit|help me plan|what should i know before (?:i )?visiting|before (?:i )?visiting|first visit|visiting elachee|plan(?:ear|ifica(?:r)?) (?:mi|una|la) visita)\b/.test(normalized) ||
+    (includesTopicTerm(normalized, ["before", "prior"]) &&
+      includesTopicTerm(normalized, ["visit", "visiting", "visits"]))) {
     return "visit";
   }
-  if (/\b(?:hours?|open(?:ing)?|closed|when|horarios?|cuando|abren?|abierto(?:s|a|as)?|cerrado(?:s|a|as)?|admission|parking|entrada|estacionamiento)\b/.test(normalized)) {
-    return "hours";
-  }
-  if (/\b(?:hiking trails?|trail information|trails? in chicopee woods|senderos?)\b/.test(normalized)) {
-    return "trails";
-  }
-  if (/\b(?:camps?\s*(?:&|and)\s*programs?|compare elachee.?s camps|campamentos?\s*(?:y|e)\s*programas?)\b/.test(normalized)) {
-    return "programs";
-  }
-  if (/\b(?:field[ -]trips?|excursiones? escolares?)\b/.test(normalized)) {
+  if (includesTopicTerm(normalized, [
+    "fieldtrip", "fieldtrips", "trip", "trips", "excursion", "excursiones",
+  ])) {
     return "fieldTrips";
   }
-  if (/\b(?:upcoming (?:elachee )?events?|proximos? eventos?)\b/.test(normalized)) {
+  if (includesTopicTerm(normalized, [
+    "camp", "camps", "program", "programs", "campamento", "campamentos",
+  ])) {
+    return "programs";
+  }
+  if (includesTopicTerm(normalized, [
+    "event", "events", "upcoming", "proximo", "proximos", "calendario",
+  ])) {
     return "events";
+  }
+  if (
+    includesExactTopicTerm(normalized, [
+      "open", "opening", "closed", "when", "horario", "horarios",
+      "cuando", "abren", "abierto", "cerrado", "entrada",
+    ]) ||
+    includesTopicTerm(normalized, [
+      "hour", "hours", "admission", "parking", "estacionamiento",
+    ])
+  ) {
+    return "hours";
+  }
+  if (includesTopicTerm(normalized, [
+    "hiking", "trail", "trails", "chicopee", "sendero", "senderos",
+  ])) {
+    return "trails";
   }
   return undefined;
 }

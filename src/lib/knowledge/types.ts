@@ -48,6 +48,7 @@ export interface PublicReferenceSource {
   title: string;
   url: string;
   sourcePath: string;
+  contentHash: string;
   verifiedOn: string;
   verifiedAgainst: string[];
 }

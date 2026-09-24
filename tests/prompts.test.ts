@@ -8,6 +8,7 @@ import {
 } from "@/lib/gemini/prompts";
 import {
   buildGroundedInteractionParams,
+  featuredQuestion,
   retrievalResultLimit,
   responseTokenLimit,
 } from "@/lib/gemini/chat";
@@ -28,6 +29,7 @@ describe("grounding prompt", () => {
       "2026-07-23",
     );
     expect(input.at(-1)?.content[0]?.text).toBe(attack);
+    expect(featuredQuestion(attack)).toBeUndefined();
     expect(params.system_instruction).toContain(SYSTEM_INSTRUCTION);
     expect(params.system_instruction).toContain("2026-07-23");
     expect(params.system_instruction).toContain("Do not use general training knowledge");
@@ -170,9 +172,28 @@ describe("grounding prompt", () => {
     ).toBe(10);
   });
 
+  it.each([
+    ["Wut r the vister centar hurs, n r trailz open?", "misspelled hours"],
+    ["Progrms for todlers at Elachee", "misspelled programs"],
+    ["Fieldtrps for grade 4", "misspelled field trips"],
+    ["Whn is the next Elachee evnt?", "misspelled event timing"],
+  ])("keeps broad, source-rich retrieval for %s (%s)", (message) => {
+    const request = { message, history: [], language: "auto" as const };
+    expect(responseTokenLimit(request)).toBe(384);
+    expect(retrievalResultLimit(request)).toBe(10);
+  });
+
   it("gives every English and Spanish preset question broad retrieval", () => {
+    const expectedCategories = [
+      "visit",
+      "trails",
+      "programs",
+      "fieldTrips",
+      "events",
+      "hours",
+    ];
     for (const language of ["en", "es"] as const) {
-      for (const action of CHAT_UI_COPY[language].quickActions) {
+      for (const [index, action] of CHAT_UI_COPY[language].quickActions.entries()) {
         const request = {
           message: action.question,
           history: [],
@@ -180,8 +201,17 @@ describe("grounding prompt", () => {
         };
         expect(responseTokenLimit(request), `${language}: ${action.label}`).toBe(384);
         expect(retrievalResultLimit(request), `${language}: ${action.label}`).toBe(10);
+        expect(featuredQuestion(action.question), `${language}: ${action.label}`).toBe(
+          expectedCategories[index],
+        );
       }
     }
+  });
+
+  it("routes the Spanish trail preset to trail evidence rather than unrelated topics", () => {
+    expect(featuredQuestion(CHAT_UI_COPY.es.quickActions[1].question)).toBe(
+      "trails",
+    );
   });
 
   it("uses Georgia's date when interpreting upcoming events", () => {

@@ -23,6 +23,31 @@ function normalizeConversationalMessage(message: string): string {
     .trim();
 }
 
+function normalizeFollowUpShorthand(message: string): string {
+  let normalized = normalizeConversationalMessage(message)
+    .replace(/^(?:wut|whta|whatt)\s+(?:abt|about)\b/, "what about")
+    .replace(/^how\s+bout\b/, "how about");
+  if (/^(?:what about|how about|and\b|but\b|are they allowed\b|can i bring\b|can i take\b|is it open\b|are they open\b|do they run\b)/.test(normalized)) {
+    normalized = normalized.replace(
+      /\b(mon|tues?|wed|weds|thur|thurs|fri|sat|sun)\b/g,
+      (day) =>
+        ({
+          mon: "monday",
+          tue: "tuesday",
+          tues: "tuesday",
+          wed: "wednesday",
+          weds: "wednesday",
+          thur: "thursday",
+          thurs: "thursday",
+          fri: "friday",
+          sat: "saturday",
+          sun: "sunday",
+        })[day] ?? day,
+    );
+  }
+  return normalized;
+}
+
 const DOCUMENT_MATCH_STOP_WORDS = new Set([
   "document",
   "official",
@@ -160,7 +185,9 @@ export function focusConversationalQuery(
   message: string,
   history: readonly ConversationalHistoryItem[] = [],
 ): string {
-  const focused = stripConversationalFiller(message);
+  const focused = stripConversationalFiller(
+    normalizeFollowUpShorthand(message),
+  );
   if (!isContextDependentFollowUp(focused)) return focused;
 
   const previousUserMessages = history

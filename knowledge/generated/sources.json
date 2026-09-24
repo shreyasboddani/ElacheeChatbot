@@ -789,7 +789,8 @@
     "title": "Elachee Visitor Center and Chicopee Woods Trail Hours",
     "url": "https://elachee.org/hours",
     "sourceType": "official_reference",
-    "priority": 90
+    "priority": 90,
+    "contentHash": "aa7ed490900ed4782b1ddc69a049b6fcdefd5efbe28e4542e5c14b51b44ea8ec"
   },
   {
     "id": "admission-and-parking",
@@ -798,7 +799,8 @@
     "title": "Elachee Admission, Trail Access, and Parking Fees",
     "url": "https://elachee.org/parking-admissions",
     "sourceType": "official_reference",
-    "priority": 90
+    "priority": 90,
+    "contentHash": "cc2abdeee438205d01f39d0b0c1ca1b5dacd8cdf32a13045f18da263966b9f33"
   },
   {
     "id": "trail-guide",
@@ -807,7 +809,8 @@
     "title": "Chicopee Woods Hiking Trail Guide and Visitor Rules",
     "url": "https://elachee.org/visit/hiking-trails",
     "sourceType": "official_reference",
-    "priority": 90
+    "priority": 90,
+    "contentHash": "bfbb02461efdb755f8f7ce0a23ccd5b4ecda54148310e69ad862a70e4a4d3e52"
   },
   {
     "id": "visit-planning",
@@ -816,7 +819,8 @@
     "title": "Planning a Visit to Elachee Nature Science Center",
     "url": "https://elachee.org/visit",
     "sourceType": "official_reference",
-    "priority": 90
+    "priority": 90,
+    "contentHash": "63cec0fef9c425b307509d0e2be90575f2d0e1eaa2b36a2617e9c9701b0defd6"
   },
   {
     "id": "programs-overview",
@@ -825,7 +829,8 @@
     "title": "Elachee Camps and Programs: Ages, Schedules, and Registration",
     "url": "https://elachee.org/camps-programs",
     "sourceType": "official_reference",
-    "priority": 90
+    "priority": 90,
+    "contentHash": "05f48c4e3428096090300bc8d3d033a69c50ea6dbd875b2d5d257752953a575a"
   },
   {
     "id": "field-trips-guide",
@@ -834,7 +839,8 @@
     "title": "Elachee School Field Trips and Classroom Programs",
     "url": "https://elachee.org/field-trips",
     "sourceType": "official_reference",
-    "priority": 90
+    "priority": 90,
+    "contentHash": "54807d66877b0131bc149369cedcc115b6cb31bc7fd2473bf9556474572882fd"
   },
   {
     "id": "events-guide",
@@ -843,6 +849,7 @@
     "title": "Finding Current Elachee Events and Programs",
     "url": "https://elachee.org/events-parties",
     "sourceType": "official_reference",
-    "priority": 90
+    "priority": 90,
+    "contentHash": "8681790586b67e061bbc6691770539711b2ec68059e9fef75a6d89de88fd9a99"
   }
 ]

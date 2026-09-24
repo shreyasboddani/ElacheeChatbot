@@ -87,6 +87,8 @@ function isPublicReferenceSource(
     typeof source.title === "string" &&
     typeof source.url === "string" &&
     typeof source.sourcePath === "string" &&
+    typeof source.contentHash === "string" &&
+    /^[a-f0-9]{64}$/.test(source.contentHash) &&
     typeof source.verifiedOn === "string" &&
     /^\d{4}-\d{2}-\d{2}$/.test(source.verifiedOn) &&
     Array.isArray(source.verifiedAgainst) &&
@@ -314,6 +316,9 @@ export async function prepareKnowledge(root = process.cwd()) {
       if (content.trim().length < 80) {
         throw new Error(`Public reference ${source.id} is empty or incomplete.`);
       }
+      if (sha256(Buffer.from(content, "utf8")) !== source.contentHash) {
+        throw new Error(`Public reference ${source.id} failed its source hash check.`);
+      }
       return { source, content };
     }),
   );
@@ -375,11 +380,8 @@ export async function prepareKnowledge(root = process.cwd()) {
   for (const { source, content } of publicReferenceFiles) {
     const fileName = `official_reference__${source.id}.md`;
     const relativePath = `knowledge/generated/prepared/${fileName}`;
-    await writeFile(
-      path.join(preparedDir, fileName),
-      publicReferenceMarkdown(source, content),
-      "utf8",
-    );
+    const markdown = publicReferenceMarkdown(source, content);
+    await writeFile(path.join(preparedDir, fileName), markdown, "utf8");
     manifest.push({
       id: source.id,
       fileName,
@@ -388,6 +390,7 @@ export async function prepareKnowledge(root = process.cwd()) {
       url: source.url,
       sourceType: "official_reference",
       priority: 90,
+      contentHash: sha256(Buffer.from(markdown, "utf8")),
     });
   }
 

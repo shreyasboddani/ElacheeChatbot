@@ -35,7 +35,7 @@ jobs:
             exit 0
           fi
 
-          cutoff="$(date -u -d '24 hours ago' +'%Y-%m-%dT%H:%M:%SZ')"
+          current_day="$(date -u +'%Y-%m-%d')"
           api_url="https://api.github.com/repos/${GITHUB_REPOSITORY}/actions/workflows/knowledge-refresh.yml/runs?event=schedule&per_page=100"
           if ! response="$(curl --fail --silent --show-error --max-time 20 \
             -H 'Accept: application/vnd.github+json' \
@@ -48,12 +48,12 @@ jobs:
           fi
 
           if ! recent_success="$(jq -r \
-            --arg cutoff "$cutoff" \
+            --arg current_day "$current_day" \
             --arg current_id "$GITHUB_RUN_ID" \
             '[.workflow_runs[]
               | select((.id | tostring) != $current_id)
               | select(.event == "schedule" and .status == "completed" and .conclusion == "success")
-              | select((.run_started_at // .created_at) >= $cutoff)]
+              | select(((.run_started_at // .created_at) | startswith($current_day)))]
             | length' <<< "$response")"; then
             echo "Could not parse recent scheduled runs; proceeding with the refresh." >> "$GITHUB_STEP_SUMMARY"
             echo "run=true" >> "$GITHUB_OUTPUT"
@@ -62,7 +62,7 @@ jobs:
 
           if (( recent_success > 0 )); then
             echo "run=false" >> "$GITHUB_OUTPUT"
-            echo "A scheduled knowledge refresh already succeeded within the last 24 hours; skipping this backup trigger." >> "$GITHUB_STEP_SUMMARY"
+            echo "A scheduled knowledge refresh already succeeded today (UTC); skipping this backup trigger." >> "$GITHUB_STEP_SUMMARY"
           else
             echo "run=true" >> "$GITHUB_OUTPUT"
           fi
@@ -96,7 +96,9 @@ jobs:
         run: |
           review_paths=(
             knowledge/generated/crawl-health.json
+            knowledge/generated/sources.json
             knowledge/generated/prepared
+            src/generated/knowledge-manifest.json
           )
 
           knowledge_changes="$(git status --porcelain --untracked-files=all -- "${review_paths[@]}")"

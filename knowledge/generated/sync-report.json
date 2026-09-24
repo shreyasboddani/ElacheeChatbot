@@ -1,5 +1,5 @@
 {
-  "preparedAt": "2026-09-24T18:56:41.960Z",
+  "preparedAt": "2026-09-24T19:42:50.244Z",
   "successfullyIndexedPages": [
     {
       "id": "web-home-a686d9ad",
@@ -678,13 +678,7 @@
       "verifiedOn": "2026-09-24"
     }
   ],
-  "totalDocumentsUploaded": 7,
+  "totalDocumentsUploaded": 0,
   "uploadFailures": [],
-  "fileSearchStoreName": "fileSearchStores/elachee-grounded-knowledge--bscrlt1nd4mv",
-  "syncMode": "reconcile",
-  "totalDocumentsDeleted": 0,
-  "totalDocumentsUnchanged": 85,
-  "managedDocumentsAfterSync": 85,
-  "deleteFailures": [],
-  "uploadedAt": "2026-09-24T19:05:10.867Z"
+  "fileSearchStoreName": "fileSearchStores/elachee-grounded-knowledge--bscrlt1nd4mv"
 }

@@ -5,6 +5,7 @@
       "title": "Elachee Visitor Center and Chicopee Woods Trail Hours",
       "url": "https://elachee.org/hours",
       "sourcePath": "knowledge/source/public-references/visitor-hours.md",
+      "contentHash": "d437e0a36b771f16094b262aa06def3c8e0181c924d69030ff30e61289b4ee93",
       "verifiedOn": "2026-09-24",
       "verifiedAgainst": ["https://elachee.org/hours", "https://elachee.org/visit"]
     },
@@ -13,6 +14,7 @@
       "title": "Elachee Admission, Trail Access, and Parking Fees",
       "url": "https://elachee.org/parking-admissions",
       "sourcePath": "knowledge/source/public-references/admission-and-parking.md",
+      "contentHash": "f32e2fd96cea747c3b4af08ee3d9a1855a0b22e635fd2a3a86366ace36e5c979",
       "verifiedOn": "2026-09-24",
       "verifiedAgainst": ["https://elachee.org/parking-admissions", "https://elachee.org/visit"]
     },
@@ -21,6 +23,7 @@
       "title": "Chicopee Woods Hiking Trail Guide and Visitor Rules",
       "url": "https://elachee.org/visit/hiking-trails",
       "sourcePath": "knowledge/source/public-references/trail-guide.md",
+      "contentHash": "b3a30df87a36eadd854e5cd336eef621c9970264c582d568ddfb774d59562ae7",
       "verifiedOn": "2026-09-24",
       "verifiedAgainst": ["https://elachee.org/visit/hiking-trails", "https://elachee.org/about-us"]
     },
@@ -29,6 +32,7 @@
       "title": "Planning a Visit to Elachee Nature Science Center",
       "url": "https://elachee.org/visit",
       "sourcePath": "knowledge/source/public-references/visit-planning.md",
+      "contentHash": "fae77c2fe3ea257b0927e85154a708ced9043ec4d47d919486b47a1ff52024c8",
       "verifiedOn": "2026-09-24",
       "verifiedAgainst": ["https://elachee.org/visit", "https://elachee.org/directions", "https://elachee.org/hours", "https://elachee.org/parking-admissions"]
     },
@@ -37,6 +41,7 @@
       "title": "Elachee Camps and Programs: Ages, Schedules, and Registration",
       "url": "https://elachee.org/camps-programs",
       "sourcePath": "knowledge/source/public-references/programs-overview.md",
+      "contentHash": "3a7cff887999361d599ebcfa247d75f9eb93ed3a9783593949cd0418722fc147",
       "verifiedOn": "2026-09-24",
       "verifiedAgainst": ["https://elachee.org/camps-programs", "https://elachee.org/camps-programs/nature-academy", "https://elachee.org/camps-programs/camp-elachee", "https://elachee.org/camps-programs/sprouts", "https://elachee.org/camps-programs/homeschool-programs"]
     },
@@ -45,6 +50,7 @@
       "title": "Elachee School Field Trips and Classroom Programs",
       "url": "https://elachee.org/field-trips",
       "sourcePath": "knowledge/source/public-references/field-trips-guide.md",
+      "contentHash": "f2e3807cf64a1573fe17004f5ba3d1dc0ed3a879fb8e2fff6150ca9e72138779",
       "verifiedOn": "2026-09-24",
       "verifiedAgainst": ["https://elachee.org/field-trips", "https://elachee.org/field-trip-options", "https://elachee.org/field-trips/elachee-in-your-classroom", "https://elachee.org/field-trips/floating-classroom"]
     },
@@ -53,6 +59,7 @@
       "title": "Finding Current Elachee Events and Programs",
       "url": "https://elachee.org/events-parties",
       "sourcePath": "knowledge/source/public-references/events-guide.md",
+      "contentHash": "03a0aeafec4cf2e0d8ea4c3a5b68a4e837cd1b85c5eb564459cb99471f827611",
       "verifiedOn": "2026-09-24",
       "verifiedAgainst": ["https://elachee.org/events-parties"]
     }

@@ -105,6 +105,8 @@ function isPublicReferenceSource(
     typeof source.title === "string" &&
     typeof source.url === "string" &&
     typeof source.sourcePath === "string" &&
+    typeof source.contentHash === "string" &&
+    /^[a-f0-9]{64}$/.test(source.contentHash) &&
     typeof source.verifiedOn === "string" &&
     /^\d{4}-\d{2}-\d{2}$/.test(source.verifiedOn) &&
     Array.isArray(source.verifiedAgainst) &&
@@ -552,6 +554,9 @@ export async function verifyKnowledgeSnapshot(
       if (content.trim().length < 80) {
         errors.push(`Public reference ${source.id} is empty or incomplete.`);
       }
+      if (sha256(Buffer.from(content, "utf8")) !== source.contentHash) {
+        errors.push(`Public reference ${source.id} failed its curated source hash check.`);
+      }
       if (
         containsKnowledgePromptInjection(content) ||
         containsNonElacheePhoneNumber(content)
@@ -724,6 +729,12 @@ export async function verifyKnowledgeSnapshot(
         }
       } else {
         const markdown = content.toString("utf8");
+        if (
+          source.sourceType === "official_reference" &&
+          (!source.contentHash || sha256(content) !== source.contentHash)
+        ) {
+          errors.push(`Public reference ${source.id} failed its prepared hash check.`);
+        }
         if (!markdown.includes(`Source ID: ${source.id}`)) {
           errors.push(`Source ${source.id} is missing its matching source marker.`);
         }

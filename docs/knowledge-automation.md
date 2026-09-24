@@ -4,8 +4,8 @@ The automation keeps all Gemini credentials in Vercel only. GitHub Actions crawl
 
 ## Workflow sequence
 
-1. `Detect and commit website knowledge updates` runs daily, manually, or from an approved CMS webhook.
-2. It crawls only public Elachee pages, rejects off-domain fetch and redirect targets, revalidates every previously approved URL first, preserves unchanged timestamps, prepares the corpus, and runs the knowledge verifier.
+1. `Detect and commit website knowledge updates` has two daily UTC triggers, manually, or from an approved CMS webhook. The backup trigger skips only when a scheduled run has already succeeded on the same UTC calendar day, so a success just before midnight does not suppress the next day's crawl.
+2. It crawls only public Elachee pages, rejects off-domain fetch and redirect targets, revalidates every previously approved URL first, preserves unchanged timestamps, prepares the corpus, and runs the knowledge verifier. Curated public-reference source files have pinned SHA-256 hashes; refresh preparation verifies those hashes and records a second hash for each generated reference document. The verifier checks both hashes, and the workflow watches both source and runtime manifests, so references cannot silently disappear or be changed by the crawl.
 3. Failed, incomplete, redirected, missing, or suspiciously shrunken approved pages retain their last-known-good documents and appear in `retainedPages`. A permanent removal requires a canonical URL already committed to `knowledge/source/approved-removals.json` after human review.
 4. Optional Elachee staff FAQ and official-document sources are kept outside the public-site crawl; the website crawler neither invents nor removes them.
 5. If deterministic crawl health and prepared retrieval content are unchanged, the workflow creates no commit. No Vercel deployment or Gemini request occurs.
@@ -16,6 +16,12 @@ The automation keeps all Gemini credentials in Vercel only. GitHub Actions crawl
 10. Vercel Cron invokes `/api/knowledge/sync` daily. The protected route uses only Vercel's `GEMINI_API_KEY` and `GEMINI_FILE_SEARCH_STORE`, starts missing replacements without waiting for indexing, and deletes stale managed copies only on a later run after every replacement is active. Preview and Development builds never mutate Gemini.
 
 The GitHub workflow never receives, references, or logs the Gemini key. Crawl timestamps remain in audit data and the source manifest but are omitted from retrieval text, preventing timestamp-only changes from consuming indexing quota.
+
+## Curated reference maintenance
+
+The seven supplemental fact sheets under `knowledge/source/public-references/` are deliberate, human-reviewed additions for details the website crawler may not extract cleanly. Every refresh deletes and rebuilds only the generated `prepared` directory; `knowledge:prepare` validates each source sheet against its pinned SHA-256 in `knowledge/source/public-references.json`, then hashes the complete prepared copy into both manifests. `knowledge:verify` checks the source and prepared hashes and the expected reference count. The daily workflow also watches the upload and runtime manifests, so a metadata-only retrieval change is not missed.
+
+When intentionally editing one of these fact sheets, verify its claims against the linked official pages, update `verifiedOn`, replace that entry's `contentHash` with the SHA-256 of the edited Markdown (PowerShell: `Get-FileHash knowledge/source/public-references/visitor-hours.md -Algorithm SHA256`), then run `npm run knowledge:prepare`, `npm run knowledge:verify`, `npm test`, and `npm run build`. Do not edit generated prepared copies by hand; they are recreated and checked from the pinned source facts on every refresh.
 
 ## One-time configuration
 
@@ -65,7 +71,7 @@ Removal approvals accept only canonical public `elachee.org` HTML routes. The pu
 
 If Elachee's website platform supports outgoing webhooks, configure a trusted integration to send the GitHub `repository_dispatch` event type `elachee-website-updated`. Its credential should have only permission to dispatch the workflow. The same crawl, change cap, tests, and main-race check apply.
 
-Without a webhook, GitHub checks daily at 09:17 UTC. It must fetch the public site to discover updates, but an unchanged check creates no commit and therefore no deployment or Gemini request. Scheduled jobs can be delayed, so this provides eventual rather than exact-time synchronization.
+Without a webhook, GitHub checks at 09:17 and 15:17 UTC. At least one successful scheduled crawl is allowed each UTC day; if the first check fails or is delayed, the backup can run. It must fetch the public site to discover updates, but an unchanged check creates no commit and therefore no deployment or Gemini request. Scheduled jobs can be delayed, so this provides eventual rather than exact-time synchronization.
 
 ## Manual commands
 

@@ -1,5 +1,9 @@
 import { describe, expect, it, vi } from "vitest";
+import { createHash } from "node:crypto";
 import { readFileSync } from "node:fs";
+import { copyFile, mkdir, mkdtemp, readFile, rm, writeFile } from "node:fs/promises";
+import { tmpdir } from "node:os";
+import path from "node:path";
 import { parse } from "yaml";
 
 import {
@@ -32,6 +36,7 @@ import {
   resolvePreparedDocumentPath,
   verifyKnowledgeSnapshot,
 } from "../scripts/verify-knowledge";
+import { prepareKnowledge } from "../scripts/prepare-knowledge";
 import type { WebsiteSource } from "@/lib/knowledge/types";
 
 function websiteSource(overrides: Partial<WebsiteSource> = {}): WebsiteSource {
@@ -557,6 +562,61 @@ describe("knowledge automation safety gate", () => {
     expect(summary.pendingFaqDocuments).toBe(0);
   });
 
+  it("rebuilds every curated Elachee reference on refresh and verifies exact content hashes", async () => {
+    const root = await mkdtemp(path.join(tmpdir(), "elachee-reference-refresh-"));
+    const generatedDir = path.join(root, "knowledge/generated");
+    const sourceDir = path.join(root, "knowledge/source/public-references");
+    const preparedDir = path.join(generatedDir, "prepared");
+    const registry = JSON.parse(
+      readFileSync("knowledge/source/public-references.json", "utf8"),
+    ) as {
+      documents: Array<{ id: string; sourcePath: string; contentHash: string }>;
+    };
+
+    try {
+      await mkdir(preparedDir, { recursive: true });
+      await mkdir(sourceDir, { recursive: true });
+      await mkdir(path.join(root, "src/generated"), { recursive: true });
+      await writeFile(path.join(preparedDir, "obsolete.md"), "stale content");
+      await writeFile(path.join(generatedDir, "manager-faq.json"), "[]\n");
+      await writeFile(path.join(generatedDir, "crawl-data.json"), "[]\n");
+      await writeFile(path.join(generatedDir, "crawl-report.json"), "{}\n");
+      await writeFile(
+        path.join(root, "knowledge/source/public-references.json"),
+        `${JSON.stringify(registry, null, 2)}\n`,
+      );
+      await writeFile(
+        path.join(root, "knowledge/source/official-documents.json"),
+        '{"documents":[]}\n',
+      );
+
+      for (const reference of registry.documents) {
+        await copyFile(reference.sourcePath, path.join(root, reference.sourcePath));
+      }
+
+      const { manifest } = await prepareKnowledge(root);
+      const preparedReferences = manifest.filter(
+        (entry) => entry.sourceType === "official_reference",
+      );
+      expect(preparedReferences).toHaveLength(registry.documents.length);
+      expect(preparedReferences.map((entry) => entry.id).sort()).toEqual(
+        registry.documents.map((entry) => entry.id).sort(),
+      );
+      await expect(readFile(path.join(preparedDir, "obsolete.md"))).rejects.toMatchObject({
+        code: "ENOENT",
+      });
+
+      for (const entry of preparedReferences) {
+        const prepared = await readFile(path.join(root, entry.documentPath));
+        expect(entry.contentHash).toBe(
+          createHash("sha256").update(prepared).digest("hex"),
+        );
+      }
+    } finally {
+      await rm(root, { recursive: true, force: true });
+    }
+  });
+
   it("detects instruction-like retrieved content", () => {
     expect(
       containsKnowledgePromptInjection(
@@ -600,6 +660,12 @@ describe("deployment automation configuration", () => {
       "utf8",
     );
     expect(refresh).toContain("schedule:");
+    expect(
+      [...refresh.matchAll(/cron:\s*"([^"]+)"/g)].map((match) => match[1]),
+    ).toEqual(["17 9 * * *", "17 15 * * *"]);
+    expect(refresh).toContain('current_day="$(date -u +\'%Y-%m-%d\')"');
+    expect(refresh).toContain("startswith($current_day)");
+    expect(refresh).toContain("succeeded today (UTC)");
     expect(refresh).toContain("elachee-website-updated");
     expect(refresh).toContain("ref: main");
     expect(refresh).toContain("contents: write");
@@ -623,6 +689,8 @@ describe("deployment automation configuration", () => {
     );
     expect(refresh).toContain('git push origin HEAD:main');
     expect(refresh).toContain("Vercel will reconcile Gemini");
+    expect(refresh).toContain("knowledge/generated/sources.json");
+    expect(refresh).toContain("src/generated/knowledge-manifest.json");
     expect(refresh).not.toContain("pull-requests: write");
     expect(refresh).not.toContain("gh pr");
     expect(refresh).not.toContain("GEMINI_API_KEY");
