@@ -678,7 +678,13 @@
       "verifiedOn": "2026-09-24"
     }
   ],
-  "totalDocumentsUploaded": 0,
+  "totalDocumentsUploaded": 7,
   "uploadFailures": [],
-  "fileSearchStoreName": "fileSearchStores/elachee-grounded-knowledge--bscrlt1nd4mv"
+  "fileSearchStoreName": "fileSearchStores/elachee-grounded-knowledge--bscrlt1nd4mv",
+  "syncMode": "reconcile",
+  "totalDocumentsDeleted": 0,
+  "totalDocumentsUnchanged": 85,
+  "managedDocumentsAfterSync": 85,
+  "deleteFailures": [],
+  "uploadedAt": "2026-09-24T19:05:10.867Z"
 }
