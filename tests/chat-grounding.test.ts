@@ -374,4 +374,227 @@ describe("grounded interaction interpretation", () => {
       }
     }
   });
+
+  it("retries a preset answer whose citations do not cover the requested topic", async () => {
+    const visitSource: SourceManifestEntry = {
+      id: "web-visit",
+      fileName: "website__web-visit.md",
+      documentPath: "knowledge/generated/prepared/website__web-visit.md",
+      title: "Visit",
+      url: "https://elachee.org/visit",
+      sourceType: "official_website",
+      priority: 50,
+    };
+    const trailSource: SourceManifestEntry = {
+      id: "trail-guide",
+      fileName: "official_reference__trail-guide.md",
+      documentPath: "knowledge/generated/prepared/official_reference__trail-guide.md",
+      title: "Chicopee Woods Hiking Trail Guide",
+      url: "https://elachee.org/visit/hiking-trails",
+      sourceType: "official_reference",
+      priority: 90,
+    };
+    const client = {
+      create: vi
+        .fn()
+        .mockResolvedValueOnce(
+          interaction(
+            "answered",
+            true,
+            "The Visitor Center is open Saturday from 10 AM to 4 PM, and trails are open daily.",
+            "web-visit",
+          ),
+        )
+        .mockResolvedValueOnce(
+          interaction(
+            "answered",
+            true,
+            "Geiger Trail is a 0.4-mile paved option. The moderate Bridge Loop is 2.91 miles.",
+            "trail-guide",
+          ),
+        ),
+    };
+    const result = await askGroundedQuestion(
+      client,
+      { message: CHAT_UI_COPY.en.quickActions[1].question, language: "en", history: [] },
+      {
+        model: "gemini-3.5-flash-lite",
+        fileSearchStore: "fileSearchStores/test",
+        manifest: [visitSource, trailSource],
+      },
+    );
+
+    expect(result.status).toBe("answered");
+    expect(result.answer).toContain("Geiger Trail");
+    expect(result.sources[0]?.id).toBe("trail-guide");
+    expect(client.create).toHaveBeenCalledTimes(2);
+  });
+
+  it("keeps a Spanish hours-and-admission answer when both dedicated sources support it", async () => {
+    const hoursSource: SourceManifestEntry = {
+      id: "visitor-hours",
+      fileName: "official_reference__visitor-hours.md",
+      documentPath: "knowledge/generated/prepared/official_reference__visitor-hours.md",
+      title: "Elachee Visitor Center and Chicopee Woods Trail Hours",
+      url: "https://elachee.org/hours",
+      sourceType: "official_reference",
+      priority: 90,
+    };
+    const admissionSource: SourceManifestEntry = {
+      id: "admission-and-parking",
+      fileName: "official_reference__admission-and-parking.md",
+      documentPath: "knowledge/generated/prepared/official_reference__admission-and-parking.md",
+      title: "Elachee Admission, Trail Access, and Parking Fees",
+      url: "https://elachee.org/parking-admissions",
+      sourceType: "official_reference",
+      priority: 90,
+    };
+    const answer = "El Centro de Visitantes abre de miércoles a viernes y los sábados; los senderos abren todos los días hasta la puesta del sol. La admisión cuesta $10 por persona y el estacionamiento cuesta $5 por vehículo; el acceso a los senderos es gratis.";
+    const client = {
+      create: vi.fn().mockResolvedValue(
+        interaction("answered", true, answer, ["visitor-hours", "admission-and-parking"]),
+      ),
+    };
+    const result = await askGroundedQuestion(
+      client,
+      {
+        message: CHAT_UI_COPY.es.quickActions[5].question,
+        history: [],
+        language: "es",
+      },
+      {
+        model: "gemini-3.5-flash-lite",
+        fileSearchStore: "fileSearchStores/test",
+        manifest: [hoursSource, admissionSource],
+      },
+    );
+
+    expect(result.status).toBe("answered");
+    expect(result.answer).toContain("puesta del sol");
+    expect(result.sources).toHaveLength(2);
+    expect(client.create).toHaveBeenCalledTimes(1);
+  });
+
+  it("retries a Spanish preset when the cited answer is in English", async () => {
+    const trailSource: SourceManifestEntry = {
+      id: "trail-guide",
+      fileName: "official_reference__trail-guide.md",
+      documentPath: "knowledge/generated/prepared/official_reference__trail-guide.md",
+      title: "Chicopee Woods Hiking Trail Guide",
+      url: "https://elachee.org/visit/hiking-trails",
+      sourceType: "official_reference",
+      priority: 90,
+    };
+    const client = {
+      create: vi
+        .fn()
+        .mockResolvedValueOnce(
+          interaction(
+            "answered",
+            true,
+            "Geiger Trail is a 0.4-mile paved option. The Bridge Loop is 2.91 miles.",
+            "trail-guide",
+          ),
+        )
+        .mockResolvedValueOnce(
+          interaction(
+            "answered",
+            true,
+            "El sendero Geiger mide 0.4 millas y está pavimentado; Bridge Loop mide 2.91 millas.",
+            "trail-guide",
+          ),
+        ),
+    };
+    const result = await askGroundedQuestion(
+      client,
+      {
+        message: CHAT_UI_COPY.es.quickActions[1].question,
+        language: "es",
+        history: [],
+      },
+      {
+        model: "gemini-3.5-flash-lite",
+        fileSearchStore: "fileSearchStores/test",
+        manifest: [trailSource],
+      },
+    );
+
+    expect(result.status).toBe("answered");
+    expect(result.answer).toContain("El sendero Geiger");
+    expect(client.create).toHaveBeenCalledTimes(2);
+    expect(client.create.mock.calls[1]?.[0].input[0]?.content[0]?.text).toContain(
+      "Provide the complete answer in Spanish",
+    );
+  });
+
+  it("gives the events preset a current-calendar answer when searches cannot confirm a date", async () => {
+    const eventsSource: SourceManifestEntry = {
+      id: "events-guide",
+      fileName: "official_reference__events-guide.md",
+      documentPath: "knowledge/generated/prepared/official_reference__events-guide.md",
+      title: "Finding Current Elachee Events and Programs",
+      url: "https://elachee.org/events-parties",
+      sourceType: "official_reference",
+      priority: 90,
+    };
+    const client = {
+      create: vi.fn().mockResolvedValue(interaction("not_found")),
+    };
+    const result = await askGroundedQuestion(
+      client,
+      {
+        message: CHAT_UI_COPY.es.quickActions[4].question,
+        history: [],
+        language: "es",
+      },
+      {
+        model: "gemini-3.5-flash-lite",
+        fileSearchStore: "fileSearchStores/test",
+        manifest: [eventsSource],
+      },
+    );
+
+    expect(result.status).toBe("answered");
+    expect(result.answer).toContain("No puedo confirmar una fecha específica");
+    expect(result.sources[0]?.url).toBe("https://elachee.org/events-parties");
+    expect(result.contactRecommended).toBe(false);
+    expect(client.create).toHaveBeenCalledTimes(2);
+  });
+
+  it("does not repeat unsupported historical claims in an upcoming-events answer", async () => {
+    const eventsSource: SourceManifestEntry = {
+      id: "events-guide",
+      fileName: "official_reference__events-guide.md",
+      documentPath: "knowledge/generated/prepared/official_reference__events-guide.md",
+      title: "Finding Current Elachee Events and Programs",
+      url: "https://elachee.org/events-parties",
+      sourceType: "official_reference",
+      priority: 90,
+    };
+    const unsupportedAnswer = "No confirmed upcoming events are scheduled; the program dates concluded in early 20th-century months or spring 2026.";
+    const client = {
+      create: vi.fn().mockResolvedValue(
+        interaction("answered", true, unsupportedAnswer, "events-guide"),
+      ),
+    };
+    const result = await askGroundedQuestion(
+      client,
+      {
+        message: CHAT_UI_COPY.en.quickActions[4].question,
+        language: "en",
+        history: [],
+      },
+      {
+        model: "gemini-3.5-flash-lite",
+        fileSearchStore: "fileSearchStores/test",
+        manifest: [eventsSource],
+      },
+    );
+
+    expect(result.status).toBe("answered");
+    expect(result.answer).not.toContain("20th-century");
+    expect(result.answer).toContain("couldn't confirm a specific upcoming event date");
+    expect(result.sources[0]?.id).toBe("events-guide");
+    expect(client.create).toHaveBeenCalledTimes(2);
+  });
 });

@@ -95,6 +95,8 @@ describe("grounding prompt", () => {
     expect(SYSTEM_INSTRUCTION).toContain("the dedicated Elachee Hours page is authoritative");
     expect(SYSTEM_INSTRUCTION).toContain("Visitor Center closure does not mean the trails are closed");
     expect(SYSTEM_INSTRUCTION).toContain("Never reconcile equally authoritative conflicting schedules by inference");
+    expect(SYSTEM_INSTRUCTION).toContain("Do not claim that no events are scheduled");
+    expect(SYSTEM_INSTRUCTION).toContain("A citation must directly support the topic");
     expect(SYSTEM_INSTRUCTION).toContain("25 to 70 words");
     expect(SYSTEM_INSTRUCTION).toContain("60 to 120 words");
     expect(
@@ -191,7 +193,7 @@ describe("grounding prompt", () => {
 
   it("honors explicit languages and romanized-language auto detection", () => {
     expect(buildSystemInstruction("2026-07-23", "es")).toContain(
-      "Responde en español",
+      "Responde exclusivamente en español",
     );
     expect(buildSystemInstruction("2026-07-23", "en")).toContain(
       "Respond in English",

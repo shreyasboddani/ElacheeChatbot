@@ -14,6 +14,7 @@ import {
 } from "@/lib/gemini/prompts";
 import { containsNonElacheePhoneNumber } from "@/lib/security/phone-numbers";
 import type {
+  ChatSource,
   ChatResponse,
   SourceManifestEntry,
 } from "@/lib/knowledge/types";
@@ -43,8 +44,11 @@ type FeaturedQuestion = "visit" | "trails" | "programs" | "fieldTrips" | "events
 
 function featuredQuestion(message: string): FeaturedQuestion | undefined {
   const normalized = normalizeForMatching(message);
-  if (/\b(?:plan (?:a|my|our) visit|help me plan|what should i know|before (?:i )?visiting|first visit|visiting elachee|plan(?:ear|ifica(?:r)?) (?:mi|una|la) visita)\b/.test(normalized)) {
+  if (/\b(?:plan (?:a|my|our) visit|help me plan|what should i know before (?:i )?visiting|before (?:i )?visiting|first visit|visiting elachee|plan(?:ear|ifica(?:r)?) (?:mi|una|la) visita)\b/.test(normalized)) {
     return "visit";
+  }
+  if (/\b(?:hours?|open(?:ing)?|closed|when|horarios?|cuando|abren?|abierto(?:s|a|as)?|cerrado(?:s|a|as)?|admission|parking|entrada|estacionamiento)\b/.test(normalized)) {
+    return "hours";
   }
   if (/\b(?:hiking trails?|trail information|trails? in chicopee woods|senderos?)\b/.test(normalized)) {
     return "trails";
@@ -57,9 +61,6 @@ function featuredQuestion(message: string): FeaturedQuestion | undefined {
   }
   if (/\b(?:upcoming (?:elachee )?events?|proximos? eventos?)\b/.test(normalized)) {
     return "events";
-  }
-  if (/\b(?:hours?|open(?:ing)?|closed|when|horarios?|cuando|abren?|abierto(?:s|a|as)?|cerrado(?:s|a|as)?|admission|parking|entrada|estacionamiento)\b/.test(normalized)) {
-    return "hours";
   }
   return undefined;
 }
@@ -275,6 +276,144 @@ export function interpretGroundedInteraction(
   };
 }
 
+function hasOfficialPage(
+  response: ChatResponse,
+  pathPattern: RegExp,
+): boolean {
+  return response.sources.some((source) => {
+    if (
+      source.sourceType !== "official_website" &&
+      source.sourceType !== "official_reference" &&
+      source.sourceType !== "official_document"
+    ) {
+      return false;
+    }
+    try {
+      return pathPattern.test(new URL(source.url ?? "").pathname.toLowerCase());
+    } catch {
+      return false;
+    }
+  });
+}
+
+function hasAnyTerm(text: string, terms: string[]): boolean {
+  return terms.some((term) => text.includes(term));
+}
+
+function expectsSpanishResponse(request: ChatRequest): boolean {
+  return (
+    request.language === "es" ||
+    (request.language === "auto" &&
+      (/[\u00bf\u00a1]/.test(request.message) ||
+        /\b(?:senderos|horarios|admision|eventos|excursiones|campamentos|planificar|visita)\b/.test(
+          normalizeForMatching(request.message),
+        )))
+  );
+}
+
+function answerIsPredominantlySpanish(answer: string): boolean {
+  const normalized = normalizeForMatching(answer);
+  const spanishMarkers =
+    normalized.match(/\b(?:de|y|que|se|los|las|del|para|con|por|una|uno|pero|son|estan|abren|diario|tienen|hay|este|esta|estos|estas|puede|acceso|gratis|desde|hasta|tambien|segun|deben|debe|consulta|lleva|lleven|puedes|pueden|incluye|cuesta|senderos?|millas?|mide|miden|abierto|abierta|cerrado|cerrada)\b/g) ?? [];
+  const englishMarkers =
+    normalized.match(/\b(?:the|and|with|from|here|are|most|feature|varying|only|must|there|bring|recommended|open|daily|permitted|hours|planning|safety|difficulty|accessibility)\b/g) ?? [];
+  return spanishMarkers.length >= 3 && spanishMarkers.length > englishMarkers.length;
+}
+
+function eventsCalendarFallback(
+  manifest: SourceManifestEntry[],
+  message: string,
+  language: ChatLanguagePreference,
+): ChatResponse {
+  const entry = manifest.find((source) => source.id === "events-guide");
+  if (!entry?.url) return sourceVerificationFallback(undefined, language);
+  const source: ChatSource = {
+    id: entry.id,
+    title: entry.title,
+    url: entry.url,
+    sourceType: entry.sourceType,
+  };
+  const spanish =
+    language === "es" ||
+    /\b(?:eventos|proximos|fechas|calendario)\b/.test(
+      normalizeForMatching(message),
+    );
+  return {
+    status: "answered",
+    answer: spanish
+      ? "No puedo confirmar una fecha específica para los próximos eventos con la información consultada. Las fechas pueden cambiar; consulta la página oficial de Events & Parties de Elachee para ver el calendario actualizado."
+      : "I couldn't confirm a specific upcoming event date from the current Elachee information. Event dates can change, so check the official Events & Parties page for the latest calendar.",
+    sources: [source],
+    contactRecommended: false,
+  };
+}
+
+function featuredAnswerIsRelevant(
+  category: FeaturedQuestion,
+  response: ChatResponse,
+): boolean {
+  const answer = normalizeForMatching(response.answer);
+  if (response.status !== "answered") return true;
+
+  switch (category) {
+    case "visit":
+      return (
+        hasOfficialPage(response, /\/hours\/?$/) &&
+        hasOfficialPage(response, /\/parking-admissions\/?$/) &&
+        hasOfficialPage(response, /\/visit\/?$/) &&
+        /\$\s*10\b/.test(answer) &&
+        /\$\s*5\b/.test(answer) &&
+        /sunset|atardecer|puesta del sol/.test(answer)
+      );
+    case "trails":
+      return (
+        hasOfficialPage(response, /\/hiking-trails\/?$/) &&
+        /\b\d+(?:[.,]\d+)?\s*-?\s*(?:miles?|millas?|mi)\b/.test(answer) &&
+        hasAnyTerm(answer, [
+          "ed dodd",
+          "geiger",
+          "elachee creek",
+          "ridge trail",
+          "upland trail",
+          "bridge loop",
+          "lake loop",
+          "backcountry trail",
+        ])
+      );
+    case "programs":
+      return (
+        hasOfficialPage(response, /\/camps-programs(?:\/|$)/) &&
+        ["sprouts", "nature academy", "camp elachee", "homeschool"]
+          .filter((term) => answer.includes(term)).length >= 2
+      );
+    case "fieldTrips":
+      return (
+        hasOfficialPage(response, /\/field-trips(?:\/|$)/) &&
+        /pre-?k|prekindergarten|preescolar/.test(answer) &&
+        /grade|grades|grado|grados|k-?12/.test(answer) &&
+        hasAnyTerm(answer, ["astronomy", "astronomia", "animals", "animales", "geology", "geologia", "plants", "plantas", "water", "agua"]) &&
+        hasAnyTerm(answer, ["outreach", "floating classroom", "aula flotante", "on-site", "onsite", "en las instalaciones", "en tu aula", "escuelas"]) &&
+        /request|form|solicitar|formulario/.test(answer)
+      );
+    case "events":
+      return (
+        hasOfficialPage(response, /\/(?:events(?:-parties)?|upcoming-event)(?:\/|$)/) &&
+        (/(?:\b(?:jan(?:uary)?|feb(?:ruary)?|mar(?:ch)?|apr(?:il)?|may|jun(?:e)?|jul(?:y)?|aug(?:ust)?|sep(?:tember)?|oct(?:ober)?|nov(?:ember)?|dec(?:ember)?|enero|febrero|marzo|abril|mayo|junio|julio|agosto|septiembre|octubre|noviembre|diciembre)\s+\d{1,2}\b|\b\d{1,2}\s+de\s+(?:enero|febrero|marzo|abril|mayo|junio|julio|agosto|septiembre|octubre|noviembre|diciembre)\b|\b\d{1,2}[/-]\d{1,2}[/-](?:\d{2}|\d{4})\b)/.test(answer) || /no confirmed (?:upcoming )?(?:events?|future event dates)|could not confirm|can't confirm|no puedo confirmar|sin fechas futuras confirmadas/.test(answer)) &&
+        !/\b(?:19|20)(?:st|nd|rd|th)[ -]?centur|dates? (?:concluded|ended)|earlier in \d{4}|past years?/.test(answer)
+      );
+    case "hours":
+      return (
+        hasOfficialPage(response, /\/hours\/?$/) &&
+        hasOfficialPage(response, /\/parking-admissions\/?$/) &&
+        /\$\s*10\b/.test(answer) &&
+        /\$\s*5\b/.test(answer) &&
+        /sunset|atardecer|puesta del sol/.test(answer) &&
+        /visitor center|centro de visitantes/.test(answer) &&
+        /trail|senderos?/.test(answer)
+      );
+  }
+}
+
 export async function askGroundedQuestion(
   client: GroundedInteractionClient,
   request: ChatRequest,
@@ -300,17 +439,29 @@ export async function askGroundedQuestion(
     request.language,
     request,
   );
+  const category = featuredQuestion(request.message);
+  const needsFeaturedRetry =
+    category !== undefined &&
+    (response.status === "not_found" ||
+      response.status === "conflicting_information" ||
+      !featuredAnswerIsRelevant(category, response) ||
+      (expectsSpanishResponse(request) &&
+        response.status === "answered" &&
+        !answerIsPredominantlySpanish(response.answer)));
   if (
     request.history.length === 0 &&
-    (response.status === "not_found" || response.status === "conflicting_information")
+    needsFeaturedRetry
   ) {
-    const category = featuredQuestion(request.message);
     if (category) {
       try {
         const retryRequest: ChatRequest = {
           ...request,
           history: [],
-          message: FEATURED_RETRY_QUERIES[category],
+          message: `${FEATURED_RETRY_QUERIES[category]}${
+            expectsSpanishResponse(request)
+              ? " Provide the complete answer in Spanish, preserving official Elachee names."
+              : ""
+          }`,
         };
         const retryInteraction = await client.create(
           buildGroundedInteractionParams(
@@ -325,9 +476,55 @@ export async function askGroundedQuestion(
           request.language,
           request,
         );
-        return retryResponse.status === "not_found" ? response : retryResponse;
+        if (retryResponse.status === "not_found") {
+          if (category === "events") {
+            return eventsCalendarFallback(
+              options.manifest,
+              request.message,
+              request.language,
+            );
+          }
+          return response.status === "answered"
+            ? sourceVerificationFallback(undefined, request.language)
+            : response;
+        }
+        if (category === "events" && retryResponse.status === "conflicting_information") {
+          return eventsCalendarFallback(
+            options.manifest,
+            request.message,
+            request.language,
+          );
+        }
+        if (
+          expectsSpanishResponse(request) &&
+          retryResponse.status === "answered" &&
+          !answerIsPredominantlySpanish(retryResponse.answer)
+        ) {
+          return category === "events"
+            ? eventsCalendarFallback(
+                options.manifest,
+                request.message,
+                request.language,
+              )
+            : sourceVerificationFallback(undefined, request.language);
+        }
+        return featuredAnswerIsRelevant(category, retryResponse)
+          ? retryResponse
+          : category === "events"
+            ? eventsCalendarFallback(
+                options.manifest,
+                request.message,
+                request.language,
+              )
+            : sourceVerificationFallback(undefined, request.language);
       } catch {
-        return response;
+        return category === "events"
+          ? eventsCalendarFallback(
+              options.manifest,
+              request.message,
+              request.language,
+            )
+          : response;
       }
     }
   }
