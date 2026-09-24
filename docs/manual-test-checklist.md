@@ -11,9 +11,9 @@ Run this checklist against a configured local instance and the Vercel preview. R
 
 ## Elachee questions
 
-- [ ] What are Elachee's visitor center hours?
-- [ ] What is admission and parking at Elachee?
-- [ ] What trails are available, and when are trails open?
+- [ ] What are the Visitor Center and Chicopee Woods trail hours? Confirm the schedules are different: Visitor Center/exhibits Wed-Fri noon-3, Sat 10-4, closed Sun-Tue; trails daily 7 AM-sunset.
+- [ ] What is admission and parking at Elachee? Confirm $10/person age 4+, $50 family maximum, free admission for members; trails are free, parking is a separate $5/vehicle daily fee.
+- [ ] What trails are available, and when are trails open? Confirm distances, difficulty and Sunday-only dog access are sourced, without calling every route accessible.
 - [ ] What camps and programs does Elachee offer?
 - [ ] How do I plan an Elachee field trip?
 - [ ] What volunteer opportunities are available?
@@ -22,6 +22,14 @@ Run this checklist against a configured local instance and the Vercel preview. R
 - [ ] Hii pls who can I contact about Elachee trails?
 - [ ] Heyy I need hlp planning a visit to Elachee pls.
 - [ ] Helo can u tell me about Elachee camps thx.
+
+For each of the six suggested questions in both English and Spanish:
+
+- [ ] The answer addresses the full requested bundle (not just the first part) and gives useful detail without exceeding its sources.
+- [ ] A broad "hours" answer distinguishes the Visitor Center/exhibits schedule from preserve trail hours and does not treat one venue's closure as the other's closure.
+- [ ] A visit-cost answer separates Visitor Center admission, free trail access, and park-managed vehicle parking.
+- [ ] Program answers preserve age/schedule differences; homeschool eligibility is identified as inconsistent across official pages instead of silently choosing one range.
+- [ ] Event answers list only explicitly dated events on/after today's Georgia date; otherwise direct the visitor to the live calendar without inventing upcoming events.
 
 For each supported answer:
 
@@ -35,6 +43,7 @@ For each supported answer:
 - [ ] Ask "Hello" and confirm a friendly response appears instead of a contact fallback.
 - [ ] Ask "What questions can you answer?" and confirm the supported areas are explained.
 - [ ] Ask "What are the trails?", then "Are they open Friday?" without restating the trail topic.
+- [ ] Ask "The Visitor Center is closed Monday; can I still hike?" and confirm the answer explains trail hours separately.
 - [ ] Ask "What events are upcoming for Elachee?" and confirm only retrieved future events are summarized.
 - [ ] Ask "Can you explain that more simply?" after a detailed sourced answer.
 - [ ] Correct a topic with "I meant camps, not trails.".

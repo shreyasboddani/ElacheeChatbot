@@ -5,6 +5,7 @@ import {
   interpretGroundedInteraction,
 } from "@/lib/gemini/chat";
 import { ELACHEE } from "@/lib/config";
+import { CHAT_UI_COPY } from "@/lib/chat/language";
 import type { SourceManifestEntry } from "@/lib/knowledge/types";
 
 const staffSource: SourceManifestEntry = {
@@ -20,7 +21,7 @@ function interaction(
   status: "answered" | "not_found" | "conflicting_information",
   withCitation = true,
   answer = "A supported answer.",
-  citationId = "office-hours",
+  citationId: string | string[] = "office-hours",
 ) {
   return {
     steps: [
@@ -31,12 +32,10 @@ function interaction(
             type: "text" as const,
             text: JSON.stringify({ status, answer }),
             annotations: withCitation
-              ? [
-                  {
-                    type: "file_citation",
-                    custom_metadata: { source_id: citationId },
-                  },
-                ]
+              ? (Array.isArray(citationId) ? citationId : [citationId]).map((id) => ({
+                  type: "file_citation",
+                  custom_metadata: { source_id: id },
+                }))
               : [],
           },
         ],
@@ -209,6 +208,59 @@ describe("grounded interaction interpretation", () => {
     expect(trailResult.status).toBe("answered");
   });
 
+  it("uses the dedicated Hours page when the Visit page has conflicting hours", () => {
+    const visitSource: SourceManifestEntry = {
+      id: "web-visit",
+      fileName: "website__web-visit.md",
+      documentPath: "knowledge/generated/prepared/website__web-visit.md",
+      title: "Visit",
+      url: "https://elachee.org/visit",
+      sourceType: "official_website",
+      priority: 50,
+      conflictingTopics: ["visitor_center_hours"],
+    };
+    const hoursSource: SourceManifestEntry = {
+      id: "visitor-hours",
+      fileName: "official_reference__visitor-hours.md",
+      documentPath: "knowledge/generated/prepared/official_reference__visitor-hours.md",
+      title: "Elachee Visitor Center and Chicopee Woods Trail Hours",
+      url: "https://elachee.org/hours",
+      sourceType: "official_reference",
+      priority: 90,
+    };
+    const crawledHoursPage: SourceManifestEntry = {
+      id: "web-hours",
+      fileName: "website__web-hours.md",
+      documentPath: "knowledge/generated/prepared/website__web-hours.md",
+      title: "Hours",
+      url: "https://elachee.org/hours/",
+      sourceType: "official_website",
+      priority: 50,
+    };
+    const result = interpretGroundedInteraction(
+      interaction(
+        "answered",
+        true,
+        "The Visitor Center is open Wednesday-Friday, noon-3 PM, and Saturday, 10 AM-4 PM. Chicopee Woods trails are open daily, 7 AM to sunset.",
+        ["web-hours", "web-visit"],
+      ),
+      [visitSource, hoursSource, crawledHoursPage],
+      "auto",
+      {
+        message: "What are the Visitor Center and trail hours?",
+        history: [],
+        language: "auto",
+      },
+    );
+
+    expect(result.status).toBe("answered");
+    expect(result.sources.map((source) => source.id)).toEqual([
+      "web-hours",
+      "web-visit",
+    ]);
+    expect(result.answer).toContain("trails are open daily");
+  });
+
   it("uses a mocked Gemini interaction for a contextual follow-up", async () => {
     const client = {
       create: vi.fn().mockResolvedValue(interaction("answered")),
@@ -297,5 +349,29 @@ describe("grounded interaction interpretation", () => {
         ],
       },
     ]);
+  });
+
+  it("retries each preset topic with a focused File Search query when the first search misses", async () => {
+    for (const language of ["en", "es"] as const) {
+      for (const action of CHAT_UI_COPY[language].quickActions) {
+        const client = {
+          create: vi.fn().mockResolvedValue(interaction("not_found")),
+        };
+        await askGroundedQuestion(
+          client,
+          { message: action.question, language, history: [] },
+          {
+            model: "gemini-3.5-flash-lite",
+            fileSearchStore: "fileSearchStores/test",
+            manifest: [staffSource],
+          },
+        );
+
+        expect(client.create, `${language}: ${action.label}`).toHaveBeenCalledTimes(2);
+        const focusedQuery = client.create.mock.calls[1]?.[0].input[0];
+        expect(focusedQuery?.type, `${language}: ${action.label}`).toBe("user_input");
+        expect(focusedQuery?.content[0]?.text, `${language}: ${action.label}`).toMatch(/Elachee|Chicopee Woods/);
+      }
+    }
   });
 });

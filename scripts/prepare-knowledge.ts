@@ -6,6 +6,7 @@ import { pathToFileURL } from "node:url";
 import type {
   FaqEntry,
   OfficialDocumentSource,
+  PublicReferenceSource,
   SourceManifestEntry,
   WebsiteSource,
 } from "../src/lib/knowledge/types";
@@ -75,6 +76,25 @@ function isOfficialDocumentSource(
   );
 }
 
+function isPublicReferenceSource(
+  value: unknown,
+): value is PublicReferenceSource {
+  if (!value || typeof value !== "object") return false;
+  const source = value as Record<string, unknown>;
+  return (
+    typeof source.id === "string" &&
+    /^[a-z0-9][a-z0-9-]{1,120}$/.test(source.id) &&
+    typeof source.title === "string" &&
+    typeof source.url === "string" &&
+    typeof source.sourcePath === "string" &&
+    typeof source.verifiedOn === "string" &&
+    /^\d{4}-\d{2}-\d{2}$/.test(source.verifiedOn) &&
+    Array.isArray(source.verifiedAgainst) &&
+    source.verifiedAgainst.length > 0 &&
+    source.verifiedAgainst.every((url) => typeof url === "string")
+  );
+}
+
 function sha256(value: Uint8Array): string {
   return createHash("sha256").update(value).digest("hex");
 }
@@ -86,6 +106,19 @@ function resolveOfficialDocumentPath(
   const documentRoot = path.resolve(root, "knowledge/source/official-documents");
   const resolved = path.resolve(root, sourcePath);
   const relative = path.relative(documentRoot, resolved);
+  if (!relative || relative.startsWith("..") || path.isAbsolute(relative)) {
+    return undefined;
+  }
+  return resolved;
+}
+
+function resolvePublicReferencePath(
+  root: string,
+  sourcePath: string,
+): string | undefined {
+  const referenceRoot = path.resolve(root, "knowledge/source/public-references");
+  const resolved = path.resolve(root, sourcePath);
+  const relative = path.relative(referenceRoot, resolved);
   if (!relative || relative.startsWith("..") || path.isAbsolute(relative)) {
     return undefined;
   }
@@ -130,6 +163,29 @@ function faqMarkdown(entry: FaqEntry): string {
     ...(entry.relatedUrls.length > 0
       ? ["", "## Related official pages", "", ...entry.relatedUrls.map((url) => `- ${url}`)]
       : []),
+    "",
+  ].join("\n");
+}
+
+function publicReferenceMarkdown(
+  source: PublicReferenceSource,
+  content: string,
+): string {
+  return [
+    `# ${source.title}`,
+    "",
+    `Source ID: ${source.id}`,
+    "Source type: official_reference",
+    `Canonical URL: ${source.url}`,
+    `Verified against official Elachee pages on: ${source.verifiedOn}`,
+    "",
+    "## Official Elachee pages reviewed",
+    "",
+    ...source.verifiedAgainst.map((url) => `- ${url}`),
+    "",
+    "## Curated public facts",
+    "",
+    content.trim(),
     "",
   ].join("\n");
 }
@@ -224,6 +280,43 @@ export async function prepareKnowledge(root = process.cwd()) {
       return { source, content };
     }),
   );
+  const publicReferenceValue = await readJsonIfPresent(
+    path.resolve(root, "knowledge/source/public-references.json"),
+  );
+  if (
+    !publicReferenceValue ||
+    typeof publicReferenceValue !== "object" ||
+    !Array.isArray(
+      (publicReferenceValue as Record<string, unknown>).documents,
+    ) ||
+    !(publicReferenceValue as { documents: unknown[] }).documents.every(
+      isPublicReferenceSource,
+    )
+  ) {
+    throw new Error("public-references.json is invalid.");
+  }
+  const publicReferenceSources = (
+    publicReferenceValue as { documents: PublicReferenceSource[] }
+  ).documents;
+  const publicReferenceFiles = await Promise.all(
+    publicReferenceSources.map(async (source) => {
+      if (
+        !isApprovedWebsiteUrl(source.url) ||
+        source.verifiedAgainst.some((url) => !isApprovedWebsiteUrl(url))
+      ) {
+        throw new Error(`Public reference ${source.id} has an unapproved URL.`);
+      }
+      const absolutePath = resolvePublicReferencePath(root, source.sourcePath);
+      if (!absolutePath || path.extname(absolutePath).toLowerCase() !== ".md") {
+        throw new Error(`Public reference ${source.id} has an unsafe source path.`);
+      }
+      const content = await readFile(absolutePath, "utf8");
+      if (content.trim().length < 80) {
+        throw new Error(`Public reference ${source.id} is empty or incomplete.`);
+      }
+      return { source, content };
+    }),
+  );
 
   await rm(preparedDir, { recursive: true, force: true });
   await mkdir(preparedDir, { recursive: true });
@@ -279,6 +372,25 @@ export async function prepareKnowledge(root = process.cwd()) {
     });
   }
 
+  for (const { source, content } of publicReferenceFiles) {
+    const fileName = `official_reference__${source.id}.md`;
+    const relativePath = `knowledge/generated/prepared/${fileName}`;
+    await writeFile(
+      path.join(preparedDir, fileName),
+      publicReferenceMarkdown(source, content),
+      "utf8",
+    );
+    manifest.push({
+      id: source.id,
+      fileName,
+      documentPath: relativePath,
+      title: source.title,
+      url: source.url,
+      sourceType: "official_reference",
+      priority: 90,
+    });
+  }
+
   const unresolvedFaq = faqEntries.filter((entry) => entry.status !== "approved");
   const conflicts = faqEntries
     .filter((entry) => entry.status === "conflicting")
@@ -326,6 +438,9 @@ export async function prepareKnowledge(root = process.cwd()) {
       title,
       url,
     })),
+    officialReferences: publicReferenceSources.map(
+      ({ id, title, url, verifiedOn }) => ({ id, title, url, verifiedOn }),
+    ),
     totalDocumentsUploaded: 0,
     uploadFailures: [],
     fileSearchStoreName: storeName,

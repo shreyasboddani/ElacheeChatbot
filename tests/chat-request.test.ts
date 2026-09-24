@@ -26,7 +26,7 @@ describe("client chat request builder", () => {
     expect(buildChatRequest(action?.question, [])).toEqual({
       success: true,
       payload: {
-        message: "What should I know before visiting Elachee?",
+        message: action?.question,
         history: [],
         language: "auto",
       },

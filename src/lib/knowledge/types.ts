@@ -1,5 +1,6 @@
 export type SourceType =
   | "official_website"
+  | "official_reference"
   | "official_document"
   | "manager_faq";
 
@@ -40,6 +41,15 @@ export interface OfficialDocumentSource {
   sourcePath: string;
   contentHash: string;
   sourceType: "official_document";
+}
+
+export interface PublicReferenceSource {
+  id: string;
+  title: string;
+  url: string;
+  sourcePath: string;
+  verifiedOn: string;
+  verifiedAgainst: string[];
 }
 
 export interface SourceManifestEntry {

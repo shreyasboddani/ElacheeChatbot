@@ -548,9 +548,11 @@ describe("knowledge automation safety gate", () => {
     expect(summary.websiteDocuments).toBeGreaterThanOrEqual(50);
     expect(summary.totalDocuments).toBe(
       summary.websiteDocuments +
+        summary.officialReferenceDocuments +
         summary.officialDocumentDocuments +
         summary.managerFaqDocuments,
     );
+    expect(summary.officialReferenceDocuments).toBe(7);
     expect(summary.officialDocumentDocuments).toBe(0);
     expect(summary.pendingFaqDocuments).toBe(0);
   });

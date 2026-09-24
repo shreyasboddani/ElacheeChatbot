@@ -60,12 +60,35 @@ export const CHAT_UI_COPY = {
     resize:
       "Resize chat. Drag the corner, or use arrow keys while focused.",
     quickActions: [
-      { label: "Plan my visit", question: "What should I know before visiting Elachee?" },
-      { label: "Trail information", question: "What trails are available at Elachee?" },
-      { label: "Camps & programs", question: "What camps and programs does Elachee offer?" },
-      { label: "Field trips", question: "How do I plan an Elachee field trip?" },
-      { label: "Upcoming events", question: "What upcoming events are listed for Elachee?" },
-      { label: "Hours & admission", question: "What are Elachee's hours and admission prices?" },
+      {
+        label: "Plan my visit",
+        question:
+          "Help me plan a visit to Elachee: what are the Visitor Center and trail hours, what does each cost, and what should I know before I go?",
+      },
+      {
+        label: "Trail information",
+        question:
+          "What hiking trails are in Chicopee Woods, how long are they, and what should I know before choosing one?",
+      },
+      {
+        label: "Camps & programs",
+        question:
+          "Compare Elachee's camps and programs by age group and schedule, and tell me where to check registration.",
+      },
+      {
+        label: "Field trips",
+        question:
+          "What field-trip topics and formats does Elachee offer, for which grade levels, and how do I request a trip?",
+      },
+      {
+        label: "Upcoming events",
+        question: "What upcoming Elachee events have confirmed future dates?",
+      },
+      {
+        label: "Hours & admission",
+        question:
+          "What are the Visitor Center and Chicopee Woods trail hours, and what are the separate admission and parking costs?",
+      },
     ],
   },
   es: {
@@ -106,12 +129,35 @@ export const CHAT_UI_COPY = {
     resize:
       "Cambiar el tamaño del chat. Arrastra la esquina o usa las flechas del teclado.",
     quickActions: [
-      { label: "Planificar mi visita", question: "¿Qué debo saber antes de visitar Elachee?" },
-      { label: "Información de senderos", question: "¿Qué senderos hay en Elachee?" },
-      { label: "Campamentos y programas", question: "¿Qué campamentos y programas ofrece Elachee?" },
-      { label: "Excursiones escolares", question: "¿Cómo planifico una excursión escolar a Elachee?" },
-      { label: "Próximos eventos", question: "¿Qué próximos eventos aparecen para Elachee?" },
-      { label: "Horarios y admisión", question: "¿Cuáles son los horarios y precios de admisión de Elachee?" },
+      {
+        label: "Planificar mi visita",
+        question:
+          "Ayúdame a planear una visita a Elachee: ¿cuáles son los horarios del Centro de Visitantes y los senderos, cuánto cuesta cada uno y qué debo saber?",
+      },
+      {
+        label: "Información de senderos",
+        question:
+          "¿Qué senderos hay en Chicopee Woods, cuánto mide cada uno y qué debo saber antes de elegir?",
+      },
+      {
+        label: "Campamentos y programas",
+        question:
+          "Compara los campamentos y programas de Elachee por edades y horarios, y dime dónde consultar la inscripción.",
+      },
+      {
+        label: "Excursiones escolares",
+        question:
+          "¿Qué temas y formatos ofrecen las excursiones escolares de Elachee, para qué grados y cómo solicito una?",
+      },
+      {
+        label: "Próximos eventos",
+        question: "¿Qué próximos eventos de Elachee tienen fechas futuras confirmadas?",
+      },
+      {
+        label: "Horarios y admisión",
+        question:
+          "¿Cuáles son los horarios del Centro de Visitantes y los senderos de Chicopee Woods, y cuáles son los costos separados de admisión y estacionamiento?",
+      },
     ],
   },
 } as const;

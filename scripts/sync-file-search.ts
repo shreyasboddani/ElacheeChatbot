@@ -365,6 +365,7 @@ function isManifestEntry(value: unknown): value is SourceManifestEntry {
     typeof entry.documentPath === "string" &&
     typeof entry.title === "string" &&
     (entry.sourceType === "official_website" ||
+      entry.sourceType === "official_reference" ||
       entry.sourceType === "official_document" ||
       entry.sourceType === "manager_faq") &&
     typeof entry.priority === "number" &&

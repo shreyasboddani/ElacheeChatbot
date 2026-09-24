@@ -1,0 +1,60 @@
+{
+  "documents": [
+    {
+      "id": "visitor-hours",
+      "title": "Elachee Visitor Center and Chicopee Woods Trail Hours",
+      "url": "https://elachee.org/hours",
+      "sourcePath": "knowledge/source/public-references/visitor-hours.md",
+      "verifiedOn": "2026-09-24",
+      "verifiedAgainst": ["https://elachee.org/hours", "https://elachee.org/visit"]
+    },
+    {
+      "id": "admission-and-parking",
+      "title": "Elachee Admission, Trail Access, and Parking Fees",
+      "url": "https://elachee.org/parking-admissions",
+      "sourcePath": "knowledge/source/public-references/admission-and-parking.md",
+      "verifiedOn": "2026-09-24",
+      "verifiedAgainst": ["https://elachee.org/parking-admissions", "https://elachee.org/visit"]
+    },
+    {
+      "id": "trail-guide",
+      "title": "Chicopee Woods Hiking Trail Guide and Visitor Rules",
+      "url": "https://elachee.org/visit/hiking-trails",
+      "sourcePath": "knowledge/source/public-references/trail-guide.md",
+      "verifiedOn": "2026-09-24",
+      "verifiedAgainst": ["https://elachee.org/visit/hiking-trails", "https://elachee.org/about-us"]
+    },
+    {
+      "id": "visit-planning",
+      "title": "Planning a Visit to Elachee Nature Science Center",
+      "url": "https://elachee.org/visit",
+      "sourcePath": "knowledge/source/public-references/visit-planning.md",
+      "verifiedOn": "2026-09-24",
+      "verifiedAgainst": ["https://elachee.org/visit", "https://elachee.org/directions", "https://elachee.org/hours", "https://elachee.org/parking-admissions"]
+    },
+    {
+      "id": "programs-overview",
+      "title": "Elachee Camps and Programs: Ages, Schedules, and Registration",
+      "url": "https://elachee.org/camps-programs",
+      "sourcePath": "knowledge/source/public-references/programs-overview.md",
+      "verifiedOn": "2026-09-24",
+      "verifiedAgainst": ["https://elachee.org/camps-programs", "https://elachee.org/camps-programs/nature-academy", "https://elachee.org/camps-programs/camp-elachee", "https://elachee.org/camps-programs/sprouts", "https://elachee.org/camps-programs/homeschool-programs"]
+    },
+    {
+      "id": "field-trips-guide",
+      "title": "Elachee School Field Trips and Classroom Programs",
+      "url": "https://elachee.org/field-trips",
+      "sourcePath": "knowledge/source/public-references/field-trips-guide.md",
+      "verifiedOn": "2026-09-24",
+      "verifiedAgainst": ["https://elachee.org/field-trips", "https://elachee.org/field-trip-options", "https://elachee.org/field-trips/elachee-in-your-classroom", "https://elachee.org/field-trips/floating-classroom"]
+    },
+    {
+      "id": "events-guide",
+      "title": "Finding Current Elachee Events and Programs",
+      "url": "https://elachee.org/events-parties",
+      "sourcePath": "knowledge/source/public-references/events-guide.md",
+      "verifiedOn": "2026-09-24",
+      "verifiedAgainst": ["https://elachee.org/events-parties"]
+    }
+  ]
+}

@@ -35,6 +35,37 @@ describe("citation resolution", () => {
     ]);
   });
 
+  it("resolves a curated official reference to its canonical source page", () => {
+    const hoursReference: SourceManifestEntry = {
+      id: "visitor-hours",
+      fileName: "official_reference__visitor-hours.md",
+      documentPath:
+        "knowledge/generated/prepared/official_reference__visitor-hours.md",
+      title: "Elachee Visitor Center and Chicopee Woods Trail Hours",
+      url: "https://elachee.org/hours",
+      sourceType: "official_reference",
+      priority: 90,
+    };
+    expect(
+      resolveFileCitations(
+        [
+          {
+            type: "file_citation",
+            custom_metadata: { source_id: "visitor-hours" },
+          },
+        ],
+        [hoursReference],
+      ),
+    ).toEqual([
+      {
+        id: "visitor-hours",
+        title: "Elachee Visitor Center and Chicopee Woods Trail Hours",
+        url: "https://elachee.org/hours",
+        sourceType: "official_reference",
+      },
+    ]);
+  });
+
   it("maps Gemini file references using the uploaded document basename", () => {
     expect(
       resolveFileCitations(

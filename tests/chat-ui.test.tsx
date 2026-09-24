@@ -6,6 +6,7 @@ import { ChatMessage } from "@/components/chatbot/ChatMessage";
 import { QuickActions } from "@/components/chatbot/QuickActions";
 import { SourceCards } from "@/components/chatbot/SourceCards";
 import { MAX_MESSAGE_LENGTH } from "@/lib/chat/limits";
+import { CHAT_UI_COPY } from "@/lib/chat/language";
 
 afterEach(cleanup);
 
@@ -54,7 +55,7 @@ describe("chat input and quick actions", () => {
     const onSelect = vi.fn();
     render(<QuickActions onSelect={onSelect} />);
     fireEvent.click(screen.getByRole("button", { name: "Plan my visit" }));
-    expect(onSelect).toHaveBeenCalledWith("What should I know before visiting Elachee?");
+    expect(onSelect).toHaveBeenCalledWith(CHAT_UI_COPY.en.quickActions[0].question);
     expect(typeof onSelect.mock.calls[0]?.[0]).toBe("string");
   });
 
@@ -68,7 +69,7 @@ describe("chat input and quick actions", () => {
     );
     expect(screen.getByLabelText(/Preg.ntale a la Gu.a de Naturaleza de Elachee/i)).toBeDefined();
     fireEvent.click(screen.getByRole("button", { name: "Planificar mi visita" }));
-    expect(onSelect).toHaveBeenCalledWith("\u00bfQu\u00e9 debo saber antes de visitar Elachee?");
+    expect(onSelect).toHaveBeenCalledWith(CHAT_UI_COPY.es.quickActions[0].question);
   });
 });
 

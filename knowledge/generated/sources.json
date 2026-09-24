@@ -781,5 +781,68 @@
     "fetchedAt": "2026-09-22T19:34:51.143Z",
     "sourceType": "official_website",
     "priority": 50
+  },
+  {
+    "id": "visitor-hours",
+    "fileName": "official_reference__visitor-hours.md",
+    "documentPath": "knowledge/generated/prepared/official_reference__visitor-hours.md",
+    "title": "Elachee Visitor Center and Chicopee Woods Trail Hours",
+    "url": "https://elachee.org/hours",
+    "sourceType": "official_reference",
+    "priority": 90
+  },
+  {
+    "id": "admission-and-parking",
+    "fileName": "official_reference__admission-and-parking.md",
+    "documentPath": "knowledge/generated/prepared/official_reference__admission-and-parking.md",
+    "title": "Elachee Admission, Trail Access, and Parking Fees",
+    "url": "https://elachee.org/parking-admissions",
+    "sourceType": "official_reference",
+    "priority": 90
+  },
+  {
+    "id": "trail-guide",
+    "fileName": "official_reference__trail-guide.md",
+    "documentPath": "knowledge/generated/prepared/official_reference__trail-guide.md",
+    "title": "Chicopee Woods Hiking Trail Guide and Visitor Rules",
+    "url": "https://elachee.org/visit/hiking-trails",
+    "sourceType": "official_reference",
+    "priority": 90
+  },
+  {
+    "id": "visit-planning",
+    "fileName": "official_reference__visit-planning.md",
+    "documentPath": "knowledge/generated/prepared/official_reference__visit-planning.md",
+    "title": "Planning a Visit to Elachee Nature Science Center",
+    "url": "https://elachee.org/visit",
+    "sourceType": "official_reference",
+    "priority": 90
+  },
+  {
+    "id": "programs-overview",
+    "fileName": "official_reference__programs-overview.md",
+    "documentPath": "knowledge/generated/prepared/official_reference__programs-overview.md",
+    "title": "Elachee Camps and Programs: Ages, Schedules, and Registration",
+    "url": "https://elachee.org/camps-programs",
+    "sourceType": "official_reference",
+    "priority": 90
+  },
+  {
+    "id": "field-trips-guide",
+    "fileName": "official_reference__field-trips-guide.md",
+    "documentPath": "knowledge/generated/prepared/official_reference__field-trips-guide.md",
+    "title": "Elachee School Field Trips and Classroom Programs",
+    "url": "https://elachee.org/field-trips",
+    "sourceType": "official_reference",
+    "priority": 90
+  },
+  {
+    "id": "events-guide",
+    "fileName": "official_reference__events-guide.md",
+    "documentPath": "knowledge/generated/prepared/official_reference__events-guide.md",
+    "title": "Finding Current Elachee Events and Programs",
+    "url": "https://elachee.org/events-parties",
+    "sourceType": "official_reference",
+    "priority": 90
   }
 ]

@@ -28,6 +28,7 @@ function sourceFromUnknown(value: unknown): ChatSource | undefined {
     typeof source.id !== "string" ||
     typeof source.title !== "string" ||
     (source.sourceType !== "official_website" &&
+      source.sourceType !== "official_reference" &&
       source.sourceType !== "official_document" &&
       source.sourceType !== "manager_faq")
   ) {

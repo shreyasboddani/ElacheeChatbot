@@ -31,6 +31,48 @@ const COMPLEX_RESPONSE_TOKEN_LIMIT = 384;
 const SIMPLE_RETRIEVAL_RESULT_LIMIT = 6;
 const FOLLOW_UP_RETRIEVAL_RESULT_LIMIT = 8;
 const COMPLEX_RETRIEVAL_RESULT_LIMIT = 10;
+
+function normalizeForMatching(value: string): string {
+  return value
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase();
+}
+
+type FeaturedQuestion = "visit" | "trails" | "programs" | "fieldTrips" | "events" | "hours";
+
+function featuredQuestion(message: string): FeaturedQuestion | undefined {
+  const normalized = normalizeForMatching(message);
+  if (/\b(?:plan (?:a|my|our) visit|help me plan|what should i know|before (?:i )?visiting|first visit|visiting elachee|plan(?:ear|ifica(?:r)?) (?:mi|una|la) visita)\b/.test(normalized)) {
+    return "visit";
+  }
+  if (/\b(?:hiking trails?|trail information|trails? in chicopee woods|senderos?)\b/.test(normalized)) {
+    return "trails";
+  }
+  if (/\b(?:camps?\s*(?:&|and)\s*programs?|compare elachee.?s camps|campamentos?\s*(?:y|e)\s*programas?)\b/.test(normalized)) {
+    return "programs";
+  }
+  if (/\b(?:field[ -]trips?|excursiones? escolares?)\b/.test(normalized)) {
+    return "fieldTrips";
+  }
+  if (/\b(?:upcoming (?:elachee )?events?|proximos? eventos?)\b/.test(normalized)) {
+    return "events";
+  }
+  if (/\b(?:hours?|open(?:ing)?|closed|when|horarios?|cuando|abren?|abierto(?:s|a|as)?|cerrado(?:s|a|as)?|admission|parking|entrada|estacionamiento)\b/.test(normalized)) {
+    return "hours";
+  }
+  return undefined;
+}
+
+const FEATURED_RETRY_QUERIES: Record<FeaturedQuestion, string> = {
+  visit: "Plan a visit to Elachee Nature Science Center: Visitor Center and Chicopee Woods trail hours, admission and parking costs, address, and practical visitor tips.",
+  trails: "Chicopee Woods hiking trails: names, distances, difficulty, accessibility, dogs, trail hours, and important safety or planning notes.",
+  programs: "Elachee camps and programs: age eligibility, schedule or season, program format, and where to find current registration and availability.",
+  fieldTrips: "Elachee field trips: grade levels, educational topics, onsite and outreach formats, and how teachers request a trip.",
+  events: "Elachee events with explicitly confirmed dates on or after today's date; include event name, date, time, and location only when retrieved from current official sources.",
+  hours: "Elachee Visitor Center and exhibits hours compared with Chicopee Woods Nature Preserve trail hours; distinguish both schedules and include separate visitor admission and park parking fees.",
+};
+
 function isComplexRequest(request: ChatRequest): boolean {
   const wordCount = request.message.trim().split(/\s+/).filter(Boolean).length;
   return (
@@ -42,9 +84,7 @@ function isComplexRequest(request: ChatRequest): boolean {
 }
 
 function isBroadPlanningRequest(request: ChatRequest): boolean {
-  return /\b(what should i know|before (?:i )?visit(?:ing)?|plan (?:a|my|our) visit|first visit|visiting elachee)\b/i.test(
-    request.message,
-  );
+  return featuredQuestion(request.message) !== undefined;
 }
 
 export function responseTokenLimit(request: ChatRequest): number {
@@ -166,6 +206,26 @@ export function interpretGroundedInteraction(
     return sourceVerificationFallback(undefined, language);
   }
 
+  const hasAuthoritativeHoursSource = sources.some((source) => {
+    if (
+      source.sourceType !== "official_reference" &&
+      source.sourceType !== "official_website"
+    ) {
+      return false;
+    }
+    if (source.id === "visitor-hours") return true;
+    try {
+      return ["/hours", "/resources/hours"].includes(
+        new URL(source.url ?? "").pathname.replace(/\/$/, ""),
+      );
+    } catch {
+      return false;
+    }
+  });
+  const isHoursQuestion = request !== undefined &&
+    /\b(?:hours?|open|closed|when|horarios?|abiert[oa]s?|cerrad[oa]s?|cuando)\b/i.test(
+      normalizeForMatching(request.message),
+    );
   if (parsed.status === "conflicting_information") {
     return contactFallback(
       "conflicting_information",
@@ -176,21 +236,23 @@ export function interpretGroundedInteraction(
   if (parsed.status === "not_found") {
     return contactFallback("not_found", undefined, language);
   }
-  const visitorCenterHoursConflict = manifest.some((entry) =>
-    entry.conflictingTopics?.includes("visitor_center_hours"),
-  );
+  const visitorCenterHoursConflict = sources.some((source) =>
+    manifest.find((entry) => entry.id === source.id)?.conflictingTopics?.includes(
+      "visitor_center_hours",
+    ),
+  ) && !hasAuthoritativeHoursSource;
   const visitorCenterScheduleAnswer =
-    /\b(?:visitor cent(?:er|re)|exhibits?)\b/i.test(parsed.answer) &&
+    /\b(?:visitor cent(?:er|re)|exhibits?|centro de visitantes|exhibiciones)\b/i.test(normalizeForMatching(parsed.answer)) &&
     /\b(?:hours?|open(?:ed)?|closed|schedule|\d{1,2}(?::\d{2})?\s*(?:a\.?m\.?|p\.?m\.?))\b/i.test(
-      parsed.answer,
+      normalizeForMatching(parsed.answer),
     );
   const asksAboutSchedule =
     request !== undefined &&
-    /\b(?:hours?|open|closed|when)\b/i.test(request.message);
+    isHoursQuestion;
   const asksOnlyAboutTrailSchedule =
     request !== undefined &&
-    /\b(?:hiking )?trails?\b/i.test(request.message) &&
-    !/\b(?:visitor cent(?:er|re)|exhibits?)\b/i.test(request.message);
+    /\b(?:hiking )?trails?|senderos?\b/i.test(normalizeForMatching(request.message)) &&
+    !/\b(?:visitor cent(?:er|re)|exhibits?|centro de visitantes|exhibiciones)\b/i.test(normalizeForMatching(request.message));
   if (
     visitorCenterHoursConflict &&
     (visitorCenterScheduleAnswer ||
@@ -238,6 +300,37 @@ export async function askGroundedQuestion(
     request.language,
     request,
   );
+  if (
+    request.history.length === 0 &&
+    (response.status === "not_found" || response.status === "conflicting_information")
+  ) {
+    const category = featuredQuestion(request.message);
+    if (category) {
+      try {
+        const retryRequest: ChatRequest = {
+          ...request,
+          history: [],
+          message: FEATURED_RETRY_QUERIES[category],
+        };
+        const retryInteraction = await client.create(
+          buildGroundedInteractionParams(
+            retryRequest,
+            options.model,
+            options.fileSearchStore,
+          ),
+        );
+        const retryResponse = interpretGroundedInteraction(
+          retryInteraction,
+          options.manifest,
+          request.language,
+          request,
+        );
+        return retryResponse.status === "not_found" ? response : retryResponse;
+      } catch {
+        return response;
+      }
+    }
+  }
   if (request.history.length === 0 || response.status !== "not_found") {
     return response;
   }

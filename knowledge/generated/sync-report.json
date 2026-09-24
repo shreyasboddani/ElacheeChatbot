@@ -1,5 +1,5 @@
 {
-  "preparedAt": "2026-09-22T20:47:43.022Z",
+  "preparedAt": "2026-09-24T18:56:41.960Z",
   "successfullyIndexedPages": [
     {
       "id": "web-home-a686d9ad",
@@ -632,8 +632,52 @@
   "conflictingInformation": [],
   "missingLinks": [],
   "unmappedSourceDocuments": [],
-  "totalDocumentsPrepared": 78,
+  "totalDocumentsPrepared": 85,
   "officialDocuments": [],
+  "officialReferences": [
+    {
+      "id": "visitor-hours",
+      "title": "Elachee Visitor Center and Chicopee Woods Trail Hours",
+      "url": "https://elachee.org/hours",
+      "verifiedOn": "2026-09-24"
+    },
+    {
+      "id": "admission-and-parking",
+      "title": "Elachee Admission, Trail Access, and Parking Fees",
+      "url": "https://elachee.org/parking-admissions",
+      "verifiedOn": "2026-09-24"
+    },
+    {
+      "id": "trail-guide",
+      "title": "Chicopee Woods Hiking Trail Guide and Visitor Rules",
+      "url": "https://elachee.org/visit/hiking-trails",
+      "verifiedOn": "2026-09-24"
+    },
+    {
+      "id": "visit-planning",
+      "title": "Planning a Visit to Elachee Nature Science Center",
+      "url": "https://elachee.org/visit",
+      "verifiedOn": "2026-09-24"
+    },
+    {
+      "id": "programs-overview",
+      "title": "Elachee Camps and Programs: Ages, Schedules, and Registration",
+      "url": "https://elachee.org/camps-programs",
+      "verifiedOn": "2026-09-24"
+    },
+    {
+      "id": "field-trips-guide",
+      "title": "Elachee School Field Trips and Classroom Programs",
+      "url": "https://elachee.org/field-trips",
+      "verifiedOn": "2026-09-24"
+    },
+    {
+      "id": "events-guide",
+      "title": "Finding Current Elachee Events and Programs",
+      "url": "https://elachee.org/events-parties",
+      "verifiedOn": "2026-09-24"
+    }
+  ],
   "totalDocumentsUploaded": 0,
   "uploadFailures": [],
   "fileSearchStoreName": "fileSearchStores/elachee-grounded-knowledge--bscrlt1nd4mv"

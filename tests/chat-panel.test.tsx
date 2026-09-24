@@ -8,6 +8,7 @@ import {
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
 import { ChatPanel } from "@/components/chatbot/ChatPanel";
+import { CHAT_UI_COPY } from "@/lib/chat/language";
 
 const staffSource = {
   id: "staff-answer",
@@ -62,7 +63,7 @@ describe("ChatPanel request pipeline", () => {
       "X-Chat-Language": "auto",
     });
     expect(JSON.parse(init.body as string)).toEqual({
-      message: "What should I know before visiting Elachee?",
+      message: CHAT_UI_COPY.en.quickActions[0].question,
       history: [],
       language: "auto",
     });
@@ -176,7 +177,7 @@ describe("ChatPanel request pipeline", () => {
       "X-Chat-Language": "es",
     });
     expect(JSON.parse(init.body as string)).toEqual({
-      message: "\u00bfQu\u00e9 debo saber antes de visitar Elachee?",
+      message: CHAT_UI_COPY.es.quickActions[0].question,
       history: [],
       language: "es",
     });

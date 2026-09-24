@@ -8,6 +8,7 @@ import { containsNonElacheePhoneNumber } from "../src/lib/security/phone-numbers
 import type {
   FaqEntry,
   OfficialDocumentSource,
+  PublicReferenceSource,
   SourceManifestEntry,
   WebsiteSource,
 } from "../src/lib/knowledge/types";
@@ -46,6 +47,7 @@ interface DuplicatePage {
 
 export interface KnowledgeVerificationSummary {
   websiteDocuments: number;
+  officialReferenceDocuments: number;
   officialDocumentDocuments: number;
   managerFaqDocuments: number;
   pendingFaqDocuments: number;
@@ -68,6 +70,7 @@ function isManifestEntry(value: unknown): value is SourceManifestEntry {
     typeof entry.documentPath === "string" &&
     typeof entry.title === "string" &&
     (entry.sourceType === "official_website" ||
+      entry.sourceType === "official_reference" ||
       entry.sourceType === "official_document" ||
       entry.sourceType === "manager_faq") &&
     typeof entry.priority === "number" &&
@@ -91,6 +94,25 @@ function isOfficialDocumentSource(
   );
 }
 
+function isPublicReferenceSource(
+  value: unknown,
+): value is PublicReferenceSource {
+  if (!value || typeof value !== "object") return false;
+  const source = value as Record<string, unknown>;
+  return (
+    typeof source.id === "string" &&
+    /^[a-z0-9][a-z0-9-]{1,120}$/.test(source.id) &&
+    typeof source.title === "string" &&
+    typeof source.url === "string" &&
+    typeof source.sourcePath === "string" &&
+    typeof source.verifiedOn === "string" &&
+    /^\d{4}-\d{2}-\d{2}$/.test(source.verifiedOn) &&
+    Array.isArray(source.verifiedAgainst) &&
+    source.verifiedAgainst.length > 0 &&
+    source.verifiedAgainst.every((url) => typeof url === "string")
+  );
+}
+
 function sha256(value: Uint8Array): string {
   return createHash("sha256").update(value).digest("hex");
 }
@@ -102,6 +124,19 @@ function resolveOfficialDocumentPath(
   const sourceRoot = path.resolve(root, "knowledge/source/official-documents");
   const resolved = path.resolve(root, sourcePath);
   const relative = path.relative(sourceRoot, resolved);
+  if (!relative || relative.startsWith("..") || path.isAbsolute(relative)) {
+    return undefined;
+  }
+  return resolved;
+}
+
+function resolvePublicReferencePath(
+  root: string,
+  sourcePath: string,
+): string | undefined {
+  const referenceRoot = path.resolve(root, "knowledge/source/public-references");
+  const resolved = path.resolve(root, sourcePath);
+  const relative = path.relative(referenceRoot, resolved);
   if (!relative || relative.startsWith("..") || path.isAbsolute(relative)) {
     return undefined;
   }
@@ -227,6 +262,7 @@ export async function verifyKnowledgeSnapshot(
     crawlHealthValue,
     approvedRemovalValue,
     officialDocumentValue,
+    publicReferenceValue,
   ] =
     await Promise.all([
       readJson(path.join(generatedDir, "sources.json")),
@@ -237,6 +273,7 @@ export async function verifyKnowledgeSnapshot(
       readJson(path.join(generatedDir, "crawl-health.json")),
       readJson(path.resolve(root, "knowledge/source/approved-removals.json")),
       readJson(path.resolve(root, "knowledge/source/official-documents.json")),
+      readJson(path.resolve(root, "knowledge/source/public-references.json")),
     ]);
 
   const errors: string[] = [];
@@ -267,12 +304,27 @@ export async function verifyKnowledgeSnapshot(
   ) {
     throw new Error("knowledge/source/official-documents.json is not valid.");
   }
+  if (
+    !publicReferenceValue ||
+    typeof publicReferenceValue !== "object" ||
+    !Array.isArray(
+      (publicReferenceValue as Record<string, unknown>).documents,
+    ) ||
+    !(publicReferenceValue as { documents: unknown[] }).documents.every(
+      isPublicReferenceSource,
+    )
+  ) {
+    throw new Error("knowledge/source/public-references.json is not valid.");
+  }
 
   const sources = sourceValue;
   const websiteSources = crawlValue;
   const faqEntries = faqValue;
   const officialDocuments = (
     officialDocumentValue as { documents: OfficialDocumentSource[] }
+  ).documents;
+  const publicReferences = (
+    publicReferenceValue as { documents: PublicReferenceSource[] }
   ).documents;
   const report =
     reportValue && typeof reportValue === "object"
@@ -352,6 +404,9 @@ export async function verifyKnowledgeSnapshot(
   const officialDocumentManifest = sources.filter(
     (source) => source.sourceType === "official_document",
   );
+  const publicReferenceManifest = sources.filter(
+    (source) => source.sourceType === "official_reference",
+  );
   const faqManifest = sources.filter(
     (source) => source.sourceType === "manager_faq",
   );
@@ -389,6 +444,11 @@ export async function verifyKnowledgeSnapshot(
     if (source.url) {
       errors.push(`Manager FAQ ${source.id} must not have a fabricated URL.`);
     }
+  }
+  if (publicReferenceManifest.length !== publicReferences.length) {
+    errors.push(
+      "The curated-public-reference manifest count does not match its source registry.",
+    );
   }
   for (const entry of faqEntries) {
     if (
@@ -466,6 +526,42 @@ export async function verifyKnowledgeSnapshot(
   const crawledUrls = new Set(
     websiteSources.map((source) => source.canonicalUrl),
   );
+  const publicReferencesById = new Map(
+    publicReferences.map((source) => [source.id, source]),
+  );
+  for (const source of publicReferences) {
+    if (!isApprovedWebsiteUrl(source.url)) {
+      errors.push(`Public reference ${source.id} has an unapproved URL.`);
+    }
+    for (const url of source.verifiedAgainst) {
+      if (!isApprovedWebsiteUrl(url)) {
+        errors.push(`Public reference ${source.id} has an unapproved evidence URL.`);
+      } else if (!crawledUrls.has(url)) {
+        errors.push(
+          `Public reference ${source.id} cites a page that is missing from the current crawl: ${url}`,
+        );
+      }
+    }
+    const sourcePath = resolvePublicReferencePath(root, source.sourcePath);
+    if (!sourcePath || path.extname(sourcePath).toLowerCase() !== ".md") {
+      errors.push(`Public reference ${source.id} has an unsafe source path.`);
+      continue;
+    }
+    try {
+      const content = await readFile(/* turbopackIgnore: true */ sourcePath, "utf8");
+      if (content.trim().length < 80) {
+        errors.push(`Public reference ${source.id} is empty or incomplete.`);
+      }
+      if (
+        containsKnowledgePromptInjection(content) ||
+        containsNonElacheePhoneNumber(content)
+      ) {
+        errors.push(`Public reference ${source.id} contains unsafe content.`);
+      }
+    } catch {
+      errors.push(`Public reference ${source.id} is missing its source file.`);
+    }
+  }
   for (const retainedPage of retainedPages) {
     if (!crawledUrls.has(retainedPage.url)) {
       errors.push(`Retained page ${retainedPage.url} is missing from crawl data.`);
@@ -544,7 +640,9 @@ export async function verifyKnowledgeSnapshot(
         ? `website__${source.id}.md`
         : source.sourceType === "official_document"
           ? `official_document__${source.id}.pdf`
-          : `manager_faq__${source.id}.md`;
+          : source.sourceType === "official_reference"
+            ? `official_reference__${source.id}.md`
+            : `manager_faq__${source.id}.md`;
     const expectedDocumentPath = `knowledge/generated/prepared/${expectedFileName}`;
     if (
       source.fileName !== expectedFileName ||
@@ -585,6 +683,23 @@ export async function verifyKnowledgeSnapshot(
       }
       if (source.priority !== 75) {
         errors.push(`Official document ${source.id} has an unexpected priority.`);
+      }
+    } else if (source.sourceType === "official_reference") {
+      const configured = publicReferencesById.get(source.id);
+      if (
+        !configured ||
+        configured.title !== source.title ||
+        configured.url !== source.url
+      ) {
+        errors.push(
+          `Public reference ${source.id} does not match its source registry.`,
+        );
+      }
+      if (!source.url || !isApprovedWebsiteUrl(source.url)) {
+        errors.push(`Public reference ${source.id} has an unapproved URL.`);
+      }
+      if (source.priority !== 90) {
+        errors.push(`Public reference ${source.id} has an unexpected priority.`);
       }
     } else if (source.priority !== 100) {
       errors.push(`Manager FAQ ${source.id} has an unexpected priority.`);
@@ -630,6 +745,7 @@ export async function verifyKnowledgeSnapshot(
 
   return {
     websiteDocuments: websiteManifest.length,
+    officialReferenceDocuments: publicReferenceManifest.length,
     officialDocumentDocuments: officialDocumentManifest.length,
     managerFaqDocuments: faqManifest.length,
     pendingFaqDocuments: pendingFaq.length,
