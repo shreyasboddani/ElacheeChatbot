@@ -3,12 +3,14 @@ name: Detect and commit website knowledge updates
 on:
   schedule:
     - cron: "17 9 * * *"
+    - cron: "17 15 * * *"
   workflow_dispatch:
   repository_dispatch:
     types:
       - elachee-website-updated
 
 permissions:
+  actions: read
   contents: write
 
 concurrency:
@@ -20,26 +22,76 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 35
     steps:
+      - name: Avoid duplicate scheduled refreshes
+        id: daily_guard
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+
+          if [[ "$GITHUB_EVENT_NAME" != "schedule" ]]; then
+            echo "run=true" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          cutoff="$(date -u -d '24 hours ago' +'%Y-%m-%dT%H:%M:%SZ')"
+          api_url="https://api.github.com/repos/${GITHUB_REPOSITORY}/actions/workflows/knowledge-refresh.yml/runs?event=schedule&per_page=100"
+          if ! response="$(curl --fail --silent --show-error --max-time 20 \
+            -H 'Accept: application/vnd.github+json' \
+            -H "Authorization: Bearer $GH_TOKEN" \
+            -H 'X-GitHub-Api-Version: 2022-11-28' \
+            "$api_url")"; then
+            echo "Could not inspect recent scheduled runs; proceeding with the refresh." >> "$GITHUB_STEP_SUMMARY"
+            echo "run=true" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          if ! recent_success="$(jq -r \
+            --arg cutoff "$cutoff" \
+            --arg current_id "$GITHUB_RUN_ID" \
+            '[.workflow_runs[]
+              | select((.id | tostring) != $current_id)
+              | select(.event == "schedule" and .status == "completed" and .conclusion == "success")
+              | select((.run_started_at // .created_at) >= $cutoff)]
+            | length' <<< "$response")"; then
+            echo "Could not parse recent scheduled runs; proceeding with the refresh." >> "$GITHUB_STEP_SUMMARY"
+            echo "run=true" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          if (( recent_success > 0 )); then
+            echo "run=false" >> "$GITHUB_OUTPUT"
+            echo "A scheduled knowledge refresh already succeeded within the last 24 hours; skipping this backup trigger." >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "run=true" >> "$GITHUB_OUTPUT"
+          fi
+
       - name: Check out main
+        if: steps.daily_guard.outputs.run == 'true'
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           fetch-depth: 0
           ref: main
 
       - name: Set up Node.js
+        if: steps.daily_guard.outputs.run == 'true'
         uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
         with:
           node-version: 24
           cache: npm
 
       - name: Install locked dependencies
+        if: steps.daily_guard.outputs.run == 'true'
         run: npm ci
 
       - name: Crawl, prepare, and verify public website content
+        if: steps.daily_guard.outputs.run == 'true'
         run: npm run knowledge:refresh
 
       - name: Detect meaningful corpus changes
         id: changes
+        if: steps.daily_guard.outputs.run == 'true'
         shell: bash
         run: |
           review_paths=(
@@ -56,7 +108,7 @@ jobs:
           fi
 
       - name: Guard the generated-file boundary
-        if: steps.changes.outputs.changed == 'true'
+        if: steps.daily_guard.outputs.run == 'true' && steps.changes.outputs.changed == 'true'
         shell: bash
         run: |
           unexpected="$(git status --porcelain | cut -c4- | grep -Ev '^(knowledge/generated/|src/generated/knowledge-manifest\.json$)' || true)"
@@ -79,7 +131,7 @@ jobs:
           fi
 
       - name: Enforce a bounded safe automatic change set
-        if: steps.changes.outputs.changed == 'true'
+        if: steps.daily_guard.outputs.run == 'true' && steps.changes.outputs.changed == 'true'
         shell: bash
         run: |
           changed_documents="$(git status --porcelain --untracked-files=all -- knowledge/generated/prepared | grep -c . || true)"
@@ -105,7 +157,7 @@ jobs:
           fi
 
       - name: Run the complete safety gate
-        if: steps.changes.outputs.changed == 'true'
+        if: steps.daily_guard.outputs.run == 'true' && steps.changes.outputs.changed == 'true'
         shell: bash
         run: |
           npm test
@@ -114,7 +166,7 @@ jobs:
           git diff --check
 
       - name: Commit verified knowledge directly to main
-        if: steps.changes.outputs.changed == 'true'
+        if: steps.daily_guard.outputs.run == 'true' && steps.changes.outputs.changed == 'true'
         id: commit
         shell: bash
         run: |
