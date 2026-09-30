@@ -80,7 +80,7 @@ Donate
 Elachee
 Nature
 Academy
-2027-2028 Enrollment Beginning Late Fall 2026
+2027-2028 Enrollment Beginning Early 2027
 Where the Classroom Stretches beyond Four Walls
 Elachee is a launchpad for lifelong learning, where the natural world becomes your child’s teacher, playground, and daily inspiration. Serving children ages 3 through first grade, we provide a nature-based, hands-on education that lays the foundation for lifelong learning. Whether they’re identifying animal tracks, building with sticks, or counting acorns, your child will grow in confidence, creativity, and joy — right alongside their academic skills.
 You want your child to grow up curious, confident, and connected to the world around them. But too many early education options keep kids indoors, glued to screens, or locked into rigid learning. At Elachee, we believe young minds learn best when they’re outside, being curious and exploring.

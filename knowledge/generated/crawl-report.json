@@ -1,6 +1,6 @@
 {
   "startedFrom": "https://elachee.org",
-  "crawledAt": "2026-09-22T20:31:24.664Z",
+  "crawledAt": "2026-09-30T15:59:41.479Z",
   "maxPages": 150,
   "indexedPages": [
     {
@@ -61,7 +61,7 @@
       "id": "web-camps-programs-nature-academy-3823ea74",
       "title": "Nature Academy",
       "url": "https://elachee.org/camps-programs/nature-academy",
-      "fetchedAt": "2026-09-22T19:11:45.208Z"
+      "fetchedAt": "2026-09-30T15:57:26.154Z"
     },
     {
       "id": "web-camps-programs-sprouts-bb3f2bda",
