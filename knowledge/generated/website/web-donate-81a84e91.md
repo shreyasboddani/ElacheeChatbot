@@ -3,7 +3,7 @@
 Source ID: web-donate-81a84e91
 Source type: official_website
 Canonical URL: https://elachee.org/donate
-Fetched at: 2026-09-22T19:11:41.804Z
+Fetched at: 2026-10-07T16:34:52.888Z
 
 ## Page content
 
@@ -66,25 +66,26 @@ Become A Sponsor
 Review Us
 Become a Member
 Donate
-Donate to Elachee
-Your Gift Makes Nature Possible
+DONATE TO ELACHEE
+Help Wonder Come to Life
 Every dollar supports hands-on science education, protects 1,440 acres of forest, and helps the next generation grow up curious,
 confident, and connected to nature.
-Why Give to Elachee?
-Because nature can’t wait — and neither can our children.
-Experience hands-on science learning that connects classrooms to the natural world.
-Help children build empathy, curiosity, and respect for wildlife.
-Preserve access to nature for learning, wellness, and exploration.
-Create meaningful outdoor experiences that spark lifelong curiosity.
-Yet only 35% of our funding comes from donations. The rest must be earned through programs, partnerships, and rentals.
+Why Your Gift Matters
+Only 35% of our funding comes from donations. The rest must be earned through programs, partnerships, and rentals. Your gift helps keep these experiences within reach for more children and families.
+From Wonder to Stewardship
+At Elachee, it starts with a moment of wonder in Chicopee Woods. That spark grows into a lasting connection with nature, and connection grows into a lifelong commitment to care for it. Your gift supports every step.
+Up-close encounters with live animals and hands-on discovery that turn a walk in the woods into a question worth asking.
+25+
+live animal ambassadors
+Field trips, camps, and family programs that bring people back to the forest again and again.
+35,000+
+Caring for the animals and trails that make Elachee possible, and raising the next generation to protect wild places.
+12 miles
 What Your Gift Supports
 Helps fund a Discovery Backpack for young explorers.
 Supports a class field trip through the forest.
 Helps care for our wildlife ambassadors.
 Supports scholarships for summer campers.
-Be the Difference
-This is your chance to be a force for good, to turn concern into action, and to ensure that nature education thrives for generations.
-EIN#: 58-1643768
 Want to support Elachee in a hands-on way?
 We gratefully accept donated goods and services that align with our mission and operational needs. Whether you’re offering classroom supplies, professional expertise, or outdoor equipment, your in-kind gift helps us go further.
 
