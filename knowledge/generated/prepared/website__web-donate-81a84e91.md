@@ -12,8 +12,9 @@ Canonical URL: https://elachee.org/donate
 - 25+
 - 35,000+
 - 12 miles
-- What Your Gift Supports
-- Want to support Elachee in a hands-on way?
+- Make Your Donations Matter
+- More Ways to Give
+- Be the Difference
 
 ## Approved page content
 
@@ -84,20 +85,25 @@ Why Your Gift Matters
 Only 35% of our funding comes from donations. The rest must be earned through programs, partnerships, and rentals. Your gift helps keep these experiences within reach for more children and families.
 From Wonder to Stewardship
 At Elachee, it starts with a moment of wonder in Chicopee Woods. That spark grows into a lasting connection with nature, and connection grows into a lifelong commitment to care for it. Your gift supports every step.
-Up-close encounters with live animals and hands-on discovery that turn a walk in the woods into a question worth asking.
+Up-close encounters with live animals and hands-on discovery that turn a walk into a question.
 25+
 live animal ambassadors
 Field trips, camps, and family programs that bring people back to the forest again and again.
 35,000+
-Caring for the animals and trails that make Elachee possible, and raising the next generation to protect wild places.
+Caring for our animals and trails, and raising the next generation to protect wild places.
 12 miles
-What Your Gift Supports
-Helps fund a Discovery Backpack for young explorers.
-Supports a class field trip through the forest.
-Helps care for our wildlife ambassadors.
-Supports scholarships for summer campers.
-Want to support Elachee in a hands-on way?
-We gratefully accept donated goods and services that align with our mission and operational needs. Whether you’re offering classroom supplies, professional expertise, or outdoor equipment, your in-kind gift helps us go further.
+Make Your Donations Matter
+The Annual Fund supports the full mission of Elachee (funding for animals, trails, education programs & daily operations).
+The Access Fund helps ensure that cost is not a barrier to experiencing Elachee.
+The Wonder Fund supports growth and enhancement of Elachee’s exhibits and learning spaces.
+The Stewardship Fund supports the care and protection of the 1,440-acre Chicopee Woods Preserve.
+More Ways to Give
+We gratefully accept donated goods and services that align with our mission and operational needs, from classroom supplies to professional expertise to outdoor equipment.
+Call Us Email Us Deed of Gift Receipt
+Businesses can support Elachee’s work in Chicopee Woods through corporate partnerships and sponsorships.
+Corporate Partnerships
+Be the Difference
+Every gift helps a child find wonder, a family find connection, and a new generation grow into stewards of the natural world.
 
 ## Relevant official links
 
@@ -141,8 +147,7 @@ We gratefully accept donated goods and services that align with our mission and 
 - Become a Member: https://elachee.org/memberships
 - https://elachee.org/donate: https://elachee.org/donate
 - Back to top: https://elachee.org/donate
-- Why support elachee: https://elachee.org/wp-content/uploads/2025/11/Elachee-Case-for-Support-FY2025-Web.pdf
-- Download Deed of Gift Receipt: https://elachee.org/wp-content/uploads/2025/12/elachee-nature-science-center-deed-of-gift.pdf
+- Deed of Gift Receipt: https://elachee.org/wp-content/uploads/2025/12/elachee-nature-science-center-deed-of-gift.pdf
 - About Us: https://elachee.org/about-us
 - Privacy Policy: https://elachee.org/privacy-policy
 - Sitemap: https://elachee.org/sitemap
