@@ -52,8 +52,8 @@ export function visitorCenterHoursConflictFallback(
     status: "conflicting_information",
     answer:
       language === "es"
-        ? `Las páginas oficiales de Elachee indican horarios distintos para el Centro de Visitantes. No puedo confirmarlos; llama al ${ELACHEE.contact.phone} o usa su página de contacto.`
-        : `Elachee's official pages conflict about Visitor Center hours, so I can't confirm them. Please call ${ELACHEE.contact.phone} or use Elachee's contact page to check before your visit.`,
+        ? `Las páginas oficiales de Elachee indican horarios distintos para Elachee Nature Science Center. No puedo confirmarlos; llama al ${ELACHEE.contact.phone} o usa su página de contacto.`
+        : `Elachee's official pages conflict about Nature Science Center hours, so I can't confirm them. Please call ${ELACHEE.contact.phone} or use Elachee's contact page to check before your visit.`,
     sources: sources.length > 0 ? sources : [CONTACT_SOURCE],
     contactRecommended: true,
   };

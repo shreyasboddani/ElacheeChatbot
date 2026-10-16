@@ -139,7 +139,7 @@ describe("grounded interaction interpretation", () => {
     expect(result.contactRecommended).toBe(true);
   });
 
-  it("blocks visitor-center schedule claims while the crawled page conflicts", () => {
+  it("blocks Nature Science Center schedule claims while the crawled page conflicts", () => {
     const visitSource: SourceManifestEntry = {
       id: "web-visit",
       fileName: "website__web-visit.md",
@@ -170,7 +170,7 @@ describe("grounded interaction interpretation", () => {
     expect(result.status).toBe("conflicting_information");
     expect(result.contactRecommended).toBe(true);
     expect(result.answer).not.toContain("Wednesday");
-    expect(result.answer).toContain("official pages conflict about Visitor Center hours");
+    expect(result.answer).toContain("official pages conflict about Nature Science Center hours");
     expect(result.answer).toContain(ELACHEE.contact.phone);
   });
 
@@ -193,7 +193,7 @@ describe("grounded interaction interpretation", () => {
     );
 
     expect(result.status).toBe("conflicting_information");
-    expect(result.answer).toContain("official pages conflict about Visitor Center hours");
+    expect(result.answer).toContain("official pages conflict about Nature Science Center hours");
 
     const trailResult = interpretGroundedInteraction(
       interaction(
@@ -248,7 +248,7 @@ describe("grounded interaction interpretation", () => {
       [visitSource, hoursSource, crawledHoursPage],
       "auto",
       {
-        message: "What are the Visitor Center and trail hours?",
+        message: "What are Elachee Nature Science Center and trail hours?",
         history: [],
         language: "auto",
       },
@@ -455,7 +455,7 @@ describe("grounded interaction interpretation", () => {
       sourceType: "official_reference",
       priority: 90,
     };
-    const answer = "El Centro de Visitantes abre de miércoles a viernes y los sábados; los senderos abren todos los días hasta la puesta del sol. La admisión cuesta $10 por persona y el estacionamiento cuesta $5 por vehículo; el acceso a los senderos es gratis.";
+    const answer = "Elachee Nature Science Center abre de miércoles a viernes y los sábados; los senderos abren todos los días hasta la puesta del sol. La admisión cuesta $10 por persona y el estacionamiento cuesta $5 por vehículo; el acceso a los senderos es gratis.";
     const client = {
       create: vi.fn().mockResolvedValue(
         interaction("answered", true, answer, ["visitor-hours", "admission-and-parking"]),

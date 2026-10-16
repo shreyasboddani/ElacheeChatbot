@@ -63,7 +63,7 @@ export const CHAT_UI_COPY = {
       {
         label: "Hours: center & trails",
         question:
-          "What days and times are Elachee's Visitor Center and exhibits open, separately from Chicopee Woods trail hours? Include admission and parking costs separately.",
+          "What days and times is Elachee Nature Science Center open for exhibits, and what are the separate Chicopee Woods trail hours? Include admission and parking costs separately.",
       },
       {
         label: "Choose a trail",
@@ -133,7 +133,7 @@ export const CHAT_UI_COPY = {
       {
         label: "Horarios: centro y senderos",
         question:
-          "¿Qué días y a qué horas abren el Centro de Visitantes y las exhibiciones de Elachee, y cuáles son los horarios de los senderos de Chicopee Woods? Incluye por separado los costos de admisión y estacionamiento.",
+          "¿Qué días y a qué horas abre Elachee Nature Science Center para ver sus exhibiciones, y cuáles son los horarios de los senderos de Chicopee Woods? Incluye por separado los costos de admisión y estacionamiento.",
       },
       {
         label: "Elegir un sendero",

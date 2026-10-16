@@ -130,12 +130,12 @@ export function featuredQuestion(message: string): FeaturedQuestion | undefined 
 }
 
 const FEATURED_RETRY_QUERIES: Record<FeaturedQuestion, string> = {
-  visit: "Plan a visit to Elachee Nature Science Center: Visitor Center and Chicopee Woods trail hours, admission and parking costs, address, and practical visitor tips.",
+  visit: "Plan a visit to Elachee Nature Science Center: exhibit hours (the official hours page labels this section Visitor Center & Exhibits), Chicopee Woods trail hours, admission and parking costs, address, and practical visitor tips.",
   trails: "Chicopee Woods hiking trails: names, distances, difficulty, accessibility, dogs, trail hours, and important safety or planning notes.",
   programs: "Elachee camps and programs: age eligibility, schedule or season, program format, and where to find current registration and availability.",
   fieldTrips: "Elachee field trips: grade levels, educational topics, onsite and outreach formats, and how teachers request a trip.",
   events: "Elachee events with explicitly confirmed dates on or after today's date; include event name, date, time, and location only when retrieved from current official sources.",
-  hours: "Elachee Visitor Center and exhibits hours compared with Chicopee Woods Nature Preserve trail hours; distinguish both schedules and include separate visitor admission and park parking fees.",
+  hours: "Elachee Nature Science Center exhibit hours (the official hours page labels this section Visitor Center & Exhibits) compared with Chicopee Woods Nature Preserve trail hours; distinguish both schedules and include separate admission and parking fees.",
 };
 
 function isComplexRequest(request: ChatRequest): boolean {
@@ -307,7 +307,7 @@ export function interpretGroundedInteraction(
     ),
   ) && !hasAuthoritativeHoursSource;
   const visitorCenterScheduleAnswer =
-    /\b(?:visitor cent(?:er|re)|exhibits?|centro de visitantes|exhibiciones)\b/i.test(normalizeForMatching(parsed.answer)) &&
+    /\b(?:nature science center|visitor cent(?:er|re)|exhibits?|centro de ciencias naturales|centro de visitantes|exhibiciones)\b/i.test(normalizeForMatching(parsed.answer)) &&
     /\b(?:hours?|open(?:ed)?|closed|schedule|\d{1,2}(?::\d{2})?\s*(?:a\.?m\.?|p\.?m\.?))\b/i.test(
       normalizeForMatching(parsed.answer),
     );
@@ -317,7 +317,7 @@ export function interpretGroundedInteraction(
   const asksOnlyAboutTrailSchedule =
     request !== undefined &&
     /\b(?:hiking )?trails?|senderos?\b/i.test(normalizeForMatching(request.message)) &&
-    !/\b(?:visitor cent(?:er|re)|exhibits?|centro de visitantes|exhibiciones)\b/i.test(normalizeForMatching(request.message));
+    !/\b(?:nature science center|visitor cent(?:er|re)|exhibits?|centro de ciencias naturales|centro de visitantes|exhibiciones)\b/i.test(normalizeForMatching(request.message));
   if (
     visitorCenterHoursConflict &&
     (visitorCenterScheduleAnswer ||
@@ -472,7 +472,7 @@ function featuredAnswerIsRelevant(
         /\$\s*10\b/.test(answer) &&
         /\$\s*5\b/.test(answer) &&
         /sunset|atardecer|puesta del sol/.test(answer) &&
-        /visitor center|centro de visitantes/.test(answer) &&
+        /nature science center|centro de ciencias naturales|visitor center|centro de visitantes/.test(answer) &&
         /trail|senderos?/.test(answer)
       );
   }

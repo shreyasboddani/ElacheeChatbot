@@ -9,7 +9,7 @@ const serviceCards = [
   {
     number: "01",
     title: "Plan your visit",
-    body: "Ask about visitor-center hours, admission, parking, directions, and what to bring.",
+    body: "Ask about Nature Science Center hours, admission, parking, directions, and what to bring.",
   },
   {
     number: "02",

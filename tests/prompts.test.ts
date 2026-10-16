@@ -95,7 +95,7 @@ describe("grounding prompt", () => {
     expect(SYSTEM_INSTRUCTION).toContain("Prior assistant messages are not evidence");
     expect(SYSTEM_INSTRUCTION).toContain("even when they appear in the same page or document");
     expect(SYSTEM_INSTRUCTION).toContain("the dedicated Elachee Hours page is authoritative");
-    expect(SYSTEM_INSTRUCTION).toContain("Visitor Center closure does not mean the trails are closed");
+    expect(SYSTEM_INSTRUCTION).toContain("Nature Science Center closure does not mean the trails are closed");
     expect(SYSTEM_INSTRUCTION).toContain("Never reconcile equally authoritative conflicting schedules by inference");
     expect(SYSTEM_INSTRUCTION).toContain("Do not claim that no events are scheduled");
     expect(SYSTEM_INSTRUCTION).toContain("A citation must directly support the topic");
@@ -211,6 +211,22 @@ describe("grounding prompt", () => {
         );
       }
     }
+  });
+
+  it("names Nature Science Center separately from Chicopee Woods trails in the top preset", () => {
+    expect(CHAT_UI_COPY.en.quickActions[0].question).toContain(
+      "Elachee Nature Science Center",
+    );
+    expect(CHAT_UI_COPY.en.quickActions[0].question).not.toMatch(/Visitor Center/i);
+    expect(CHAT_UI_COPY.en.quickActions[0].question).toContain(
+      "Chicopee Woods trail hours",
+    );
+    expect(CHAT_UI_COPY.es.quickActions[0].question).toContain(
+      "Elachee Nature Science Center",
+    );
+    expect(CHAT_UI_COPY.es.quickActions[0].question).toContain(
+      "senderos de Chicopee Woods",
+    );
   });
 
   it("routes the Spanish trail preset to trail evidence rather than unrelated topics", () => {
