@@ -146,16 +146,112 @@ export default function Home() {
       </section>
 
       <section className="integration-section" id="integration">
-        <div>
-          <p className="eyebrow"><span /> Simple website integration</p>
-          <h2>Add Elachee with one script tag.</h2>
-          <p>
-            Paste this line into your website&apos;s shared footer or global code
-            area. On WordPress, use WPCode&apos;s Footer field; on other platforms,
-            use the equivalent site-wide setting.
+        <div className="integration-copy">
+          <p className="eyebrow"><span /> WordPress installation</p>
+          <h2>Put Ask Elachee on Elachee.org.</h2>
+          <p className="integration-intro">
+            Elachee uses WordPress. You need dashboard access. Follow these
+            steps to add the chatbot site-wide without theme edits or an API
+            key.
+          </p>
+          <ol className="integration-steps">
+            <li>
+              <span aria-hidden="true">1</span>
+              <div>
+                <strong>Sign in to WordPress.</strong>
+                <p>
+                  Open{" "}
+                  <a href="https://elachee.org/wp-admin/" target="_blank" rel="noreferrer">
+                    Elachee&apos;s WordPress dashboard
+                  </a>{" "}
+                  and sign in with your site account.
+                </p>
+              </div>
+            </li>
+            <li>
+              <span aria-hidden="true">2</span>
+              <div>
+                <strong>Make sure WPCode is installed.</strong>
+                <p>
+                  If you already see <b>Code Snippets</b> in the left menu, skip
+                  to step 3. Otherwise choose <b>Plugins &gt; Add New Plugin</b>,
+                  search WPCode, then click <b>Install</b> and <b>Activate</b>.
+                  You may need administrator access.
+                </p>
+              </div>
+            </li>
+            <li>
+              <span aria-hidden="true">3</span>
+              <div>
+                <strong>Open the shared footer settings.</strong>
+                <p>
+                  Choose <b>Code Snippets &gt; Header &amp; Footer</b> in the
+                  dashboard menu.
+                </p>
+              </div>
+            </li>
+            <li>
+              <span aria-hidden="true">4</span>
+              <div>
+                <strong>Paste the code and save.</strong>
+                <p>
+                  Copy the complete script tag in the box, paste it into the{" "}
+                  <b>Footer</b> field, then click <b>Save Changes</b>.
+                </p>
+              </div>
+            </li>
+            <li>
+              <span aria-hidden="true">5</span>
+              <div>
+                <strong>Check that it worked.</strong>
+                <p>
+                  Open Elachee.org privately and test the launcher. If missing,
+                  clear the cache and retry.
+                </p>
+              </div>
+            </li>
+          </ol>
+          <p className="integration-permissions">
+            Don&apos;t see <b>Plugins</b> or <b>Code Snippets</b>? Your account may
+            not have permission. Send these instructions and the code to the
+            person who manages Elachee&apos;s website.
           </p>
         </div>
-        <pre aria-label="Widget integration example"><code>{'<script async src="https://elachee-chatbot.vercel.app/widget-loader.js"></script>'}</code></pre>
+        <div className="integration-side">
+          <div className="integration-code-card">
+            <p className="integration-card-label">Copy this script tag</p>
+            <pre aria-label="Elachee chatbot widget code"><code>{`<script async
+  src="https://elachee-chatbot.vercel.app/widget-loader.js">
+</script>`}</code></pre>
+            <p className="integration-code-note">
+              Add it once to the site-wide <b>Footer</b> field. The launcher
+              appears on every page. Do not paste an API key here.
+            </p>
+            <div className="integration-resource-links">
+              <a href="https://wordpress.org/plugins/insert-headers-and-footers/" target="_blank" rel="noreferrer">
+                Find WPCode
+              </a>
+              <a href="https://wpcode.com/docs/using-the-global-header-footer-settings/" target="_blank" rel="noreferrer">
+                WPCode footer-field help
+              </a>
+            </div>
+          </div>
+          <aside className="integration-other">
+            <h3>Using a different website platform?</h3>
+            <p>
+              In Squarespace, Wix, or another builder, look in site settings
+              for <b>Custom Code</b>, <b>Code Injection</b>, or <b>Footer
+              Scripts</b>. Choose the site-wide footer, paste the same script
+              tag, and publish.
+            </p>
+            <p>
+              For a custom-coded site, ask the developer to add it to the shared
+              page layout just before <code>&lt;/body&gt;</code>. Avoid a
+              single-page text or HTML block; it may not load site-wide or may
+              remove the script.
+            </p>
+          </aside>
+        </div>
       </section>
 
       <footer className="demo-footer">
