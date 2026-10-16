@@ -21,6 +21,9 @@ jobs:
   refresh:
     runs-on: ubuntu-latest
     timeout-minutes: 35
+    outputs:
+      changed: ${{ steps.changes.outputs.changed }}
+      revision: ${{ steps.commit.outputs.revision }}
     steps:
       - name: Avoid duplicate scheduled refreshes
         id: daily_guard
@@ -185,4 +188,12 @@ jobs:
           git commit -m "Refresh Elachee website knowledge"
           revision="$(git rev-parse HEAD)"
           git push origin HEAD:main
-          echo "Committed verified public knowledge to main at $revision. Vercel will reconcile Gemini during the production build." >> "$GITHUB_STEP_SUMMARY"
+          echo "revision=$revision" >> "$GITHUB_OUTPUT"
+          echo "Committed verified public knowledge to main at $revision. The protected Gemini reconciliation job will index it." >> "$GITHUB_STEP_SUMMARY"
+
+  reconcile:
+    needs: refresh
+    if: needs.refresh.outputs.changed == 'true'
+    uses: ./.github/workflows/knowledge-sync.yml
+    with:
+      revision: ${{ needs.refresh.outputs.revision }}

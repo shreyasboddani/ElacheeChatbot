@@ -1,0 +1,65 @@
+name: Reconcile approved Gemini knowledge
+
+on:
+  workflow_dispatch:
+  workflow_call:
+    inputs:
+      revision:
+        description: Exact verified main revision to reconcile
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+concurrency:
+  group: knowledge-production-sync
+  cancel-in-progress: false
+
+jobs:
+  reconcile:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    environment: knowledge-production
+    steps:
+      - name: Check out approved knowledge revision
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ inputs.revision || github.sha }}
+
+      - name: Set up Node.js
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: 24
+          cache: npm
+
+      - name: Confirm protected Gemini configuration
+        shell: bash
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GEMINI_FILE_SEARCH_STORE: ${{ vars.GEMINI_FILE_SEARCH_STORE }}
+        run: |
+          set -euo pipefail
+          test -n "$GEMINI_API_KEY" || { echo "GEMINI_API_KEY is not configured in the knowledge-production environment."; exit 1; }
+          test -n "$GEMINI_FILE_SEARCH_STORE" || { echo "GEMINI_FILE_SEARCH_STORE is not configured in the knowledge-production environment."; exit 1; }
+
+      - name: Install locked dependencies
+        run: npm ci
+
+      - name: Verify approved corpus
+        run: npm run knowledge:verify
+
+      - name: Run automated tests
+        run: npm test
+
+      - name: Run lint
+        run: npm run lint
+
+      - name: Build production application
+        run: npm run build
+
+      - name: Reconcile Gemini File Search
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GEMINI_FILE_SEARCH_STORE: ${{ vars.GEMINI_FILE_SEARCH_STORE }}
+        run: npm run knowledge:sync -- --reconcile --apply

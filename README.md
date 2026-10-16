@@ -100,8 +100,8 @@ NEXT_PUBLIC_SITE_URL=https://elachee-chatbot.vercel.app
 
 | Variable | Purpose |
 | --- | --- |
-| `GEMINI_API_KEY` | Server-only Gemini credential used by Vercel for production knowledge synchronization and grounded runtime answers. Never prefix it with `NEXT_PUBLIC_`. |
-| `GEMINI_FILE_SEARCH_STORE` | Resource name printed by the sync command, such as `fileSearchStores/...`. |
+| `GEMINI_API_KEY` | Server-only Gemini credential used by Vercel for grounded runtime answers and Cron reconciliation; the isolated GitHub sync job also receives it as a protected environment secret. Never prefix it with `NEXT_PUBLIC_`. |
+| `GEMINI_FILE_SEARCH_STORE` | Resource name printed by the sync command, such as `fileSearchStores/...`; keep the Vercel value aligned with the `knowledge-production` GitHub environment variable. |
 | `GEMINI_MODEL` | Central model configuration. Defaults to stable `gemini-3.5-flash-lite`. |
 | `NEXT_PUBLIC_SITE_URL` | Public deployment origin used in documentation/integration context. It contains no secret. |
 
@@ -233,10 +233,10 @@ Deletion is permanent, requires both an exact resource name and `--confirm`, and
 
 The repository includes a fail-closed, direct-to-main automation system for bounded public-site updates:
 
-- `Detect and commit website knowledge updates` runs daily at 09:17 UTC, on demand, or from the `elachee-website-updated` repository-dispatch event.
-- GitHub has no Gemini or Vercel secrets. An unchanged site produces no commit, deployment, or Gemini call.
+- `Detect and commit website knowledge updates` checks daily at 09:17 and 15:17 UTC, on demand, or from the `elachee-website-updated` repository-dispatch event; a guard skips the second check after a successful run that UTC day.
+- The crawler job has no Gemini credentials. When approved content changes, it calls the separate `Reconcile approved Gemini knowledge` workflow, which gets the key only from the main-branch-restricted `knowledge-production` environment. An unchanged crawl skips that GitHub sync job; Vercel's daily Cron remains a retry path.
 - A change can be committed directly to `main` only after file-boundary checks, staff-FAQ isolation, a 20-document automatic-change cap, exact reconciliation of every website deletion against the human removal allowlist, a separate five-deletion cap, corpus verification, all tests, lint, production build, and a final check that `main` did not advance. It never force-pushes.
-- The resulting Vercel Production build verifies the committed corpus again, reconciles the existing File Search store using Vercel's server-side key, and only then builds the deployable application. Preview builds never mutate Gemini.
+- Vercel deploys the committed corpus and verifies it during the Production build. The protected GitHub sync job reconciles the existing File Search store; Vercel's daily Cron also retries reconciliation using Vercel's own server-side key. Preview builds never mutate Gemini.
 - Reconciliation uploads every replacement before deleting its stale managed copy and fails closed on unknown remote documents or missing production configuration.
 - The website crawler never parses or approves staff FAQ entries or removal approvals. Staff FAQ changes and permanent-removal allowlist changes still require human review and a normal commit.
 
@@ -403,7 +403,7 @@ File Search stores belong to the Gemini project that created them; changing only
 
 ## Privacy, security, and reliability notes
 
-- The Gemini key remains server-side in Vercel and is accessed only by the production build synchronization script and Node.js chat route.
+- The Gemini key is stored as a sensitive Vercel variable for runtime chat/Cron and as a protected GitHub environment secret for the isolated sync job; it is never committed or logged.
 - Chat transcripts are not written to a database, file, analytics service, or application log.
 - Gemini interactions use `store: false`; provider-side abuse monitoring and service policies may still apply.
 - Obvious SSNs, Luhn-valid card numbers, password disclosures, bank-account context with long numbers, and large private-document-like pastes are blocked before Gemini.

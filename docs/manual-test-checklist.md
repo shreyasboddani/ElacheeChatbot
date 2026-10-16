@@ -90,4 +90,4 @@ For each follow-up:
 - [ ] Public-page removal requires `knowledge/source/approved-removals.json` approval.
 - [ ] Refreshes change only generated knowledge and the runtime manifest.
 - [ ] Tests, lint, build, and diff checks pass before the bot pushes `main`.
-- [ ] GitHub Actions never exposes the Gemini key in logs or repository content.
+- [ ] Only the `knowledge-production` sync job receives the Gemini key as an environment secret; the key never appears in logs or repository content.

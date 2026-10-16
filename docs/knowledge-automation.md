@@ -1,6 +1,6 @@
 # Knowledge automation setup and operations
 
-The automation keeps all Gemini credentials in Vercel only. GitHub Actions crawls and validates public website content without any Gemini or Vercel secret. Production deployments validate and build the app; a protected Vercel Cron job uses Vercel's server-side configuration to reconcile Gemini File Search after deployment.
+The crawler job handles public Elachee content without credentials. After an approved knowledge commit, a separate `knowledge-production` GitHub Actions environment synchronizes the corpus to Gemini File Search. Vercel keeps its own Gemini key for grounded chat and a daily Cron retry/reconciliation.
 
 ## Workflow sequence
 
@@ -8,14 +8,14 @@ The automation keeps all Gemini credentials in Vercel only. GitHub Actions crawl
 2. It crawls only public Elachee pages, rejects off-domain fetch and redirect targets, revalidates every previously approved URL first, preserves unchanged timestamps, prepares the corpus, and runs the knowledge verifier. Curated public-reference source files have pinned SHA-256 hashes; refresh preparation verifies those hashes and records a second hash for each generated reference document. The verifier checks both hashes, and the workflow watches both source and runtime manifests, so references cannot silently disappear or be changed by the crawl.
 3. Failed, incomplete, redirected, missing, or suspiciously shrunken approved pages retain their last-known-good documents and appear in `retainedPages`. A permanent removal requires a canonical URL already committed to `knowledge/source/approved-removals.json` after human review.
 4. Optional Elachee staff FAQ and official-document sources are kept outside the public-site crawl; the website crawler neither invents nor removes them.
-5. If deterministic crawl health and prepared retrieval content are unchanged, the workflow creates no commit. No Vercel deployment or Gemini request occurs.
+5. If deterministic crawl health and prepared retrieval content are unchanged, the workflow creates no commit and skips the GitHub synchronization job. Vercel's independent daily Cron remains available to retry a partial synchronization.
 6. If content changed, GitHub verifies that only generated files changed, rejects tracked or newly created staff-FAQ changes, counts tracked and untracked prepared documents toward the 20-document automatic limit, and runs all tests, lint, production build, and diff checks. Every deletion must be a website Markdown document and stay within a separate five-document automatic-removal cap.
 7. Immediately before committing, it fetches `origin/main`. If `main` advanced during validation, it exits instead of rebasing or overwriting newer work. Otherwise, the knowledge bot creates a normal commit directly on `main` and pushes without force.
-8. Vercel's Git integration starts a Production deployment for the new `main` commit. `vercel.json` selects `npm run build:vercel`.
-9. The production build verifies the committed corpus and runs `next build`; it never waits for Gemini indexing or requires a Gemini key.
-10. Vercel Cron invokes `/api/knowledge/sync` daily. The protected route uses only Vercel's `GEMINI_API_KEY` and `GEMINI_FILE_SEARCH_STORE`, starts missing replacements without waiting for indexing, and deletes stale managed copies only on a later run after every replacement is active. Preview and Development builds never mutate Gemini.
+8. After a knowledge commit, the refresh workflow calls `Reconcile approved Gemini knowledge` with that exact revision. This isolated job uses the `knowledge-production` environment, verifies the corpus, runs the safety checks, then applies `knowledge:sync -- --reconcile --apply` to the configured File Search store.
+9. Vercel's Git integration starts a Production deployment for the new `main` commit. `vercel.json` selects `npm run build:vercel`; the build verifies the corpus and runs `next build` without mutating Gemini.
+10. Vercel Cron independently invokes `/api/knowledge/sync` daily as a retry/reconciliation path. It uses Vercel's `GEMINI_API_KEY` and `GEMINI_FILE_SEARCH_STORE`, starts missing replacements without waiting for indexing, and deletes stale managed copies only on a later run after every replacement is active. Preview and Development builds never mutate Gemini.
 
-The GitHub workflow never receives, references, or logs the Gemini key. Crawl timestamps remain in audit data and the source manifest but are omitted from retrieval text, preventing timestamp-only changes from consuming indexing quota.
+The crawler job never receives Gemini credentials. Only the protected sync job receives `GEMINI_API_KEY` as an environment secret, limited to configuration validation and the sync step; the key is not written to the repository or logs. Crawl timestamps remain in audit data and the source manifest but are omitted from retrieval text, preventing timestamp-only changes from consuming indexing quota.
 
 ## Curated reference maintenance
 
@@ -29,7 +29,9 @@ When intentionally editing one of these fact sheets, verify its claims against t
 
 1. In **Settings -> Actions -> General -> Workflow permissions**, allow read and write access so the workflow can push its bounded generated commit to `main`.
 2. If `main` is protected, allow this workflow to push only after its repository safety gate succeeds. Never enable force pushes.
-3. Do not add `GEMINI_API_KEY`, `GEMINI_FILE_SEARCH_STORE`, or a Vercel Deploy Hook to GitHub. They are unnecessary for this design.
+3. Create the **`knowledge-production`** environment and limit deployments to the `main` branch.
+4. Add `GEMINI_API_KEY` as an environment secret, using the same Gemini key configured in Vercel. The crawler job does not receive it.
+5. Add `GEMINI_FILE_SEARCH_STORE` as an environment variable with the exact existing `fileSearchStores/...` resource name. Keep this value aligned with Vercel.
 
 ### Vercel
 
@@ -43,18 +45,19 @@ Add these values to the Vercel **Production** environment:
 | Variable | `NEXT_PUBLIC_SITE_URL` | Stable public deployment origin. |
 | Sensitive | `CRON_SECRET` | Random value (16+ characters) used only by Vercel to authorize `/api/knowledge/sync`. |
 
-The key must never use the `NEXT_PUBLIC_` prefix. Vercel makes environment variables available during builds and Function execution, while keeping sensitive values outside repository files. Variable changes apply only to new deployments.
+The key must never use the `NEXT_PUBLIC_` prefix. Vercel makes environment variables available during builds and Function execution, while keeping sensitive values outside repository files. Variable changes apply only to new deployments. The protected GitHub sync environment uses its own secret and variable entries; changing Vercel settings does not update GitHub Actions settings automatically.
 
-Vercel automatically sends `CRON_SECRET` as the authorization header for the configured daily Cron invocation. The Gemini key must never use the `NEXT_PUBLIC_` prefix and is never added to GitHub. Changing the Gemini key or store in Vercel takes effect after the next production deployment, with no GitHub secret or workflow change required.
+Vercel automatically sends `CRON_SECRET` as the authorization header for the configured daily Cron invocation. The Gemini key must never use the `NEXT_PUBLIC_` prefix. The same key is stored separately as a protected GitHub environment secret for the sync workflow; update both secure settings when rotating the key. Vercel environment changes take effect after the next Production deployment, while GitHub environment changes apply to the next sync run.
 
 ## Initial and periodic checks
 
 1. Push the automation and verified corpus to `main`.
-2. Confirm the Vercel Production build log runs `knowledge:verify` and then `next build` without a File Search synchronization step.
-3. Confirm the Vercel Cron Job at `/api/knowledge/sync` reports `indexing` or `synchronized`; a later run removes stale managed copies after pending replacements become active.
-4. Run **Actions -> Detect and commit website knowledge updates -> Run workflow**.
-5. Confirm an unchanged crawl completes without creating a commit.
-6. Confirm the deployed `/api/health`, one grounded question, one follow-up, source cards, and a contact fallback.
+2. Confirm a changed crawl triggers the protected `Reconcile approved Gemini knowledge` job and that it reports a successful sync.
+3. Confirm the Vercel Production build verifies the corpus and runs `next build` without mutating File Search.
+4. Confirm the Vercel Cron Job at `/api/knowledge/sync` reports `indexing` or `synchronized`; a later run removes stale managed copies after pending replacements become active.
+5. Run **Actions -> Reconcile approved Gemini knowledge -> Run workflow** for a safe manual reconciliation.
+6. Confirm an unchanged scheduled crawl completes without creating a commit or invoking the GitHub sync job.
+7. Confirm the deployed `/api/health`, one grounded question, one follow-up, source cards, and a contact fallback.
 
 ## Permanent page removal
 
@@ -71,7 +74,7 @@ Removal approvals accept only canonical public `elachee.org` HTML routes. The pu
 
 If Elachee's website platform supports outgoing webhooks, configure a trusted integration to send the GitHub `repository_dispatch` event type `elachee-website-updated`. Its credential should have only permission to dispatch the workflow. The same crawl, change cap, tests, and main-race check apply.
 
-Without a webhook, GitHub checks at 09:17 and 15:17 UTC. At least one successful scheduled crawl is allowed each UTC day; if the first check fails or is delayed, the backup can run. It must fetch the public site to discover updates, but an unchanged check creates no commit and therefore no deployment or Gemini request. Scheduled jobs can be delayed, so this provides eventual rather than exact-time synchronization.
+Without a webhook, GitHub checks at 09:17 and 15:17 UTC. At least one successful scheduled crawl is allowed each UTC day; if the first check fails or is delayed, the backup can run. It must fetch the public site to discover updates, but an unchanged check creates no commit and skips the GitHub File Search sync. Vercel's daily Cron still performs its independent retry/reconciliation. Scheduled jobs can be delayed, so this provides eventual rather than exact-time synchronization.
 
 ## Manual commands
 

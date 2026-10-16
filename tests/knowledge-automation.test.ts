@@ -648,6 +648,7 @@ describe("deployment automation configuration", () => {
     const workflowFiles = [
       ".github/workflows/ci.yml",
       ".github/workflows/knowledge-refresh.yml",
+      ".github/workflows/knowledge-sync.yml",
     ];
     for (const filePath of workflowFiles) {
       const source = readFileSync(filePath, "utf8");
@@ -688,13 +689,28 @@ describe("deployment automation configuration", () => {
       /knowledge_changes="\$\(git status --porcelain --untracked-files=all/,
     );
     expect(refresh).toContain('git push origin HEAD:main');
-    expect(refresh).toContain("Vercel will reconcile Gemini");
+    expect(refresh).toContain("uses: ./.github/workflows/knowledge-sync.yml");
+    expect(refresh).toContain("needs.refresh.outputs.changed == 'true'");
+    expect(refresh).toContain("revision=$revision");
     expect(refresh).toContain("knowledge/generated/sources.json");
     expect(refresh).toContain("src/generated/knowledge-manifest.json");
     expect(refresh).not.toContain("pull-requests: write");
     expect(refresh).not.toContain("gh pr");
     expect(refresh).not.toContain("GEMINI_API_KEY");
     expect(refresh).not.toContain("knowledge:sync");
+
+    const sync = readFileSync(
+      ".github/workflows/knowledge-sync.yml",
+      "utf8",
+    );
+    expect(sync).toContain("workflow_dispatch:");
+    expect(sync).toContain("workflow_call:");
+    expect(sync).toContain("environment: knowledge-production");
+    expect(sync).toContain("secrets.GEMINI_API_KEY");
+    expect(sync).toContain("vars.GEMINI_FILE_SEARCH_STORE");
+    expect(sync).toContain("inputs.revision || github.sha");
+    expect(sync).toContain("npm run knowledge:sync -- --reconcile --apply");
+    expect(sync).toContain("npm run knowledge:verify");
   });
 
   it("keeps Vercel deployments credential-free and schedules background reconciliation", () => {
