@@ -183,24 +183,29 @@ describe("grounding prompt", () => {
     expect(retrievalResultLimit(request)).toBe(10);
   });
 
-  it("gives every English and Spanish preset question broad retrieval", () => {
+  it("uses broad retrieval for featured presets and efficient retrieval for general family activities", () => {
     const expectedCategories = [
-      "visit",
+      "hours",
       "trails",
       "programs",
       "fieldTrips",
       "events",
-      "hours",
+      undefined,
     ];
     for (const language of ["en", "es"] as const) {
       for (const [index, action] of CHAT_UI_COPY[language].quickActions.entries()) {
+        const isFeatured = expectedCategories[index] !== undefined;
         const request = {
           message: action.question,
           history: [],
           language,
         };
-        expect(responseTokenLimit(request), `${language}: ${action.label}`).toBe(384);
-        expect(retrievalResultLimit(request), `${language}: ${action.label}`).toBe(10);
+        expect(responseTokenLimit(request), `${language}: ${action.label}`).toBe(
+          isFeatured ? 384 : 224,
+        );
+        expect(retrievalResultLimit(request), `${language}: ${action.label}`).toBe(
+          isFeatured ? 10 : 6,
+        );
         expect(featuredQuestion(action.question), `${language}: ${action.label}`).toBe(
           expectedCategories[index],
         );

@@ -55,7 +55,7 @@ describe("ChatPanel request pipeline", () => {
     vi.stubGlobal("fetch", fetchMock);
     render(<ChatPanel onMinimize={vi.fn()} onClose={vi.fn()} />);
 
-    fireEvent.click(screen.getByRole("button", { name: "Plan my visit" }));
+    fireEvent.click(screen.getByRole("button", { name: "Hours: center & trails" }));
     await waitFor(() => expect(fetchMock).toHaveBeenCalledTimes(1));
     const init = fetchMock.mock.calls[0]?.[1] as RequestInit;
     expect(init.headers).toEqual({
@@ -169,7 +169,7 @@ describe("ChatPanel request pipeline", () => {
     expect(screen.getByText(/Puedo ayudarte a encontrar informaci.n aprobada/i)).toBeDefined();
     expect(screen.getByLabelText(/Preg.ntale a la Gu.a de Naturaleza de Elachee/i)).toBeDefined();
 
-    fireEvent.click(screen.getByRole("button", { name: "Planificar mi visita" }));
+    fireEvent.click(screen.getByRole("button", { name: "Horarios: centro y senderos" }));
     await waitFor(() => expect(fetchMock).toHaveBeenCalledTimes(1));
     const init = fetchMock.mock.calls[0]?.[1] as RequestInit;
     expect(init.headers).toEqual({

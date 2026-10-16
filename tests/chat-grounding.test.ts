@@ -2,6 +2,7 @@ import { describe, expect, it, vi } from "vitest";
 
 import {
   askGroundedQuestion,
+  featuredQuestion,
   interpretGroundedInteraction,
 } from "@/lib/gemini/chat";
 import { ELACHEE } from "@/lib/config";
@@ -351,9 +352,10 @@ describe("grounded interaction interpretation", () => {
     ]);
   });
 
-  it("retries each preset topic with a focused File Search query when the first search misses", async () => {
+  it("retries featured presets and leaves general family-activities questions unfeatured", async () => {
     for (const language of ["en", "es"] as const) {
       for (const action of CHAT_UI_COPY[language].quickActions) {
+        const shouldRetry = featuredQuestion(action.question) !== undefined;
         const client = {
           create: vi.fn().mockResolvedValue(interaction("not_found")),
         };
@@ -367,10 +369,14 @@ describe("grounded interaction interpretation", () => {
           },
         );
 
-        expect(client.create, `${language}: ${action.label}`).toHaveBeenCalledTimes(2);
-        const focusedQuery = client.create.mock.calls[1]?.[0].input[0];
-        expect(focusedQuery?.type, `${language}: ${action.label}`).toBe("user_input");
-        expect(focusedQuery?.content[0]?.text, `${language}: ${action.label}`).toMatch(/Elachee|Chicopee Woods/);
+        expect(client.create, `${language}: ${action.label}`).toHaveBeenCalledTimes(
+          shouldRetry ? 2 : 1,
+        );
+        if (shouldRetry) {
+          const focusedQuery = client.create.mock.calls[1]?.[0].input[0];
+          expect(focusedQuery?.type, `${language}: ${action.label}`).toBe("user_input");
+          expect(focusedQuery?.content[0]?.text, `${language}: ${action.label}`).toMatch(/Elachee|Chicopee Woods/);
+        }
       }
     }
   });
@@ -458,7 +464,7 @@ describe("grounded interaction interpretation", () => {
     const result = await askGroundedQuestion(
       client,
       {
-        message: CHAT_UI_COPY.es.quickActions[5].question,
+        message: CHAT_UI_COPY.es.quickActions[0].question,
         history: [],
         language: "es",
       },

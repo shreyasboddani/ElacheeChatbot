@@ -21,7 +21,7 @@ describe("client chat request builder", () => {
   });
 
   it("sends a quick action through the same payload builder", () => {
-    const action = QUICK_ACTIONS.find(({ label }) => label === "Plan my visit");
+    const action = QUICK_ACTIONS.find(({ label }) => label === "Hours: center & trails");
     expect(action).toBeDefined();
     expect(buildChatRequest(action?.question, [])).toEqual({
       success: true,

@@ -54,7 +54,7 @@ describe("chat input and quick actions", () => {
   it("sends quick actions as natural-language strings", () => {
     const onSelect = vi.fn();
     render(<QuickActions onSelect={onSelect} />);
-    fireEvent.click(screen.getByRole("button", { name: "Plan my visit" }));
+    fireEvent.click(screen.getByRole("button", { name: "Hours: center & trails" }));
     expect(onSelect).toHaveBeenCalledWith(CHAT_UI_COPY.en.quickActions[0].question);
     expect(typeof onSelect.mock.calls[0]?.[0]).toBe("string");
   });
@@ -68,7 +68,7 @@ describe("chat input and quick actions", () => {
       </>,
     );
     expect(screen.getByLabelText(/Preg.ntale a la Gu.a de Naturaleza de Elachee/i)).toBeDefined();
-    fireEvent.click(screen.getByRole("button", { name: "Planificar mi visita" }));
+    fireEvent.click(screen.getByRole("button", { name: "Horarios: centro y senderos" }));
     expect(onSelect).toHaveBeenCalledWith(CHAT_UI_COPY.es.quickActions[0].question);
   });
 });

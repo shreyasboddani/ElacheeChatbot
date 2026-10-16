@@ -61,33 +61,34 @@ export const CHAT_UI_COPY = {
       "Resize chat. Drag the corner, or use arrow keys while focused.",
     quickActions: [
       {
-        label: "Plan my visit",
+        label: "Hours: center & trails",
         question:
-          "Help me plan a visit to Elachee: what are the Visitor Center and trail hours, what does each cost, and what should I know before I go?",
+          "What days and times are Elachee's Visitor Center and exhibits open, separately from Chicopee Woods trail hours? Include admission and parking costs separately.",
       },
       {
-        label: "Trail information",
+        label: "Choose a trail",
         question:
-          "What hiking trails are in Chicopee Woods, how long are they, and what should I know before choosing one?",
+          "Which Chicopee Woods trail suits a short or stroller-friendly walk, and which trails are longer or harder? Are dogs allowed?",
       },
       {
-        label: "Camps & programs",
+        label: "Programs for my child",
         question:
-          "Compare Elachee's camps and programs by age group and schedule, and tell me where to check registration.",
+          "Which Elachee program fits my child's age—Sprouts, Nature Academy, Camp Elachee, or Homeschool Programs—and where can I check current dates and registration?",
       },
       {
-        label: "Field trips",
+        label: "School field trips",
         question:
-          "What field-trip topics and formats does Elachee offer, for which grade levels, and how do I request a trip?",
+          "How do Elachee school field trips work for Pre-K through grade 12? What topics and formats are offered, and how does a teacher request a date?",
       },
       {
         label: "Upcoming events",
-        question: "What upcoming Elachee events have confirmed future dates?",
+        question:
+          "Which Elachee events have confirmed upcoming dates, and where can I find details or registration?",
       },
       {
-        label: "Hours & admission",
+        label: "Things to do with kids",
         question:
-          "What are the Visitor Center and Chicopee Woods trail hours, and what are the separate admission and parking costs?",
+          "What's there for kids and families to do at Elachee—what exhibits, animal encounters, and outdoor activities are available?",
       },
     ],
   },
@@ -130,33 +131,34 @@ export const CHAT_UI_COPY = {
       "Cambiar el tamaño del chat. Arrastra la esquina o usa las flechas del teclado.",
     quickActions: [
       {
-        label: "Planificar mi visita",
+        label: "Horarios: centro y senderos",
         question:
-          "Ayúdame a planear una visita a Elachee: ¿cuáles son los horarios del Centro de Visitantes y los senderos, cuánto cuesta cada uno y qué debo saber?",
+          "¿Qué días y a qué horas abren el Centro de Visitantes y las exhibiciones de Elachee, y cuáles son los horarios de los senderos de Chicopee Woods? Incluye por separado los costos de admisión y estacionamiento.",
       },
       {
-        label: "Información de senderos",
+        label: "Elegir un sendero",
         question:
-          "¿Qué senderos hay en Chicopee Woods, cuánto mide cada uno y qué debo saber antes de elegir?",
+          "¿Qué sendero de Chicopee Woods conviene para una caminata corta o con cochecito, y qué opciones hay para recorridos más largos? ¿Se permiten perros?",
       },
       {
-        label: "Campamentos y programas",
+        label: "Programas por edad",
         question:
-          "Compara los campamentos y programas de Elachee por edades y horarios, y dime dónde consultar la inscripción.",
+          "¿Qué programa de Elachee se ajusta a la edad de mi hijo? Compara Sprouts, Nature Academy, Camp Elachee y Homeschool Programs, y dime dónde consultar las fechas y la inscripción actuales.",
       },
       {
         label: "Excursiones escolares",
         question:
-          "¿Qué temas y formatos ofrecen las excursiones escolares de Elachee, para qué grados y cómo solicito una?",
+          "¿Cómo son las excursiones escolares de Elachee para Pre-K hasta 12.º grado? ¿Qué temas y formatos ofrecen y cómo puede un docente solicitar una fecha?",
       },
       {
         label: "Próximos eventos",
-        question: "¿Qué próximos eventos de Elachee tienen fechas futuras confirmadas?",
+        question:
+          "¿Qué próximos eventos de Elachee tienen fechas confirmadas, y dónde puedo consultar los detalles o la inscripción?",
       },
       {
-        label: "Horarios y admisión",
+        label: "Qué hacer con niños",
         question:
-          "¿Cuáles son los horarios del Centro de Visitantes y los senderos de Chicopee Woods, y cuáles son los costos separados de admisión y estacionamiento?",
+          "¿Qué pueden hacer las familias en Elachee, con exhibiciones, animales y actividades al aire libre?",
       },
     ],
   },
