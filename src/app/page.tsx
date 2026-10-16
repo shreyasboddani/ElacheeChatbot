@@ -147,23 +147,15 @@ export default function Home() {
 
       <section className="integration-section" id="integration">
         <div>
-          <p className="eyebrow"><span /> Framework-independent integration</p>
-          <h2>One script tag, isolated from the host site.</h2>
+          <p className="eyebrow"><span /> Simple website integration</p>
+          <h2>Add Elachee with one script tag.</h2>
           <p>
-            The loader creates its own floating control and secure iframe, so a
-            website manager can test it on WordPress, Squarespace, or a custom
-            site without adding React.
+            Paste this line into your website&apos;s shared footer or global code
+            area. On WordPress, use WPCode&apos;s Footer field; on other platforms,
+            use the equivalent site-wide setting.
           </p>
         </div>
-        <pre aria-label="Widget integration example"><code>{`<script
-  async
-  src="https://elachee-chatbot.vercel.app/widget-loader.js"
-  data-chatbot-url="https://elachee-chatbot.vercel.app/embed"
-  data-position="bottom-left"
-  data-label="Ask Elachee"
-  data-prompt="visible"
-  data-prompt-text="Ask Elachee chatbot">
-</script>`}</code></pre>
+        <pre aria-label="Widget integration example"><code>{'<script async src="https://elachee-chatbot.vercel.app/widget-loader.js"></script>'}</code></pre>
       </section>
 
       <footer className="demo-footer">

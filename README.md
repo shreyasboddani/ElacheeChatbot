@@ -35,7 +35,7 @@ knowledge/generated/     Crawl, FAQ, prepared corpus, and sync reports
 scripts/                 Offline crawl, parse, prepare, and File Search tools
 public/widget-loader.js  Dependency-free host-site integration
 tests/                   Vitest coverage for trust-boundary logic
-docs/                    Manual test checklist
+docs/                    Widget installation guide and manual test checklist
 ```
 
 Runtime visitor questions never trigger website crawling. The chat route calls Gemini's current Interactions API with exactly one tool: the configured File Search store. It uses `store: false`, requests a constrained JSON result, and separately maps File Search annotations to the checked-in source manifest. An `answered` response is released only when at least one citation maps to an approved source.
@@ -305,21 +305,13 @@ The iframe should be served from the deployed chatbot origin so its `/api/chat` 
 
 ## Floating widget integration
 
-Add this before the host page's closing `</body>` tag or through its approved script-injection area:
+Add this once through the host site's global footer or approved script-injection area:
 
 ```html
-<script
-  async
-  src="https://elachee-chatbot.vercel.app/widget-loader.js"
-  data-chatbot-url="https://elachee-chatbot.vercel.app/embed"
-  data-position="bottom-right"
-  data-label="Ask Elachee"
-  data-prompt="visible"
-  data-prompt-text="Ask Elachee chatbot">
-</script>
+<script async src="https://elachee-chatbot.vercel.app/widget-loader.js"></script>
 ```
 
-The loader has no dependencies, uses a Shadow DOM boundary when available, locks the iframe to the loader's own HTTPS origin, and constrains position/theme values. It does not assume React, Next.js, WordPress, Squarespace, or another host framework.
+The loader has no dependencies, uses a Shadow DOM boundary when available, locks the iframe to the loader's own HTTPS origin, and defaults to the bottom-left launcher. The `data-*` options are optional. See [the quick installation guide](docs/widget-installation.md) for WordPress and generic websites.
 
 When the launcher remains closed, a small “Need help?” suggestion appears after 2.2 seconds, never takes focus, disappears after 9 seconds, and can be dismissed or clicked to open the chat. A single `sessionStorage` boolean prevents it from repeating during the browser session; no visitor message or personal information is stored. The suggestion is enabled by default. Set `data-prompt="hidden"` to disable it, or customize its secondary line with a plain-text `data-prompt-text` value of up to 80 characters. Custom text is assigned with `textContent`, not interpreted as HTML.
 
