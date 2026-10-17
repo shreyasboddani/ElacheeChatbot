@@ -3,7 +3,7 @@
 Source ID: web-memberships-2a3ecf3e
 Source type: official_website
 Canonical URL: https://elachee.org/memberships
-Fetched at: 2026-09-22T19:11:27.959Z
+Fetched at: 2026-10-17T13:00:48.592Z
 
 ## Page content
 
@@ -141,7 +141,7 @@ A Elachee Nature Science Center membership is a way to stay connected, support e
 - https://elachee.org/memberships: https://elachee.org/memberships
 - Back to top: https://elachee.org/memberships
 - See Comparison Chart: https://elachee.org/memberships
-- Become A Member: https://elachee.org/memberships
+- Become A Member: https://elachee.org/
 - About Us: https://elachee.org/about-us
 - Privacy Policy: https://elachee.org/privacy-policy
 - Sitemap: https://elachee.org/sitemap

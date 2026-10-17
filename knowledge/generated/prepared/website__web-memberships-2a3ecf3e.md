@@ -147,7 +147,7 @@ A Elachee Nature Science Center membership is a way to stay connected, support e
 - https://elachee.org/memberships: https://elachee.org/memberships
 - Back to top: https://elachee.org/memberships
 - See Comparison Chart: https://elachee.org/memberships
-- Become A Member: https://elachee.org/memberships
+- Become A Member: https://elachee.org/
 - About Us: https://elachee.org/about-us
 - Privacy Policy: https://elachee.org/privacy-policy
 - Sitemap: https://elachee.org/sitemap
