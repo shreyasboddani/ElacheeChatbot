@@ -3,7 +3,7 @@
 Source ID: web-visit-d7e65d48
 Source type: official_website
 Canonical URL: https://elachee.org/visit
-Fetched at: 2026-09-22T19:11:24.779Z
+Fetched at: 2026-10-26T16:10:31.806Z
 
 ## Page content
 
@@ -76,7 +76,7 @@ Location
 Elachee Nature Science Center
 2125 Elachee Drive, Gainesville, GA 30504
 Hours
-Mon-Fri: 12 PM – 3 PM
+Wed-Fri: 12 PM – 3 PM
 Sat: 10 AM – 4 PM
 Sun, Mon & Tues: CLOSED
 Open daily,

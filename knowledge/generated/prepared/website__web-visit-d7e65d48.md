@@ -91,7 +91,7 @@ Location
 Elachee Nature Science Center
 2125 Elachee Drive, Gainesville, GA 30504
 Hours
-Mon-Fri: 12 PM – 3 PM
+Wed-Fri: 12 PM – 3 PM
 Sat: 10 AM – 4 PM
 Sun, Mon & Tues: CLOSED
 Open daily,

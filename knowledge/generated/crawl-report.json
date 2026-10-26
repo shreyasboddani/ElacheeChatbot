@@ -1,6 +1,6 @@
 {
   "startedFrom": "https://elachee.org",
-  "crawledAt": "2026-10-17T13:02:19.364Z",
+  "crawledAt": "2026-10-26T16:11:12.287Z",
   "maxPages": 150,
   "indexedPages": [
     {
@@ -337,7 +337,7 @@
       "id": "web-visit-d7e65d48",
       "title": "Visit",
       "url": "https://elachee.org/visit",
-      "fetchedAt": "2026-09-22T19:11:24.779Z"
+      "fetchedAt": "2026-10-26T16:10:31.806Z"
     },
     {
       "id": "web-visit-elachee-for-grown-ups-2e62e0a8",
