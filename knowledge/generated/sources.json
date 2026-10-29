@@ -780,6 +780,16 @@
     "priority": 50
   },
   {
+    "id": "web-year-end-f5f30537",
+    "fileName": "website__web-year-end-f5f30537.md",
+    "documentPath": "knowledge/generated/prepared/website__web-year-end-f5f30537.md",
+    "title": "Elachee Year-End Giving",
+    "url": "https://elachee.org/year-end",
+    "fetchedAt": "2026-10-29T16:12:54.704Z",
+    "sourceType": "official_website",
+    "priority": 50
+  },
+  {
     "id": "visitor-hours",
     "fileName": "official_reference__visitor-hours.md",
     "documentPath": "knowledge/generated/prepared/official_reference__visitor-hours.md",

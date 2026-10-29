@@ -1,6 +1,6 @@
 {
   "startedFrom": "https://elachee.org",
-  "crawledAt": "2026-10-26T16:11:12.287Z",
+  "crawledAt": "2026-10-29T16:13:27.355Z",
   "maxPages": 150,
   "indexedPages": [
     {
@@ -470,6 +470,12 @@
       "title": "Young Explorers Club",
       "url": "https://elachee.org/upcoming-event/young-explorers-club",
       "fetchedAt": "2026-09-22T19:34:51.143Z"
+    },
+    {
+      "id": "web-year-end-f5f30537",
+      "title": "Elachee Year-End Giving",
+      "url": "https://elachee.org/year-end",
+      "fetchedAt": "2026-10-29T16:12:54.704Z"
     }
   ],
   "failedPages": [],
@@ -630,5 +636,5 @@
   "blockedPages": [],
   "retainedPages": [],
   "approvedRemovedPages": [],
-  "totalIndexed": 78
+  "totalIndexed": 79
 }
