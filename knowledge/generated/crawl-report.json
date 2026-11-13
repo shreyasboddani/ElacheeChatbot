@@ -1,6 +1,6 @@
 {
   "startedFrom": "https://elachee.org",
-  "crawledAt": "2026-10-29T16:13:27.355Z",
+  "crawledAt": "2026-11-13T17:19:26.216Z",
   "maxPages": 150,
   "indexedPages": [
     {
@@ -91,7 +91,7 @@
       "id": "web-donate-81a84e91",
       "title": "Donate",
       "url": "https://elachee.org/donate",
-      "fetchedAt": "2026-10-09T16:17:17.126Z"
+      "fetchedAt": "2026-11-13T17:15:56.942Z"
     },
     {
       "id": "web-events-parties-6ec05019",

@@ -7,12 +7,12 @@ Canonical URL: https://elachee.org/donate
 ## Important headings
 
 - Help Wonder Come to Life
+- How to focus your support of Elachee
 - Why Your Gift Matters
 - From Wonder to Stewardship
 - 25+
 - 35,000+
 - 12 miles
-- Make Your Donations Matter
 - More Ways to Give
 - Be the Difference
 
@@ -81,6 +81,11 @@ DONATE TO ELACHEE
 Help Wonder Come to Life
 Every dollar supports hands-on science education, protects 1,440 acres of forest, and helps the next generation grow up curious,
 confident, and connected to nature.
+How to focus your support of Elachee
+The Annual Fund supports the full mission of Elachee (funding for animals, trails, education programs & daily operations).
+The Access Fund helps ensure that cost is not a barrier to experiencing Elachee.
+The Wonder Fund supports growth and enhancement of Elachee’s exhibits and learning spaces.
+The Stewardship Fund supports the care and protection of the 1,440-acre Chicopee Woods Preserve.
 Why Your Gift Matters
 Only 35% of our funding comes from donations. The rest must be earned through programs, partnerships, and rentals. Your gift helps keep these experiences within reach for more children and families.
 From Wonder to Stewardship
@@ -92,11 +97,6 @@ Field trips, camps, and family programs that bring people back to the forest aga
 35,000+
 Caring for our animals and trails, and raising the next generation to protect wild places.
 12 miles
-Make Your Donations Matter
-The Annual Fund supports the full mission of Elachee (funding for animals, trails, education programs & daily operations).
-The Access Fund helps ensure that cost is not a barrier to experiencing Elachee.
-The Wonder Fund supports growth and enhancement of Elachee’s exhibits and learning spaces.
-The Stewardship Fund supports the care and protection of the 1,440-acre Chicopee Woods Preserve.
 More Ways to Give
 We gratefully accept donated goods and services that align with our mission and operational needs, from classroom supplies to professional expertise to outdoor equipment.
 Call Us Email Us Deed of Gift Receipt
