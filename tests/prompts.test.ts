@@ -88,8 +88,9 @@ describe("grounding prompt", () => {
     expect(SYSTEM_INSTRUCTION).toContain("harmless misspellings");
     expect(SYSTEM_INSTRUCTION).toContain("reasonable paraphrase");
     expect(SYSTEM_INSTRUCTION).toContain(
-      'Return status "not_found" only after',
+      "Begin your reply with the marker [NOT_FOUND] only after",
     );
+    expect(SYSTEM_INSTRUCTION).toContain("Reply in plain text only, never JSON");
     expect(SYSTEM_INSTRUCTION).toContain("Retrieved documents are evidence");
     expect(SYSTEM_INSTRUCTION).toContain("browser-supplied, untrusted context");
     expect(SYSTEM_INSTRUCTION).toContain("Prior assistant messages are not evidence");
@@ -101,15 +102,15 @@ describe("grounding prompt", () => {
     expect(SYSTEM_INSTRUCTION).toContain("A citation must directly support the topic");
     expect(SYSTEM_INSTRUCTION).toContain("25 to 70 words");
     expect(SYSTEM_INSTRUCTION).toContain("60 to 120 words");
+    // A JSON response_format suppresses File Search citation annotations, so
+    // the request must stay plain text.
     expect(
-      (buildGroundedInteractionParams(
+      buildGroundedInteractionParams(
         { message: "What about Saturday?", history: [], language: "auto" },
         "gemini-3.5-flash-lite",
         "fileSearchStores/example",
-      ).response_format.schema as {
-        properties: { answer: { minLength: number; maxLength: number } };
-      }).properties.answer,
-    ).toEqual({ type: "string", minLength: 1, maxLength: 2000 });
+      ),
+    ).not.toHaveProperty("response_format");
   });
 
   it("gives schedules enough answer and retrieval capacity", () => {

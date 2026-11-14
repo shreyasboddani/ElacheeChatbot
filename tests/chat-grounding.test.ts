@@ -4,6 +4,7 @@ import {
   askGroundedQuestion,
   featuredQuestion,
   interpretGroundedInteraction,
+  parseModelReply,
 } from "@/lib/gemini/chat";
 import { ELACHEE } from "@/lib/config";
 import { CHAT_UI_COPY } from "@/lib/chat/language";
@@ -602,5 +603,73 @@ describe("grounded interaction interpretation", () => {
     expect(result.answer).toContain("couldn't confirm a specific upcoming event date");
     expect(result.sources[0]?.id).toBe("events-guide");
     expect(client.create).toHaveBeenCalledTimes(2);
+  });
+});
+
+describe("plain-text model replies", () => {
+  function plain(text: string, withCitation = true) {
+    return {
+      steps: [
+        {
+          type: "model_output",
+          content: [
+            {
+              type: "text" as const,
+              text,
+              annotations: withCitation
+                ? [{ type: "file_citation", file_name: staffSource.fileName }]
+                : [],
+            },
+          ],
+        },
+      ],
+    };
+  }
+
+  it("answers from an unmarked plain-text reply with citations", () => {
+    const result = interpretGroundedInteraction(
+      plain("We are open Wednesday through Saturday."),
+      [staffSource],
+    );
+    expect(result.status).toBe("answered");
+    expect(result.answer).toBe("We are open Wednesday through Saturday.");
+    expect(result.sources[0]?.id).toBe("office-hours");
+  });
+
+  it("maps the [NOT_FOUND] and [CONFLICT] markers to their statuses", () => {
+    expect(parseModelReply("[NOT_FOUND] No confirmed answer.")).toEqual({
+      status: "not_found",
+      answer: "No confirmed answer.",
+    });
+    expect(parseModelReply("  [conflict]\nSources disagree.")).toEqual({
+      status: "conflicting_information",
+      answer: "Sources disagree.",
+    });
+    const result = interpretGroundedInteraction(
+      plain("[NOT_FOUND] No confirmed answer."),
+      [staffSource],
+    );
+    expect(result.status).toBe("not_found");
+    expect(result.answer).toContain(ELACHEE.contact.phone);
+  });
+
+  it("still accepts the legacy JSON envelope", () => {
+    expect(parseModelReply('{"status":"answered","answer":"Hi."}')).toEqual({
+      status: "answered",
+      answer: "Hi.",
+    });
+  });
+
+  it("does not trust an uncited plain-text answer", () => {
+    const result = interpretGroundedInteraction(
+      plain("We are open every day.", false),
+      [staffSource],
+    );
+    expect(result.status).toBe("not_found");
+    expect(result.sources.some((source) => source.id === "office-hours")).toBe(false);
+  });
+
+  it("rejects empty replies", () => {
+    expect(parseModelReply("   ")).toBeUndefined();
   });
 });

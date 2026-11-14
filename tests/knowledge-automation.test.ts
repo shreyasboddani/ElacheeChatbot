@@ -689,7 +689,13 @@ describe("deployment automation configuration", () => {
       /knowledge_changes="\$\(git status --porcelain --untracked-files=all/,
     );
     expect(refresh).toContain('git push origin HEAD:main');
-    expect(refresh).toContain("uses: ./.github/workflows/knowledge-sync.yml");
+    // The sync must be dispatched as its own run: calling it with `uses:` left
+    // the knowledge-production environment secret empty.
+    expect(refresh).not.toContain("uses: ./.github/workflows/knowledge-sync.yml");
+    expect(refresh).toContain("gh workflow run knowledge-sync.yml");
+    expect(refresh).toContain('-f revision="$REVISION"');
+    expect(refresh).toContain("gh run watch");
+    expect(refresh).toContain("actions: write");
     expect(refresh).toContain("needs.refresh.outputs.changed == 'true'");
     expect(refresh).toContain("revision=$revision");
     expect(refresh).toContain("knowledge/generated/sources.json");
@@ -704,7 +710,8 @@ describe("deployment automation configuration", () => {
       "utf8",
     );
     expect(sync).toContain("workflow_dispatch:");
-    expect(sync).toContain("workflow_call:");
+    expect(sync).not.toContain("workflow_call:");
+    expect(sync).toContain("revision must be a full 40-character commit SHA");
     expect(sync).toContain("environment: knowledge-production");
     expect(sync).toContain("secrets.GEMINI_API_KEY");
     expect(sync).toContain("vars.GEMINI_FILE_SEARCH_STORE");

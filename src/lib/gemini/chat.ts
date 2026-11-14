@@ -198,11 +198,6 @@ export interface GroundedInteractionClient {
       max_output_tokens: number;
       thinking_level: "minimal";
     };
-    response_format: {
-      type: "text";
-      mime_type: "application/json";
-      schema: Record<string, unknown>;
-    };
   }): Promise<GroundedInteraction>;
 }
 
@@ -228,27 +223,43 @@ export function buildGroundedInteractionParams(
         top_k: retrievalResultLimit(request),
       },
     ],
-    response_format: {
-      type: "text" as const,
-      mime_type: "application/json" as const,
-      schema: {
-        type: "object",
-        additionalProperties: false,
-        properties: {
-          status: {
-            type: "string",
-            enum: ["answered", "not_found", "conflicting_information"],
-          },
-          answer: {
-            type: "string",
-            minLength: 1,
-            maxLength: MAX_ASSISTANT_ANSWER_LENGTH,
-          },
-        },
-        required: ["status", "answer"],
-      },
-    },
+    // Deliberately no JSON response_format: Gemini File Search returns no
+    // citation annotations when a structured-output schema is requested on
+    // multi-part questions, which made every correct answer look unverifiable.
+    // Plain text keeps the annotations; see parseModelReply for the markers.
   };
+}
+
+type ModelReply = z.infer<typeof modelPayloadSchema>;
+
+const REPLY_MARKER = /^\s*\[(NOT_FOUND|CONFLICT)\]\s*/i;
+
+// Accepts the plain-text reply protocol ("[NOT_FOUND] ...", "[CONFLICT] ...",
+// or an unmarked answer) and, for compatibility, the older JSON envelope.
+export function parseModelReply(text: string): ModelReply | undefined {
+  const trimmed = text.trim();
+  if (!trimmed) return undefined;
+
+  if (trimmed.startsWith("{")) {
+    try {
+      return modelPayloadSchema.parse(JSON.parse(trimmed));
+    } catch {
+      // Fall through and treat it as plain text.
+    }
+  }
+
+  const marker = REPLY_MARKER.exec(trimmed);
+  const body = (marker ? trimmed.slice(marker[0].length) : trimmed).trim();
+  const status = marker
+    ? marker[1].toUpperCase() === "NOT_FOUND"
+      ? "not_found"
+      : "conflicting_information"
+    : "answered";
+  const parsed = modelPayloadSchema.safeParse({
+    status,
+    answer: body || trimmed,
+  });
+  return parsed.success ? parsed.data : undefined;
 }
 
 export function interpretGroundedInteraction(
@@ -264,12 +275,8 @@ export function interpretGroundedInteraction(
   const annotations = textBlocks.flatMap((block) => block.annotations ?? []);
   const sources = resolveFileCitations(annotations, manifest);
 
-  let parsed: z.infer<typeof modelPayloadSchema>;
-  try {
-    parsed = modelPayloadSchema.parse(JSON.parse(text));
-  } catch {
-    return sourceVerificationFallback(undefined, language);
-  }
+  const parsed = parseModelReply(text);
+  if (!parsed) return sourceVerificationFallback(undefined, language);
 
   const hasAuthoritativeHoursSource = sources.some((source) => {
     if (

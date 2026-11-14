@@ -1,12 +1,15 @@
 name: Reconcile approved Gemini knowledge
 
 on:
+  # Started by hand or dispatched by the refresh workflow. It is deliberately
+  # NOT a reusable (workflow_call) workflow: environment secrets did not reach
+  # the called job, so GEMINI_API_KEY arrived empty and every sync failed.
   workflow_dispatch:
-  workflow_call:
     inputs:
       revision:
-        description: Exact verified main revision to reconcile
-        required: true
+        description: Exact verified main commit SHA to reconcile (defaults to the dispatched ref)
+        required: false
+        default: ""
         type: string
 
 permissions:
@@ -22,6 +25,17 @@ jobs:
     timeout-minutes: 45
     environment: knowledge-production
     steps:
+      - name: Validate requested revision
+        shell: bash
+        env:
+          REVISION: ${{ inputs.revision }}
+        run: |
+          set -euo pipefail
+          if [[ -n "$REVISION" && ! "$REVISION" =~ ^[0-9a-f]{40}$ ]]; then
+            echo "revision must be a full 40-character commit SHA."
+            exit 1
+          fi
+
       - name: Check out approved knowledge revision
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:

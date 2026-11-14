@@ -10,7 +10,7 @@ on:
       - elachee-website-updated
 
 permissions:
-  actions: read
+  actions: write
   contents: write
 
 concurrency:
@@ -194,6 +194,47 @@ jobs:
   reconcile:
     needs: refresh
     if: needs.refresh.outputs.changed == 'true'
-    uses: ./.github/workflows/knowledge-sync.yml
-    with:
-      revision: ${{ needs.refresh.outputs.revision }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 75
+    permissions:
+      actions: write
+      contents: read
+    steps:
+      # The protected sync runs as its own workflow_dispatch run so its
+      # `knowledge-production` environment secrets are available. Calling it
+      # with `uses:` left that environment's secret empty. This job holds no
+      # credentials; it only dispatches the exact verified revision and waits
+      # for the result.
+      - name: Dispatch and await protected Gemini reconciliation
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REVISION: ${{ needs.refresh.outputs.revision }}
+        run: |
+          set -euo pipefail
+
+          if [[ ! "$REVISION" =~ ^[0-9a-f]{40}$ ]]; then
+            echo "No verified revision was produced; refusing to dispatch the sync."
+            exit 1
+          fi
+
+          started="$(date -u +'%Y-%m-%dT%H:%M:%SZ')"
+          dispatch_output="$(gh workflow run knowledge-sync.yml --repo "$GITHUB_REPOSITORY" --ref main -f revision="$REVISION" 2>&1)"
+          echo "$dispatch_output"
+
+          run_id="$(grep -oE 'actions/runs/[0-9]+' <<< "$dispatch_output" | head -n1 | cut -d/ -f3 || true)"
+          for _ in $(seq 1 30); do
+            [[ -n "$run_id" ]] && break
+            sleep 5
+            run_id="$(gh run list --repo "$GITHUB_REPOSITORY" --workflow knowledge-sync.yml \
+              --event workflow_dispatch --branch main --limit 10 \
+              --json databaseId,createdAt \
+              --jq "[.[] | select(.createdAt >= \"$started\")] | sort_by(.createdAt) | .[0].databaseId // empty")"
+          done
+          if [[ -z "$run_id" ]]; then
+            echo "Could not find the dispatched Gemini reconciliation run."
+            exit 1
+          fi
+
+          echo "Waiting for protected Gemini reconciliation run $run_id." >> "$GITHUB_STEP_SUMMARY"
+          gh run watch "$run_id" --repo "$GITHUB_REPOSITORY" --exit-status --interval 15

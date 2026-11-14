@@ -9,7 +9,7 @@ async function main() {
   const apiKey = process.env.GEMINI_API_KEY?.trim();
   if (!apiKey) throw new Error("GEMINI_API_KEY is not configured.");
   const ai = createGeminiClient(apiKey);
-  const stores = await ai.fileSearchStores.list({ config: { pageSize: 100 } });
+  const stores = await ai.fileSearchStores.list({ config: { pageSize: 20 } });
   let count = 0;
   for await (const store of stores) {
     count += 1;
