@@ -4,6 +4,10 @@ Source ID: web-field-trip-options-d72ca788
 Source type: official_website
 Canonical URL: https://elachee.org/field-trip-options
 
+## Important headings
+
+- Field Trip Program Pricing:
+
 ## Approved page content
 
 Memberships
@@ -65,6 +69,10 @@ Become A Sponsor
 Review Us
 Become a Member
 Donate
+Field Trip Program Pricing:
+Onsite Field Trip Program fees range from $14-$16 per student
+Elachee in Your Classroom fees start at $200 per 1-hour program
+Lake Lanier Aquatic Study fees- $18/student for 2-hour program and $22/student for 3-hour program
 Onsite
 Elachee in Your Classroom/Outreach
 Onsite
