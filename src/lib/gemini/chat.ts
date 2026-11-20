@@ -419,6 +419,18 @@ function eventsCalendarFallback(
   };
 }
 
+// The Visit page repeats the Nature Science Center and trail hours, and File
+// Search often cites it instead of the dedicated Hours page. Requiring the
+// Hours page specifically rejected correct answers (and the retry usually
+// cited the same pages), so any official hours-bearing page counts; the
+// answer text is still checked for both schedules and the fees.
+function hasHoursSource(response: ChatResponse): boolean {
+  return (
+    hasOfficialPage(response, /\/(?:resources\/)?hours\/?$/) ||
+    hasOfficialPage(response, /\/visit\/?$/)
+  );
+}
+
 function featuredAnswerIsRelevant(
   category: FeaturedQuestion,
   response: ChatResponse,
@@ -429,7 +441,7 @@ function featuredAnswerIsRelevant(
   switch (category) {
     case "visit":
       return (
-        hasOfficialPage(response, /\/hours\/?$/) &&
+        hasHoursSource(response) &&
         hasOfficialPage(response, /\/parking-admissions\/?$/) &&
         hasOfficialPage(response, /\/visit\/?$/) &&
         /\$\s*10\b/.test(answer) &&
@@ -474,7 +486,7 @@ function featuredAnswerIsRelevant(
       );
     case "hours":
       return (
-        hasOfficialPage(response, /\/hours\/?$/) &&
+        hasHoursSource(response) &&
         hasOfficialPage(response, /\/parking-admissions\/?$/) &&
         /\$\s*10\b/.test(answer) &&
         /\$\s*5\b/.test(answer) &&

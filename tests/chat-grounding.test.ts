@@ -482,6 +482,55 @@ describe("grounded interaction interpretation", () => {
     expect(client.create).toHaveBeenCalledTimes(1);
   });
 
+  it("keeps a complete hours answer that cites the Visit page instead of the Hours page", async () => {
+    // Regression: File Search often cites /visit (which repeats the hours) and
+    // /parking-admissions; rejecting that sent correct answers to the fallback.
+    const visitSource: SourceManifestEntry = {
+      id: "web-visit",
+      fileName: "website__web-visit.md",
+      documentPath: "knowledge/generated/prepared/website__web-visit.md",
+      title: "Visit",
+      url: "https://elachee.org/visit",
+      sourceType: "official_website",
+      priority: 50,
+    };
+    const admissionSource: SourceManifestEntry = {
+      id: "web-parking-admissions",
+      fileName: "website__web-parking-admissions.md",
+      documentPath: "knowledge/generated/prepared/website__web-parking-admissions.md",
+      title: "Parking & Admissions",
+      url: "https://elachee.org/parking-admissions",
+      sourceType: "official_website",
+      priority: 50,
+    };
+    const answer =
+      "Elachee Nature Science Center is open Wednesday-Friday 12 PM-3 PM and Saturday 10 AM-4 PM; the Chicopee Woods trails are open daily 7 AM to sunset. Admission is $10 per person, and parking is a separate $5 per vehicle.";
+    const client = {
+      create: vi.fn().mockResolvedValue(
+        interaction("answered", true, answer, ["web-visit", "web-parking-admissions"]),
+      ),
+    };
+
+    const result = await askGroundedQuestion(
+      client,
+      {
+        message:
+          "What days and times is Elachee Nature Science Center open for exhibits, and what are the separate Chicopee Woods trail hours? Include admission and parking costs separately.",
+        history: [],
+        language: "auto",
+      },
+      {
+        model: "gemini-3.5-flash-lite",
+        fileSearchStore: "fileSearchStores/test",
+        manifest: [visitSource, admissionSource],
+      },
+    );
+
+    expect(result.status).toBe("answered");
+    expect(result.answer).toBe(answer);
+    expect(client.create).toHaveBeenCalledTimes(1);
+  });
+
   it("retries a Spanish preset when the cited answer is in English", async () => {
     const trailSource: SourceManifestEntry = {
       id: "trail-guide",

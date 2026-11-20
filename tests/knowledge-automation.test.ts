@@ -694,7 +694,10 @@ describe("deployment automation configuration", () => {
     expect(refresh).not.toContain("uses: ./.github/workflows/knowledge-sync.yml");
     expect(refresh).toContain("gh workflow run knowledge-sync.yml");
     expect(refresh).toContain('-f revision="$REVISION"');
-    expect(refresh).toContain("gh run watch");
+    // `gh run watch` failed the job on a transient 404; poll the run instead.
+    expect(refresh).not.toContain("gh run watch");
+    expect(refresh).toContain("actions/runs/${run_id}");
+    expect(refresh).toContain("finished: ${conclusion:-unknown}");
     expect(refresh).toContain("actions: write");
     expect(refresh).toContain("needs.refresh.outputs.changed == 'true'");
     expect(refresh).toContain("revision=$revision");

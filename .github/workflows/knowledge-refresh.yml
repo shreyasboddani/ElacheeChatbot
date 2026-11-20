@@ -237,4 +237,33 @@ jobs:
           fi
 
           echo "Waiting for protected Gemini reconciliation run $run_id." >> "$GITHUB_STEP_SUMMARY"
-          gh run watch "$run_id" --repo "$GITHUB_REPOSITORY" --exit-status --interval 15
+
+          # Poll the run state ourselves: the CLI's built-in watcher failed the
+          # whole job on a transient 404 from the jobs endpoint even though the dispatched
+          # sync went on to succeed. Tolerate short API hiccups, but still fail
+          # if the sync run itself fails or never finishes.
+          api_errors=0
+          for _ in $(seq 1 280); do
+            if state="$(gh api "repos/${GITHUB_REPOSITORY}/actions/runs/${run_id}" \
+              --jq '[.status, (.conclusion // "")] | @tsv')"; then
+              api_errors=0
+              status="${state%%$'\t'*}"
+              conclusion="${state#*$'\t'}"
+              if [[ "$status" == "completed" ]]; then
+                echo "Protected Gemini reconciliation run $run_id finished: ${conclusion:-unknown}."
+                echo "Protected Gemini reconciliation run $run_id finished: ${conclusion:-unknown}." >> "$GITHUB_STEP_SUMMARY"
+                [[ "$conclusion" == "success" ]] && exit 0
+                exit 1
+              fi
+            else
+              api_errors=$((api_errors + 1))
+              echo "Could not read run $run_id (attempt $api_errors); retrying."
+              if (( api_errors >= 20 )); then
+                echo "Giving up after repeated errors reading run $run_id."
+                exit 1
+              fi
+            fi
+            sleep 15
+          done
+          echo "Timed out waiting for protected Gemini reconciliation run $run_id."
+          exit 1
