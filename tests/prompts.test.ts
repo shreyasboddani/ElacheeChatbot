@@ -39,14 +39,14 @@ describe("grounding prompt", () => {
     expect(params).not.toHaveProperty("top_k");
     expect(params).not.toHaveProperty("candidate_count");
     expect(params.generation_config).toEqual({
-      max_output_tokens: 224,
+      max_output_tokens: 512,
       thinking_level: "minimal",
     });
     expect(params.tools).toEqual([
       {
         type: "file_search",
         file_search_store_names: ["fileSearchStores/example"],
-        top_k: 6,
+        top_k: 4,
       },
     ]);
   });
@@ -120,7 +120,7 @@ describe("grounding prompt", () => {
         history: [],
         language: "auto",
       }),
-    ).toBe(384);
+    ).toBe(768);
     expect(
       responseTokenLimit({
         message:
@@ -128,14 +128,14 @@ describe("grounding prompt", () => {
         history: [],
         language: "auto",
       }),
-    ).toBe(384);
+    ).toBe(768);
     expect(
       responseTokenLimit({
         message: "What should I know before visiting Elachee?",
         history: [],
         language: "auto",
       }),
-    ).toBe(384);
+    ).toBe(768);
   });
 
   it("retrieves enough sources to distinguish the two schedules", () => {
@@ -145,7 +145,7 @@ describe("grounding prompt", () => {
         history: [],
         language: "auto",
       }),
-    ).toBe(10);
+    ).toBe(7);
     expect(
       retrievalResultLimit({
         message: "Are they open Friday?",
@@ -155,7 +155,7 @@ describe("grounding prompt", () => {
           { role: "assistant", content: "Elachee trails are open daily." },
         ],
       }),
-    ).toBe(10);
+    ).toBe(7);
     expect(
       retrievalResultLimit({
         message:
@@ -163,14 +163,14 @@ describe("grounding prompt", () => {
         history: [],
         language: "auto",
       }),
-    ).toBe(10);
+    ).toBe(7);
     expect(
       retrievalResultLimit({
         message: "What should I know before visiting Elachee?",
         history: [],
         language: "auto",
       }),
-    ).toBe(10);
+    ).toBe(7);
   });
 
   it.each([
@@ -180,8 +180,8 @@ describe("grounding prompt", () => {
     ["Whn is the next Elachee evnt?", "misspelled event timing"],
   ])("keeps broad, source-rich retrieval for %s (%s)", (message) => {
     const request = { message, history: [], language: "auto" as const };
-    expect(responseTokenLimit(request)).toBe(384);
-    expect(retrievalResultLimit(request)).toBe(10);
+    expect(responseTokenLimit(request)).toBe(768);
+    expect(retrievalResultLimit(request)).toBe(7);
   });
 
   it("uses broad retrieval for featured presets and efficient retrieval for general family activities", () => {
@@ -202,10 +202,10 @@ describe("grounding prompt", () => {
           language,
         };
         expect(responseTokenLimit(request), `${language}: ${action.label}`).toBe(
-          isFeatured ? 384 : 224,
+          isFeatured ? 768 : 512,
         );
         expect(retrievalResultLimit(request), `${language}: ${action.label}`).toBe(
-          isFeatured ? 10 : 6,
+          isFeatured ? 7 : 4,
         );
         expect(featuredQuestion(action.question), `${language}: ${action.label}`).toBe(
           expectedCategories[index],

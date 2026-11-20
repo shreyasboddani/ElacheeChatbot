@@ -5,6 +5,8 @@ import {
   featuredQuestion,
   interpretGroundedInteraction,
   parseModelReply,
+  stripInlineCitationMarkers,
+  trimToCompleteSentence,
 } from "@/lib/gemini/chat";
 import { ELACHEE } from "@/lib/config";
 import { CHAT_UI_COPY } from "@/lib/chat/language";
@@ -720,5 +722,35 @@ describe("plain-text model replies", () => {
 
   it("rejects empty replies", () => {
     expect(parseModelReply("   ")).toBeUndefined();
+  });
+});
+
+describe("reply cleanup", () => {
+  it("removes inline chunk citation markers, including a dangling one", () => {
+    expect(stripInlineCitationMarkers("Trails open at 7 AM [1.1, 1.4]. Dogs are allowed [2]."))
+      .toBe("Trails open at 7 AM. Dogs are allowed.");
+    expect(stripInlineCitationMarkers("Leashed dogs are welcome [1.1, 1.4"))
+      .toBe("Leashed dogs are welcome");
+    expect(stripInlineCitationMarkers("Admission is $10 per person.")).toBe("Admission is $10 per person.");
+  });
+
+  it("trims a token-capped reply back to the last complete sentence or line", () => {
+    expect(trimToCompleteSentence("Trails open daily. The center is open Wednesday. *(Note: This"))
+      .toBe("Trails open daily. The center is open Wednesday.");
+    expect(trimToCompleteSentence("Trails:\n* Geiger Trail: 0.4 miles\n* Ed Dodd Loop: 0.64 mi\n* Bridge"))
+      .toBe("Trails:\n* Geiger Trail: 0.4 miles\n* Ed Dodd Loop: 0.64 mi");
+    expect(trimToCompleteSentence("No boundary here at all")).toBe("No boundary here at all");
+  });
+
+  it("trims only when Gemini reports the reply as incomplete", () => {
+    const cut = {
+      status: "incomplete",
+      steps: [{ type: "model_output", content: [{ type: "text" as const,
+        text: "We are open Wednesday through Saturday. Closed Sunday–",
+        annotations: [{ type: "file_citation", file_name: staffSource.fileName }] }] }],
+    };
+    expect(interpretGroundedInteraction(cut, [staffSource]).answer).toBe("We are open Wednesday through Saturday.");
+    expect(interpretGroundedInteraction({ ...cut, status: "completed" }, [staffSource]).answer)
+      .toBe("We are open Wednesday through Saturday. Closed Sunday–");
   });
 });

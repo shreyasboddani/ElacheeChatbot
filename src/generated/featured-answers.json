@@ -1,0 +1,254 @@
+{
+  "corpusFingerprint": "fe59e16e16ec640e0909078fb138073509bd4e08f3361de59439df078130ad02",
+  "generatedAt": "2026-11-20T22:35:55.711Z",
+  "answers": [
+    {
+      "language": "en",
+      "question": "What days and times is Elachee Nature Science Center open for exhibits, and what are the separate Chicopee Woods trail hours? Include admission and parking costs separately.",
+      "response": {
+        "status": "answered",
+        "answer": "Elachee Nature Science Center (Visitor Center & Exhibits) is open Wednesday through Friday from 12 PM to 3 PM and Saturday from 10 AM to 4 PM, and is closed Sunday through Tuesday. In contrast, Chicopee Woods Nature Preserve trails are open daily from 7 AM to sunset.\n\nAdmission and parking are managed separately:\n* **Visitor Center & Exhibits Admission:** $10 per person for ages 4 and older, with a family maximum of $50; admission is free for Elachee members.\n* **Parking Fees:** Managed by the Chicopee Woods Area Park Commission at $5 per vehicle ($10 for 15-passenger vans and buses; $50 for an annual pass), while Elachee members receive a free annual parking pass. Trail access itself is free.",
+        "sources": [
+          {
+            "id": "web-visit-d7e65d48",
+            "title": "Visit",
+            "url": "https://elachee.org/visit",
+            "sourceType": "official_website"
+          },
+          {
+            "id": "web-parking-admissions-b045aeb5",
+            "title": "Parking & Admissions",
+            "url": "https://elachee.org/parking-admissions",
+            "sourceType": "official_website"
+          }
+        ],
+        "contactRecommended": false
+      }
+    },
+    {
+      "language": "en",
+      "question": "Which Chicopee Woods trail suits a short or stroller-friendly walk, and which trails are longer or harder? Are dogs allowed?",
+      "response": {
+        "status": "answered",
+        "answer": "The 0.4-mile Geiger Trail is paved and specifically designated as stroller-friendly, featuring storybook kiosks. For shorter walks, options include the Ed Dodd Loop (0.64 miles), Elachee Creek Loop (0.42 miles), Ridge Trail (0.35 miles), and Upland Trail (0.65 miles), though some feature steep sections.\n\nLonger and more challenging routes include the Bridge Loop (2.91 miles) and Lake Loop (3 miles)—both moderate loops featuring features like stream crossings or an earthen dam—and the Chicopee Backcountry Trail, a 4.26-mile moderate-to-difficult point-to-point route with steep terrain and creek crossings where trekking poles and careful weather planning are recommended.\n\nLeashed dogs are permitted on the hiking trails on Sundays only.",
+        "sources": [
+          {
+            "id": "web-visit-hiking-trails-ca925545",
+            "title": "Hiking Trails",
+            "url": "https://elachee.org/visit/hiking-trails",
+            "sourceType": "official_website"
+          }
+        ],
+        "contactRecommended": false
+      }
+    },
+    {
+      "language": "en",
+      "question": "Which Elachee program fits my child's age—Sprouts, Nature Academy, Camp Elachee, or Homeschool Programs—and where can I check current dates and registration?",
+      "response": {
+        "status": "answered",
+        "answer": "Elachee's programs fit different age groups:\n\n* **Sprouts:** Designed for toddlers ages 18 months to 4 years (with caregivers) for monthly nature play sessions.\n* **Nature Academy:** A full-time, Cognia-accredited school serving children ages 3 through first grade during the academic week.\n* **Camp Elachee:** Weeklong summer day-camp sessions offered in June and July for children in kindergarten through middle school.\n* **Homeschool Programs:** Monthly hands-on science classes for homeschool families (the overview lists K–12, while the dedicated homeschool page specifies ages 6–12).\n\nYou can check current dates, availability, and registration details on the official [Elachee Camps & Programs page](https://elachee.org/camps-programs) or by visiting the specific program pages.",
+        "sources": [
+          {
+            "id": "web-camps-programs-b7368aab",
+            "title": "Camps & Programs",
+            "url": "https://elachee.org/camps-programs",
+            "sourceType": "official_website"
+          }
+        ],
+        "contactRecommended": false
+      }
+    },
+    {
+      "language": "en",
+      "question": "How do Elachee school field trips work for Pre-K through grade 12? What topics and formats are offered, and how does a teacher request a date?",
+      "response": {
+        "status": "answered",
+        "answer": "Elachee school field trips serve Pre-K through grade 12, aligning with Georgia Standards of Excellence (GSE).\n\n**Formats Offered:**\n* **On-Site Field Trips:** Held at Elachee in Chicopee Woods, featuring outdoor exploration, habitat and wildlife studies, and live animal encounters.\n* **Elachee in Your Classroom (Outreach):** Brings interactive science lessons and live animals directly to your school if located within 60 miles or one hour of the Gainesville campus.\n* **Floating Classroom:** Provides aquatic-study experiences on Lake Lanier out of River Forks Park (2-hour or 3-hour options).\n\n**Popular Topics Include:**\n* **Animals & Wildlife:** Native wildlife survival, adaptations, and live interactions with reptiles and amphibians (Pre-K–grade 8).\n* **Astronomy:** Daytime sky patterns, stars, and planets (Grades K–8; seasonal Nov–Feb).\n* **Earth Science & Geology:** Rocks, minerals, fossils, and landforms (Grades K–8).\n* **Cultural History:** Indigenous Peoples of Georgia and their connection to the land (Grades 3–8).\n* **Plant Science:** Plant growth, reproduction, and ecosystems (Pre-K–grade 8).\n* **Water & Watersheds:** Aquatic ecosystems and the water cycle (Grades K–12; seasonal Mar–Nov).\n\n**Requesting a Date:**\nTeachers can review current program options and submit a request using Elachee's online Plan Your Field Trip request form.",
+        "sources": [
+          {
+            "id": "web-field-trips-18f4e643",
+            "title": "Field Trips",
+            "url": "https://elachee.org/field-trips",
+            "sourceType": "official_website"
+          },
+          {
+            "id": "web-field-trips-elachee-in-your-classroom-19622729",
+            "title": "Elachee in Your Classroom",
+            "url": "https://elachee.org/field-trips/elachee-in-your-classroom",
+            "sourceType": "official_website"
+          },
+          {
+            "id": "web-field-trip-options-d72ca788",
+            "title": "Field Trip Options",
+            "url": "https://elachee.org/field-trip-options",
+            "sourceType": "official_website"
+          }
+        ],
+        "contactRecommended": false
+      }
+    },
+    {
+      "language": "en",
+      "question": "What's there for kids and families to do at Elachee—what exhibits, animal encounters, and outdoor activities are available?",
+      "response": {
+        "status": "answered",
+        "answer": "Elachee offers plenty of engaging experiences for kids and families, blending indoor learning with outdoor adventure:\n\n* **Exhibits & Indoor Spaces:** Explore interactive areas like *Space Encounters* (learning about planets and stars), *Woodland Wonders* (native wildlife, plants, and forest ecosystems), and *The Cocoon* (a gentle sensory play space for toddlers). You can also check out a Discovery Backpack to turn a walk into a scavenger hunt.\n* **Animal Encounters:** Get up close with live animal ambassadors, such as reptiles and raptors. Saturdays feature naturalist-led, hands-on animal encounters.\n* **Outdoor Activities:** Hike family-friendly paths like the Dodd Loop Self-Guided Trail, explore nearly 12 miles of forested trails, build stick forts, or play giant games at the Creation Station.",
+        "sources": [
+          {
+            "id": "web-fun-things-to-do-with-kids-this-weekend-cdc467b9",
+            "title": "Looking for Fun Things to Do with Kids This Weekend?",
+            "url": "https://elachee.org/fun-things-to-do-with-kids-this-weekend",
+            "sourceType": "official_website"
+          },
+          {
+            "id": "web-places-to-take-kids-for-fun-and-learning-de58d0e4",
+            "title": "Places to Take Kids for Fun and Learning",
+            "url": "https://elachee.org/places-to-take-kids-for-fun-and-learning",
+            "sourceType": "official_website"
+          },
+          {
+            "id": "web-visit-d7e65d48",
+            "title": "Visit",
+            "url": "https://elachee.org/visit",
+            "sourceType": "official_website"
+          },
+          {
+            "id": "web-6-rainy-day-activities-for-kids-who-love-nature-084e15c9",
+            "title": "6 Rainy Day Activities for Kids Who Love Nature",
+            "url": "https://elachee.org/6-rainy-day-activities-for-kids-who-love-nature",
+            "sourceType": "official_website"
+          }
+        ],
+        "contactRecommended": false
+      }
+    },
+    {
+      "language": "es",
+      "question": "¿Qué días y a qué horas abre Elachee Nature Science Center para ver sus exhibiciones, y cuáles son los horarios de los senderos de Chicopee Woods? Incluye por separado los costos de admisión y estacionamiento.",
+      "response": {
+        "status": "answered",
+        "answer": "Los horarios y tarifas de Elachee Nature Science Center y de Chicopee Woods Nature Preserve son independientes:\n\n* **Elachee Nature Science Center (Visitor Center & Exhibits):** Abre de miércoles a viernes de 12:00 p.m. a 3:00 p.m. y los sábados de 10:00 a.m. a 4:00 p.m.; permanece cerrado de domingo a martes. La admisión general es de $10 por persona (para mayores de 4 años), con un máximo familiar de $50 y entrada gratuita para miembros.\n* **Chicopee Woods Nature Preserve (Hiking Trails):** Los senderos abren todos los días de 7:00 a.m. a la puesta del sol. El acceso a los senderos es gratuito, pero el estacionamiento de vehículos se cobra por separado ($5 por vehículo diario, $10 por furgonetas de 15 pasajeros y autobuses, o un pase anual de $50; gratuito para miembros de Elachee).",
+        "sources": [
+          {
+            "id": "web-hours-2bb0fb86",
+            "title": "Hours",
+            "url": "https://elachee.org/hours",
+            "sourceType": "official_website"
+          },
+          {
+            "id": "web-visit-d7e65d48",
+            "title": "Visit",
+            "url": "https://elachee.org/visit",
+            "sourceType": "official_website"
+          },
+          {
+            "id": "web-parking-admissions-b045aeb5",
+            "title": "Parking & Admissions",
+            "url": "https://elachee.org/parking-admissions",
+            "sourceType": "official_website"
+          }
+        ],
+        "contactRecommended": false
+      }
+    },
+    {
+      "language": "es",
+      "question": "¿Qué sendero de Chicopee Woods conviene para una caminata corta o con cochecito, y qué opciones hay para recorridos más largos? ¿Se permiten perros?",
+      "response": {
+        "status": "answered",
+        "answer": "Para una caminata corta y apta para cochecito, el **Geiger Trail** es ideal, ya que cuenta con un sendero pavdado de 0.4 millas y quioscos con cuentos. Otras opciones cortas (aunque con secciones empinadas y no aptas para cochecitos) son el *Ed Dodd Loop* (0.64 millas) y el *Elachee Creek Loop* (0.42 millas).\n\nPara recorridos más largos, las opciones incluyen el **Bridge Loop** (2.91 millas con un puente colgante), el **Lake Loop** (3 millas cerca del lago Chicopee) y el desafiante **Chicopee Backcountry Trail** (4.26 millas de punto a punto con terreno empinado).\n\nLos perros **sí se permiten**, pero únicamente los **domingos** y deben ir con correa siguiendo las leyes locales.",
+        "sources": [
+          {
+            "id": "web-visit-hiking-trails-ca925545",
+            "title": "Hiking Trails",
+            "url": "https://elachee.org/visit/hiking-trails",
+            "sourceType": "official_website"
+          }
+        ],
+        "contactRecommended": false
+      }
+    },
+    {
+      "language": "es",
+      "question": "¿Qué programa de Elachee se ajusta a la edad de mi hijo? Compara Sprouts, Nature Academy, Camp Elachee y Homeschool Programs, y dime dónde consultar las fechas y la inscripción actuales.",
+      "response": {
+        "status": "answered",
+        "answer": "Para saber qué programa se ajusta a la edad de tu hijo, aquí tienes una comparación de las opciones de Elachee:\n\n* **Sprouts:** Dirigido a niños pequeños (toddlers) de **18 meses a 4 años** (o hasta los 6 años según la página del programa) acompañados por un adulto, enfocado en juegos de naturaleza sensorial, música y cuentos en sesiones mensuales.\n* **Nature Academy:** Una escuela de tiempo completo acreditada por Cognia para preescolar hasta primer año de primaria (**edades de 3 años hasta 1.er grado**), con aprendizaje basado en la naturaleza de lunes a viernes durante el año académico.\n* **Camp Elachee:** Campamento de verano diurno de una semana de duración, de lunes a viernes en junio y julio, para niños desde **kindergarten hasta la escuela media (middle school)**.\n* **Homeschool Programs:** Clases mensuales de ciencias al aire libre alineadas con los estándares de Georgia; la descripción general indica de **Kindergarten a 12.º grado**, mientras que su página específica señala de **6 a 12 años**.\n\nPuedes consultar las fechas actuales, la disponibilidad y realizar la inscripción directamente en la sección de [Campamentos y Programas de Elachee](https://elachee.org/camps-programs) o comunicarte llamando al 770-535-1976. ¿Qué edad tiene tu hijo para orientarte mejor sobre el programa ideal?",
+        "sources": [
+          {
+            "id": "web-camps-programs-b7368aab",
+            "title": "Camps & Programs",
+            "url": "https://elachee.org/camps-programs",
+            "sourceType": "official_website"
+          },
+          {
+            "id": "web-camps-programs-sprouts-bb3f2bda",
+            "title": "Sprouts",
+            "url": "https://elachee.org/camps-programs/sprouts",
+            "sourceType": "official_website"
+          }
+        ],
+        "contactRecommended": false
+      }
+    },
+    {
+      "language": "es",
+      "question": "¿Cómo son las excursiones escolares de Elachee para Pre-K hasta 12.º grado? ¿Qué temas y formatos ofrecen y cómo puede un docente solicitar una fecha?",
+      "response": {
+        "status": "answered",
+        "answer": "Las excursiones escolares de Elachee para estudiantes de Pre-K hasta 12.° grado están diseñadas para alinearse con los estándares educativos de Georgia (*Georgia Standards of Excellence*).\n\n* **Temas principales:** Incluyen vida silvestre y adaptaciones animales, astronomía, geología, pueblos indígenas de Georgia, botánica y ecosistemas de cuencas/acuáticos.\n* **Formatos de aprendizaje:**\n  * *Excursiones presenciales en el sitio:* Se realizan en el centro de Elachee y Chicopee Woods.\n  * *Programa en el aula (Outreach):* El personal de Elachee visita las escuelas situadas a menos de 60 millas o 1 hora de su campus en Gainesville.\n  * *Aula flotante (Floating Classroom):* Estudios acuáticos en el Lago Lanier desde el parque River Forks.\n\nPara solicitar una fecha, los docentes deben revisar las opciones de programas vigentes en el sitio web oficial y completar el formulario de solicitud de excursiones (*Plan Your Field Trip*) en la página de Elachee.",
+        "sources": [
+          {
+            "id": "web-field-trips-18f4e643",
+            "title": "Field Trips",
+            "url": "https://elachee.org/field-trips",
+            "sourceType": "official_website"
+          },
+          {
+            "id": "web-field-trips-elachee-in-your-classroom-19622729",
+            "title": "Elachee in Your Classroom",
+            "url": "https://elachee.org/field-trips/elachee-in-your-classroom",
+            "sourceType": "official_website"
+          },
+          {
+            "id": "web-field-trip-options-d72ca788",
+            "title": "Field Trip Options",
+            "url": "https://elachee.org/field-trip-options",
+            "sourceType": "official_website"
+          }
+        ],
+        "contactRecommended": false
+      }
+    },
+    {
+      "language": "es",
+      "question": "¿Qué pueden hacer las familias en Elachee, con exhibiciones, animales y actividades al aire libre?",
+      "response": {
+        "status": "answered",
+        "answer": "En Elachee, las familias pueden disfrutar de una gran variedad de experiencias educativas y recreativas al aire libre y bajo techo:\n\n* **Exhibiciones bajo techo:** El centro cuenta con espacios interactivos como *Space Encounters* sobre el universo, *Woodland Wonders* para conocer la flora y fauna nativa de Georgia, y *The Cocoon*, un área de descanso sensorial ideal para los más pequeños.\n* **Animales y encuentros:** Los visitantes pueden observar animales vivos, participar en encuentros con animales y disfrutar de actividades prácticas.\n* **Actividades al aire libre:** Hay casi 12 millas de senderos en el Chicopee Woods Nature Preserve para hacer caminatas familiares, explorar arroyos y avistar vida silvestre, incluyendo el sendero pavocado Geiger (apto para carriolas) y el circuito Dodd Loop.\n\n¿Te gustaría consultar los horarios de visita o algún programa en específico para tu familia?",
+        "sources": [
+          {
+            "id": "web-places-to-take-kids-for-fun-and-learning-de58d0e4",
+            "title": "Places to Take Kids for Fun and Learning",
+            "url": "https://elachee.org/places-to-take-kids-for-fun-and-learning",
+            "sourceType": "official_website"
+          },
+          {
+            "id": "web-visit-d7e65d48",
+            "title": "Visit",
+            "url": "https://elachee.org/visit",
+            "sourceType": "official_website"
+          },
+          {
+            "id": "web-fun-things-to-do-with-kids-this-weekend-cdc467b9",
+            "title": "Looking for Fun Things to Do with Kids This Weekend?",
+            "url": "https://elachee.org/fun-things-to-do-with-kids-this-weekend",
+            "sourceType": "official_website"
+          }
+        ],
+        "contactRecommended": false
+      }
+    }
+  ]
+}

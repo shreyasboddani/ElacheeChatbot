@@ -36,9 +36,10 @@
     return;
   }
 
+  // Bottom-left is the default; bottom-right stays available as documented.
   var position =
-    script.getAttribute("data-position") === "bottom-left"
-      ? "bottom-left"
+    script.getAttribute("data-position") === "bottom-right"
+      ? "bottom-right"
       : "bottom-left";
   var requestedTheme = script.getAttribute("data-theme");
   var theme =

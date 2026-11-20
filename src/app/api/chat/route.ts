@@ -12,6 +12,8 @@ import {
   isChatLanguagePreference,
   type ChatLanguagePreference,
 } from "@/lib/chat/language";
+import { cacheAnswer, getCachedAnswer } from "@/lib/chat/answer-cache";
+import { getPrecomputedAnswer } from "@/lib/chat/featured-answers";
 import { getRuntimeConfig } from "@/lib/config";
 import { askGroundedQuestion } from "@/lib/gemini/chat";
 import { createGroundedInteractionClient } from "@/lib/gemini/client";
@@ -166,6 +168,13 @@ export async function POST(request: NextRequest): Promise<Response> {
   );
   if (localResponse) return jsonResponse(localResponse);
 
+  // Suggested-question buttons are served from answers generated for the
+  // current knowledge corpus, so they cost no Gemini tokens.
+  const precomputed = getPrecomputedAnswer(validation.data);
+  if (precomputed) return jsonResponse(precomputed);
+  const cached = getCachedAnswer(validation.data);
+  if (cached) return jsonResponse(cached);
+
   const config = getRuntimeConfig();
   if (!config.apiKey || !config.fileSearchStore) {
     return jsonResponse(serviceUnavailableResponse(language), 503);
@@ -181,6 +190,7 @@ export async function POST(request: NextRequest): Promise<Response> {
         manifest,
       },
     );
+    cacheAnswer(validation.data, response);
     return jsonResponse(response);
   } catch (error) {
     console.error("Grounded chat service failed", safeServiceErrorDetails(error));

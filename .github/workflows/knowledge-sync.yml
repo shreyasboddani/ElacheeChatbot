@@ -13,7 +13,8 @@ on:
         type: string
 
 permissions:
-  contents: read
+  # write is used only to commit refreshed suggested-question answers to main.
+  contents: write
 
 concurrency:
   group: knowledge-production-sync
@@ -77,3 +78,33 @@ jobs:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           GEMINI_FILE_SEARCH_STORE: ${{ vars.GEMINI_FILE_SEARCH_STORE }}
         run: npm run knowledge:sync -- --reconcile --apply
+
+      # Suggested-question answers are generated once per knowledge version and
+      # served without Gemini calls. This is a no-op (no API calls) when the
+      # stored answers already match the current knowledge manifest.
+      - name: Precompute suggested-question answers
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GEMINI_FILE_SEARCH_STORE: ${{ vars.GEMINI_FILE_SEARCH_STORE }}
+        # Model defaults to gemini-3.5-flash-lite (DEFAULT_GEMINI_MODEL).
+        run: npm run knowledge:precompute
+
+      - name: Commit refreshed suggested-question answers
+        shell: bash
+        run: |
+          set -euo pipefail
+          if git diff --quiet -- src/generated/featured-answers.json; then
+            echo "Suggested-question answers are already current." >> "$GITHUB_STEP_SUMMARY"
+            exit 0
+          fi
+          git fetch origin main
+          if [[ "$(git rev-parse HEAD)" != "$(git rev-parse origin/main)" ]]; then
+            echo "main advanced; the next sync regenerates answers for the newer knowledge (live answers are used meanwhile)." >> "$GITHUB_STEP_SUMMARY"
+            exit 0
+          fi
+          git config user.name "elachee-knowledge-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add src/generated/featured-answers.json
+          git commit -m "Refresh precomputed suggested-question answers"
+          git push origin HEAD:main
+          echo "Committed refreshed suggested-question answers to main." >> "$GITHUB_STEP_SUMMARY"

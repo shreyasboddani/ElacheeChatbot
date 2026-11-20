@@ -414,6 +414,23 @@ export function getLocalConversationalResponse(
     );
   }
 
+  // Check thanks before greetings: "thanks"/"thank you" also count as a
+  // greeting prefix, which used to answer a thank-you with "Hi! I can help...".
+  if (/^(thanks|thank you|thank you so much|thanks so much|thx|ty)$/.test(normalized)) {
+    return answered(
+      language === "es"
+        ? "¡Con gusto! Avísame si tienes otra pregunta sobre Elachee."
+        : "You are welcome! Let me know if you have another question about Elachee.",
+    );
+  }
+
+  if (
+    language !== "en" &&
+    /^(gracias|muchas gracias|mil gracias)$/.test(normalized)
+  ) {
+    return answered("¡Con gusto! Avísame si tienes otra pregunta sobre Elachee.");
+  }
+
   if (
     (greetingPrefixWordCount(normalized) > 0 &&
       greetingPrefixWordCount(normalized) === words(normalized).length) ||
@@ -432,25 +449,16 @@ export function getLocalConversationalResponse(
     /^(what|which) (questions|things|topics) can (you answer|i ask)$/.test(
       normalized,
     ) ||
-    /^(what|how) can you help( me)?( with)?$/.test(normalized)
+    /^(what|how) can you help( me)?( with)?$/.test(normalized) ||
+    /^(what can you do|what do you do|who are you|what are you|help|help me)$/.test(
+      normalized,
+    )
   ) {
     return answered(
       language === "es"
         ? "Puedes preguntar sobre visitas, senderos, exhibiciones, horarios, admisi\u00f3n, campamentos, programas, excursiones, voluntariado y pr\u00f3ximos eventos. Pregunta con naturalidad y haz preguntas de seguimiento si necesitas m\u00e1s detalles. No puedo consultar registros personales; cuando la informaci\u00f3n aprobada no confirme una respuesta, te dirigir\u00e9 al personal."
         : "You can ask about visiting, trails, exhibits, hours, admission, camps, programs, field trips, volunteering, and upcoming events. Ask naturally and use follow-up questions if you need more detail. I cannot check a personal registration or reservation, and I will direct you to staff when the approved information does not confirm an answer.",
     );
-  }
-
-  if (/^(thanks|thank you|thank you so much|thanks so much|thx)$/.test(normalized)) {
-    return answered(
-      language === "es"
-        ? "\u00a1Con gusto! Av\u00edsame si tienes otra pregunta sobre Elachee."
-        : "You are welcome! Let me know if you have another question about Elachee.",
-    );
-  }
-
-  if (language === "es" && /^(gracias|muchas gracias|mil gracias)$/.test(normalized)) {
-    return answered("\u00a1Con gusto! Av\u00edsame si tienes otra pregunta sobre Elachee.");
   }
 
   return undefined;

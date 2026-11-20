@@ -210,3 +210,22 @@ describe("local conversational responses", () => {
     ).toBeUndefined();
   });
 });
+
+describe("thank-you and capability shortcuts", () => {
+  it.each(["thanks", "Thanks!", "thank you", "thx", "ty"])("answers %s with a thank-you, not a greeting", (message) => {
+    const response = getLocalConversationalResponse(message, [], "auto");
+    expect(response?.answer).toContain("You are welcome");
+  });
+
+  it("answers gracias in automatic mode", () => {
+    expect(getLocalConversationalResponse("gracias", [], "auto")?.answer).toContain("Con gusto");
+  });
+
+  it.each(["what can you do", "who are you", "help"])("explains capabilities for %s", (message) => {
+    expect(getLocalConversationalResponse(message, [], "auto")?.answer).toContain("You can ask about");
+  });
+
+  it("still greets a plain hello", () => {
+    expect(getLocalConversationalResponse("hello", [], "auto")?.answer).toMatch(/^Hi!/);
+  });
+});

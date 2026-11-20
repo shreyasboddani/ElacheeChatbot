@@ -16,6 +16,7 @@
     "knowledge:verify": "tsx scripts/verify-knowledge.ts",
     "knowledge:refresh": "npm run knowledge:crawl && npm run knowledge:prepare && npm run knowledge:verify",
     "knowledge:sync": "tsx scripts/sync-file-search.ts",
+    "knowledge:precompute": "tsx scripts/precompute-featured-answers.ts",
     "knowledge:all": "npm run knowledge:crawl && npm run knowledge:parse-faq && npm run knowledge:prepare && npm run knowledge:sync -- --new-store",
     "knowledge:list-stores": "tsx scripts/list-file-search-stores.ts",
     "knowledge:delete-store": "tsx scripts/delete-file-search-store.ts"

@@ -19,7 +19,7 @@ import type {
   SourceManifestEntry,
 } from "@/lib/knowledge/types";
 import type { ChatRequest } from "@/lib/security/input-validation";
-import type { ChatLanguagePreference } from "@/lib/chat/language";
+import { CHAT_UI_COPY, type ChatLanguagePreference } from "@/lib/chat/language";
 import { focusConversationalQuery } from "@/lib/chat/local-response";
 
 const modelPayloadSchema = z.object({
@@ -27,11 +27,14 @@ const modelPayloadSchema = z.object({
   answer: z.string().trim().min(1).max(MAX_ASSISTANT_ANSWER_LENGTH),
 });
 
-const SIMPLE_RESPONSE_TOKEN_LIMIT = 224;
-const COMPLEX_RESPONSE_TOKEN_LIMIT = 384;
-const SIMPLE_RETRIEVAL_RESULT_LIMIT = 6;
-const FOLLOW_UP_RETRIEVAL_RESULT_LIMIT = 8;
-const COMPLEX_RETRIEVAL_RESULT_LIMIT = 10;
+// Headroom over the prompt's word targets: bullets, bold text, and citation
+// handling consume tokens, and the old 224/384 caps cut live answers off
+// mid-sentence. Answer length is governed by the prompt, not these caps.
+const SIMPLE_RESPONSE_TOKEN_LIMIT = 512;
+const COMPLEX_RESPONSE_TOKEN_LIMIT = 768;
+const SIMPLE_RETRIEVAL_RESULT_LIMIT = 4;
+const FOLLOW_UP_RETRIEVAL_RESULT_LIMIT = 5;
+const COMPLEX_RETRIEVAL_RESULT_LIMIT = 7;
 const TOPIC_MATCH_STOP_WORDS = new Set([
   "about", "after", "again", "also", "been", "being", "could", "does",
   "every", "from", "have", "here", "into", "just", "know", "more", "only",
@@ -148,6 +151,32 @@ function isComplexRequest(request: ChatRequest): boolean {
   );
 }
 
+const QUICK_ACTION_QUESTIONS = new Set(
+  (["en", "es"] as const).flatMap((language) =>
+    CHAT_UI_COPY[language].quickActions.map((action) =>
+      normalizeForMatching(action.question).replace(/\s+/g, " ").trim(),
+    ),
+  ),
+);
+
+export function isQuickActionQuestion(message: string): boolean {
+  return QUICK_ACTION_QUESTIONS.has(
+    normalizeForMatching(message).replace(/\s+/g, " ").trim(),
+  );
+}
+
+function demandsFeaturedBundle(
+  category: FeaturedQuestion,
+  request: ChatRequest,
+): boolean {
+  return (
+    category === "visit" ||
+    category === "events" ||
+    isQuickActionQuestion(request.message) ||
+    isComplexRequest(request)
+  );
+}
+
 function isBroadPlanningRequest(request: ChatRequest): boolean {
   return featuredQuestion(request.message) !== undefined;
 }
@@ -232,6 +261,32 @@ export function buildGroundedInteractionParams(
 
 type ModelReply = z.infer<typeof modelPayloadSchema>;
 
+// Plain-text File Search replies can carry bracketed chunk references such as
+// "[1.1, 1.4]". Citations are shown from annotations, so drop them (including
+// a dangling one left by a token cutoff).
+export function stripInlineCitationMarkers(text: string): string {
+  return text
+    .replace(/\s*\[\d+(?:\.\d+)*(?:\s*,\s*\d+(?:\.\d+)*)*\s*,?\s*(?:\]|$)/g, "")
+    .replace(/[ \t]+\n/g, "\n")
+    .trim();
+}
+
+// When Gemini hits the output-token cap the reply stops mid-sentence. Cut it
+// back to the last complete sentence or bullet line so visitors never see a
+// fragment; keep the text as-is if that would discard most of it.
+export function trimToCompleteSentence(text: string): string {
+  const trimmed = text.trim();
+  let cut = -1;
+  for (const match of trimmed.matchAll(/[.!?](?:\*\*|\*|\)|")*(?=\s|$)/g)) {
+    cut = (match.index ?? 0) + match[0].length;
+  }
+  // A line before a later line break is complete even without punctuation
+  // (common for bullet lists).
+  cut = Math.max(cut, trimmed.lastIndexOf("\n"));
+  if (cut < trimmed.length * 0.4) return trimmed;
+  return trimmed.slice(0, cut).trim();
+}
+
 const REPLY_MARKER = /^\s*\[(NOT_FOUND|CONFLICT)\]\s*/i;
 
 // Accepts the plain-text reply protocol ("[NOT_FOUND] ...", "[CONFLICT] ...",
@@ -249,7 +304,9 @@ export function parseModelReply(text: string): ModelReply | undefined {
   }
 
   const marker = REPLY_MARKER.exec(trimmed);
-  const body = (marker ? trimmed.slice(marker[0].length) : trimmed).trim();
+  const body = stripInlineCitationMarkers(
+    marker ? trimmed.slice(marker[0].length) : trimmed,
+  );
   const status = marker
     ? marker[1].toUpperCase() === "NOT_FOUND"
       ? "not_found"
@@ -275,8 +332,12 @@ export function interpretGroundedInteraction(
   const annotations = textBlocks.flatMap((block) => block.annotations ?? []);
   const sources = resolveFileCitations(annotations, manifest);
 
-  const parsed = parseModelReply(text);
-  if (!parsed) return sourceVerificationFallback(undefined, language);
+  const reply = parseModelReply(text);
+  if (!reply) return sourceVerificationFallback(undefined, language);
+  const parsed =
+    interaction.status === "incomplete"
+      ? { ...reply, answer: trimToCompleteSentence(reply.answer) }
+      : reply;
 
   const hasAuthoritativeHoursSource = sources.some((source) => {
     if (
@@ -523,11 +584,17 @@ export async function askGroundedQuestion(
     request,
   );
   const category = featuredQuestion(request.message);
+  // Only bundle-style requests must cover every part of the featured topic.
+  // A simple typed question ("Where do I park?") that merely shares the topic
+  // keeps its direct cited answer instead of paying for a second, bundle-sized
+  // Gemini call; it is still retried when nothing was found.
+  const demandsBundle =
+    category !== undefined && demandsFeaturedBundle(category, request);
   const needsFeaturedRetry =
     category !== undefined &&
     (response.status === "not_found" ||
       response.status === "conflicting_information" ||
-      !featuredAnswerIsRelevant(category, response) ||
+      (demandsBundle && !featuredAnswerIsRelevant(category, response)) ||
       (expectsSpanishResponse(request) &&
         response.status === "answered" &&
         !answerIsPredominantlySpanish(response.answer)));
@@ -591,7 +658,7 @@ export async function askGroundedQuestion(
               )
             : sourceVerificationFallback(undefined, request.language);
         }
-        return featuredAnswerIsRelevant(category, retryResponse)
+        return !demandsBundle || featuredAnswerIsRelevant(category, retryResponse)
           ? retryResponse
           : category === "events"
             ? eventsCalendarFallback(
